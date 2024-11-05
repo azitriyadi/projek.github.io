@@ -42,7 +42,7 @@ body {
     border-radius: 20px;
     margin-right: 5px;
     cursor: auto; 
-    
+
 }
     
 .menu .beranda img.icon {
@@ -101,4 +101,8 @@ body {
     height: 40px;
     background-color: white;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }

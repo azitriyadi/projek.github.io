@@ -1,47 +1,105 @@
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #1e203d;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', sans-serif;
 }
-.navbar {
+
+body {
+    background-color: #1e203d;
+    color: #fff;
+}
+
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #151961;
-    padding: 10px 20px;
+    padding: 20px;
 }
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 12px;
-}
+
 .logo {
+    font-size: 1.5em;
+    color: #696fec;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
+}
+
+
+nav ul li {
+    margin-left: 20px;
+}
+   
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 5px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+}
+
+.search-bar button {
+    background-color: #696fec;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 50px;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
 }
-.logo a {
-    color : aqua;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+.content h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
-.logo img {
-    width: 80px;
-    height: 80px;
-    margin-right: 10px;
+
+.content h2 span {
+    color: #696fec;
 }
-.nav-links {
-    display: flex;
-}
-.regis {
-    width: 100px;
-    height: 20px;
-    background-color: #3320a8;
-    text-align: center;
-    border-radius: 50px;
-}
-.content2{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   color: antiquewhite;
-    margin: 20px;
+
+.content p {
+    font-size: 1em;
     margin-bottom: 20px;
-    font-size: 20px;
+    max-width: 500px;
+}
+
+.join-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #696fec;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.illustration {
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.illustration img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }

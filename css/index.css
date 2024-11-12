@@ -22,42 +22,6 @@ body {
     color: #696fec;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-
-nav ul li {
-    margin-left: 20px;
-}
-   
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    
-}
-
-.search-bar {
-    display: flex;
-}
-
-.search-bar input {
-    padding: 5px;
-    border: none;
-    border-radius: 3px 0 0 3px;
-}
-
-.search-bar button {
-    background-color: #696fec;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 0 3px 3px 0;
-    cursor: pointer;
-}
-
 .hero {
     display: flex;
     justify-content: space-between;

@@ -1,145 +1,94 @@
-* {
-    margin: 0;
+* , html{
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
 }
 
-body {
-    font-family: 'Times New Roman', sans-serif;
-    background-color: #1A1A3D; 
-    color: white;
+body{
+    background-color: #1e203d;
+    display: grid;
 }
-
-.sidebar {
-    background-color: #151961; 
-    width: 250px;
-    height: 100vh;
-    padding: 20px;
-    position: fixed;
+nav {
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
 }
-
-.logo img {
-    max-width: 50%;
-    margin-bottom: 30px;
-    width: 100%;
-    height: auto;
-}
-
-.menu {
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     list-style: none;
 }
-
-.menu li {
-    margin-bottom: 20px; 
-    }
-.menu div.beranda {
-    display:flex; 
-    margin-bottom: 20px;
-    background-color: #4D4DA6;
-    color: white;
-    padding: 5px 5px; 
-    border: none;
-    border-radius: 20px;
-    margin-right: 5px;
-    cursor: auto; 
-
+.gambar img {
+    width: 70px;
 }
-    
-.menu .beranda img.icon {
-    width: 20px; 
-    height: auto;
-     margin-right: 10px; 
-}
-    
-
-.menu a {
-    color: white;
+nav ul li a {
     text-decoration: none;
-    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    font-weight: 600;
+    padding: 8px 0;
+    transition-duration: 300ms;
+    border-bottom: 1px solid rgba(225, 0, 0, 0);
+}
+nav ul li a:hover {
+    color:aqua;
+    border-bottom: 1px solid #1e203d;
+}
+.sidebar{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 250px;
+    padding: 5px 1rem;
+    background-color: blueviolet;
+    border-right: 1px solid;
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar > ul > li:first-child{
+    display: flex;
+    margin-bottom: 16px;
+}
+.sidebar ul li.active a {
+    color: antiquewhite;
+}
+
+.sidebar a ,.dropdown-btn{
+    border-radius: .5rem;
+    padding: .85rem;
+    text-decoration: none;
+    color: antiquewhite;
     display: flex;
     align-items: center;
+    gap: 1em;
 }
-
-.menu a:hover {
-    text-decoration: underline;
+.sidebar svg{
+    flex-shrink: 0;
+    fill: antiquewhite;
 }
-
-.menu .submenu {
-    margin-left: 30px;
-    margin-top: 10px;
-    list-style-type: none;
-}
-
-.icon {
-    width: 24px; 
-    height: 24px;
-    margin-right: 10px;
-}
-
-.header {
-    background-color: #151961;
-    height: 70px;
-    padding: 20px;
-    margin-left: 250px; 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.header [.search] {
-    display: flex;
-    align-items: center;
-    border: 2px solid #333;
-    border-radius: 5px;
-    overflow: hidden;
-    justify-content: space-between;
-  }
-  
- .header[.search input[type="text"]] {
-    padding: 10px;
+.dropdown-btn{
+    width: 100%;
+    text-align: right;
+    background: none;
     border: none;
-    outline: none;
-    width: 200px;
-    
- }
-    
-  .header[.search button] {
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
+    font: inherit;
     cursor: pointer;
-    
-  }
-  
-  .header[.search button:hover] {
-    background-color: #white;
-  }
-  
-  #results {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
-    
-  }
-
-.account-button {
-    background-color: #4D4DA6;
+}
+.sidebar a:hover,.sidebar .dropdown-btn:hover{
+    background-color: rgb(69, 18, 82);
+}
+header{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 20px;
-    cursor: pointer;
+    text-align: center;
 }
-
-.user-icon {
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.footer{
+    background-color: blueviolet;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
-

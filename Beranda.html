@@ -19,7 +19,7 @@
         </ul>
     </nav>
     <div class="sidebar">
-        <header>BRAN MENU</header>
+        <header>BRAIN MENU</header>
         <ul>
             <li><a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li>
-                <button  onclick=toggleSubmenu(this) class="dropdown-btn">
+                <button onclick=toggleSubmenu(this) class="dropdown-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
                         fill="#FFFFFF">
                         <path d="M480-360 280-560h400L480-360Z" />
@@ -44,11 +44,11 @@
                     <span>Kursus</span>
                 </button>
                 <ul class="submenu">
-                   <div>
-                    <li><a href="#">soal</a></li>
-                    <li><a href="#">grafik</a></li>
-                    <li><a href="#">Nilai</a></li>
-                   </div>
+                    <div>
+                        <li><a href="#">soal</a></li>
+                        <li><a href="#">grafik</a></li>
+                        <li><a href="#">Nilai</a></li>
+                    </div>
                 </ul>
             </li>
             <li>
@@ -65,12 +65,12 @@
                     <span>Materi</span>
                 </button>
                 <ul class="submenu">
-                   <div>
-                    <li><a href="#">HMTL</a></li>
-                    <li><a href="#">CSS</a></li>
-                    <li><a href="#">JAVASCRIPT</a></li>
-                    <li><a href="#">PHP</a></li>
-                   </div>
+                    <div>
+                        <li><a href="#">HMTL</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JAVASCRIPT</a></li>
+                        <li><a href="#">PHP</a></li>
+                    </div>
                 </ul>
             </li>
             <li><a href="#">
@@ -83,10 +83,37 @@
                 </a>
             </li>
         </ul>
-    </div>
+    </div> 
+
     <footer class="footer">
         <p>&copy;2024 tech path.ALL Rights Reserved</p>
     </footer>
+    <script>
+        // script.js
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+
+            dropdownBtns.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const submenu = btn.nextElementSibling; // Mengambil elemen <ul> submenu
+                    if (submenu) {
+                        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+
+            // Opsional: Tutup submenu saat klik di luar
+            document.addEventListener('click', (event) => {
+                dropdownBtns.forEach((btn) => {
+                    const submenu = btn.nextElementSibling;
+                    if (submenu && !btn.contains(event.target) && !submenu.contains(event.target)) {
+                        submenu.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>
 
 </html>

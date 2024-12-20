@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #1e203d; /* Background dark */
+            color: white;
+        }
+
+        .sidebar {
+            background-color: #151961; /* Dark purple */
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+            width: 20%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar:hover {
+            width: 25%;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #696fec;
+            font-weight: 500;
+            transition: background-color 0.3s ease, padding-left 0.2s;
+        }
+
+        .nav-link.active {
+            background-color: #1e203d;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            background-color: #1e203d;
+            padding-left: 20px;
+        }
+
+        .content {
+            padding: 40px;
+            width: 80%;
+            background-color: #f9f9f9;
+            color: #1e203d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .btn-prev, .btn-next {
+            background-color: #696fec;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background-color: #1e203d;
+        }
+
+        h1, h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        h2, h4, h5 {
+            font-size: 1.5rem;
+        }
+
+        pre code {
+            display: block;
+            background-color: #1e203d;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                order: 1;
+            }
+
+            .content {
+                width: 100%;
+                order: 2;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="fw-bold">CSS Tutorial</h1>
+        <ul class="nav flex-column">
+            <li><a class="nav-link active" href="#home">CSS HOME</a></li>
+            <li><a class="nav-link" href="#intro">CSS Introduction</a></li>
+            <li><a class="nav-link" href="#sytanx">CSS syntax</a></li>
+            <li><a class="nav-link" href="#selectors">CSS selectors</a></li>
+            <li><a class="nav-link" href="#how to">CSS how to</a></li>
+            <li><a class="nav-link" href="#comments">CSS comments</a></li>
+            <li><a class="nav-link" href="#colors">CSS colors</a></li>
+            <li><a class="nav-link" href="#backgrounds">CSS backgrounds</a></li>
+            <li><a class="nav-link" href="#borders">CSS borders</a></li>
+            <li><a class="nav-link" href="#margins">CSS margins</a></li>
+            <li><a class="nav-link" href="#padding">CSS padding</a></li>
+            <li><a class="nav-link" href="#box model">CSS box model</a></li>
+            <li><a class="nav-link" href="#outline">CSS outline</a></li>
+            <li><a class="nav-link" href="#fonts">CSS fonts</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="content">
+        <h1>CSS Home</h1>
+        <h1>Selamat datang di Tutorial CSS!</h1>
+    <p>Ini adalah tempat yang sempurna untuk memulai perjalanan Anda dalam mempelajari CSS, bahasa markup standar untuk membuat halaman web.</p>
+    
+    <h2>Apa itu CSS?</h2>
+    <p>CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mendesain tampilan halaman web. Dengan CSS, Anda dapat mengontrol layout, warna, font, dan elemen visual lainnya dalam sebuah halaman web.</p>
+
+    <h2>Kenapa Anda Harus Mempelajari CSS?</h2>
+    <p>Mempelajari CSS (Cascading Style Sheets) sangat penting bagi siapa saja yang ingin membuat atau mengelola website.</p>
+    
+    <h3>Contoh Sederhana CSS</h3>
+    <p>Berikut adalah contoh dokumen CSS dasar:</p>
+    <pre><code>
+        /* Mengatur gaya dasar untuk seluruh halaman */
+        body {
+            font-family: Arial, sans-serif; /* Jenis huruf */
+            background-color: #f4f4f4; /* Warna latar belakang */
+            color: #333; /* Warna teks */
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Mengatur gaya untuk header */
+        header {
+            background-color: #4CAF50; /* Warna latar belakang header */
+            color: white; /* Warna teks header */
+            text-align: center; /* Posisi teks di tengah */
+            padding: 10px 0;
+        }
+        
+        /* Mengatur gaya untuk paragraf */
+        p {
+            margin: 20px; /* Jarak antar paragraf */
+        }
+    </code></pre>
+    
+    <h2>Elemen CSS yang Paling Umum</h2>
+    <ul>
+        <li><strong>p {
+            color: blue;
+        }
+        </strong>: Selektor digunakan untuk memilih elemen HTML yang ingin kita styling.</li>
+        <li><strong>h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        </strong>: Properti dan nilai digunakan untuk mengatur gaya elemen yang dipilih.</li>
+        <li><strong>.my-class {
+            background-color: yellow;
+        }
+        
+        #my-id {
+            margin: 20px;
+        }
+        </strong>: Class dan ID memungkinkan kita untuk memberi gaya khusus pada elemen tertentu.</li>
+        <li><strong>.box {
+            margin: 10px;
+            padding: 20px;
+        }
+        </strong>: Margin mengatur ruang di luar elemen sementara Padding mengatur ruang di dalam elemen.</li>
+        <li><strong>.bordered {
+            border: 1px solid black;
+        }
+        </strong>: Border mengatur garis di sekitar elemen.</li>
+        <li><strong>body {
+            background-color: #f0f0f0;
+            background-image: url('background.jpg');
+        }
+        </strong>: Background mengatur latar belakang elemen.</li>
+    </ul>
+    
+    <h3>Apa yang Akan Anda Pelajari?</h3>
+    <p>Dalam tutorial CSS ini, berikut adalah beberapa hal yang akan kamu pelajari:</p>
+    <ul>
+        <li>Selektor dan Properti CSS: Cara menggunakan selektor untuk memilih elemen HTML yang ingin kamu style dan Memahami berbagai properti CSS dan cara menggunakannya.</li>
+        <li>Gaya Teks: Mengubah jenis huruf, ukuran, warna, dan gaya teks. Dan penggunaan properti font, text-align, text-decoration, dan lainnya.</li>
+        <li>Tata Letak dan Posisi: Mengatur margin, padding, border, dan outline. Dan menggunakan properti display dan position untuk mengatur tata letak elemen.</li>
+        <li>Warna dan Latar belakang: manggunakan warna untuk latar belakang dan teks. dan mengatur gambar latar belakang dan pengulangan gambar.</li>
+    </ul>
+    
+        <a href="Beranda.html" class="btn-prev">&larr; Beranda</a>
+        <a href="#intro" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="intro" class="content hidden">
+        <h1>CSS Introduction</h1>
+        <p>CSS adalah bahasa yang kita gunakan untuk menata halaman Web.</p>
+        <h2>APA ITU CSS?</h2>
+        <p>CSS adalah singkatan dari Cascading Style Sheets</p>
+        <P>CSS menjelaskan bagaimana elemen HTML ditampilkan di layar, kertas, atau media lainnya</P>
+        <P>CSS menghemat banyak pekerjaan. Ia dapat mengontrol tata letak beberapa halaman web sekaligus</P>
+        <P>Stylesheet eksternal disimpan dalam file CSS</P>
+        <h2>Mengapa Menggunakan CSS?</h2>
+        <p>CSS digunakan untuk menentukan gaya untuk halaman web Anda, termasuk desain, tata letak, dan variasi tampilan untuk berbagai perangkat dan ukuran layar.</p>
+        <h1>Contoh CSS</h1>
+        <pre><code>
+            body {
+                background-color: lightblue;
+              }
+              
+              h1 {
+                color: white;
+                text-align: center;
+              }
+              
+              p {
+                font-family: verdana;
+                font-size: 20px;
+              }
+        </code></pre>
+        <h1>CSS Memecahkan Masalah Besar</h1>
+        <P>HTML TIDAK PERNAH dimaksudkan untuk memuat tag untuk memformat halaman web!</P>
+        <P>HTML diciptakan untuk mendeskripsikan konten halaman web, seperti:</P>
+        <pre><code>
+            <h1>Ini adalah judul</h1>
+            <p>Ini adalah sebuah paragraf.</p>
+        </code></pre>
+        <p> Ketika tag seperti <font> dan atribut warna ditambahkan ke spesifikasi HTML 3.2, hal itu memicu mimpi buruk bagi pengembang web. Pengembangan situs web besar, tempat font dan informasi warna ditambahkan ke setiap halaman, menjadi proses yang panjang dan mahal.
+            Untuk mengatasi masalah ini, World Wide Web Consortium (W3C) menciptakan CSS.
+            CSS menghapus format gaya dari halaman HTML!</p>
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#sytanx" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="sytanx" class="content hidden">
+        <h1>CSS Sytanx</h1>
+        <h2>Aturan CSS terdiri dari pemilih dan blok deklarasi.
+        <img src="https://www.w3schools.com/css/img_selector.gif" alt="Sintaksis CSS" style="width: 100%; max-width: 600px;"></h2>
+        <p>Pemilih menunjuk ke elemen HTML yang ingin Anda beri gaya.</p>
+        <h1>Blok deklarasi berisi satu atau lebih deklarasi yang dipisahkan oleh titik koma.</h1>
+        <p>Setiap deklarasi menyertakan nama properti CSS dan nilai, dipisahkan oleh titik dua.
+
+            Beberapa deklarasi CSS dipisahkan dengan titik koma, dan blok deklarasi diapit oleh kurung kurawal.</p>
+        <pre><code>
+            p {
+                color: red;
+                text-align: center;
+              }
+        </code></pre>
+        <h1>Penjelasan Contoh</h1>
+        <pre><code>
+            p adalah pemilih dalam CSS (menunjuk ke elemen HTML yang ingin Anda beri gaya)
+                color adalah sebuah properti, dan red merupakan nilai properti
+                text-align adalah sebuah properti, dan center merupakan nilai properti
+        </code></pre>
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#selectors" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <script>
+        // Ambil semua elemen nav-link, konten, dan tombol navigasi
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        const prevButtons = document.querySelectorAll('.btn-prev');
+        const nextButtons = document.querySelectorAll('.btn-next');
+
+        // Fungsi untuk menampilkan konten sesuai ID
+        function showSection(id) {
+            sections.forEach(section => {
+                if (section.id === id) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        // Fungsi untuk menemukan index dari section berdasarkan ID
+        function findSectionIndex(id) {
+            return Array.from(sections).findIndex(section => section.id === id);
+        }
+
+        // Event listener untuk navigasi menu
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Event listener untuk tombol "Next"
+        nextButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex < sections.length - 1) {
+                    const nextSectionId = sections[currentIndex + 1].id;
+                    showSection(nextSectionId);
+                    document.querySelector(`.nav-link[href="#${nextSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Event listener untuk tombol "Previous"
+        prevButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex > 0) {
+                    const prevSectionId = sections[currentIndex - 1].id;
+                    showSection(prevSectionId);
+                    document.querySelector(`.nav-link[href="#${prevSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Tampilkan konten pertama kali (misalnya 'home')
+        showSection('home');
+    </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #1e203d; /* Background dark */
+            color: white;
+        }
+
+        .sidebar {
+            background-color: #151961; /* Dark purple */
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+            width: 20%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar:hover {
+            width: 25%;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #696fec;
+            font-weight: 500;
+            transition: background-color 0.3s ease, padding-left 0.2s;
+        }
+
+        .nav-link.active {
+            background-color: #1e203d;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            background-color: #1e203d;
+            padding-left: 20px;
+        }
+
+        .content {
+            padding: 40px;
+            width: 80%;
+            background-color: #f9f9f9;
+            color: #1e203d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .btn-prev, .btn-next {
+            background-color: #696fec;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background-color: #1e203d;
+        }
+
+        h1, h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        h2, h4, h5 {
+            font-size: 1.5rem;
+        }
+
+        pre code {
+            display: block;
+            background-color: #1e203d;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                order: 1;
+            }
+
+            .content {
+                width: 100%;
+                order: 2;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="fw-bold">HTML Tutorial</h1>
+        <ul class="nav flex-column">
+            <li><a class="nav-link active" href="#home">HTML HOME</a></li>
+            <li><a class="nav-link" href="#intro">HTML Introduction</a></li>
+            <li><a class="nav-link" href="#editors">HTML Editors</a></li>
+            <li><a class="nav-link" href="#basic">HTML Basic</a></li>
+            <li><a class="nav-link" href="#elements">HTML Elements</a></li>
+            <li><a class="nav-link" href="#attributes">HTML Attributes</a></li>
+            <li><a class="nav-link" href="#headings">HTML Headings</a></li>
+            <li><a class="nav-link" href="#paragraphs">HTML Paragraphs</a></li>
+            <li><a class="nav-link" href="#styles">HTML Styles</a></li>
+            <li><a class="nav-link" href="#formatting">HTML Formatting</a></li>
+            <li><a class="nav-link" href="#quotations">HTML Quotations</a></li>
+            <li><a class="nav-link" href="#comments">HTML Comments</a></li>
+            <li><a class="nav-link" href="#colors">HTML Colors</a></li>
+            <li><a class="nav-link" href="#css">HTML CSS</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="content">
+        <h1>HTML Home</h1>
+        <h1>Selamat datang di Tutorial HTML!</h1>
+    <p>Ini adalah tempat yang sempurna untuk memulai perjalanan Anda dalam mempelajari HTML, bahasa markup standar untuk membuat halaman web.</p>
+    
+    <h2>Apa itu HTML?</h2>
+    <p>HTML (HyperText Markup Language) adalah bahasa markup yang digunakan untuk membuat halaman web dan aplikasi web. HTML memberi struktur pada konten web seperti teks, gambar, dan video. Ini adalah dasar dari setiap halaman yang Anda lihat di internet.</p>
+
+    <h2>Kenapa Anda Harus Mempelajari HTML?</h2>
+    <p>HTML adalah fondasi dari semua halaman web. Mempelajari HTML akan memberi Anda keterampilan untuk membuat dan mengatur struktur halaman web. Setelah memahami HTML, Anda akan bisa menggabungkannya dengan CSS dan JavaScript untuk membuat halaman web interaktif dan responsif.</p>
+    
+    <h3>Contoh Sederhana HTML</h3>
+    <p>Berikut adalah contoh dokumen HTML dasar:</p>
+    <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Selamat datang di halaman pertama saya&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf pertama saya&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+    
+    <h2>Elemen HTML yang Paling Umum</h2>
+    <ul>
+        <li><strong>&lt;html&gt;</strong>: Elemen utama dalam dokumen HTML.</li>
+        <li><strong>&lt;head&gt;</strong>: Berisi informasi metadata tentang halaman (judul, stylesheet, dll.).</li>
+        <li><strong>&lt;body&gt;</strong>: Berisi konten utama halaman (teks, gambar, dll.).</li>
+        <li><strong>&lt;h1&gt; hingga &lt;h6&gt;</strong>: Elemen heading yang digunakan untuk memberi struktur pada konten.</li>
+        <li><strong>&lt;p&gt;</strong>: Elemen paragraf untuk teks.</li>
+        <li><strong>&lt;a&gt;</strong>: Elemen anchor untuk membuat tautan ke halaman lain.</li>
+    </ul>
+
+    <h2>Gambar Contoh</h2>
+    <p>Di bawah ini adalah gambar yang menjelaskan struktur dasar HTML:</p>
+    <img src="https://www.w3schools.com/html/img_chrome.png" alt="Contoh Struktur HTML" style="width: 100%; max-width: 600px;">
+    
+    <h3>Apa yang Akan Anda Pelajari?</h3>
+    <p>Dalam tutorial ini, Anda akan belajar berbagai topik mulai dari elemen dasar HTML hingga teknik-teknik yang lebih lanjut seperti form, tabel, dan multimedia. Berikut adalah beberapa hal yang akan Anda pelajari:</p>
+    <ul>
+        <li>Dasar-dasar sintaks HTML</li>
+        <li>Penggunaan elemen-elemen dasar HTML</li>
+        <li>Membuat halaman web interaktif dengan HTML dan CSS</li>
+        <li>Penggunaan atribut dan formulir HTML</li>
+        <li>Integrasi multimedia seperti gambar, video, dan audio</li>
+    </ul>
+    
+        <a href="Beranda.html" class="btn-prev">&larr; Beranda</a>
+        <a href="#intro" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="editors" class="content hidden">
+        <h1>HTML Editors</h1>
+        <h2>Membuat Halaman Web Pertama Menggunakan Visual Studio Code (VSCode)</h2>
+        <p>Visual Studio Code (VSCode) adalah editor kode yang lebih canggih dibandingkan Notepad atau TextEdit. VSCode memiliki banyak fitur seperti auto-complete, pewarnaan sintaks, dan dukungan untuk banyak ekstensi yang memudahkan Anda saat menulis kode HTML. Berikut adalah langkah-langkah untuk membuat halaman web pertama menggunakan VSCode:</p>
+        <h1>Langkah 1: Menginstal Visual Studio Code</h1>
+        <p>Jika Anda belum menginstal VSCode, unduh dan pasang dari situs resmi Visual Studio Code.
+
+            Pilih versi untuk sistem operasi Anda (Windows, macOS, atau Linux).
+            Ikuti petunjuk instalasi untuk menyelesaikan proses instalasi.</p>
+        <pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+            &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+        <h1>Penjelasan Contoh</h1>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;: ini memberitahu browser bahwa dokumen ini adalah dokumen HTML.
+            &lt;html&gt;: Elemen ini adalah elemen akar dari sebuah halaman HTML.
+            &lt;head&gt;: Elemen ini berisi informasi meta tentang halaman HTML.
+            &lt;title&gt;Judul Halaman&lt;/title&gt;: Elemen ini menentukan judul halaman.
+            &lt;body&gt;: Elemen ini berfungsi untuk semua konten yang dapat dilihat oleh pengguna.
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;: Elemen ini digunakan untuk menampilkan judul.
+            &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;: Elemen ini digunakan untuk mendefinisikan sebuah paragraf.
+        </code></pre>
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#editors" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="intro" class="content hidden">
+        <h1>HTML Introduction</h1>
+        <p>HTML adalah bahasa markup standar untuk membuat halaman web.</p>
+        <h2>APA ITU HTML?</h2>
+        <p>HTML adalah bahasa markup standar yang digunakan untuk membuat halaman web, dan mendeskripsikan struktur halaman web.</p>
+        <h1>Contoh Dokumen HTML Sederhana</h1>
+        <pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+            &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+        <h1>Penjelasan Contoh</h1>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;: ini memberitahu browser bahwa dokumen ini adalah dokumen HTML.
+            &lt;html&gt;: Elemen ini adalah elemen akar dari sebuah halaman HTML.
+            &lt;head&gt;: Elemen ini berisi informasi meta tentang halaman HTML.
+            &lt;title&gt;Judul Halaman&lt;/title&gt;: Elemen ini menentukan judul halaman.
+            &lt;body&gt;: Elemen ini berfungsi untuk semua konten yang dapat dilihat oleh pengguna.
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;: Elemen ini digunakan untuk menampilkan judul.
+            &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;: Elemen ini digunakan untuk mendefinisikan sebuah paragraf.
+        </code></pre>
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#editors" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <script>
+        // Ambil semua elemen nav-link, konten, dan tombol navigasi
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        const prevButtons = document.querySelectorAll('.btn-prev');
+        const nextButtons = document.querySelectorAll('.btn-next');
+
+        // Fungsi untuk menampilkan konten sesuai ID
+        function showSection(id) {
+            sections.forEach(section => {
+                if (section.id === id) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        // Fungsi untuk menemukan index dari section berdasarkan ID
+        function findSectionIndex(id) {
+            return Array.from(sections).findIndex(section => section.id === id);
+        }
+
+        // Event listener untuk navigasi menu
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Event listener untuk tombol "Next"
+        nextButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex < sections.length - 1) {
+                    const nextSectionId = sections[currentIndex + 1].id;
+                    showSection(nextSectionId);
+                    document.querySelector(`.nav-link[href="#${nextSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Event listener untuk tombol "Previous"
+        prevButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex > 0) {
+                    const prevSectionId = sections[currentIndex - 1].id;
+                    showSection(prevSectionId);
+                    document.querySelector(`.nav-link[href="#${prevSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Tampilkan konten pertama kali (misalnya 'home')
+        showSection('home');
+    </script>
+</body>
+</html>

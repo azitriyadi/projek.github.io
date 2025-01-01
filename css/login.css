@@ -18,22 +18,18 @@ body {
     background-color: #1e203d;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 120%;
     max-width: 800px;
-}
-
-.logo-container {
-    width: 40%;
-    text-align: center;
 }
 
 .logo {
     width: 80%;
-    max-width: 900px; /* Sesuaikan dengan ukuran logo Anda */
+    max-width: 900px;
+    /* Sesuaikan dengan ukuran logo Anda */
 }
 
 .login-container {
-    background-color: #1e203d;
+    background-color: #151961;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -74,7 +70,7 @@ h2 {
 .login-btn {
     width: 100%;
     padding: 12px;
-    background-color: #151961;
+    background-color: #1e203d;
     color: white;
     border: none;
     border-radius: 4px;
@@ -83,7 +79,7 @@ h2 {
 }
 
 .login-btn:hover {
-    background-color: #0057b39a;
+    background-color: #696fec;
 }
 
 .signup-link {
@@ -101,4 +97,10 @@ h2 {
 
 .signup-link p {
     color: white;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        display: none;
+    }
 }

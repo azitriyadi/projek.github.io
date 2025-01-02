@@ -3,210 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Tutorial</title>
+    <title>JS Tutorial</title>
     <style>
-             *{
-            font-family: "Arial", sans-serif; 
+        body {
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #1e203d;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
         }
- body {
-    font-family: "Arial", sans-serif;
-    margin: 0;
-    display: flex;
-    background-color: #1e203d;
-    color: white;
-    height: 100vh;
-    overflow: hidden;
-}
 
-.sidebar {
-    background-color: #151961;
-    height: 100vh;
-    width: 20%;
-    padding: 20px;
-    overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-    transition: width 0.3s ease-in-out;
-    position: fixed;
-    left: -100%;
-}
+        .sidebar {
+            background-color: #151961;
+            height: 100vh;
+            width: 20%;
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: width 0.3s ease-in-out;
+            position: fixed;
+            left: -100%;
+        }
 
-.sidebar.open {
-    left: 0;
-}
+        .sidebar.open {
+            left: 0;
+        }
 
-.sidebar h1 {
-    font-size: 24px;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-}
+        .sidebar h1 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.sidebar ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
 
-.container {
-    width: 80%;
-    padding-left: 20%;
-    display: flex;
-    flex-direction: column;
-}
+        .container {
+            width: 80%;
+            padding-left: 20%;
+            display: flex;
+            flex-direction: column;
+        }
 
-.nav-link {
-    display: block;
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: #696fec;
-    font-weight: 500;
-    transition: background-color 0.3s ease, padding-left 0.2s;
-}
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #696fec;
+            font-weight: 500;
+            transition: background-color 0.3s ease, padding-left 0.2s;
+        }
 
-.nav-link.active {
-    background-color: #1e203d;
-    font-weight: bold;
-}
+        .nav-link.active {
+            background-color: #1e203d;
+            font-weight: bold;
+        }
 
-.nav-link:hover {
-    background-color: #1e203d;
-    padding-left: 20px;
-}
+        .nav-link:hover {
+            background-color: #1e203d;
+            padding-left: 20px;
+        }
 
-.content {
-    padding: 40px;
-    width: 100%;
-    background-color: #f9f9f9;
-    color: #1e203d;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    max-height: calc(100vh - 80px);
-    padding-left: 5%;
-}
+        .content {
+            padding: 40px;
+            width: 100%;
+            background-color: #f9f9f9;
+            color: #1e203d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+            padding-left: 5%;
+        }
 
-.btn-prev, .btn-next {
-    background-color: #696fec;
-    color: white;
-    padding: 12px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .btn-prev, .btn-next {
+            background-color: #696fec;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.btn-prev:hover, .btn-next:hover {
-    background-color: #1e203d;
-}
+        .btn-prev:hover, .btn-next:hover {
+            background-color: #1e203d;
+        }
 
-h1, h3 {
-    margin-top: 0;
-    font-size: 2rem;
-}
+        h1, h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
 
-h2, h4, h5 {
-    font-size: 1.5rem;
-}
+        h2, h4, h5 {
+            font-size: 1.5rem;
+        }
 
-pre code {
-    display: block;
-    background-color: #1e203d;
-    color: #ffffff;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-}
+        pre code {
+            display: block;
+            background-color: #1e203d;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
 
-.hidden {
-    display: none;
-}
+        .hidden {
+            display: none;
+        }
 
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-        overflow-x: hidden;
-    }
-    .content {
-        padding-left: 0;
-        width: 100%;
-        order: 2;
-        padding: 20px;
-    }
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow-x: hidden;
+            }
+            .content {
+                padding-left: 0;
+                width: 100%;
+                order: 2;
+                padding: 20px;
+            }
 
-    .sidebar {
-        width: 70%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: -100%;
-        z-index: 1000;
-        overflow-y: auto;
-        transition: left 0.3s ease-in-out;
-    }
+            .sidebar {
+                width: 70%;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                z-index: 1000;
+                overflow-y: auto;
+                transition: left 0.3s ease-in-out;
+            }
 
-    .sidebar.open {
-        left: 0;
-    }
+            .sidebar.open {
+                left: 0;
+            }
 
-    .menu-icon {
-        display: block;
-        cursor: pointer;
-        font-size: 30px;
-        padding: 10px;
-        background: none;
-        border: none;
-        color: white;
-        z-index: 1001;
-    }
-}
+            .menu-icon {
+                display: block;
+                cursor: pointer;
+                font-size: 30px;
+                padding: 10px;
+                background: none;
+                border: none;
+                color: white;
+                z-index: 1001;
+            }
+        }
 
-@media (min-width: 769px) {
-    .menu-icon {
-        display: none;
-    }
+        @media (min-width: 769px) {
+            .menu-icon {
+                display: none;
+            }
 
-    .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        overflow-y: auto;
-    }
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100vh;
+                overflow-y: auto;
+            }
 
-    .content {
-        width: 80%;
-        margin-left: 20%;
-    }
-}
+            .content {
+                width: 80%;
+                margin-left: 20%;
+            }
+        }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #1e203d;
-}
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1e203d;
+        }
 
-th {
-    background-color: #151961;
-    color: white;
-    padding: 10px;
-    text-align: left;
-}
+        th {
+            background-color: #151961;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
 
-td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-    background-color: white;
-}
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            background-color: white;
+        }
 
-td, th {
-    word-wrap: break-word;
-}
-</style>
+        td, th {
+            word-wrap: break-word;
+        }
+    </style>
 
     
 </head>

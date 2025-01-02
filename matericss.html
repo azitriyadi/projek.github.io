@@ -146,6 +146,7 @@
             <li><a class="nav-link" href="#box model">CSS box model</a></li>
             <li><a class="nav-link" href="#outline">CSS outline</a></li>
             <li><a class="nav-link" href="#fonts">CSS fonts</a></li>
+            <li><a class="nav-link" href="#tabels">CSS Tabels</a></li>
         </ul>
     </div>
 
@@ -264,10 +265,10 @@
         <P>HTML TIDAK PERNAH dimaksudkan untuk memuat tag untuk memformat halaman web!</P>
         <P>HTML diciptakan untuk mendeskripsikan konten halaman web, seperti:</P>
         <pre><code>
-            <h1>Ini adalah judul</h1>
-            <p>Ini adalah sebuah paragraf.</p>
+            &lt;h1&gt;Ini adalah judul&lt;h1&gt;
+            &lt;p&gt;Ini adalah sebuah paragraf.&lt;p&gt;
         </code></pre>
-        <p> Ketika tag seperti <font> dan atribut warna ditambahkan ke spesifikasi HTML 3.2, hal itu memicu mimpi buruk bagi pengembang web. Pengembangan situs web besar, tempat font dan informasi warna ditambahkan ke setiap halaman, menjadi proses yang panjang dan mahal.
+        <p> Ketika tag seperti &lt;font&gt; dan atribut warna ditambahkan ke spesifikasi HTML 3.2, hal itu memicu mimpi buruk bagi pengembang web. Pengembangan situs web besar, tempat font dan informasi warna ditambahkan ke setiap halaman, menjadi proses yang panjang dan mahal.
             Untuk mengatasi masalah ini, World Wide Web Consortium (W3C) menciptakan CSS.
             CSS menghapus format gaya dari halaman HTML!</p>
 
@@ -300,7 +301,945 @@
         <a href="#home" class="btn-prev">&larr; Previous</a>
         <a href="#selectors" class="btn-next">Next &rarr;</a>
     </section>
+    
+    <section id="selectors" class="content hidden">
+        <h1>CSS selectors</h1>
+        <h2>CSS Selectors untuk memilih elemen HTML yang ingin Anda beri gaya.</h2>
+        <h1>Kita dapat membagi CSS Selectors menjadi lima kategori:</h1>
+        <p> Pemilih sederhana (memilih elemen berdasarkan nama, id, kelas)
+            Pemilih kombinator (memilih elemen berdasarkan hubungan tertentu di antara elemen tersebut)
+            Pemilih kelas semu (memilih elemen berdasarkan status tertentu)
+            Pemilih elemen semu (memilih dan memberi gaya pada bagian suatu elemen)
+            Pemilih atribut (memilih elemen berdasarkan atribut atau nilai atribut)</p>
+        <pre><code>
+            p {
+                text-align: center;
+                color: red;
+              }
+        </code></pre>
+        <h1>Pemilih ID CSS </h1>
+        <p>Pemilih id menggunakan atribut id dari elemen HTML untuk memilih elemen tertentu.
+            Id suatu elemen bersifat unik dalam suatu halaman, jadi pemilih id digunakan untuk memilih satu elemen unik!
+            Untuk memilih elemen dengan id tertentu, tulis karakter hash (#), diikuti dengan id elemen.
+            Aturan CSS di bawah ini akan diterapkan ke elemen HTML dengan id="para1":</p>
+        <pre><code>
+            #para1 {
+                text-align: center;
+                color: red;
+              }
+        </code></pre>
 
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#how to" class="btn-next">Next &rarr;</a>
+    </section>
+    <section id="how to" class="content hidden">
+        <h1>HOW TO CSS</h1>
+        <p>Saat browser membaca lembar gaya, ia akan memformat dokumen HTML sesuai dengan informasi dalam lembar gaya tersebut.</p>
+        <h2>Tiga Cara Memasukkan CSS:</h2>
+        <ul>
+            <li>CSS Eksternal</li>
+            <li>CSS internal</li>
+            <li>CSS sebaris</li></ul>
+
+        <h1>CSS Eksternal</h1>
+        <p>Dengan lembar gaya eksternal, Anda dapat mengubah tampilan seluruh situs web hanya dengan mengubah satu file!
+            Setiap halaman HTML harus menyertakan referensi ke berkas lembar gaya eksternal di dalam elemen <link>, di dalam bagian kepala.</p>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+        <h1>Gaya CSS</h1>
+        <pre><code>
+            body {
+                background-color: lightblue;
+              }
+              
+              h1 {
+                color: navy;
+                margin-left: 20px;
+              }
+        </code></pre>
+
+        <h1>CSS Internal</h1>
+        <p>Lembar gaya internal dapat digunakan jika satu halaman HTML memiliki gaya yang unik.
+            Gaya internal didefinisikan di dalam elemen &lt;style&gt;, di dalam bagian kepala.</p>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+             body {
+                 background-color: linen;
+             }
+          
+             h1 {
+                 color: maroon;
+                 margin-left: 40px;
+             }
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+
+        <h1>CSS Sebaris</h1>
+        <p>Gaya sebaris dapat digunakan untuk menerapkan gaya unik untuk satu elemen.
+            Untuk menggunakan gaya sebaris, tambahkan atribut style ke elemen yang relevan. Atribut style dapat berisi properti CSS apa pun.</p>
+        <p>COntohnya</p>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;h1 style="color:blue;text-align:center;"&gt;This is a heading h1&gt;
+        &lt;p style="color:red;"&gt;This is a paragraph.p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+
+        <h1>Beberapa Lembar Gaya</h1>
+        <p>Jika beberapa properti telah ditetapkan untuk pemilih (elemen) yang sama dalam lembar gaya yang berbeda, nilai dari lembar gaya terakhir yang dibaca akan digunakan.</p>
+        <p>Asumsikan bahwa lembar gaya eksternal memiliki gaya berikut untuk elemen &lt;h1&gt;:</p>
+        <pre><code>
+            h1 {
+                color: navy;
+              }
+        </code></pre>
+
+        <h1>Contoh</h1>
+        <p>Jika gaya internal didefinisikan setelah tautan ke lembar gaya eksternal, elemen &lt;h1&gt; akan berwarna "Navy":</p>
+        <pre><code>
+            &lt;head&gt;
+                &lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;
+                &lt;style&gt;
+                h1 {
+                  color: orange;
+                }
+                &lt;style&gt;
+                &lt;head&gt;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#comments" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="comments" class="content hidden">
+        <h1>COMMENTS CSS</h1>
+        <P>Komentar digunakan untuk menjelaskan kode, dan dapat membantu saat Anda mengedit kode sumber di lain waktu.
+            Komentar diabaikan oleh browser. Komentar CSS ditempatkan di dalam &lt;style&gt; elemen, dan dimulai dengan /*dan diakhiri dengan */:</P>
+        <p>Contoh</p>
+        <pre><code>
+            /* This is a single-line comment */
+            p {
+                color: red;
+            }
+        </code></pre>
+        <p>Anda dapat menambahkan komentar di mana pun Anda inginkan dalam kode:</p>
+        <pre><code>
+            p {
+                color: red;  /* Set text color to red */
+              }
+        </code></pre>
+        <p>Bahkan di tengah baris kode:</p>
+        <pre><code>
+            p {
+                color: /*red*/blue; 
+              }
+        </code></pre>
+        <p>Komentar juga dapat mencakup beberapa baris: </p>
+        <pre><code>
+            /* This is
+            a multi-line
+            comment */
+
+            p {
+                color: red;
+            }
+        </code></pre>
+
+        <h1>Komentar HTML dan CSS</h1>
+        <p>Dari tutorial HTML, Anda mempelajari bahwa Anda dapat menambahkan komentar ke sumber HTML Anda dengan menggunakan &;t;!--...--&gt;sintaksis.
+            Dalam contoh berikut, kami menggunakan kombinasi komentar HTML dan CSS:</p>
+        <pre><code>
+            &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+            p {
+                 color: red; /* Set text color to red */
+            }
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+            &lt;!-- These paragraphs will be red --&gt;
+
+            &lt;p&gt; Hello Word! &lt;p&gt;
+            &lt;p&gt; This paragraph is styled with CSS. &lt;p&gt;
+            &lt;p&gt; CSS comments are not shown in the output &lt;p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#colors" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="colors" class="content hidden">
+        <h1>CSS Colors</h1>
+        <p>Warna ditentukan menggunakan nama warna yang telah ditetapkan, atau nilai RGB, HEX, HSL, RGBA, HSLA.</p>
+        <h1 style="background-color:DodgerBlue;">Hello World</h1>
+        <p style="background-color:Tomato;">Lorem ipsum dolor sit amet, pembentuk adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Dengan sedikit racun, latihan kami yang ullamcorper suscipit lobortis tidak akan keluar dari komodo yang diakibatkannya.</p>
+        <pre><code>
+            contoh kodenya:
+            &lt;h1 style="background-color:DodgerBlue;"&gt;Hello World&lt;h1&gt;
+            &lt;p style="background-color:Tomato;"&gt;Lorem ipsum...&lt;p&gt;
+        </code></pre>
+        <h2>Warna Teks CSS</h2>
+        <p>Anda dapat mengatur warna teks:</p>
+        <h1 style="color:Tomato;">Hello World</h1>
+        <p style="color:DodgerBlue;">Lorem ipsum dolor sit amet, pembentuk adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        <p style="color:MediumSeaGreen;">Dengan sedikit racun, latihan kami yang ullamcorper suscipit lobortis tidak akan keluar dari komodo yang diakibatkannya.</p>
+        <pre><code>
+            contoh kodenya:
+            &lt;h1 style="color : Tomato;"&gt; Hello world&lt;h1&gt;
+            &lt;p style="color : DodgerBlue;"&gt;Lorem ipsum....&lt;p&gt;
+            &lt;p style="color : MediumSeaGreen;"&gt;Ut wisi enim...&lt;p&gt;
+        </code></pre>
+        <h2>Warna Batas CSS</h2>
+        <p>Anda dapat mengatur warna batas:</p>
+        <h1 style="border:2px solid Tomato;">Hello World</h1>
+        <h1 style="border:2px solid DodgerBlue;">Hello World</h1>
+        <h1 style="border:2px solid Violet;">Hello World</h1>
+        <pre><code>
+            Contoh kodenya:
+            &lt;h1 style="border:2px solid Tomato;"&gt;Hello World&lt;h1&gt;
+            &lt;h1 style="border:2px solid DodgerBlue;"&gt;Hello World&lt;h1&gt;
+            &lt;h1 style="border:2px solid Violet;"&gt;Hello World&lt;h1&gt;
+        </code></pre>
+        <h1>Nilai Warna CSS</h1>
+        <p>Dalam CSS, warna juga dapat ditentukan menggunakan nilai RGB, nilai HEX, nilai HSL, nilai RGBA, dan nilai HSLA:</p>
+        <p>Sama dengan nama warna "Tomat":</p>
+        <h1 style="background-color:rgb(255, 99, 71);">Warna merah (255, 99, 71)</h1>
+        <h1 style="background-color:#ff6347;">#ff6347</h1>
+        <h1 style="background-color:hsl(9, 100%, 64%);">hsl (9, 100%, 64%)</h1>
+        <pre><Code>
+            Contoh kodenya:
+            &lt;h1 style="background-color:rgb(255, 99, 71);"&gt;Warna merah (255, 99, 71)&lt;h1&gt;
+            &lt;h1 style="background-color:#ff6347;"&gt;#ff6347&lt;h1&gt;
+            &lt;h1 style="background-color:hsl(9, 100%, 64%);"&gt;hsl (9, 100%, 64%)&lt;h1&gt;
+        </Code></pre>
+        <p>Sama seperti nama warna "Tomat", tetapi 50% transparan:</p>
+        <h1 style="background-color:rgba(255, 99, 71, 0.5);">rgba(255, 99, 71, 0,5)</h1>
+        <h1 style="background-color:hsla(9, 100%, 64%, 0.5);">hsla(9, 100%, 64%, 0,5)</h1>
+        <pre><code>
+            Contoh kodenya:
+            &lt;h1 style="background-color:rgba(255, 99, 71, 0.5);"&gt;rgba(255, 99, 71, 0,5)&lt;h1&gt;
+            &lt;h1 style="background-color:hsla(9, 100%, 64%, 0.5);"&gt;hsla(9, 100%, 64%, 0,5)&lt;h1&gt;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#Backgrounds" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="backgrounds" class="content hidden">
+        <h1>CSS Backgrounds</h1>
+        <p>Properti latar belakang CSS digunakan untuk menambahkan efek latar belakang untuk elemen.</p>
+        <ul>
+            Dalam bab ini, Anda akan mempelajari tentang properti latar belakang CSS berikut:
+            <li>background-color</li>
+            <li>background-image</li>
+            <li>background-repeat</li>
+            <li>background-attachment</li>
+            <li>background-position</li>
+            <li>background(properti singkatan)</li>
+        </ul>
+        <h2>Warna latar belakang CSS</h2>
+        <p>Properti background-colormenentukan warna latar belakang suatu elemen.</p>
+        <pre><code>
+            Contoh
+            Warna latar belakang halaman diatur seperti ini:
+
+            body {
+                background-color: lightblue;
+            }
+        </code></pre>
+        <p>Dengan CSS, warna paling sering ditentukan oleh:</p>
+        <ul>
+            <li>nama warna yang valid - seperti "merah"</li>
+            <li>nilai HEX - seperti "#ff0000"</li>
+            <li>nilai RGB - seperti "rgb(255,0,0)"</li>
+        </ul>
+        <h1>Elemen Lainnya</h1>
+        <p>Anda dapat mengatur warna latar belakang untuk elemen HTML apa pun:</p>
+        <pre><code>
+            Contoh
+            Di sini, elemen &lt;h1&gt;, &lt;p&gt;, &lt;div&gt; akan memiliki warna latar belakang yang berbeda: 
+
+            h1 {
+                background-color: green;
+            }
+
+            div {
+                background-color: lightblue;
+            }
+
+            p {
+                background-color: yellow;
+            }
+        </code></pre>
+        <h1>Opacity / Transparansi</h1>
+        <p>Properti ini opacitymenentukan opasitas/transparansi suatu elemen. Nilainya dapat berkisar dari 0,0 - 1,0. Semakin rendah nilainya, semakin transparan:</p>
+        <pre><code>
+            div {
+                background-color: green;
+                opacity: 0.3;
+              }    
+        </code></pre>
+        <p>Catatan: Saat menggunakan opacityproperti untuk menambahkan transparansi pada latar belakang suatu elemen, semua elemen turunannya mewarisi transparansi yang sama. Hal ini dapat membuat teks di dalam elemen yang sepenuhnya transparan sulit dibaca.</p>
+        <h1>Transparansi menggunakan RGBA</h1>
+        <p>Jika Anda tidak ingin menerapkan opasitas pada elemen anak, seperti pada contoh di atas, gunakan nilai warna RGBA.
+            Anda telah mempelajari dari Bab Warna CSS , bahwa Anda dapat menggunakan RGB sebagai nilai warna. Selain RGB, Anda dapat menggunakan nilai warna RGB dengan saluran alfa (RGB A ) - yang menentukan opasitas untuk suatu warna.
+            Nilai warna RGBA ditentukan dengan: rgba(red, green, blue, alpha ). Parameter alpha adalah angka antara 0,0 (sepenuhnya transparan) dan 1,0 (sepenuhnya buram).
+            Tip: Anda akan mempelajari lebih lanjut tentang Warna RGBA di Bab Warna CSS kami.
+        </p>
+        <pre><code>
+            div {
+                background: rgba(0, 128, 0, 0.3) /* Green background with 30% opacity */
+              }
+        </code></pre>
+        <h2>Gambar Latar Belakang CSS</h2>
+        <p>Properti background-image menentukan gambar yang akan digunakan sebagai latar belakang suatu elemen.
+            Secara default, gambar diulang sehingga menutupi seluruh elemen.</p>
+        <pre><code>
+            Contoh
+            Mengatur gambar latar belakang untuk suatu halaman: 
+
+            body {
+                background-image: url("paper.gif");
+            }
+        </code></pre>
+        <pre><code>
+            Contoh
+            Contoh ini menunjukkan kombinasi teks dan gambar latar yang buruk . Teksnya sulit dibaca: 
+
+            body {
+                background-image: url("bgdesert.jpg");
+            }
+        </code></pre>
+        <h2>Latar belakang CSS-ulangi</h2>
+        <p>Secara default, background-imageproperti mengulang gambar baik secara horizontal maupun vertikal.
+            Beberapa gambar sebaiknya diulang hanya secara horizontal atau vertikal, atau akan terlihat aneh, seperti ini:</p>
+        <pre><code>
+            Contoh
+            body {
+                background-image: url("gradient_bg.png");
+            }
+        </code></pre>
+        <p>Jika gambar di atas hanya diulang secara horizontal ( background-repeat: repeat-x;), latar belakang akan terlihat lebih baik:</p>
+        <pre><code>
+            Contoh:
+            body {
+                background-image: url("gradient_bg.png");
+                background-repeat: repeat-x;
+              }
+        </code></pre>
+        <h2>CSS background-repeat: tidak-diulang</h2>
+        <p>Menampilkan gambar latar belakang hanya satu kali juga ditentukan oleh background-repeat properti:</p>
+        <pre><code>
+            Contoh
+            Tampilkan gambar latar belakang hanya satu kali:
+            body {
+                background-image: url("img_tree.png");
+                background-repeat: no-repeat;
+              }
+        </code></pre>
+        <h1>Latar belakang CSS-posisi</h1>
+        <p>Properti ini background-positiondigunakan untuk menentukan posisi gambar latar belakang.</p>
+        <pre><code>
+           Contoh
+           Posisikan gambar latar belakang di sudut kanan atas:
+            body {
+                background-image: url("img_tree.png");
+                background-repeat: no-repeat;
+                background-position: right top;
+              }
+        </code></pre>
+        <h1>Latar belakang CSS-lampiran</h1>
+        <p>Properti ini background-attachmentmenentukan apakah gambar latar belakang harus digulir atau tetap (tidak akan digulir bersama bagian halaman lainnya):</p>
+        <pre><code>
+            Contoh
+            Tentukan bahwa gambar latar belakang harus tetap:
+            body {
+                background-image: url("img_tree.png");
+                background-repeat: no-repeat;
+                background-position: right top;
+                background-attachment: fixed;
+              }
+        </code></pre>
+        <h1>Contoh</h1>
+        <p>Tentukan bahwa gambar latar belakang harus bergulir bersama dengan sisa halaman:</p>
+        <pre><code>
+            body {
+                background-image: url("img_tree.png");
+                background-repeat: no-repeat;
+                background-position: right top;
+                background-attachment: scroll;
+              }
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#borders" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="borders" class="content hidden">
+        <h1>CSS Borders</h1>
+        <p>Properti border CSS memungkinkan Anda menentukan gaya, lebar, dan warna border elemen.</p>
+        <p>Gaya Batas CSS</p>
+        <p>Properti border-stylemenentukan jenis batas yang akan ditampilkan.</p>
+        <ul>
+            Nilai-nilai berikut diizinkan:
+            <li>dotted- Menentukan batas putus-putus</li> 
+            <li>dashed- Menentukan batas putus-putus</li> 
+            <li>solid- Menentukan batas solid</li> 
+            <li>double- Menentukan batas ganda</li> 
+            <li>groove- Menentukan batas beralur 3D. Efeknya bergantung pada nilai warna batas</li> 
+            <li>ridge- Menentukan batas bergelombang 3D. Efeknya bergantung pada nilai warna batas</li> 
+            <li>inset- Menentukan batas sisipan 3D. Efeknya bergantung pada nilai warna batas</li> 
+            <li>outset- Menentukan batas awal 3D. Efeknya bergantung pada nilai warna batas</li> 
+            <li>none- Tidak menentukan batas</li> 
+            <li>hidden- Menentukan batas tersembunyi</li> 
+        </ul>
+        <p>Properti border-styledapat memiliki satu hingga empat nilai (untuk batas atas, batas kanan, batas bawah, dan batas kiri).</p>
+        <pre><code>
+            p.dotted {border-style: dotted;}
+            p.dashed {border-style: dashed;}
+            p.solid {border-style: solid;}
+            p.double {border-style: double;}
+            p.groove {border-style: groove;}
+            p.ridge {border-style: ridge;}
+            p.inset {border-style: inset;}
+            p.outset {border-style: outset;}
+            p.none {border-style: none;}
+            p.hidden {border-style: hidden;}
+            p.mix {border-style: dotted dashed solid double;}
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#margins" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="margins" class="content hidden">
+        <h1>Margin CSS</h1>
+        <p>Margin digunakan untuk membuat ruang di sekitar elemen, di luar batas yang ditentukan.</p>
+        <p>Properti CSS margindigunakan untuk membuat ruang di sekitar elemen, di luar batas yang ditentukan.
+            Dengan CSS, Anda memiliki kendali penuh atas margin. Ada properti untuk mengatur margin untuk setiap sisi elemen (atas, kanan, bawah, dan kiri).</p>
+        <h2>Margin - Sisi Individu</h2>
+        <p>CSS memiliki properti untuk menentukan margin untuk setiap sisi elemen:</p>
+        <ul>
+            <li>margin-top</li>
+            <li>margin-right</li>
+            <li>margin-bottom</li>
+            <li>margin-left</li>
+        </ul>
+        <p>Semua properti margin dapat memiliki nilai berikut:</p>
+        <li>otomatis - browser menghitung margin</li>
+        <li>panjang - menentukan margin dalam px, pt, cm, dll.</li>
+        <li>% - menentukan margin dalam % dari lebar elemen yang berisi</li>
+        <li>inherit - menentukan bahwa margin harus diwarisi dari elemen induk</li>
+        <pre><code>
+            Contoh
+            Tetapkan margin yang berbeda untuk keempat sisi elemen &lt;p&gt;:
+            p {
+                margin-top: 100px;
+                margin-bottom: 100px;
+                margin-right: 150px;
+                margin-left: 80px;
+              }
+        </code></pre>
+        <h2>Margin - Properti Singkatan</h2>
+        <p>Untuk mempersingkat kode, adalah mungkin untuk menentukan semua properti margin dalam satu properti.
+            Properti ini marginadalah properti singkatan untuk properti margin individual berikut:</p>
+        <ul>
+            <li>margin-top</li>
+            <li>margin-right</li>
+            <li>margin-bottom</li>
+            <li>margin-left</li>
+        </ul>
+        <p>Jadi beginilah cara kerjanya:</p>
+        <ul>Jika margin properti memiliki empat nilai:
+            <li>margin atas adalah 25px</li>
+            <li>margin kanan 50px</li>
+            <li>margin bawah 75px</li>
+            <li>margin kiri 100px</li>
+        </ul>
+        <pre><code>
+            Contoh
+            Gunakan properti singkat margin dengan empat nilai:
+            p {
+                margin: 25px 50px 75px 100px;
+              }
+        </code></pre>
+        <ul>Jika margin properti memiliki tiga nilai:
+            <li>margin atas adalah 25px</li>
+            <li>margin kanan dan kiri adalah 50px</li>
+            <li>margin bawah 75px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            gunakan properti singkatan margin dengan tiga nilai:
+            p {
+                margin: 25px 50px 75px;
+              }
+        </code></pre>
+        <ul>Jika margin properti memiliki dua nilai:
+            <li>margin atas dan bawah adalah 25px</li>
+            <li>margin kanan dan kiri adalah 50px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            gunakan properti singkatan margin dengan dua nilai:
+            p {
+                margin: 25px 50px;
+              }
+        </code></pre>
+        <ul>Jika margin properti memiliki satu nilai:
+            <li>margin: 25 piksel</li>
+            <li>semua empat margin berukuran 25px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            gunakan properti singkatan margin dengan satu nilai:
+            p {
+                margin: 25px;
+              }
+        </code></pre>
+        <h1>Nilai Otomatis</h1>
+        <p>Anda dapat mengatur properti margin untuk automemusatkan elemen secara horizontal di dalam wadahnya.
+            Elemen kemudian akan mengambil lebar yang ditentukan, dan ruang yang tersisa akan dibagi rata antara margin kiri dan kanan.</p>
+        <pre><code>
+            Contoh 
+            Gunakan margin: otomatis:
+            div {
+                width: 300px;
+                margin: auto;
+                border: 1px solid red;
+              }
+        </code></pre>
+        <h1>Nilai Warisan</h1>
+        <p>Contoh ini memungkinkan margin kiri elemen &lt;p class="ex1"&gt; diwarisi dari elemen induk (&lt;div&gt;):</p>
+        <pre><code>
+            Contoh
+            Penggunaan nilai warisan:
+            div {
+                border: 1px solid red;
+                margin-left: 100px;
+              }
+              
+              p.ex1 {
+                margin-left: inherit;
+              }
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#padding" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="padding" class="content hidden">
+        <h1>Padding CSS</h1>
+        <p>Padding digunakan untuk membuat ruang di sekitar konten elemen, di dalam batas yang ditentukan.</p>
+        <p>Properti CSS paddingdigunakan untuk menghasilkan spasi di sekitar konten elemen, di dalam batas yang ditentukan.
+            Dengan CSS, Anda memiliki kendali penuh atas padding. Ada properti untuk mengatur padding untuk setiap sisi elemen (atas, kanan, bawah, dan kiri).</p>
+        <h1>Bantalan - Sisi Individual</h1>
+        <p>CSS memiliki properti untuk menentukan padding untuk setiap sisi elemen:</p>
+        <ul>
+            <li>padding-top</li>
+            <li>padding-right</li>
+            <li>padding-bottom</li>
+            <li>padding-left</li>
+        </ul>
+        <p>Semua properti padding dapat memiliki nilai berikut:</p>
+        <ul>
+            <li>panjang - menentukan bantalan dalam px, pt, cm, dll.</li>
+            <li>% - menentukan padding dalam % dari lebar elemen yang memuatnya</li>
+            <li>inherit - menentukan bahwa padding harus diwarisi dari elemen induk</li>
+        </ul>
+        <pre><code>
+            Contoh
+            Tetapkan bantalan yang berbeda untuk keempat sisi elemen &lt;div&gt;:
+            div {
+                padding-top: 50px;
+                padding-right: 30px;
+                padding-bottom: 50px;
+                padding-left: 80px;
+              }
+        </code></pre>
+        <h1>Padding - Properti Singkatan</h1>
+        <p>Untuk mempersingkat kode, dimungkinkan untuk menentukan semua properti padding dalam satu properti.</p>
+        <p>Properti ini paddingadalah properti singkatan untuk properti padding individual berikut:</p>
+        <ul>
+            <li>padding-top</li>
+            <li>padding-right</li>
+            <li>padding-bottom</li>
+            <li>padding-left</li>
+        </ul>
+        <p>Jadi beginilah cara kerjanya:</p>
+        <p>Jika padding properti memiliki empat nilai:</p>
+        <p>bantalan: 25 piksel 50 piksel 75 piksel 100 piksel;</p>
+        <ul>
+            <li>padding atas adalah 25px</li>
+            <li>padding kanan adalah 50px</li>
+            <li>bantalan bawah adalah 75px</li>
+            <li>padding kiri adalah 100px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            Gunakan properti singkatan padding dengan empat nilai:
+            div {
+                padding: 25px 50px 75px 100px;
+              }
+        </code></pre>
+        <p>Jika padding properti memiliki Tiga nilai:</p>
+        <p>bantalan: 25 piksel 50 piksel 75 piksel;</p>
+        <ul>
+            <li>padding atas adalah 25px</li>
+            <li>bantalan kanan dan kiri berukuran 50px</li>
+            <li>bantalan bawah adalah 75px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            Gunakan properti singkatan padding dengan Tiga nilai:
+            div {
+                padding: 25px 50px 75px;
+              }
+        </code></pre>
+        <p>Jika padding properti memiliki Dua nilai:</p>
+        <p>bantalan: 25 piksel 50 piksel;</p>
+        <ul>
+            <li>padding atas dan bawah adalah 25px</li>
+            <li>bantalan kanan dan kiri berukuran 50px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            Gunakan properti singkatan padding dengan Dua nilai:
+            div {
+                padding: 25px 50px;
+              }
+        </code></pre>
+        <p>Jika padding properti memiliki Satu nilai:</p>
+        <p>bantalan: 25 piksel;</p>
+        <ul>
+            <li>keempat padding berukuran 25px</li>
+        </ul>
+        <pre><code>
+            Contoh 
+            Gunakan properti singkatan padding dengan Satu nilai:
+            div {
+                padding: 25px;
+              }
+        </code></pre>
+        <h1>Padding dan Lebar Elemen</h1>
+        <p>Properti CSS widthmenentukan lebar area konten elemen. Area konten adalah bagian di dalam padding, border, dan margin elemen ( model kotak ).
+            Jadi, jika suatu elemen memiliki lebar tertentu, padding yang ditambahkan ke elemen tersebut akan ditambahkan ke lebar total elemen tersebut. Ini sering kali merupakan hasil yang tidak diinginkan.</p>
+        <pre><code>
+            Contoh
+            Di sini, elemen &lt;div&gt; diberi lebar 300px. Namun, lebar sebenarnya dari elemen &lt;div&gt; adalah 350px (300px + 25px padding kiri + 25px padding kanan):
+            div {
+                width: 300px;
+                padding: 25px;
+              }
+        </code></pre>
+        <p>Untuk mempertahankan lebar pada 300px, berapa pun jumlah padding, Anda dapat menggunakan box-sizingproperti. Hal ini menyebabkan elemen mempertahankan lebar sebenarnya; jika Anda menambah padding, ruang konten yang tersedia akan berkurang.</p>
+        <pre><code>
+            Contoh
+            Gunakan properti box-sizing untuk menjaga lebar pada 300px, berapa pun jumlah paddingnya:
+            div {
+                width: 300px;
+                padding: 25px;
+                box-sizing: border-box;
+              }
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#box model" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="box model" class="content hidden">
+        <h1>Box Model CSS</h1>
+        <p>Dalam CSS, istilah "model kotak" digunakan ketika berbicara tentang desain dan tata letak.
+            Model kotak CSS pada dasarnya adalah kotak yang membungkus setiap elemen HTML. Model ini terdiri dari: konten, padding, border, dan margin.</p>
+        <p>Penjelasan bagian-bagiannya:</p>
+        <ul>
+            <li>Konten - Konten kotak, tempat teks dan gambar muncul</li>
+            <li>Padding - Membersihkan area di sekitar konten. Padding bersifat transparan</li>
+            <li>Border - Batas yang mengelilingi padding dan konten</li>
+            <li>Margin - Membersihkan area di luar batas. Margin transparan</li>
+        </ul>
+        <p>Model kotak memungkinkan kita untuk menambahkan batas di sekitar elemen dan menentukan ruang antar elemen.</p>
+        <pre><code>
+            Contoh
+            div {
+                width: 300px;
+                border: 15px solid green;
+                padding: 50px;
+                margin: 20px;
+              }              
+        </code></pre>
+        <h1>Lebar dan Tinggi Elemen</h1>
+        <p>Untuk mengatur lebar dan tinggi elemen dengan benar di semua browser, Anda perlu mengetahui cara kerja model kotak.</p>
+        <p>Saat Anda mengatur properti lebar dan tinggi elemen dengan CSS, Anda cukup mengatur lebar dan tinggi area konten . Untuk menghitung lebar dan tinggi total elemen, Anda juga harus menyertakan padding dan border.</p>
+        <pre><code>
+            Contoh
+            elemen &lt;div&gt; ini akan memeiliki lebar total 350px dan tinggi total 80px:
+            div {
+                width: 320px;
+                height: 50px;
+                padding: 10px;
+                border: 5px solid gray;
+                margin: 0;
+              }
+        </code></pre>
+        <pre><code>
+            Berikut perhitungannya:
+            320px (lebar area konten)
+            + 20px (padding kiri + padding kanan)
+            + 10px (batas kiri + batas kanan)
+            = 350px (lebar total)
+
+            50px (tinggi area konten)
+            + 20px (padding atas + padding bawah)
+            + 10px (batas atas + batas bawah)
+            = 80px (tinggi total)
+        </code></pre>
+        <p>Lebar total suatu elemen harus dihitung seperti ini:</p>
+        <p>Lebar elemen total = lebar + padding kiri + padding kanan + border kiri + border kanan</p>
+        <p>Tinggi total suatu elemen harus dihitung seperti ini:</p>
+        <p>Tinggi elemen total = tinggi + bantalan atas + bantalan bawah + batas atas + batas bawah</p>
+        <pre><code>
+           Catatan:
+            Properti margin juga memengaruhi total ruang yang akan ditempati kotak di halaman, 
+            tetapi margin tidak termasuk dalam ukuran kotak yang sebenarnya. 
+            Lebar dan tinggi total kotak berhenti di tepi kotak.
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#outline" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="outline" class="content hidden">
+        <h1>Outline CSS</h1>
+        <p>Garis luar adalah garis yang digambar di luar batas elemen.</p>
+        <p>CSS memiliki properti garis besar berikut:</p>
+        <ul>
+            <li>outline-style</li>
+            <li>outline-color</li>
+            <li>outline-width</li>
+            <li>outline-offset</li>
+            <li>outline</li>
+        </ul>
+        <pre><code>
+            Catatan: Outline berbeda dengan borders ! 
+            Tidak seperti border, outline digambar di luar border elemen, 
+            dan mungkin tumpang tindih dengan konten lainnya. Selain itu, 
+            outline BUKAN bagian dari dimensi elemen. 
+            lebar dan tinggi total elemen tidak terpengaruh oleh lebar outline.
+        </code></pre>
+        <h1>Gaya Garis Besar CSS</h1>
+        <p>Properti outline-stylemenentukan gaya garis besar, dan dapat memiliki salah satu nilai berikut:</p>
+        <ul>
+            <li>dotted- Menentukan garis putus-putus</li>
+            <li>dashed- Menentukan garis putus-putus</li>
+            <li>solid- Menentukan garis besar yang solid</li>
+            <li>double- Menentukan garis ganda</li>
+            <li>groove- Menentukan garis alur 3D</li>
+            <li>ridge- Menentukan garis lengkung 3D</li>
+            <li>inset- Menentukan garis sisipan 3D</li>
+            <li>outset- Menentukan garis besar awal 3D</li>
+            <li>none- Tidak menentukan garis besar</li>
+            <li>hidden- Menentukan garis tersembunyi</li>
+        </ul>
+        <p>Contoh berikut menunjukkan outline-stylenilai-nilai yang berbeda:</p>
+        <pre><code>
+            p.dotted {outline-style: dotted;}
+            p.dashed {outline-style: dashed;}
+            p.solid {outline-style: solid;}
+            p.double {outline-style: double;}
+            p.groove {outline-style: groove;}
+            p.ridge {outline-style: ridge;}
+            p.inset {outline-style: inset;}
+            p.outset {outline-style: outset;}
+        </code></pre>
+        <p>Tidak ada properti kerangka lainnya (yang akan Anda pelajari lebih lanjut di bab berikutnya) yang akan memiliki EFEK APAPUN kecuali outline-styleproperti tersebut ditetapkan!</p>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#fonts" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="fonts" class="content hidden">
+        <h1>Font CSS</h1>
+        <p>Memilih font yang tepat untuk situs web Anda itu penting!</p>
+        <p>Memilih font yang tepat memiliki dampak besar pada pengalaman pembaca di situs web.</p>
+        <p>Font yang tepat dapat menciptakan identitas yang kuat untuk merek Anda.</p>
+        <p>Menggunakan font yang mudah dibaca itu penting. Font memberikan nilai tambah pada teks Anda. Penting juga untuk memilih warna dan ukuran teks yang tepat untuk font tersebut.</p>
+        <p>Dalam CSS ada lima keluarga font generik:</p>
+        <ul>
+            <li>Font serif memiliki goresan kecil di tepi setiap huruf. Font ini menciptakan kesan formal dan elegan.</li>
+            <li>Font sans-serif memiliki garis-garis yang bersih (tanpa goresan kecil). Font ini menciptakan tampilan yang modern dan minimalis.</li>
+            <li>Font monospace - di sini semua huruf memiliki lebar tetap yang sama. Font ini menciptakan tampilan mekanis.</li>
+            <li>Font kursif meniru tulisan tangan manusia.</li>
+            <li>Font fantasi merupakan font yang bersifat dekoratif/menyenangkan.</li>
+        </ul>
+        <p>Semua nama font yang berbeda tergolong dalam salah satu keluarga font generik.</p>
+        <h2>Perbedaan Antara Font Serif dan Sans-serif
+            <img src="https://www.w3schools.com/css/serif.gif" alt="font CSS" style="width: 100%; max-width: 600px;"></h2>
+        <p>Pada layar komputer, font sans-serif dianggap lebih mudah dibaca daripada font serif.</p>
+        <p>Beberapa Contoh Font</p>
+        <ul>Generic Font Family: Serif
+            <li style="font-family:'Times New Roman';">Times New Roman</li>
+            <li style="font-family: Georgia ;">Georgia</li>
+            <li style="font-family: garamond;">Garamond</li>
+        </ul>
+        <ul>Generic Font Family: Sans-serif
+            <li style="font-family: Arial;">Arial</li>
+            <li style="font-family: Verdana;">Verdana</li>
+            <li style="font-family: Helvetica;">Helvetica</li>
+        </ul>
+        <ul>Generic Font Family: Monospace
+            <li style="font-family: 'Courier New';">Courier New</li>
+            <li style="font-family: Lucida Console;">Lucida Console</li>
+            <li style="font-family: Monaco;">Monaco</li>
+        </ul>
+        <ul>Generic Font Family: Cursive
+            <li style="font-family: Brush Script MT;">Brush Script MT</li>
+            <li style="font-family: Lucida Handwriting;">Lucida Handwriting</li>
+        </ul>
+        <ul>Generic Font Family: Fantasy
+            <li style="font-family: Copperplate;">Copperplate</li>
+            <li style="font-family: Papyrus;">Papyrus</li>
+        </ul>
+        <h1>Properti font-family CSS</h1>
+        <p>Dalam CSS, kita menggunakan font-familyproperti untuk menentukan fonta suatu teks.</p>
+        <p>Properti font-familyharus memuat beberapa nama font sebagai sistem "fallback", untuk memastikan kompatibilitas maksimum antara browser/sistem operasi. Mulailah dengan font yang Anda inginkan, dan akhiri dengan keluarga generik (agar browser dapat memilih font yang serupa dalam keluarga generik, jika tidak ada font lain yang tersedia). Nama-nama font harus dipisahkan dengan koma.</p>
+        <pre><code>
+            Contoh
+            Tentukan beberapa font berbeda untuk tiga paragraf:
+            .p1 {
+                font-family: "Times New Roman", Times, serif;
+              }
+              
+              .p2 {
+                font-family: Arial, Helvetica, sans-serif;
+              }
+              
+              .p3 {
+                font-family: "Lucida Console", "Courier New", monospace;
+              }
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#tabels" class="btn-next">Next &rarr;</a>
+        
+    </section>
+
+    <section id="tabels" class="content hidden">
+        <h1>CSS Tables</h1>
+        <p>Tampilan tabel HTML dapat ditingkatkan dengan CSS:</p>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Perusahaan</th>
+                    <th>Kontak</th>
+                    <th>Negara</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Jerman</td>
+                </tr>
+                <tr>
+                    <td>Berglunds membeli dengan cepat</td>
+                    <td>Christina Berglund</td>
+                    <td>Swedia</td>
+                </tr>
+                <tr>
+                    <td>Pusat perbelanjaan Moctezuma</td>
+                    <td>Fransisco Chang</td>
+                    <td>Meksiko</td>
+                </tr>
+                <tr>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>Austria</td>
+                </tr>
+                <tr>
+                    <td>Perdagangan Pulau</td>
+                    <td>Helen Bennet</td>
+                    <td>Inggris</td>
+                </tr>
+                <tr>
+                    <td>Raja Essen</td>
+                    <td>Philip Cramer</td>
+                    <td>Jerman</td>
+                </tr>
+                <tr>
+                    <td>Gudang Anggur Bacchus yang Tertawa</td>
+                    <td>Yoshi Tannamuri</td>
+                    <td>Kanada</td>
+                </tr>
+                <tr>
+                    <td>Toko Makanan Riuniti</td>
+                    <td>Giovanni Rovelli</td>
+                    <td>Italia</td>
+                </tr>
+            </tbody>
+        </table>
+        <h1>Batas Tabel</h1>
+        <p>Untuk menentukan batas Tabel dalam CSS, gunakan border properti.</p>
+        <p>Contoh berikut menentukan batas solid untuk elemen &lt;table&gt;, &lt;th&gt;, dan &lt;td&gt;</p>
+        <pre><code>
+            table, th, td {
+                border: 1px solid;
+              }
+        </code></pre>
+        <h1>Tabel Lebar Penuh</h1>
+        <p>Tabel di atas mungkin tampak kecil dalam beberapa kasus. Jika Anda memerlukan tabel yang dapat menutupi seluruh layar (lebar penuh), tambahkan width: 100%ke elemen &lt;table&gt;:</p>
+        <pre><code>
+            table {
+                width: 100%;
+              }
+        </code></pre>
+        <h1>Tutup Batas Tabel</h1>
+        <p>Properti ini border-collapsemengatur apakah batas tabel harus diciutkan menjadi satu batas:</p>
+        <pre><code>
+            table {
+                border-collapse: collapse;
+              }
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+    </section>
     <script>
         // Ambil semua elemen nav-link, konten, dan tombol navigasi
         const navLinks = document.querySelectorAll('.nav-link');

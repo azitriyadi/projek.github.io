@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: white;
+      color: #1e203d;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: #1e203d;
+  color: white;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.sidebar:hover {
+  width: 250px;
+}
+
+.sidebar a {
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  transition: none;
+}
+
+.sidebar .icon {
+  font-size: 24px;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #696fec;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.card:hover {
+  transform: none;
+}
+
+.btn-primary {
+  background-color: #696fec;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #5a61d1;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+  }
+  .sidebar a {
+    padding: 10px;
+  }
+  .content {
+    margin-left: 60px;
+  }
+  .card {
+    font-size: 14px;
+  }
+  .sidebar .text {
+    display: none;
+  }
+  .sidebar .icon {
+    display: inline-block;
+  }
+  .sidebar h2 {
+    display: none;
+  }
+}
+
+
+    table th, table td {
+      vertical-align: middle;
+    }
+    table th {
+      background-color: #1e203d;
+      color: white;
+    }
+    table td {
+      background-color: #f8f9fa;
+    }
+
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2 class="text-center d-none d-sm-block">Admin Dashboard</h2>
+    <a href="#">
+      <i class="fas fa-tachometer-alt icon"></i>
+      <span class="text d-none d-sm-block">Dashboard</span>
+    </a>
+    <a href="#users">
+      <i class="fas fa-users icon"></i>
+      <span class="text d-none d-sm-block">Users</span>
+    </a>
+    <a href="#settings">
+      <i class="fas fa-cogs icon"></i>
+      <span class="text d-none d-sm-block">Settings</span>
+    </a>
+    <a href="#reports">
+      <i class="fas fa-chart-line icon"></i>
+      <span class="text d-none d-sm-block">Reports</span>
+    </a>
+    <a href="#logout">
+      <i class="fas fa-sign-out-alt icon"></i>
+      <span class="text d-none d-sm-block">Logout</span>
+    </a>
+  </div>
+
+  <div class="content">
+    <div id="dashboard">
+      <h2>Dashboard Overview</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Total Users</h5>
+              <p class="card-text">1,234</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Active Sessions</h5>
+              <p class="card-text">56</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">New Orders</h5>
+              <p class="card-text">87</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-4">Site Activity</h3>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <div id="users">
+      <h2>Manage Users</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>admin</td>
+            <td>admin@example.com</td>
+            <td>Administrator</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="settings">
+      <h2>Settings</h2>
+      <p>Configure your application settings here.</p>
+      <form>
+        <div class="mb-3">
+          <label for="site-name" class="form-label">Site Name</label>
+          <input type="text" class="form-control" id="site-name" placeholder="Enter site name">
+        </div>
+        <div class="mb-3">
+          <label for="site-description" class="form-label">Site Description</label>
+          <input type="text" class="form-control" id="site-description" placeholder="Enter site description">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+      </form>
+    </div>
+
+    <div id="reports">
+      <h2>Reports</h2>
+      <p>View and analyze site reports here.</p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">User Engagement</h5>
+              <p class="card-text">Details about user engagement over the past month.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sales Overview</h5>
+              <p class="card-text">Overview of sales data for the last quarter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="logout">
+      <h2>Logout</h2>
+      <p>You have been logged out successfully. Click below to return to the login page.</p>
+      <a href="#" class="btn btn-primary">Back to Login</a>
+    </div>
+  </div>
+  
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Site Visitors',
+          data: [50, 150, 200, 250, 300, 350],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+          fill: false
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #1e203d; /* Background dark */
+            color: white;
+        }
+
+        .sidebar {
+            background-color: #151961; /* Dark purple */
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+            width: 20%;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .sidebar:hover {
+            width: 25%;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+
+        .nav-link {
+            display: block;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #696fec;
+            font-weight: 500;
+            transition: background-color 0.3s ease, padding-left 0.2s;
+        }
+
+        .nav-link.active {
+            background-color: #1e203d;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            background-color: #1e203d;
+            padding-left: 20px;
+        }
+
+        .content {
+            padding: 40px;
+            width: 80%;
+            background-color: #f9f9f9;
+            color: #1e203d;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .btn-prev, .btn-next {
+            background-color: #696fec;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background-color: #1e203d;
+        }
+
+        h1, h3 {
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        h2, h4, h5 {
+            font-size: 1.5rem;
+        }
+
+        pre code {
+            display: block;
+            background-color: #1e203d;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                order: 1;
+            }
+
+            .content {
+                width: 100%;
+                order: 2;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1 class="fw-bold">PHP Tutorial</h1>
+        <ul class="nav flex-column">
+            <li><a class="nav-link active" href="#home">PHP HOME</a></li>
+            <li><a class="nav-link" href="#intro">PHP Introduction</a></li>
+            <li><a class="nav-link" href="#sytanx">PHP syntax</a></li>
+            <li><a class="nav-link" href="#comments">PHP Comments</a></li>
+            <li><a class="nav-link" href="#variables">PHP Variables</a></li>
+            <li><a class="nav-link" href="#data type">PHP Data Type</a></li>
+            <li><a class="nav-link" href="#strings">PHP Strings</a></li>
+            <li><a class="nav-link" href="#numbers">PHP Numbers</a></li>
+            <li><a class="nav-link" href="#casting">PHP Casting</a></li>
+            <li><a class="nav-link" href="#math">PHP Math</a></li>
+            <li><a class="nav-link" href="#constants">PHP Constants</a></li>
+            <li><a class="nav-link" href="#operators">PHP Operators</a></li>
+        </ul>
+    </div>
+
+    <section id="home" class="content">
+        <h1>PHP Home</h1>
+        <h1>Selamat datang di Tutorial PHP!</h1>
+    <p>Ini adalah tempat yang sempurna untuk memulai perjalanan Anda dalam mempelajari PHP</p>
+    
+    <h2>Apa itu PHP?</h2>
+    <p>PHP adalah bahasa skrip server dan alat yang ampuh untuk membuat halaman Web yang dinamis dan interaktif.
+        PHP merupakan alternatif yang banyak digunakan, gratis, dan efisien terhadap pesaing seperti ASP milik Microsoft.</p>
+    <p>Mengapa PHP?</p>
+    <ul>
+        <li>PHP berjalan pada berbagai platform (Windows, Linux, Unix, Mac OS X, dll.)</li>
+        <li>PHP kompatibel dengan hampir semua server yang digunakan saat ini (Apache, IIS, dll.)</li>
+        <li>PHP mendukung berbagai macam database</li>
+        <li>PHP gratis. Unduh dari sumber resmi PHP: www.php.net</li>
+        <li>PHP mudah dipelajari dan berjalan secara efisien di sisi server</li>
+    </ul>
+    <p>Apa yang baru di PHP 7</p>
+    <ul>
+        <li>PHP 7 jauh lebih cepat dibandingkan rilis stabil populer sebelumnya (PHP 5.6)</li>
+        <li>PHP 7 telah meningkatkan Penanganan Kesalahan</li>
+        <li>PHP 7 mendukung Deklarasi Tipe yang lebih ketat untuk argumen fungsi</li>
+        <li>PHP 7 mendukung operator baru (seperti operator pesawat luar angkasa: &lt;=&gt;)</li>
+    </ul>
+    <h1>Fungsi PHP</h1>
+    <p>Kekuatan PHP yang sesungguhnya terletak pada fungsinya.</p>
+    <p>PHP memiliki lebih dari 1000 fungsi bawaan, dan sebagai tambahan Anda dapat membuat fungsi kustom Anda sendiri.</p>
+    <h2>Fungsi bawaan PHP</h2>
+    <p>PHP memiliki lebih dari 1000 fungsi bawaan yang dapat dipanggil secara langsung, dari dalam skrip, untuk melakukan tugas tertentu.</p>
+    <p>Selain fungsi PHP bawaan, Anda dapat membuat fungsi Anda sendiri.</p>
+    <ul>
+        <li>Fungsi adalah blok pernyataan yang dapat digunakan berulang kali dalam suatu program.</li>
+        <li>Suatu fungsi tidak akan dijalankan secara otomatis saat halaman dimuat.</li>
+        <li>Suatu fungsi akan dieksekusi dengan panggilan ke fungsi tersebut.</li>
+    </ul>
+    <p>Deklarasi fungsi yang ditentukan pengguna dimulai dengan kata kunci function, diikuti dengan nama fungsi:</p>
+    <pre><code>
+        function myMessage() {
+            echo "Hello world!";
+          }
+    </code></pre>
+    <h1>Array PHP</h1>
+    <p>Sebuah array menyimpan beberapa nilai dalam satu variabel tunggal:</p>
+    <pre><code>
+        $cars = array("Volvo", "BMW", "Toyota");
+    </code></pre>
+    <h1>Apa itu Array?</h1>
+    <p>Array adalah variabel khusus yang dapat menampung banyak nilai di bawah satu nama, dan Anda dapat mengakses nilai-nilai tersebut dengan merujuk ke nomor indeks atau nama.</p>
+    <p>Dalam PHP, ada tiga jenis array:</p>
+    <ul>
+        <li>Array terindeks - Array dengan indeks numerik</li>
+        <li>Array asosiatif - Array dengan kunci bernama</li>
+        <li>Array multidimensi - Array yang berisi satu atau lebih array</li>
+    </ul>
+    <p>Dalam tutorial ini Anda akan mempelajari cara bekerja dengan array, termasuk:</p>
+    <ul>
+        <li>Membuat Array</li>
+        <li>Akses Array</li>
+        <li>Perbarui Array</li>
+        <li>Tambahkan Item Array</li>
+        <li>Hapus Item Array</li>
+        <li>Urutkan Array</li>
+    </ul>
+    <pre><code>
+        Contoh
+        Item array dengan empat tipe data berbeda:
+        $myArr = array("Volvo", 15, ["apples", "bananas"], myFunction);
+    </code></pre>
+
+    <h1>PHP Loops</h1>
+    <p>Sering kali ketika Anda menulis kode, Anda ingin blok kode yang sama berjalan berulang-ulang dalam jumlah tertentu. Jadi, daripada menambahkan beberapa baris kode yang hampir sama dalam skrip, kita dapat menggunakan loop.
+        Perulangan digunakan untuk mengeksekusi blok kode yang sama berulang kali, selama kondisi tertentu terpenuhi.</p>
+    <p>Dalam PHP, kita memiliki tipe loop berikut:</p>
+    <ul>
+        <li>while- mengulang blok kode selama kondisi yang ditentukan benar</li>
+        <li>do...while- mengulang blok kode sekali, lalu mengulang loop selama kondisi yang ditentukan benar</li>
+        <li>for- mengulang blok kode sejumlah waktu tertentu</li>
+        <li>foreach- melakukan perulangan melalui blok kode untuk setiap elemen dalam array</li>
+    </ul>
+    <h1>Variabel Global PHP - Superglobals</h1>
+    <p>Beberapa variabel yang telah ditetapkan sebelumnya dalam PHP adalah "superglobal", yang berarti variabel tersebut selalu dapat diakses, apa pun cakupannya - dan Anda dapat mengaksesnya dari fungsi, kelas, atau file apa pun tanpa harus melakukan hal khusus apa pun.</p>
+    <ul>Variabel superglobal PHP adalah:
+        <li>$GLOBALS</li>
+        <li>$_SERVER</li>
+        <li>$_REQUEST</li>
+        <li>$_POST</li>
+        <li>$_GET</li>
+        <li>$_FILES</li>
+        <li>$_ENV</li>
+        <li>$_COOKIE</li>
+        <li>$_SESSION</li>
+    </ul>
+        <a href="Beranda.html" class="btn-prev">&larr; Beranda</a>
+        <a href="#intro" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="intro" class="content hidden">
+        <h1>PHP Introduction</h1>
+        <P>Apa itu PHP?</P>
+        <ul>
+            <li>PHP adalah akronim untuk "PHP: Hypertext Preprocessor"</li>
+            <li>PHP adalah bahasa skrip sumber terbuka yang banyak digunakan</li>
+            <li>Skrip PHP dieksekusi di server</li>
+            <li>PHP dapat diunduh dan digunakan secara gratis</li>
+        </ul>
+        <pre><code>
+            PHP adalah bahasa yang menakjubkan dan populer!
+            Bahasa ini cukup canggih untuk menjadi inti dari sistem blog terbesar di web (WordPress)!
+            Bahasa ini cukup mendalam untuk menjalankan jaringan sosial yang besar!
+            Bahasa ini juga cukup mudah untuk menjadi bahasa server side pertama bagi pemula!
+        </code></pre>
+        <p>Apa itu File PHP?</p>
+        <ul>
+            <li>File PHP dapat berisi teks, HTML, CSS, JavaScript, dan kode PHP</li>
+            <li>Kode PHP dieksekusi di server, dan hasilnya dikembalikan ke browser sebagai HTML biasa</li>
+            <li>File PHP memiliki ekstensi " .php"</li>
+        </ul>
+        <p>Apa yang Dapat Dilakukan PHP?</p>
+        <ul>
+            <li>PHP dapat menghasilkan konten halaman yang dinamis</li>
+            <li>PHP dapat membuat, membuka, membaca, menulis, menghapus, dan menutup file di server</li>
+            <li>PHP dapat mengumpulkan data formulir</li>
+            <li>PHP dapat mengirim dan menerima cookie</li>
+            <li>PHP dapat menambah, menghapus, memodifikasi data di database Anda</li>
+            <li>PHP dapat digunakan untuk mengontrol akses pengguna</li>
+            <li>PHP dapat mengenkripsi data</li>
+        </ul>
+        <p>Dengan PHP, Anda tidak terbatas pada output HTML. Anda dapat menghasilkan gambar atau file PDF. Anda juga dapat menghasilkan teks apa pun, seperti XHTML dan XML.</p>
+        <p>Mengapa PHP?</p>
+    <ul>
+        <li>PHP berjalan pada berbagai platform (Windows, Linux, Unix, Mac OS X, dll.)</li>
+        <li>PHP kompatibel dengan hampir semua server yang digunakan saat ini (Apache, IIS, dll.)</li>
+        <li>PHP mendukung berbagai macam database</li>
+        <li>PHP gratis. Unduh dari sumber resmi PHP: www.php.net</li>
+        <li>PHP mudah dipelajari dan berjalan secara efisien di sisi server</li>
+    </ul>
+    <p>Apa yang baru di PHP 7</p>
+    <ul>
+        <li>PHP 7 jauh lebih cepat dibandingkan rilis stabil populer sebelumnya (PHP 5.6)</li>
+        <li>PHP 7 telah meningkatkan Penanganan Kesalahan</li>
+        <li>PHP 7 mendukung Deklarasi Tipe yang lebih ketat untuk argumen fungsi</li>
+        <li>PHP 7 mendukung operator baru (seperti operator pesawat luar angkasa: &lt;=&gt;)</li>
+    </ul>
+
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#sytanx" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="sytanx" class="content hidden">
+        <h1>Sintaksis Dasar PHP</h1>
+        <p>Skrip PHP dapat ditempatkan di mana saja dalam dokumen.
+            Skrip PHP dimulai dengan &lt;?php dan diakhiri dengan ?&gt;:</p>
+        <pre><code>
+            &lt;?php
+            // PHP code goes here
+            ?&gt;
+        </code></pre>
+        <p>Ekstensi file default untuk file PHP adalah " .php".
+            Berkas PHP biasanya berisi tag HTML dan beberapa kode skrip PHP.
+            Di bawah ini, kami memiliki contoh file PHP sederhana, dengan skrip PHP yang menggunakan fungsi PHP bawaan " " echountuk menampilkan teks "Halo Dunia!" di halaman web:</p>
+        <pre><code>
+            contoh
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;body&gt;
+
+            &lt;h1&gt;My first PHP page&lt;h1&gt;
+
+            &lt;?php
+            echo "Hello World!";
+            ?&gt;
+
+            &lt;body&gt;
+            &lt;html&gt;
+        </code></pre>
+        <h1>Sensitivitas Huruf Besar dan Kecil PHP</h1>
+        <p>Dalam PHP, kata kunci (misalnya if, else, while, echo, dll.), kelas, fungsi, dan fungsi yang ditentukan pengguna tidak peka huruf besar/kecil.
+            Dalam contoh di bawah, ketiga pernyataan gema di bawah ini sama dan sah:</p>
+        <pre><code>
+            contoh
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;body&gt;
+
+            &lt;?php
+            ECHO "Hello World!&lt;br&gt;";
+            echo "Hello World!&lt;br&gt;";
+            EcHo "Hello World!&lt;br&gt;";
+            ?&gt;
+
+            &lt;body&gt;
+            &lt;html&gt;
+        </code></pre>
+        <p>Perhatikan contoh di bawah ini; hanya pernyataan pertama yang akan menampilkan nilai variabel $color! Hal ini karena $color, $COLOR, dan $coLOR diperlakukan sebagai tiga variabel yang berbeda:</p>
+        <pre><code>
+            contoh
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;body&gt;
+
+            &lt;?php
+            $color = "red";
+            ECHO "My car is " . $color . &lt;br&gt;";
+            echo "My house is " . $COLOR . &lt;br&gt;";
+            EcHo "My boat is " . $coLOR . &lt;br&gt;";
+            ?&gt;
+
+            &lt;body&gt;
+            &lt;html&gt;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#comments" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="comments" class="content hidden">
+        <h1>Komentar dalam PHP</h1>
+        <p>Komentar dalam kode PHP adalah baris yang tidak dieksekusi sebagai bagian dari program. Tujuannya hanya untuk dibaca oleh seseorang yang melihat kode tersebut.</p>
+        <p>Komentar dapat digunakan untuk:</p>
+        <ul>
+            <li>Biarkan orang lain memahami kode Anda</li>
+            <li>Ingatkan diri Anda tentang apa yang telah Anda lakukan - Sebagian besar programmer pernah mengalami kembali mengerjakan pekerjaan mereka sendiri satu atau dua tahun kemudian dan harus memikirkan kembali apa yang telah mereka lakukan. Komentar dapat mengingatkan Anda tentang apa yang Anda pikirkan saat menulis kode tersebut
+                Hilangkan beberapa bagian kode Anda</li>
+        </ul>
+        <p>PHP mendukung beberapa cara memberi komentar:</p>
+        <pre><code>
+            // This is a single-line comment
+
+            # This is also a single-line comment
+
+            /* This is a
+            multi-line comment */
+        </code></pre>
+        <h1>Komentar Baris Tunggal</h1>
+        <p>Komentar baris tunggal dimulai dengan //.</p>
+        <p>Teks apa pun antara //dan akhir baris akan diabaikan (tidak akan dieksekusi).</p>
+        <p>Anda juga dapat menggunakan #untuk komentar baris tunggal, tetapi dalam tutorial ini kita akan menggunakan //.</p>
+        <p>Contoh berikut menggunakan komentar satu baris sebagai penjelasan:</p>
+        <pre><code>
+            Contoh komentar sebelum kode:
+            // Outputs a welcome message:
+            echo "Welcome Home!";
+        </code></pre>
+        <pre><code>
+            Contoh komentar diakhir baris:
+            echo "Welcome Home!"; // Outputs a welcome message
+        </code></pre>
+        <h1>Komentar untuk Mengabaikan Kode</h1>
+        <p>Kita dapat menggunakan komentar untuk mencegah baris kode dieksekusi:</p>
+        <pre><code>
+            Contoh
+            jangan tampilkan pesan selamat datang:
+            // echo "Welcome Home!";
+        </code></pre>
+        <h1>Komentar Multi-baris</h1>
+        <p>Komentar multi-baris dimulai dengan /* dan diakhiri dengan */.</p>
+        <p>Teks apa pun antara /*dan */akan diabaikan.</p>
+        <p>Contoh berikut menggunakan komentar multi-baris sebagai penjelasan:</p>
+        <pre><code>
+            Contoh komentar multi-baris sebagai penjelasan:
+            /*
+            The next statement will
+            print a welcome message
+            */
+            echo "Welcome Home!";
+        </code></pre>
+        <h1>Komentar di Tengah Kode</h1>
+        <p>Sintaks komentar multi-baris juga dapat digunakan untuk mencegah eksekusi bagian dalam baris kode:</p>
+        <pre><code>
+            Contoh 
+            Bagian berikut  + 15 akan diabaikan dalam perhitungan:
+            $x = 5 /* + 15 */ + 5;
+            echo $x;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#variables" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="variables" class="content hidden">
+         <h1>Variabel PHP</h1>
+         <p>Variabel adalah "wadah" untuk menyimpan informasi.</p>
+         <p>Dalam PHP, sebuah variabel dimulai dengan $tanda, diikuti dengan nama variabel:</p>
+         <pre><code>
+            $x = 5;
+            $y = "John";
+         </code></pre>
+         <p>Dalam contoh di atas, variabel $xakan menampung nilai 5, dan variabel $y akan menampung nilai "John".</p>
+         <p>Saat Anda menetapkan nilai teks ke suatu variabel, beri tanda kutip di sekitar nilai tersebut.</p>
+         <p>Tidak seperti bahasa pemrograman lain, PHP tidak memiliki perintah untuk mendeklarasikan variabel. Variabel dibuat saat Anda pertama kali menetapkan nilai padanya.</p>
+         <p>Anggaplah variabel sebagai wadah untuk menyimpan data.</p>
+         <h1>Variabel PHP</h1>
+         <p>Suatu variabel dapat memiliki nama pendek (seperti $xdan $y) atau nama yang lebih deskriptif ( $age, $carname, $total_volume).</p>
+         <p>Aturan untuk variabel PHP:</p>
+         <ul>
+            <li>Variabel dimulai dengan $tanda, diikuti dengan nama variabel</li>
+            <li>Nama variabel harus dimulai dengan huruf atau karakter garis bawah</li>
+            <li>Nama variabel tidak dapat dimulai dengan angka</li>
+            <li>Nama variabel hanya dapat berisi karakter alfanumerik dan garis bawah (Az, 0-9, dan _)</li>
+            <li>Nama variabel peka huruf besar/kecil ( $agedan $AGEmerupakan dua variabel yang berbeda)</li>
+         </ul>
+         <h1>Variabel Keluaran</h1>
+         <p>Pernyataan PHP echosering digunakan untuk menampilkan data ke layar.</p>
+         <p>Contoh berikut akan menunjukkan cara mengeluarkan teks dan variabel:</p>
+         <pre><code>
+            Contoh
+            $txt = "W3Schools.com";
+            echo "I love $txt!";
+         </code></pre>
+         <p>Contoh berikut akan menghasilkan output yang sama seperti contoh di atas:</p>
+         <pre><code>
+            Contoh
+            $txt = "W3Schools.com";
+            echo "I love " . $txt . "!";
+         </code></pre>
+         <p>Contoh berikut akan menghasilkan jumlah dua variabel:</p>
+         <pre><code>
+            Contoh
+            $x = 5;
+            $y = 4;
+            echo $x + $y;
+         </code></pre>
+         <h1>PHP adalah Bahasa yang diketik secara longgar</h1>
+         <p>Dalam contoh di atas, perhatikan bahwa kita tidak perlu memberi tahu PHP tipe data apa variabelnya.
+            PHP secara otomatis mengaitkan tipe data ke variabel, tergantung pada nilainya. Karena tipe data tidak ditetapkan dalam arti yang ketat, Anda dapat melakukan hal-hal seperti menambahkan string ke integer tanpa menyebabkan kesalahan.
+            Pada PHP 7, deklarasi tipe ditambahkan. Ini memberikan opsi untuk menentukan tipe data yang diharapkan saat mendeklarasikan fungsi, dan dengan mengaktifkan persyaratan yang ketat, akan muncul "Fatal Error" pada ketidakcocokan tipe.
+            Anda akan mempelajari lebih lanjut tentang strictpersyaratan non-strictdan deklarasi tipe data di bab Fungsi PHP.</p>
+        <h1>Jenis Variabel</h1>
+        <p>PHP tidak memiliki perintah untuk mendeklarasikan variabel, dan tipe data bergantung pada nilai variabel.</p>
+        <pre><code>
+            $x = 5;      // $x is an integer
+            $y = "John"; // $y is a string
+            echo $x;
+            echo $y;
+        </code></pre>
+        <p>PHP mendukung tipe data berikut:</p>
+        <ul>
+            <li>Rangkaian</li>
+            <li>Bilangan Bulat</li>
+            <li>Float (angka floating point - juga disebut double)</li>
+            <li>Bahasa Boolean</li>
+            <li>Susunan</li>
+            <li>Obyek</li>
+            <li>BATAL</li>
+            <li>Sumber</li>
+        </ul>
+        <h1>Dapatkan Tipenya</h1>
+        <p>Untuk mendapatkan tipe data suatu variabel, gunakan var_dump()fungsi.</p>
+        <pre><code>
+            Contoh
+            $x = 5;
+            var_dump($x);
+        </code></pre>
+        <pre><code>
+            Contoh
+            Lihat apa var_dump()yang dikembalikan untuk tipe data lainnya:
+            var_dump(5);
+            var_dump("John");
+            var_dump(3.14);
+            var_dump(true);
+            var_dump([2, 3, 56]);
+            var_dump(NULL);
+        </code></pre>
+        <h1>Menetapkan String ke Variabel</h1>
+        <p>Menetapkan string ke variabel dilakukan dengan nama variabel diikuti tanda sama dengan dan string:</p>
+        <pre><code>
+            Contoh
+            $x = "John";
+            echo $x;
+        </code></pre>
+        <p>Variabel string dapat dideklarasikan dengan menggunakan tanda kutip ganda atau tunggal, tetapi Anda harus mengetahui perbedaannya. Pelajari lebih lanjut tentang perbedaannya di bab String PHP.</p>
+        <h1>Tetapkan Beberapa Nilai</h1>
+        <p>Anda dapat menetapkan nilai yang sama ke beberapa variabel dalam satu baris:</p>
+        <pre><code>
+            Contoh
+            Ketiga variabel mendapatkan nilai "buah":
+            $x = $y = $z = "Fruit";
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#data type" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="data type" class="content hidden">
+        <h1>Tipe Data PHP</h1>
+        <p>Variabel dapat menyimpan data dengan tipe yang berbeda, dan tipe data yang berbeda dapat melakukan hal yang berbeda.</p>
+        <p>PHP mendukung tipe data berikut:</p>
+        <ul>
+            <li>Rangkaian</li>
+            <li>Bilangan Bulat</li>
+            <li>Float (angka floating point - juga disebut double)</li>
+            <li>Bahasa Boolean</li>
+            <li>Susunan</li>
+            <li>Obyek</li>
+            <li>BATAL</li>
+            <li>Sumber</li>
+        </ul>
+        <h1>Mendapatkan Tipe Data</h1>
+        <p>Anda dapat memperoleh tipe data objek apapun dengan menggunakan var_dump() fungsi tersebut.</p>
+        <pre><code>
+            Contoh 
+            $x = 5;
+            var_dump($x);
+        </code></pre>
+        <h1>Rangkaian PHP</h1>
+        <p>String adalah serangkaian karakter, seperti "Halo dunia!".</p>
+        <p>String dapat berupa teks apa pun yang ada dalam tanda kutip. Anda dapat menggunakan tanda kutip tunggal atau ganda:</p>
+        <pre><code>
+            Contoh
+            $x = "Hello world!";
+            $y = 'Hello world!';
+
+            var_dump($x);
+            echo "<br>";
+            var_dump($y);
+        </code></pre>
+        <h1>PHP Bilangan Bulat</h1>
+        <p>Tipe data integer adalah angka non-desimal antara -2.147.483.648 dan 2.147.483.647.</p>
+        <ul>Aturan untuk bilangan bulat:
+            <li>Suatu bilangan bulat harus memiliki setidaknya satu digit</li>
+            <li>Suatu bilangan bulat tidak boleh memiliki titik desimal</li>
+            <li>Suatu bilangan bulat bisa positif atau negatif</li>
+            <li>Bilangan bulat dapat ditentukan dalam: notasi desimal (basis 10), heksadesimal (basis 16), oktal (basis 8), atau biner (basis 2).</li>
+        </ul>
+        <p>Dalam contoh berikut ini $xadalah bilangan bulat. var_dump() Fungsi PHP mengembalikan tipe data dan nilai:</p>
+        <pre><code>
+            Contoh
+            $x = 5985;
+            var_dump($x);
+        </code></pre>
+        <h1>PHP Mengapung</h1>
+        <p>Angka float (angka titik mengambang) adalah angka dengan titik desimal atau angka dalam bentuk eksponensial.
+            Dalam contoh berikut ini $xadalah float. var_dump() Fungsi PHP mengembalikan tipe data dan nilai:</p>
+        <pre><code>
+            Contoh
+            $x = 10.365;
+            var_dump($x);
+        </code></pre>
+        <h1>Bahasa Pemrograman PHP Boolean</h1>
+        <p>Boolean mewakili dua kemungkinan keadaan: BENAR atau SALAH.</p>
+        <pre><code>
+            Contoh
+            $x = true;
+            var_dump($x);
+        </code></pre>
+        <p>Boolean sering digunakan dalam pengujian bersyarat.</p>
+        <h1>Susunan PHP</h1>
+        <p>Sebuah array menyimpan beberapa nilai dalam satu variabel tunggal.</p>
+        <p>Contoh berikut $carsadalah array. var_dump() Fungsi PHP mengembalikan tipe data dan nilai:</p>
+        <pre><code>
+            $cars = array("Volvo","BMW","Toyota");
+            var_dump($cars);
+        </code></pre>
+        <h1>Objek PHP</h1>
+        <p>Kelas dan objek adalah dua aspek utama pemrograman berorientasi objek.</p>
+        <p>Suatu kelas merupakan templat bagi objek, dan suatu objek merupakan contoh suatu kelas.</p>
+        <p>Saat objek individual dibuat, objek tersebut mewarisi semua properti dan perilaku dari kelas, tetapi setiap objek akan memiliki nilai yang berbeda untuk propertinya.</p>
+        <p>Mari kita asumsikan kita memiliki kelas bernama Caryang dapat memiliki properti seperti model, warna, dll. Kita dapat mendefinisikan variabel seperti $model, $color, dan seterusnya, untuk menampung nilai properti ini.</p>
+        <p>Saat objek individual (Volvo, BMW, Toyota, dll.) dibuat, mereka mewarisi semua properti dan perilaku dari kelas, tetapi setiap objek akan memiliki nilai yang berbeda untuk propertinya.</p>
+        <p>Jika Anda membuat suatu __construct()fungsi, PHP akan secara otomatis memanggil fungsi ini ketika Anda membuat objek dari suatu kelas.</p>
+        <pre><code>
+            class Car {
+                public $color;
+                public $model;
+                public function __construct($color, $model) {
+                  $this->color = $color;
+                  $this->model = $model;
+                }
+                public function message() {
+                  return "My car is a " . $this->color . " " . $this->model . "!";
+                }
+              }
+              
+              $myCar = new Car("red", "Volvo");
+              var_dump($myCar);
+        </code></pre>
+        <h1>Nilai NULL PHP</h1>
+        <p>Null adalah tipe data khusus yang hanya dapat memiliki satu nilai: NULL.</p>
+        <p>Variabel dengan tipe data NULL adalah variabel yang tidak memiliki nilai yang ditetapkan padanya.</p>
+        <p>Jika suatu variabel dibuat tanpa nilai, maka secara otomatis akan diberi nilai NULL.</p>
+        <p>Variabel juga dapat dikosongkan dengan menetapkan nilainya ke NULL:</p>
+        <pre><code>
+            $x = "Hello world!";
+            $x = null;
+            var_dump($x);
+        </code></pre>
+        <h1>Ubah Tipe Data</h1>
+        <p>Jika Anda menetapkan nilai integer pada suatu variabel, tipenya akan otomatis berupa integer.</p>
+        <p>Jika Anda menetapkan string ke variabel yang sama, tipenya akan berubah menjadi string:</p>
+        <pre><code>
+            Contoh
+            $x = 5;
+            var_dump($x);
+
+            $x = "Hello";
+            var_dump($x);
+        </code></pre>
+        <p>Jika Anda ingin mengubah tipe data dari variabel yang ada, tetapi tidak dengan mengubah nilainya, Anda dapat menggunakan casting.
+            Casting memungkinkan Anda mengubah tipe data pada variabel:</p>
+        <pre><code>
+            Contoh
+            $x = 5;
+            $x = (string) $x;
+            var_dump($x);
+        </code></pre>
+        <h1>Sumber Daya PHP</h1>  
+        <p>Tipe sumber daya khusus bukanlah tipe data yang sebenarnya. Tipe ini merupakan penyimpanan referensi ke fungsi dan sumber daya di luar PHP.</p>
+        <p>Contoh umum penggunaan tipe data sumber daya adalah panggilan basis data.</p>
+        
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#strings" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="strings" class="content hidden">
+        <h1>PHP STRINGS</h1>
+        <p>String adalah serangkaian karakter, seperti "Halo dunia!".</p>
+        <p>String dalam PHP diapit oleh tanda kutip ganda atau tanda kutip tunggal.</p>
+        <pre><code>
+            echo "Hello";
+            echo 'Hello';
+        </code></pre>
+        <p>Ada perbedaan besar antara tanda kutip ganda dan tanda kutip tunggal dalam PHP.</p>
+        <p>Tanda kutip ganda memproses karakter khusus, sedangkan tanda kutip tunggal tidak.</p>
+        <h1>Tanda kutip ganda atau tunggal?</h1>
+        <p>Anda dapat menggunakan tanda kutip ganda atau tunggal, tetapi Anda harus menyadari perbedaan antara keduanya.</p>
+        <p>String yang diapit tanda kutip ganda melakukan tindakan pada karakter khusus.</p>
+        <p>Misalnya ketika ada variabel dalam string, ia mengembalikan nilai variabel tersebut:</p>
+        <pre><code>
+            Contoh
+            Literal string yang dikutip ganda melakukan operasi untuk karakter khusus:
+            $x = "John";
+            echo "Hello $x";
+        </code></pre>
+        <p>String yang dikutip tunggal tidak melakukan tindakan tersebut, ia mengembalikan string seperti yang ditulis, dengan nama variabel:</p>
+        <pre><code>
+            Contoh
+            Literal string yang dikutip tunggal mengembalikan string sebagaimana adanya:
+            $x = "John";
+            echo 'Hello $x';
+        </code></pre>
+        <p>Fungsi PHP strlen()mengembalikan panjang suatu string.</p>
+        <pre><code>
+            Contoh
+            Mengembalikan panjang string "Halo dunia!":
+            echo strlen("Hello world!");
+        </code></pre>
+        <p>Fungsi PHP str_word_count()menghitung jumlah kata dalam suatu string.</p>
+        <pre><code>
+            Contoh
+            Hitung jumlah kata dalam string "Halo dunia!":
+            echo str_word_count("Hello world!");
+        </code></pre>
+        <h1>Mencari Teks Dalam String</h1>
+        <p>Fungsi PHP strpos()mencari teks tertentu dalam suatu string.</p>
+        <p>Jika kecocokan ditemukan, fungsi akan mengembalikan posisi karakter dari kecocokan pertama. Jika tidak ditemukan kecocokan, fungsi akan mengembalikan FALSE.</p>
+        <pre><code>
+            Contoh
+            Cari teks "dunia" dalam string "Halo dunia!":
+            echo strpos("Hello world!", "world");
+        </code></pre>
+        
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#numbers" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="numbers" class="content hidden">
+        <h1>PHP Numbers</h1>
+        <p>Ada tiga tipe numerik utama dalam PHP:</p>
+        <ul>
+            <li>integer</li>
+            <li>float</li>
+            <li>number strings</li>
+        </ul>
+        <p>Selain itu, PHP memiliki dua tipe data lagi yang digunakan untuk angka:</p>
+        <ul>
+            <li>infinity</li>
+            <li>NaN</li>
+        </ul>
+        <p>Variabel bertipe numerik dibuat saat anda menetapkan nilai padanya:</p>
+        <pre><code>
+            Contoh
+            $a = 5;
+            $b = 5.34;
+            $c = "25";
+        </code></pre>
+        <p>Untuk memverifikasi jenis objek apa pun di PHP, gunakan var_dump()fungsi:</p>
+        <pre><code>
+            Contoh
+            var_dump($a);
+            var_dump($b);
+            var_dump($c);
+        </code></pre>
+        <h1>Bilangan Bulat PHP</h1>
+        <p>2, 256, -256, 10358, -179567 semuanya bilangan bulat.</p>
+        <p>Bilangan bulat adalah angka yang tidak memiliki bagian desimal.</p>
+        <p>Tipe data integer adalah angka non-desimal antara -2147483648 dan 2147483647 dalam sistem 32 bit, dan antara -9223372036854775808 dan 9223372036854775807 dalam sistem 64 bit. Nilai yang lebih besar (atau lebih kecil) dari ini akan disimpan sebagai float, karena melebihi batas integer.</p>
+        <p>Hal penting lainnya yang perlu diketahui adalah bahwa meskipun 4 * 2,5 adalah 10, hasilnya disimpan sebagai float, karena salah satu operan adalah float (2,5).</p>
+        <p>Berikut adalah beberapa aturan untuk bilangan bulat:</p>
+        <ul>
+            <li>Suatu bilangan bulat harus memiliki setidaknya satu digit</li>
+            <li>Suatu bilangan bulat TIDAK boleh memiliki titik desimal</li>
+            <li>Suatu bilangan bulat bisa positif atau negatif</li>
+            <li>Bilangan bulat dapat ditentukan dalam tiga format: desimal (basis 10), heksadesimal (basis 16 - diawali dengan 0x), oktal (basis 8 - diawali dengan 0) atau biner (basis 2 - diawali dengan 0b).</li>
+        </ul>
+        <p>PHP memiliki konstanta yang telah ditetapkan sebelumnya untuk bilangan bulat:</p>
+        <ul>
+            <li>PHP_INT_MAX- Bilangan bulat terbesar yang didukung</li>
+            <li>PHP_INT_MIN- Bilangan bulat terkecil yang didukung</li>
+            <li>PHP_INT_SIZE- Ukuran integer dalam byte</li>
+        </ul>
+        <p>PHP memiliki fungsi berikut untuk memeriksa apakah tipe suatu variabel adalah integer:</p>
+        <ul>
+            <li>is_int()</li>
+            <li>is_integer()- alias dari is_int()</li>
+            <li>is_long()- alias dari is_int()</li>
+        </ul>
+        <pre><code>
+            Contoh
+            Periksa apakah tipe variabel adalah integer:
+            $x = 5985;
+            var_dump(is_int($x));
+
+            $x = 59.85;
+            var_dump(is_int($x));
+        </code></pre>
+        <h1>PHP Mengapung</h1>
+        <P>Float adalah angka dengan titik desimal atau angka dalam bentuk eksponensial.</P>
+        <p>2.0, 256.4, 10.358, 7.64E+5, 5.56E-5 semuanya adalah float.</p>
+        <p>Tipe data float umumnya dapat menyimpan nilai hingga 1.7976931348623E+308 (tergantung platform), dan memiliki presisi maksimum 14 digit.</p>
+        <p>PHP memiliki konstanta pradefinisi berikut untuk float (dari PHP 7.2):</p>
+        <ul>
+            <li>PHP_FLOAT_MAX- Angka floating point terbesar yang dapat direpresentasikan</li>
+            <li>PHP_FLOAT_MIN- Angka floating point positif terkecil yang dapat direpresentasikan</li>
+            <li>PHP_FLOAT_DIG- Jumlah digit desimal yang dapat dibulatkan menjadi float dan kembali tanpa kehilangan presisi</li>
+            <li>PHP_FLOAT_EPSILON- Angka positif terkecil yang dapat direpresentasikan x, sehingga x + 1,0 != 1,0</li>
+        </ul>
+        <p>PHP memiliki fungsi berikut untuk memeriksa apakah tipe suatu variabel adalah float:</p>
+        <ul>
+            <li>is_float()</li>
+            <li>is_double()- alias dari is_float()</li>
+        </ul>
+        <pre><code>
+            Contoh
+            Periksa apakah tipe variabelnya adalah float:
+            $x = 10.365;
+            var_dump(is_float($x));
+        </code></pre>
+        <h1>PHP Tak Terbatas</h1>
+        <p>Nilai numerik yang lebih besar dari PHP_FLOAT_MAX dianggap tak terhingga.</p>
+        <p>PHP memiliki fungsi berikut untuk memeriksa apakah suatu nilai numerik terbatas atau tak terbatas:</p>
+        <ul>
+            <li>Adalah terbatas()</li>
+            <li>Adalah tak terhingga()</li>
+        </ul>
+        <p>NAmun, fungsi PHP var_dump() mengembalikan tipe data dan nilai:</p>
+        <pre><code>
+            Contoh
+            periksa apakah suatu nilai numerik terbatas atau tak terbatas:
+            $x = 1.9e411;
+            var_dump ($x);
+        </code></pre>
+        <h1>PHP-NaN</h1>
+        <p>NaN singkatan dari Bukan Angka.</p>
+        <p>NaN digunakan untuk operasi matematika yang mustahil.</p>
+        <p>PHP memiliki fungsi berikut untuk memeriksa apakah suatu nilai bukan angka:</p>
+        <ul>adalah nan()</ul>
+        <p>namun, fungsi PHP var_dump() mengembalikan tipe data dan nilai:</p>
+        <pre><code>
+            Contoh 
+            Perhitungan yang tidak valid akan mengembalikan Nan Nilai:
+            $x = acos(8);
+            var_dump($x);
+        </code></pre>
+        <h1>String Numerik PHP</h1>
+        <p>Fungsi PHP is_numeric()dapat digunakan untuk mengetahui apakah suatu variabel berupa angka atau string numerik. Fungsi ini akan mengembalikan true jika variabel tersebut berupa angka atau string numerik, dan false jika tidak.</p>
+        <pre><code>
+            Contoh
+            Periksa apakah variabelnya numerik:
+            $x = 5985;
+            var_dump(is_numeric($x));
+
+            $x = "5985";
+            var_dump(is_numeric($x));
+            $x = "59.85" + 100;
+            var_dump(is_numeric($x));
+
+            $x = "Hello";
+            var_dump(is_numeric($x));
+        </code></pre>
+        <h1>PHP Casting String dan Float ke Integer</h1>
+        <p>Kadang-kadang Anda perlu mengubah nilai numerik menjadi tipe data lain.</p>
+        <p>Fungsi (int), (integer), dan intval()sering digunakan untuk mengonversi suatu nilai menjadi integer.</p>
+        <pre><code>
+            Contoh
+            Ubah float dan string menjadi integer:
+            // Cast float to int
+            $x = 23465.768;
+            $int_cast = (int)$x;
+            echo $int_cast;
+
+            echo "<br>";
+
+            // Cast string to int
+            $x = "23465.768";
+            $int_cast = (int)$x;
+            echo $int_cast;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#casting" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="casting" class="content hidden">
+        <h1>PHP Casting</h1>
+        <p>Terkadang Anda perlu mengubah variabel dari satu tipe data ke tipe data lain, dan terkadang Anda ingin variabel memiliki tipe data tertentu. Hal ini dapat dilakukan dengan casting.</p>
+        <p>Ubah Tipe Data</p>
+        <ul>Casting dalam PHP dilakukan dengan pernyataan berikut:
+            <li>(string)- Mengonversi ke tipe data String</li>
+            <li>(int)- Mengonversi ke tipe data Integer</li>
+            <li>(float)- Mengonversi ke tipe data Float</li>
+            <li>(bool)- Mengonversi ke tipe data Boolean</li>
+            <li>(array)- Mengonversi ke tipe data Array</li>
+            <li>(object)- Mengonversi ke tipe data Objek</li>
+            <li>(unset)- Mengonversi ke tipe data NULL</li>
+        </ul>
+        <p>untuk melakukan cast ke string, gunakan (string) pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "hello"; // String
+            $d = true;    // Boolean
+            $e = NULL;    // NULL
+
+            $a = (string) $a;
+            $b = (string) $b;
+            $c = (string) $c;
+            $d = (string) $d;
+            $e = (string) $e;
+
+            //To verify the type of any object in PHP, use the var_dump() function:
+            var_dump($a);
+            var_dump($b);
+            var_dump($c);
+            var_dump($d);
+            var_dump($e);
+        </code></pre>
+        <h1>Ubah ke integer</h1>
+        <p>Untuk melakukan cast ke integer, gunakan (int) pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "25 kilometers"; // String
+            $d = "kilometers 25"; // String
+            $e = "hello"; // String
+            $f = true;    // Boolean
+            $g = NULL;    // NULL
+
+            $a = (int) $a;
+            $b = (int) $b;
+            $c = (int) $c;
+            $d = (int) $d;
+            $e = (int) $e;
+            $f = (int) $f;
+            $g = (int) $g;
+        </code></pre>
+        <p>Untuk melakukan cast ke float, gunakan (float)pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "25 kilometers"; // String
+            $d = "kilometers 25"; // String
+            $e = "hello"; // String
+            $f = true;    // Boolean
+            $g = NULL;    // NULL
+
+            $a = (float) $a;
+            $b = (float) $b;
+            $c = (float) $c;
+            $d = (float) $d;
+            $e = (float) $e;
+            $f = (float) $f;
+            $g = (float) $g;
+        </code></pre>
+        <p>Untuk melakukan cast ke boolean, gunakan (bool)pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = 0;       // Integer
+            $d = -1;      // Integer
+            $e = 0.1;     // Float
+            $f = "hello"; // String
+            $g = "";      // String
+            $h = true;    // Boolean
+            $i = NULL;    // NULL
+
+            $a = (bool) $a;
+            $b = (bool) $b;
+            $c = (bool) $c;
+            $d = (bool) $d;
+            $e = (bool) $e;
+            $f = (bool) $f;
+            $g = (bool) $g;
+            $h = (bool) $h;
+            $i = (bool) $i;
+        </code></pre>
+        <p>Jika suatu nilai adalah 0, NULL, salah, atau kosong, (bool) mengubahnya menjadi salah, jika tidak, benar.</p>
+        <p>Bahkan -1 diubah menjadi benar.</p>
+        <p>Untuk melakukan cast ke array, gunakan (array)pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "hello"; // String
+            $d = true;    // Boolean
+            $e = NULL;    // NULL
+
+            $a = (array) $a;
+            $b = (array) $b;
+            $c = (array) $c;
+            $d = (array) $d;
+            $e = (array) $e;
+        </code></pre>
+        <p>Saat mengonversi ke dalam array, sebagian besar tipe data dikonversi ke dalam array terindeks dengan satu elemen.</p>
+        <p>Nilai NULL dikonversi ke objek array kosong.</p>
+        <p>Objek diubah menjadi array asosiatif di mana nama properti menjadi kunci dan nilai properti menjadi nilai:</p>
+        <pre><code>
+            class Car {
+                public $color;
+                public $model;
+                public function __construct($color, $model) {
+                  $this->color = $color;
+                  $this->model = $model;
+                }
+                public function message() {
+                  return "My car is a " . $this->color . " " . $this->model . "!";
+                }
+              }
+              
+              $myCar = new Car("red", "Volvo");
+              
+              $myCar = (array) $myCar;
+              var_dump($myCar);
+        </code></pre>
+        <p>Untuk melakukan cast ke objek, gunakan (object)pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "hello"; // String
+            $d = true;    // Boolean
+            $e = NULL;    // NULL
+
+            $a = (object) $a;
+            $b = (object) $b;
+            $c = (object) $c;
+            $d = (object) $d;
+            $e = (object) $e;
+        </code></pre>
+        <p>Saat mengonversi menjadi objek, sebagian besar tipe data dikonversi menjadi objek dengan satu properti, bernama "skalar", dengan nilai terkait.</p>
+        <p>Nilai NULL dikonversi ke objek kosong.</p>
+        <p>Array yang diindeks dikonversi menjadi objek dengan nomor indeks sebagai nama properti dan nilai sebagai nilai properti.</p>
+        <p>Array asosiatif dikonversi menjadi objek dengan kunci sebagai nama properti dan nilai sebagai nilai properti.</p>
+        <pre><code>
+            $a = array("Volvo", "BMW", "Toyota"); // indexed array
+            $b = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43"); // associative array
+
+            $a = (object) $a;
+            $b = (object) $b;
+        </code></pre>
+        <p>Untuk melakukan cast ke NULL, gunakan (unset)pernyataan:</p>
+        <pre><code>
+            $a = 5;       // Integer
+            $b = 5.34;    // Float
+            $c = "hello"; // String
+            $d = true;    // Boolean
+            $e = NULL;    // NULL
+
+            $a = (unset) $a;
+            $b = (unset) $b;
+            $c = (unset) $c;
+            $d = (unset) $d;
+            $e = (unset) $e;
+        </code></pre>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#math" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="math" class="content hidden">
+        <h1>PHP Math</h1>
+        <p>PHP memiliki serangkaian fungsi matematika yang memungkinkan Anda melakukan tugas matematika pada angka.</p>
+        <p>Fungsi ini pi()mengembalikan nilai PI:</p>
+        <pre><code>
+            Contoh
+            echo(pi());
+        </code></pre>
+        <h1>Fungsi PHP min() dan max()</h1>
+        <p>Fungsi min()dan max()dapat digunakan untuk menemukan nilai terendah atau tertinggi dalam daftar argumen:</p>
+        <pre><code>
+            echo(min(0, 150, 30, 20, -8, -200));
+            echo(max(0, 150, 30, 20, -8, -200));
+        </code></pre>
+        <h1>Fungsi PHP abs()</h1>
+        <p>Fungsi ini abs()mengembalikan nilai absolut (positif) suatu angka:</p>
+        <pre><code>
+            echo(abs(-6.7));
+        </code></pre>
+        <h1>Fungsi sqrt() pada PHP</h1>
+        <p>Fungsi ini sqrt()mengembalikan akar kuadrat suatu angka:</p>
+        <pre><code>
+            echo(sqrt(64));
+        </code></pre>
+        <h1>Fungsi PHP round()</h1>
+        <p>Fungsi ini round()membulatkan angka floating-point ke bilangan bulat terdekat:</p>
+        <pre><code>
+            echo(round(0.60));
+            echo(round(0.49));
+        </code></pre>
+        <p>Fungsi ini rand() menghasilkan angka acak:</p>
+        <pre><code>
+            echo(rand());
+        </code></pre>
+        <p>Untuk mendapatkan kontrol lebih lanjut atas angka acak, Anda dapat menambahkan parameter min dan maks opsional untuk menentukan bilangan bulat terendah dan bilangan bulat tertinggi yang akan dikembalikan.</p>
+        <p>Misalnya, jika Anda menginginkan bilangan bulat acak antara 10 dan 100 (inklusif), gunakan rand(10, 100):</p>
+        <pre><code>
+            echo(rand(10, 100));
+        </code></pre>
+
+
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#constants" class="btn-next">Next &rarr;</a>
+        
+    </section>
+
+    <section id="constants" class="content hidden">
+        <h1>PHP Constants</h1>
+        <p>Konstanta seperti variabel, kecuali bahwa setelah didefinisikan, mereka tidak dapat diubah atau tidak dapat didefinisikan lagi.</p>
+        <p>Konstanta adalah pengenal (nama) untuk nilai sederhana. Nilai tersebut tidak dapat diubah selama skrip berlangsung.</p>
+        <p>Nama konstanta yang valid dimulai dengan huruf atau garis bawah (tanpa tanda $ sebelum nama konstanta).</p>
+        <p>Tidak seperti variabel, konstanta secara otomatis bersifat global di seluruh skrip.</p>
+        <h1>Membuat Konstanta PHP</h1>
+        <p>Untuk membuat konstanta, gunakan define() fungsi.</p>
+        <p>Sintaksis</p>
+        <pre><code>
+            define(name, value);
+        </code></pre>
+        <ul>Parameternya:
+            <li>Nama: Menentukan nama konstanta</li>
+            <li>Nilai: Menentukan nilai konstanta</li>
+        </ul>
+        <pre><code>
+            Buat konstanta dengan nama peka huruf besar/kecil :
+            define("GREETING", "Welcome to W3Schools.com!");
+            echo GREETING;
+        </code></pre>
+        <h1>Kata Kunci PHP const</h1>
+        <p>Anda juga dapat membuat konstanta dengan menggunakan constkata kunci.</p>
+        <pre><code>
+            Contoh
+            Buat konstanta peka huruf besar/kecil dengan constkata kunci:
+            const MYCAR = "Volvo";
+            echo MYCAR;
+        </code></pre>
+        <p>constmelawandefine()</p>
+        <ul>
+            <li>consttidak dapat dibuat di dalam cakupan blok lain, seperti di dalam fungsi atau di dalam if pernyataan.</li>
+            <li>define dapat dibuat di dalam cakupan blok lain.</li>
+        </ul>
+        <h1>Array Konstan PHP</h1>
+        <p>Dari PHP7, Anda dapat membuat konstanta Array menggunakan define()fungsi tersebut.</p>
+        <pre><code>
+            Buat konstanta Array:
+
+            define("cars", [
+            "Alfa Romeo",
+            "BMW",
+            "Toyota"
+            ]);
+            echo cars[0];
+        </code></pre>
+        <h1>Konstanta bersifat global</h1>
+        <p>Konstanta secara otomatis bersifat global dan dapat digunakan di seluruh skrip.</p>
+        <pre><code>
+            Contoh ini menggunakan konstanta di dalam suatu fungsi, 
+            meskipun konstanta tersebut didefinisikan di luar fungsi tersebut:
+
+            define("GREETING", "Welcome to W3Schools.com!");
+
+            function myTest() {
+            echo GREETING;
+            }
+
+            myTest();
+        </code></pre>
+        <h1>Konstanta Ajaib PHP</h1>
+        <p>PHP memiliki sembilan konstanta yang telah ditetapkan sebelumnya yang nilainya berubah tergantung di mana ia digunakan, 
+            dan karenanya ia disebut "konstanta ajaib".
+            Konstanta ajaib ini ditulis dengan garis bawah ganda di awal dan akhir, 
+            kecuali untuk konstanta ClassName::class.</p>
+        <p>Konstanta Ajaib</p>
+        <ul>
+            <li>__CLASS__     = If used inside a class, the class name is returned.</li>
+            <li>__DIR__       =	The directory of the file.</li>
+            <li>__FILE__      =	The file name including the full path.</li>
+            <li>__FUNCTION__  =	If inside a function, the function name is returned.</li>
+            <li>__LINE__	  = The current line number.</li>
+            <li>__METHOD__	  = If used inside a function that belongs to a class, both class and function name is returned.</li>
+            <li>__NAMESPACE__ =	If used inside a namespace, the name of the namespace is returned.</li>
+            <li>__TRAIT__	  = If used inside a trait, the trait name is returned.</li>
+            <li>ClassName::class	Returns the name of the specified class and the name of the namespace, if any.</li>
+        </ul>
+        <b>Catatan:</b>
+        <p>Konstanta ajaib tidak peka huruf besar/kecil, artinya __LINE__akan mengembalikan nilai yang sama seperti __line__.</p>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#operators" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="operators" class="content hidden">
+        <h1>Operator PHP</h1>
+        <p>Operator digunakan untuk melakukan operasi pada variabel dan nilai.</p>
+        <p>PHP membagi operator dalam kelompok berikut:</p>
+        <ul>
+            <li>Operator Aritmatika</li>
+            <li>Operator penugasan</li>
+            <li>Operator perbandingan</li>
+            <li>Operator Penambahan/Penurunan</li>
+            <li>Operator logika</li>
+            <li>Operator string</li>
+            <li>Operator array</li>
+            <li>Operator penugasan bersyarat</li>
+        </ul>
+        <h1>Operator Aritmatika PHP</h1>
+        <p>Operator aritmatika PHP digunakan dengan nilai numerik untuk melakukan operasi aritmatika umum, seperti penjumlahan, pengurangan, perkalian, dan sebagainya.</p>
+        <style>
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 8px;
+            }
+            th {
+                background-color: #f4f4f4;
+                font-weight: bold;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+        <body>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                        <th>Example</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>+</td>
+                        <td>Addition</td>
+                        <td>$x + $y</td>
+                        <td>Sum of $x and $y</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>Subtraction</td>
+                        <td>$x - $y</td>
+                        <td>Difference of $x and $y</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>Multiplication</td>
+                        <td>$x * $y</td>
+                        <td>Product of $x and $y</td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>Division</td>
+                        <td>$x / $y</td>
+                        <td>Quotient of $x and $y</td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>Modulus</td>
+                        <td>$x % $y</td>
+                        <td>Remainder of $x divided by $y</td>
+                    </tr>
+                    <tr>
+                        <td>**</td>
+                        <td>Exponentiation</td>
+                        <td>$x ** $y</td>
+                        <td>Result of raising $x to the $y'th power</td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+        <h1>Operator Penugasan PHP</h1>
+        <p>Operator penugasan PHP digunakan dengan nilai numerik untuk menulis nilai ke variabel.</p>
+        <p>Operator penugasan dasar dalam PHP adalah "=". Artinya, operan kiri akan ditetapkan ke nilai ekspresi penugasan di sebelah kanan.</p>
+        <style>
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 8px;
+            }
+            th {
+                background-color: #f4f4f4;
+                font-weight: bold;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+        <body>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Same as...</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x = y</td>
+                        <td>x = y</td>
+                        <td>The left operand gets set to the value of the expression on the right</td>
+                    </tr>
+                    <tr>
+                        <td>x += y</td>
+                        <td>x = x + y</td>
+                        <td>Addition</td>
+                    </tr>
+                    <tr>
+                        <td>x -= y</td>
+                        <td>x = x - y</td>
+                        <td>Subtraction</td>
+                    </tr>
+                    <tr>
+                        <td>x *= y</td>
+                        <td>x = x * y</td>
+                        <td>$Multiplication</td>
+                    </tr>
+                    <tr>
+                        <td>x /= y</td>
+                        <td>x = x / y</td>
+                        <td>Division</td>
+                    </tr>
+                    <tr>
+                        <td>x %= y</td>
+                        <td>x = x % y</td>
+                        <td>Modulus</td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+        <h1>Operator Perbandingan PHP</h1>
+        <p>Operator perbandingan PHP digunakan untuk membandingkan dua nilai (angka atau string):</p>
+        <style>
+            table {
+                width: 80%;
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 10px;
+            }
+            th {
+                background-color: #f4f4f4;
+                font-weight: bold;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+        <body>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator</th>
+                        <th>Name</th>
+                        <th>Example</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>==</td>
+                        <td>Equal</td>
+                        <td>$x == $y</td>
+                        <td>Returns true if $x is equal to $y</td>
+                    </tr>
+                    <tr>
+                        <td>===</td>
+                        <td>Identical</td>
+                        <td>$x === $y</td>
+                        <td>Returns true if $x is equal to $y, and they are of the same type</td>
+                    </tr>
+                    <tr>
+                        <td>!=</td>
+                        <td>Not equal</td>
+                        <td>$x != $y</td>
+                        <td>Returns true if $x is not equal to $y</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;&gt;</td>
+                        <td>Not equal</td>
+                        <td>$x &lt;&gt; $y</td>
+                        <td>Returns true if $x is not equal to $y</td>
+                    </tr>
+                    <tr>
+                        <td>!==</td>
+                        <td>Not identical</td>
+                        <td>$x !== $y</td>
+                        <td>Returns true if $x is not equal to $y, or they are not of the same type</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;</td>
+                        <td>Greater than</td>
+                        <td>$x &gt; $y</td>
+                        <td>Returns true if $x is greater than $y</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;</td>
+                        <td>Less than</td>
+                        <td>$x &lt; $y</td>
+                        <td>Returns true if $x is less than $y</td>
+                    </tr>
+                    <tr>
+                        <td>&gt;=</td>
+                        <td>Greater than or equal to</td>
+                        <td>$x &gt;= $y</td>
+                        <td>Returns true if $x is greater than or equal to $y</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;=</td>
+                        <td>Less than or equal to</td>
+                        <td>$x &lt;= $y</td>
+                        <td>Returns true if $x is less than or equal to $y</td>
+                    </tr>
+                    <tr>
+                        <td>&lt;=&gt;</td>
+                        <td>Spaceship</td>
+                        <td>$x &lt;=&gt; $y</td>
+                        <td>Returns an integer less than, equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y. Introduced in PHP 7.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+        <h1>Operator Increment / Decrement PHP</h1>
+        <p>Operator kenaikan PHP digunakan untuk menaikkan nilai suatu variabel.</p>
+        <p>Operator penurunan PHP digunakan untuk mengurangi nilai suatu variabel.</p>
+        <style>
+            table {
+                width: 60%;
+                border-collapse: collapse;
+                margin: 20px auto;
+                font-family: Arial, sans-serif;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 10px;
+            }
+            th {
+                background-color: #f4f4f4;
+                font-weight: bold;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+        </style>
+     <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Operator</th>
+                    <th>Same as...</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>++$x</td>
+                    <td>Pre-increment</td>
+                    <td>Increments $x by one, then returns $x</td>
+                </tr>
+                <tr>
+                    <td>$x++</td>
+                    <td>Post-increment</td>
+                    <td>Returns $x, then increments $x by one</td>
+                </tr>
+                <tr>
+                    <td>--$x</td>
+                    <td>Pre-decrement</td>
+                    <td>Decrements $x by one, then returns $x</td>
+                </tr>
+                <tr>
+                    <td>$x--</td>
+                    <td>Post-decrement</td>
+                    <td>Returns $x, then decrements $x by one</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    <h1>Operator Logika PHP</h1>
+    <p>Operator logika PHP digunakan untuk menggabungkan pernyataan kondisional.</p>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>and</td>
+                <td>And</td>
+                <td>$x and $y</td>
+                <td>True if both $x and $y are true</td>
+            </tr>
+            <tr>
+                <td>or</td>
+                <td>Or</td>
+                <td>$x or $y</td>
+                <td>True if either $x or $y is true</td>
+            </tr>
+            <tr>
+                <td>xor</td>
+                <td>Xor</td>
+                <td>$x xor $y</td>
+                <td>True if either $x or $y is true, but not both</td>
+            </tr>
+            <tr>
+                <td>&amp;&amp;</td>
+                <td>And</td>
+                <td>$x &amp;&amp; $y</td>
+                <td>True if both $x and $y are true</td>
+            </tr>
+            <tr>
+                <td>||</td>
+                <td>Or</td>
+                <td>$x || $y</td>
+                <td>True if either $x or $y is true</td>
+            </tr>
+            <tr>
+                <td>!</td>
+                <td>Not</td>
+                <td>!$x</td>
+                <td>True if $x is not true</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<h1>String Operators</h1>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Operator</th>
+                <th>Name</th>
+                <th>Example</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>.</td>
+                <td>Concatenation</td>
+                <td>$txt1 . $txt2</td>
+                <td>Concatenation of $txt1 and $txt2</td>
+            </tr>
+            <tr>
+                <td>.=</td>
+                <td>Concatenation assignment</td>
+                <td>$txt1 .= $txt2</td>
+                <td>Appends $txt2 to $txt1</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<h1>Operator Array pada PHP</h1>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+<table>
+    <thead>
+        <tr>
+            <th>Operator</th>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>+</td>
+            <td>Union</td>
+            <td>$x + $y</td>
+            <td>Union of $x and $y</td>
+        </tr>
+        <tr>
+            <td>==</td>
+            <td>Equality</td>
+            <td>$x == $y</td>
+            <td>Returns true if $x and $y have the same key/value pairs</td>
+        </tr>
+        <tr>
+            <td>===</td>
+            <td>Identity</td>
+            <td>$x === $y</td>
+            <td>Returns true if $x and $y have the same key/value pairs in the same order and of the same types</td>
+        </tr>
+        <tr>
+            <td>!=</td>
+            <td>Inequality</td>
+            <td>$x != $y</td>
+            <td>Returns true if $x is not equal to $y</td>
+        </tr>
+        <tr>
+            <td>&lt;&gt;</td>
+            <td>Inequality</td>
+            <td>$x &lt;&gt; $y</td>
+            <td>Returns true if $x is not equal to $y</td>
+        </tr>
+        <tr>
+            <td>!==</td>
+            <td>Non-identity</td>
+            <td>$x !== $y</td>
+            <td>Returns true if $x is not identical to $y</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+    <a href="#home" class="btn-prev">&larr; Previous</a>
+    </section>
+    <script>
+        // Ambil semua elemen nav-link, konten, dan tombol navigasi
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        const prevButtons = document.querySelectorAll('.btn-prev');
+        const nextButtons = document.querySelectorAll('.btn-next');
+
+        // Fungsi untuk menampilkan konten sesuai ID
+        function showSection(id) {
+            sections.forEach(section => {
+                if (section.id === id) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        // Fungsi untuk menemukan index dari section berdasarkan ID
+        function findSectionIndex(id) {
+            return Array.from(sections).findIndex(section => section.id === id);
+        }
+
+        // Event listener untuk navigasi menu
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                showSection(targetId);
+
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Event listener untuk tombol "Next"
+        nextButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex < sections.length - 1) {
+                    const nextSectionId = sections[currentIndex + 1].id;
+                    showSection(nextSectionId);
+                    document.querySelector(`.nav-link[href="#${nextSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Event listener untuk tombol "Previous"
+        prevButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const currentSectionId = this.closest('section').id;
+                const currentIndex = findSectionIndex(currentSectionId);
+                if (currentIndex > 0) {
+                    const prevSectionId = sections[currentIndex - 1].id;
+                    showSection(prevSectionId);
+                    document.querySelector(`.nav-link[href="#${prevSectionId}"]`).classList.add('active');
+                }
+            });
+        });
+
+        // Tampilkan konten pertama kali (misalnya 'home')
+        showSection('home');
+    </script>
+</body>
+</html>

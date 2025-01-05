@@ -1,0 +1,4863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial</title>
+    <style>
+        *{
+            font-family: "Arial", sans-serif; 
+        }
+ body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    display: flex;
+    background-color: #1e203d;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    background-color: #151961;
+    height: 100vh;
+    width: 20%;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease-in-out;
+    position: fixed;
+    left: -100%;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar h1 {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.container {
+    width: 80%;
+    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #696fec;
+    font-weight: 500;
+    transition: background-color 0.3s ease, padding-left 0.2s;
+}
+
+.nav-link.active {
+    background-color: #1e203d;
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    background-color: #1e203d;
+    padding-left: 20px;
+}
+
+.content {
+    padding: 40px;
+    width: 100%;
+    background-color: #f9f9f9;
+    color: #1e203d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: calc(100vh - 80px);
+    padding-left: 5%;
+}
+
+.btn-prev, .btn-next {
+    background-color: #696fec;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-prev:hover, .btn-next:hover {
+    background-color: #1e203d;
+}
+
+h1, h3 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+h2, h4, h5 {
+    font-size: 1.5rem;
+}
+
+pre code {
+    display: block;
+    background-color: #1e203d;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+code {
+            background-color: #1e203d;
+            color: #ffffff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+        .example {
+    background-color: #e9e9f2;
+    padding: 10px;
+    border-left: 4px solid #696fec;
+    margin: 10px 0;
+    width: auto;  /* Menyesuaikan ukuran dengan konten */
+}
+
+
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+    .content {
+        padding-left: 0;
+        width: 100%;
+        order: 2;
+        padding: 20px;
+    }
+
+    .sidebar {
+        width: 70%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 1000;
+        overflow-y: auto;
+        transition: left 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        padding: 10px;
+        background: none;
+        border: none;
+        color: white;
+        z-index: 1001;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .content {
+        width: 80%;
+        margin-left: 20%;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e203d;
+}
+
+th {
+    background-color: #151961;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: white;
+}
+
+td, th {
+    word-wrap: break-word;
+}
+</style>
+
+    
+</head>
+<body>
+    <div class="menu-icon" id="menu-icon">☰</div>
+<div class="sidebar">
+    <h1 class="fw-bold">HTML Tutorial</h1>
+    <ul class="nav flex-column">
+        <li><a class="nav-link active" href="#home">HTML HOME</a></li>
+        <li><a class="nav-link" href="#intro">HTML Introduction</a></li>
+        <li><a class="nav-link" href="#editors">HTML Editors</a></li>
+        <li><a class="nav-link" href="#basic">HTML Basic</a></li>
+        <li><a class="nav-link" href="#elements">HTML Elements</a></li>
+        <li><a class="nav-link" href="#attributes">HTML Attributes</a></li>
+        <li><a class="nav-link" href="#headings">HTML Headings</a></li>
+        <li><a class="nav-link" href="#paragraphs">HTML Paragraphs</a></li>
+        <li><a class="nav-link" href="#styles">HTML Styles</a></li>
+        <li><a class="nav-link" href="#formatting">HTML Formatting</a></li>
+        <li><a class="nav-link" href="#quotations">HTML Quotations</a></li>
+        <li><a class="nav-link" href="#comments">HTML Comments</a></li>
+        <li><a class="nav-link" href="#colors">HTML Colors</a></li>
+        <li><a class="nav-link" href="#css">HTML CSS</a></li>
+        <li><a class="nav-link" href="#links">HTML Links</a></li>
+        <li><a class="nav-link" href="#images">HTML Images</a></li>
+        <li><a class="nav-link" href="#favicon">HTML Favicon</a></li>
+        <li><a class="nav-link" href="#page-title">HTML Page Title</a></li>
+        <li><a class="nav-link" href="#tables">HTML Tables</a></li>
+        <li><a class="nav-link" href="#lists">HTML Lists</a></li>
+        <li><a class="nav-link" href="#block-inline">HTML Block & Inline</a></li>
+        <li><a class="nav-link" href="#div">HTML Div</a></li>
+        <li><a class="nav-link" href="#classes">HTML Classes</a></li>
+        <li><a class="nav-link" href="#id">HTML Id</a></li>
+        <li><a class="nav-link" href="#iframes">HTML Iframes</a></li>
+        <li><a class="nav-link" href="#javascript">HTML JavaScript</a></li>
+        <li><a class="nav-link" href="#file-paths">HTML File Paths</a></li>
+        <li><a class="nav-link" href="#layout">HTML Layout</a></li>
+        <li><a class="nav-link" href="#responsive">HTML Responsive</a></li>
+        <li><a class="nav-link" href="#computercode">HTML Computercode</a></li>
+        <li><a class="nav-link" href="#semantics">HTML Semantics</a></li>
+        <li><a class="nav-link" href="#style-guide">HTML Style Guide</a></li>
+        <li><a class="nav-link" href="#entities">HTML Entities</a></li>
+        <li><a class="nav-link" href="#symbols">HTML Symbols</a></li>
+        <li><a class="nav-link" href="#emojis">HTML Emojis</a></li>
+        <li><a class="nav-link" href="#charsets">HTML Charsets</a></li>
+        <li><a class="nav-link" href="#url-encode">HTML URL Encode</a></li>
+        <li><a class="nav-link" href="#vs-xhtml">HTML vs. XHTML</a></li>
+    </ul>
+</div>
+
+
+      
+    <section id="home" class="content hidden">
+
+        <h1>HTML Home</h1>
+        <h1>Selamat datang di Tutorial HTML!</h1>
+        <p>Ini adalah tempat yang sempurna untuk memulai perjalanan Anda dalam mempelajari HTML, bahasa markup standar untuk membuat halaman web yang menarik dan fungsional. HTML, atau HyperText Markup Language, adalah fondasi dari semua situs web yang Anda kunjungi setiap hari. Dalam tutorial ini, kita akan membahas berbagai elemen dan atribut HTML yang memungkinkan Anda untuk menyusun dan menampilkan konten web dengan cara yang terstruktur dan mudah dipahami.</p>
+
+    
+        <h2>Kenapa Anda Harus Mempelajari HTML?</h2>   
+        <p>HTML adalah fondasi dari semua halaman web. Mempelajari HTML akan memberi Anda keterampilan untuk membuat dan mengatur struktur halaman web. Setelah memahami HTML, Anda akan bisa menggabungkannya dengan CSS dan JavaScript untuk membuat halaman web interaktif dan responsif.</p>
+        
+        <h2>Contoh Sederhana HTML</h2>   
+        <p>Berikut adalah contoh dokumen HTML dasar:</p>   
+
+        <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Selamat datang di halaman pertama saya&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf pertama saya&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>
+
+    <h2>Hasil Contoh Sederhana</h2>
+    <p>Di bawah ini adalah gambar yang akan tambil jika contoh sederhana diatas dijalankan:</p>
+    <img src="img/contoh html.png" alt="Contoh Struktur HTML" style="width: 100%; max-width: 600px; display: block; border-radius: 10px;">
+
+    <br>
+    <h3>Apa yang Akan Anda Pelajari?</h3>
+    <p>Dalam tutorial ini, Anda akan belajar berbagai topik mulai dari elemen dasar HTML hingga teknik-teknik yang lebih lanjut seperti form, tabel, dan multimedia. Berikut adalah beberapa hal yang akan Anda pelajari:</p>
+    <ul>
+        <li>Dasar-dasar sintaks HTML</li>
+        <li>Penggunaan elemen-elemen dasar HTML</li>
+        <li>Membuat halaman web interaktif dengan HTML dan CSS</li>
+        <li>Penggunaan atribut dan formulir HTML</li>
+        <li>Integrasi multimedia seperti gambar, video, dan audio</li>
+    </ul> <br>
+        <a href="Beranda.html" class="btn-prev">&larr; Beranda</a>
+        <a href="#intro" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="intro" class="content hidden">
+        <h1>HTML Introduction</h1>
+        <h2>APA ITU HTML?</h2>
+        <p>HTML adalah bahasa markup standar yang digunakan untuk membuat halaman web, dan mendeskripsikan struktur halaman web.</p>
+        <h2>Elemen HTML yang Paling Umum</h2>
+        <ul>
+            <li><strong>&lt;html&gt;</strong>: Elemen utama dalam dokumen HTML.</li>
+            <li><strong>&lt;head&gt;</strong>: Berisi informasi metadata tentang halaman (judul, stylesheet, dll.).</li>
+            <li><strong>&lt;body&gt;</strong>: Berisi konten utama halaman (teks, gambar, dll.).</li>
+            <li><strong>&lt;h1&gt; hingga &lt;h6&gt;</strong>: Elemen heading yang digunakan untuk memberi struktur pada konten.</li>
+            <li><strong>&lt;p&gt;</strong>: Elemen paragraf untuk teks.</li>
+            <li><strong>&lt;a&gt;</strong>: Elemen anchor untuk membuat tautan ke halaman lain.</li>
+        </ul>    
+        <br>
+       
+        <h1>Contoh Dokumen HTML Sederhana</h1>
+
+        <pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Judul Halaman&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+            &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre> <br>
+
+    <p>Catatan: Konten di dalam bagian &lt;body&gt; akan ditampilkan di browser. Sedangkan konten di dalam elemen &lt;title&gt; akan ditampilkan di bilah judul browser atau tab halaman.</p>
+
+<br>
+    <h2>Sejarah HTML</h2>
+    <p>Berikut adalah tabel yang menggambarkan sejarah perkembangan HTML:</p>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tahun</th>
+                <th>Versi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1989</td>
+                <td>Tim Berners-Lee menciptakan www</td>
+            </tr>
+            <tr>
+                <td>1991</td>
+                <td>Tim Berners-Lee menciptakan HTML</td>
+            </tr>
+            <tr>
+                <td>1993</td>
+                <td>Dave Raggett mendesain HTML+</td>
+            </tr>
+            <tr>
+                <td>1995</td>
+                <td>HTML Working Group mendefinisikan HTML 2.0</td>
+            </tr>
+            <tr>
+                <td>1997</td>
+                <td>Rekomendasi W3C: HTML 3.2</td>
+            </tr>
+            <tr>
+                <td>1999</td>
+                <td>Rekomendasi W3C: HTML 4.01</td>
+            </tr>
+            <tr>
+                <td>2000</td>
+                <td>Rekomendasi W3C: XHTML 1.0</td>
+            </tr>
+            <tr>
+                <td>2008</td>
+                <td>Draft Publik Pertama HTML5 oleh WHATWG</td>
+            </tr>
+            <tr>
+                <td>2012</td>
+                <td>HTML5 Living Standard oleh WHATWG</td>
+            </tr>
+            <tr>
+                <td>2014</td>
+                <td>Rekomendasi W3C: HTML5</td>
+            </tr>
+            <tr>
+                <td>2016</td>
+                <td>Rekomendasi Kandidat W3C: HTML 5.1</td>
+            </tr>
+            <tr>
+                <td>2017</td>
+                <td>Rekomendasi W3C: HTML5.1 Edisi Kedua</td>
+            </tr>
+            <tr>
+                <td>2017</td>
+                <td>Rekomendasi W3C: HTML5.2</td>
+            </tr>
+        </tbody>
+    </table><br>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
+        <a href="#editors" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="editors" class="content hidden">
+        <h1>HTML Editors</h1>
+        <h1>Tutorial Membuat Halaman Web Pertama Menggunakan Visual Studio Code (VSCode)</h1>
+
+    <p>Untuk memulai belajar HTML dengan menggunakan <strong>Visual Studio Code (VSCode)</strong>, berikut adalah langkah-langkah yang mudah diikuti. VSCode adalah editor kode yang canggih dengan fitur-fitur seperti auto-complete, pewarnaan sintaks, dan banyak ekstensi yang memudahkan kamu dalam menulis kode HTML.</p>
+
+    <h2>Langkah 1: Instal Visual Studio Code</h2>
+    <p><strong>Unduh Visual Studio Code (VSCode)</strong></p>
+    <ul>
+        <li>Buka situs resmi VSCode.</li>
+        <li>Pilih versi untuk sistem operasi yang kamu gunakan (Windows, macOS, atau Linux).</li>
+        <li>Ikuti petunjuk instalasi sesuai dengan sistem operasi yang kamu pilih.</li>
+    </ul>
+
+    <p><strong>Instal VSCode</strong></p>
+    <ul>
+        <li>Setelah mengunduh, jalankan file instalasi dan ikuti langkah-langkah untuk menginstal Visual Studio Code di komputermu.</li>
+    </ul>
+
+    <h2>Langkah 2: Membuka VSCode</h2>
+    <ul>
+        <li>Setelah selesai menginstal, buka aplikasi Visual Studio Code dari menu Start (Windows) atau melalui Finder (Mac).</li>
+        <li>Jika ini pertama kali kamu membuka VSCode, kamu akan melihat tampilan editor kosong siap digunakan untuk menulis kode.</li>
+    </ul>
+
+    <h2>Langkah 3: Membuat File HTML Baru</h2>
+    <ul>
+        <li>Buat Folder untuk Proyekmu</li>
+        <li>Buat sebuah folder di komputer untuk menyimpan proyek HTML kamu, misalnya "MyFirstWebsite".</li>
+        <li>Buat File HTML Baru</li>
+        <li>Klik <strong>File</strong> > <strong>New File</strong> atau tekan <code>Ctrl + N</code> (Windows) atau <code>Cmd + N</code> (Mac).</li>
+        <li>Setelah itu, pilih <strong>File</strong> > <strong>Save As</strong>, dan simpan dengan nama <code>index.html</code> di folder yang baru kamu buat.</li>
+    </ul>
+
+    <h2>Langkah 4: Menulis Kode HTML</h2>
+    <p>Menulis Kode HTML Dasar</p>
+    <p>Di dalam file <code>index.html</code>, salin dan tempel kode berikut:</p>
+
+    <pre>
+        <code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="id"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;Selamat Datang di Halaman Pertama Saya!&lt;/h1&gt;
+            &lt;p&gt;Ini adalah paragraf pertama saya di HTML. Saya belajar membuat halaman web menggunakan Visual Studio Code.&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code>
+            </pre>
+
+    <h3>Penjelasan Kode:</h3>
+    <ul>
+        <li><code>&lt;!DOCTYPE html&gt;</code>: Memberitahu browser bahwa dokumen ini adalah dokumen HTML.</li>
+        <li><code>&lt;html lang="id"&gt;</code>: Menandakan bahwa halaman ini menggunakan bahasa Indonesia.</li>
+        <li><code>&lt;head&gt;</code>: Berisi informasi metadata tentang halaman web, seperti judul halaman.</li>
+        <li><code>&lt;body&gt;</code>: Tempat semua konten halaman web seperti teks, gambar, dan lainnya ditampilkan.</li>
+    </ul>
+
+    <h2>Langkah 5: Menyimpan dan Melihat Halaman Web</h2>
+    <ul>
+        <li>Simpan File HTML</li>
+        <li>Pastikan kamu sudah menyimpan file dengan memilih <strong>File</strong> > <strong>Save</strong> atau tekan <code>Ctrl + S</code> (Windows) atau <code>Cmd + S</code> (Mac).</li>
+        <li>Buka Halaman di Browser</li>
+        <li>Buka folder tempat kamu menyimpan file <code>index.html</code>.</li>
+        <li>Klik dua kali pada file <code>index.html</code>. Ini akan membuka file tersebut di browser default kamu.</li>
+        <li>Kamu akan melihat tampilan seperti berikut:</li>
+        <ul>
+            <li>Judul halaman akan terlihat di tab browser.</li>
+            <li>Teks "Selamat Datang di Halaman Pertama Saya!" akan ditampilkan sebagai judul besar (Heading).</li>
+            <li>Paragraf pertama akan muncul di bawahnya.</li>
+        </ul>
+    </ul>
+
+    <h2>Langkah 6: Mengedit dan Melihat Perubahan</h2>
+    <ul>
+        <li>Mengedit Kode di VSCode</li>
+        <li>Setiap kali kamu membuat perubahan pada kode HTML di VSCode, cukup tekan <code>Ctrl + S</code> (Windows) atau <code>Cmd + S</code> (Mac) untuk menyimpannya.</li>
+        <li>Lihat Hasil Perubahan</li>
+        <li>Setelah menyimpan file, kembali ke browser dan tekan <code>F5</code> atau <strong>Refresh</strong> untuk melihat perubahan yang baru saja kamu buat.</li>
+   </ul>
+
+    <h2>Langkah 7: Menggunakan Fitur Tambahan di VSCode</h2>
+    <ul>
+        <li><strong>Auto-completion</strong>: VSCode akan memberikan saran otomatis untuk tag HTML yang ingin kamu tulis, sehingga kamu tidak perlu mengetiknya satu per satu.</li>
+        <li><strong>Highlighting</strong>: Kode yang kamu tulis akan diberi warna yang berbeda untuk elemen-elemen HTML, sehingga lebih mudah dibaca dan dipahami.</li>
+        <li><strong>Live Server</strong>: Jika kamu ingin melihat hasil HTML secara langsung tanpa harus membuka browser manual, kamu bisa menginstal ekstensi <strong>Live Server</strong> di VSCode untuk melihat perubahan secara langsung saat kamu mengetik.</li>
+    </ul>
+
+    <h2>Langkah 8: Melanjutkan Belajar HTML</h2>
+    <p>Setelah kamu berhasil membuat halaman pertama menggunakan VSCode, kamu bisa melanjutkan untuk belajar elemen-elemen HTML lainnya seperti:</p>
+    <ul>
+        <li><strong>Formulir</strong>: Membuat formulir interaktif.</li>
+        <li><strong>Tabel</strong>: Menyusun data dalam bentuk tabel.</li>
+        <li><strong>Gambar dan Video</strong>: Menyisipkan media seperti gambar dan video ke dalam halaman web.</li>
+        <li><strong>CSS</strong>: Menambahkan styling dan desain menggunakan CSS.</li>
+    </ul>
+    
+    <h2>Kesimpulan</h2>
+    <p>Dengan menggunakan Visual Studio Code (VSCode), kamu bisa belajar HTML secara efisien dan efektif. Editor ini memberikan banyak fitur canggih untuk membantu kamu menulis kode dengan lebih cepat dan tepat. Setelah membuat halaman pertama, kamu dapat terus mengembangkan kemampuanmu dengan menambahkan lebih banyak elemen HTML dan menghubungkannya dengan CSS atau JavaScript.</p>
+
+    <p>Selamat belajar HTML, dan semoga tutorial ini membantu kamu memulai perjalananmu dalam dunia pengembangan web!</p>
+    <br>
+        <a href="#intro" class="btn-prev">&larr; Previous</a>
+        <a href="#basic" class="btn-next">Next &rarr;</a>
+    </section>
+
+    <section id="basic" class="content hidden">
+        <h1>Penjelasan Lengkap tentang HTML Dasar</h1>
+    
+        <h3>1. Dokumen HTML</h3>
+        <p>Setiap dokumen HTML harus diawali dengan deklarasi jenis dokumen: <code>&lt;!DOCTYPE html&gt;</code>.
+            Ini memberitahukan browser bahwa dokumen ini menggunakan HTML5.</p>
+        <p>Dokumen HTML itu sendiri dimulai dengan tag <code>&lt;html&gt;</code> dan diakhiri dengan <code>&lt;/html&gt;</code>.</p>
+        <p>Bagian yang terlihat dari halaman HTML berada di antara tag <code>&lt;body&gt;</code> dan <code>&lt;/body&gt;</code>.</p>
+    
+        <h3>Contoh Dasar HTML</h3>
+        <pre><code>&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;body&gt;
+    
+    &lt;h1&gt;Judul Pertama Saya&lt;/h1&gt;
+    &lt;p&gt;Paragraf pertama saya.&lt;/p&gt;
+    
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+    
+        <p><strong>Penjelasan Kode:</strong></p>
+        <ul>
+            <li><code>&lt;!DOCTYPE html&gt;</code>: Mendeklarasikan bahwa ini adalah dokumen HTML5.</li>
+            <li><code>&lt;html&gt;</code> dan <code>&lt;/html&gt;</code>: Membuka dan menutup dokumen HTML.</li>
+            <li><code>&lt;body&gt;</code> dan <code>&lt;/body&gt;</code>: Menandakan bagian yang akan ditampilkan pada browser.</li>
+            <li><code>&lt;h1&gt;</code>: Menandakan judul tingkat pertama yang besar.</li>
+            <li><code>&lt;p&gt;</code>: Digunakan untuk menulis paragraf.</li>
+        </ul>
+    
+        <br>
+        <h3>2. Deklarasi &lt;!DOCTYPE&gt;</h3>
+        <p>Deklarasi <code>&lt;!DOCTYPE&gt;</code> menunjukkan tipe dokumen dan membantu browser untuk menampilkan halaman web dengan benar. Ini hanya muncul sekali, tepat di atas tag HTML pertama.</p>
+    
+        <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+    
+        <br>
+        <h3>3. Judul dalam HTML (Headings)</h3>
+        <p>Judul dalam HTML ditandai dengan tag <code>&lt;h1&gt;</code> hingga <code>&lt;h6&gt;</code>.</p>
+        <p><code>&lt;h1&gt;</code> digunakan untuk judul yang paling penting, sementara <code>&lt;h6&gt;</code> digunakan untuk judul yang paling kecil.</p>
+    
+        <h3>Contoh Judul</h3>
+        <pre><code>&lt;h1&gt;Ini adalah Judul 1&lt;/h1&gt;
+    &lt;h2&gt;Ini adalah Judul 2&lt;/h2&gt;
+    &lt;h3&gt;Ini adalah Judul 3&lt;/h3&gt;
+    &lt;h4&gt;Ini adalah Judul 4&lt;/h4&gt;
+    &lt;h5&gt;Ini adalah Judul 5&lt;/h5&gt;
+    &lt;h6&gt;Ini adalah Judul 6&lt;/h6&gt;</code></pre>
+    
+        <br>
+        <h3>4. Paragraf dalam HTML</h3>
+        <p>Paragraf dalam HTML ditandai dengan tag <code>&lt;p&gt;</code>. Setiap teks yang ingin kamu pisahkan menjadi satu blok teks dapat ditulis di dalam tag ini.</p>
+    
+        <h3>Contoh Paragraf</h3>
+        <pre><code>&lt;p&gt;Ini adalah paragraf pertama.&lt;/p&gt;
+    &lt;p&gt;Ini adalah paragraf kedua.&lt;/p&gt;</code></pre>
+    
+        <br>
+        <h3>5. Tautan (Links) dalam HTML</h3>
+        <p>Tautan dalam HTML didefinisikan dengan tag <code>&lt;a&gt;</code>. Atribut <code>href</code> digunakan untuk menentukan tujuan dari tautan tersebut.</p>
+    
+        <h3>Contoh Tautan</h3>
+        <pre><code>&lt;a href="https://www.w3schools.com"&gt;Ini adalah sebuah tautan&lt;/a&gt;</code></pre>
+    
+        <br>
+        <h3>6. Gambar dalam HTML</h3>
+        <p>Gambar di HTML ditandai dengan tag <code>&lt;img&gt;</code>. Untuk menampilkan gambar, kamu harus memberikan atribut <code>src</code> (sumber gambar), <code>alt</code> (teks alternatif untuk gambar), serta ukuran <code>width</code> dan <code>height</code>.</p>
+    
+        <h3>Contoh Gambar</h3>
+        <pre><code>&lt;img src="w3schools.jpg" alt="W3Schools.com" width="104" height="142"&gt;</code></pre>
+    
+        <h3>7. Melihat Sumber HTML</h3>
+        <p>Untuk melihat kode sumber HTML dari halaman web, kamu bisa:</p>
+        <ul>
+            <li>Tekan <code>CTRL + U</code> pada halaman HTML di browser, atau klik kanan pada halaman dan pilih "View Page Source".</li>
+            <li>Klik kanan pada elemen (atau area kosong), lalu pilih "Inspect" untuk melihat elemen HTML dan CSS.</li>
+        </ul>
+    
+        <h3>Kesimpulan</h3>
+        <ul>
+            <li>HTML adalah bahasa markup yang digunakan untuk membuat halaman web.</li>
+            <li>Setiap dokumen HTML dimulai dengan deklarasi <code>&lt;!DOCTYPE html&gt;</code>, diikuti dengan tag <code>&lt;html&gt;</code> dan <code>&lt;body&gt;</code>.</li>
+            <li>Melalui teknik seperti "View Source" dan "Inspect", kita bisa belajar lebih banyak tentang bagaimana halaman web dibangun.</li>
+        </ul>
+    
+        <br><br>
+        <a href="#editors" class="btn-prev">&larr; Previous</a>
+        <a href="#elements" class="btn-next">Next &rarr;</a>
+    </section>
+    
+
+    <section id="elements" class="content hidden">
+        <h1>Elemen HTML</h1>
+<p>Elemen HTML adalah unit dasar dari struktur sebuah halaman web yang terdiri dari tag awal, konten, dan tag akhir. Elemen ini digunakan untuk mendefinisikan berbagai jenis bagian dalam halaman web, seperti teks, gambar, tautan, dan elemen interaktif lainnya. Tag awal menunjukkan jenis elemen yang dimulai, konten berisi data yang ingin ditampilkan, dan tag akhir menandakan bahwa elemen tersebut telah selesai. Dengan menggunakan elemen-elemen HTML ini, pengembang dapat membangun struktur dan tata letak halaman web yang sesuai dengan kebutuhan pengguna.</p>
+
+<h2>Struktur Elemen HTML</h2>
+<p>Elemen HTML adalah segalanya mulai dari tag awal hingga tag akhir, yang terlihat seperti ini:</p>
+
+<pre>
+<tagname>Konten berada di sini...</tagname>
+</pre>
+
+<h2>Contoh Elemen HTML</h2>
+<pre>
+<h1>Judul Pertama Saya</h1>
+<p>Paragraf pertama saya.</p>
+</pre>
+
+<h3>Penjelasan:</h3>
+<ul>
+    <li><strong>Tag Awal:</strong> &lt;h1&gt; dan &lt;p&gt; adalah tag awal yang menandakan dimulainya elemen tersebut.</li>
+    <li><strong>Konten Elemen:</strong> "Judul Pertama Saya" dan "Paragraf pertama saya" adalah konten yang berada di dalam tag.</li>
+    <li><strong>Tag Akhir:</strong> &lt;/h1&gt; dan &lt;/p&gt; adalah tag akhir yang menandakan berakhirnya elemen tersebut.</li>
+</ul>
+
+
+<h3>Tabel Penjelasan:</h3>
+<table border="1">
+    <tr>
+        <th>Tag Awal</th>
+        <th>Konten Elemen</th>
+        <th>Tag Akhir</th>
+    </tr>
+    <tr>
+        <td>&lt;h1&gt;</td>
+        <td>Judul Pertama Saya</td>
+        <td>&lt;/h1&gt;</td>
+    </tr>
+    <tr>
+        <td>&lt;p&gt;</td>
+        <td>Paragraf pertama saya</td>
+        <td>&lt;/p&gt;</td>
+    </tr>
+</table>
+
+<h2>Elemen Kosong (Empty Elements)</h2>
+<p>Beberapa elemen HTML tidak memiliki konten, dan ini disebut <strong>elemen kosong</strong> (empty elements). Elemen kosong tidak memerlukan tag penutup. Contoh elemen kosong adalah tag &lt;br&gt; yang digunakan untuk membuat pemisah baris baru dalam teks.</p>
+
+<pre>
+<p>Ini adalah paragraf dengan <br> pemisah baris.</p>
+</pre>
+
+<h2>Elemen HTML yang Ter-nest (Bersarang)</h2>
+<p>Elemen HTML dapat bersarang, artinya sebuah elemen bisa berada di dalam elemen lainnya. Semua dokumen HTML terdiri dari elemen-elemen yang bersarang.</p>
+
+<h3>Contoh Dokumen HTML Sederhana</h3>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Judul Pertama Saya&lt;/h1&gt;
+    &lt;p&gt;Paragraf pertama saya.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h3>Penjelasan Contoh:</h3>
+<ul>
+    <li><strong>Tag &lt;html&gt;:</strong> Elemen ini adalah elemen utama yang mendefinisikan keseluruhan dokumen HTML. Memiliki tag awal &lt;html&gt; dan tag akhir &lt;/html&gt;.</li>
+    <li><strong>Tag &lt;body&gt;:</strong> Elemen ini mendefinisikan tubuh (body) dari dokumen. Terletak di dalam elemen &lt;html&gt;, dengan tag awal &lt;body&gt; dan tag akhir &lt;/body&gt;.</li>
+    <li><strong>Tag &lt;h1&gt;:</strong> Elemen ini digunakan untuk mendefinisikan judul utama dalam dokumen. Terletak di dalam elemen &lt;body&gt;, dengan tag awal &lt;h1&gt; dan tag akhir &lt;/h1&gt;.</li>
+    <li><strong>Tag &lt;p&gt;:</strong> Elemen ini digunakan untuk mendefinisikan paragraf. Terletak di dalam elemen &lt;body&gt;, dengan tag awal &lt;p&gt; dan tag akhir &lt;/p&gt;.</li>
+</ul>
+
+<h2>Jangan Lewatkan Tag Akhir</h2>
+<p>Beberapa elemen HTML akan tetap tampil dengan benar meskipun tag akhir tidak ditulis, tetapi ini <strong>tidak disarankan</strong> karena bisa menyebabkan hasil yang tidak diinginkan dan kesalahan dalam penampilan halaman.</p>
+
+<h3>Contoh:</h3>
+<pre>
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;Ini adalah paragraf
+    &lt;p&gt;Ini adalah paragraf
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Walaupun browser akan menampilkan teks dalam dua paragraf terpisah, <strong>selalu pastikan untuk menulis tag akhir</strong>. Jika tag akhir terlewat, perilaku yang tidak terduga dapat terjadi.</p>
+
+<h2>Elemen Kosong HTML</h2>
+<p>Elemen kosong adalah elemen yang tidak memiliki konten dan tidak memerlukan tag penutup. Salah satu contohnya adalah elemen &lt;br&gt;, yang digunakan untuk memecah baris di dalam teks.</p>
+
+<pre>
+<p>Ini adalah <br> paragraf dengan pemisah baris.</p>
+</pre>
+
+<h2>HTML Tidak Sensitif Terhadap Huruf Besar/Kecil</h2>
+<p>Tag HTML tidak membedakan huruf besar dan kecil. Misalnya, tag &lt;P&gt; dan &lt;p&gt; dianggap sama.</p>
+
+<p>Namun, standar HTML tidak mengharuskan tag dalam huruf kecil, tetapi <strong>W3C</strong> merekomendasikan penggunaan huruf kecil untuk konsistensi. Untuk dokumen yang lebih ketat seperti <strong>XHTML</strong>, tag harus menggunakan huruf kecil.</p>
+
+<h3>Contoh yang Benar:</h3>
+<pre>
+&lt;p&gt;Ini adalah paragraf dengan huruf kecil pada tag.&lt;/p&gt;
+</pre>
+
+<h2>Referensi Tag HTML</h2>
+<p>Berikut adalah beberapa tag HTML yang paling umum dan penjelasannya:</p>
+
+<table border="1">
+    <tr>
+        <th>Tag</th>
+        <th>Deskripsi</th>
+    </tr>
+    <tr>
+        <td>&lt;html&gt;</td>
+        <td>Mendefinisikan elemen root dari dokumen HTML.</td>
+    </tr>
+    <tr>
+        <td>&lt;body&gt;</td>
+        <td>Mendefinisikan bagian tubuh dokumen.</td>
+    </tr>
+    <tr>
+        <td>&lt;h1&gt; hingga &lt;h6&gt;</td>
+        <td>Mendefinisikan judul halaman dengan tingkat keutamaan (h1 untuk judul terbesar).</td>
+    </tr>
+    <tr>
+        <td>&lt;p&gt;</td>
+        <td>Mendefinisikan paragraf.</td>
+    </tr>
+    <tr>
+        <td>&lt;a&gt;</td>
+        <td>Mendefinisikan hyperlink (tautan) ke halaman lain.</td>
+    </tr>
+    <tr>
+        <td>&lt;ul&gt;</td>
+        <td>Mendefinisikan daftar tidak terurut.</td>
+    </tr>
+    <tr>
+        <td>&lt;ol&gt;</td>
+        <td>Mendefinisikan daftar terurut.</td>
+    </tr>
+    <tr>
+        <td>&lt;li&gt;</td>
+        <td>Mendefinisikan item dalam daftar.</td>
+    </tr>
+</table>
+<br>
+<a href="#basic" class="btn-prev">&larr; Previous</a>
+<a href="#attributes" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="attributes" class="content hidden">
+    <h1>Atribut HTML</h1>
+    <p>Atribut HTML memberikan informasi tambahan tentang elemen HTML.</p>
+
+    <h4>Atribut href</h4>
+    <p>Tag <code>&lt;a&gt;</code> mendefinisikan hyperlink. Atribut <code>href</code> menentukan URL halaman yang akan dituju oleh link.</p>
+   
+    <pre>
+&lt;a href="https://www.w3schools.com"&gt;Kunjungi W3Schools&lt;/a&gt;
+    </pre>
+
+    <p>Atribut <code>href</code> digunakan untuk mendefinisikan alamat URL tujuan ketika pengguna mengklik sebuah hyperlink. Atribut ini umumnya digunakan dalam tag <code>&lt;a&gt;</code>.</p>
+
+    <h4>Atribut src</h4>
+    <p>Tag <code>&lt;img&gt;</code> digunakan untuk menyisipkan gambar dalam halaman HTML. Atribut <code>src</code> menentukan jalur gambar yang akan ditampilkan.</p>
+
+    <pre>
+&lt;img src="img_girl.jpg"&gt;
+    </pre>
+
+    <p>Ada dua cara untuk menentukan URL dalam atribut <code>src</code>:</p>
+    <ul>
+        <li><strong>URL Absolut</strong>: Menautkan gambar eksternal yang dihosting di situs lain. Contoh: <code>src="https://www.w3schools.com/images/img_girl.jpg"</code>.</li>
+        <li><strong>URL Relatif</strong>: Menautkan gambar yang dihosting di dalam situs web. Contoh: <code>src="img_girl.jpg"</code> atau <code>src="/images/img_girl.jpg"</code>.</li>
+    </ul>
+
+    <h4>Atribut width dan height</h4>
+    <p>Tag <code>&lt;img&gt;</code> sebaiknya juga mengandung atribut <code>width</code> dan <code>height</code>, yang menentukan lebar dan tinggi gambar (dalam piksel).</p>
+
+    <pre>
+&lt;img src="img_girl.jpg" width="500" height="600"&gt;
+    </pre>
+
+    <p>Atribut <code>width</code> dan <code>height</code> mengatur ukuran gambar yang ditampilkan. Anda dapat menyesuaikan keduanya agar sesuai dengan desain halaman web Anda.</p>
+
+    <h4>Atribut alt</h4>
+    <p>Atribut <code>alt</code> yang wajib ada untuk tag <code>&lt;img&gt;</code> menentukan teks alternatif untuk gambar, jika gambar tidak dapat ditampilkan.</p>
+    <pre>
+&lt;img src="img_girl.jpg" alt="Gadis dengan jaket"&gt;
+    </pre>
+    <p>Atribut <code>alt</code> membantu pengguna dengan gangguan penglihatan, atau ketika gambar tidak dapat dimuat, karena akan ditampilkan teks alternatif yang menggambarkan gambar tersebut.</p>
+
+    <h4>Atribut style</h4>
+    <p>Atribut <code>style</code> digunakan untuk menambahkan gaya pada elemen, seperti warna, font, ukuran, dan lainnya.</p>
+    <pre>
+&lt;p style="color:red;"&gt;Ini adalah paragraf merah.&lt;/p&gt;
+    </pre>
+    <p>Atribut <code>style</code> memungkinkan Anda untuk menambahkan CSS langsung ke elemen HTML. Anda dapat mengubah berbagai gaya visual seperti warna, margin, font, dll.</p>
+
+    <h4>Atribut lang</h4>
+    <p>Anda sebaiknya selalu menyertakan atribut <code>lang</code> di dalam tag <code>&lt;html&gt;</code>, untuk mendeklarasikan bahasa halaman Web.</p>
+    <pre>
+&lt;html lang="id"&gt;
+    </pre>
+    <p>Atribut <code>lang</code> memberi tahu browser dan mesin pencari bahasa yang digunakan di halaman tersebut. Ini berguna untuk meningkatkan aksesibilitas dan SEO halaman.</p>
+
+    <h4>Atribut title</h4>
+    <p>Atribut <code>title</code> mendefinisikan informasi tambahan tentang elemen. Nilai atribut <code>title</code> akan ditampilkan sebagai tooltip ketika Anda mengarahkan kursor ke elemen.</p>
+    <pre>
+&lt;p title="Ini adalah tooltip"&gt;Ini adalah paragraf.&lt;/p&gt;
+    </pre>
+    <p>Atribut <code>title</code> sering digunakan untuk memberikan keterangan lebih lanjut mengenai elemen, yang dapat dilihat pengguna ketika mereka mengarahkan kursor ke elemen tersebut.</p>
+
+    <h4>Saran: Gunakan Atribut dengan Huruf Kecil</h4>
+    <p>Standar HTML tidak mewajibkan penggunaan huruf kecil untuk nama atribut, tetapi W3C merekomendasikan penggunaan huruf kecil dalam HTML dan mengharuskannya dalam tipe dokumen yang lebih ketat seperti XHTML.</p>
+
+    <h4>Saran: Selalu Gunakan Tanda Kutip untuk Nilai Atribut</h4>
+    <p>W3C merekomendasikan penggunaan tanda kutip dalam HTML, dan mengharuskannya dalam tipe dokumen yang lebih ketat seperti XHTML.</p>
+    <pre>
+&lt;a href="https://www.w3schools.com/html/"&gt;Kunjungi tutorial HTML kami&lt;/a&gt;
+    </pre>
+    <p>Ini adalah cara yang benar untuk menulis atribut dengan nilai yang mengandung spasi atau karakter khusus.</p>
+
+    <h4>Tanda Kutip Tunggal atau Ganda?</h4>
+    <p>Tanda kutip ganda di sekitar nilai atribut adalah yang paling umum dalam HTML, tetapi tanda kutip tunggal juga bisa digunakan.</p>
+    <pre>
+&lt;p title='John "ShotGun" Nelson'&gt;
+    </pre>
+    <p>Anda bisa memilih untuk menggunakan tanda kutip tunggal atau ganda sesuai dengan kebutuhan. Jika nilai atribut mengandung tanda kutip ganda, lebih baik menggunakan tanda kutip tunggal.</p>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>Semua elemen HTML dapat memiliki atribut.</li>
+        <li>Atribut <code>href</code> pada <code>&lt;a&gt;</code> menentukan URL halaman yang dituju oleh link.</li>
+        <li>Atribut <code>src</code> pada <code>&lt;img&gt;</code> menentukan jalur gambar yang akan ditampilkan.</li>
+        <li>Atribut <code>width</code> dan <code>height</code> pada <code>&lt;img&gt;</code> memberikan informasi ukuran gambar.</li>
+        <li>Atribut <code>alt</code> pada <code>&lt;img&gt;</code> menyediakan teks alternatif untuk gambar.</li>
+        <li>Atribut <code>style</code> digunakan untuk menambahkan gaya pada elemen, seperti warna, font, ukuran, dan lainnya.</li>
+        <li>Atribut <code>lang</code> pada tag <code>&lt;html&gt;</code> mendeklarasikan bahasa halaman Web.</li>
+        <li>Atribut <code>title</code> mendefinisikan informasi tambahan tentang elemen.</li>
+    </ul>
+    <a href="#elements" class="btn-prev">&larr; Previous</a>
+    <a href="#headings" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="headings" class="content hidden">
+    <h1>Judul HTML</h1>
+    <p>Judul HTML adalah judul atau subjudul yang ingin Anda tampilkan di halaman web. Penggunaan judul yang tepat sangat penting dalam memberikan struktur pada dokumen web Anda dan membantu mesin pencari memahami konten halaman.</p>
+
+    <h4>Contoh Judul:</h4>
+    <ul>
+        <li>Heading 1</li>
+        <li>Heading 2</li>
+        <li>Heading 3</li>
+        <li>Heading 4</li>
+        <li>Heading 5</li>
+        <li>Heading 6</li>
+    </ul>
+    <p>Judul ini memberikan hirarki informasi pada halaman Anda. Sebagai contoh, <code>&lt;h1&gt;</code> biasanya digunakan untuk judul utama halaman, sementara <code>&lt;h6&gt;</code> lebih sering digunakan untuk judul bagian kecil atau subjudul yang kurang penting.</p>
+
+    <h4>Tag Judul HTML</h4>
+    <p>Judul HTML didefinisikan dengan tag <code>&lt;h1&gt;</code> hingga <code>&lt;h6&gt;</code>. Semakin kecil nomor tag, semakin kurang penting judul tersebut dalam hierarki konten halaman.</p>
+    <pre>
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;
+    </pre>
+    <p>Berikut adalah contoh penggunaan tag <code>&lt;h1&gt;</code> hingga <code>&lt;h6&gt;</code> di dalam HTML. Anda sebaiknya mengikuti urutan dari <code>&lt;h1&gt;</code> hingga <code>&lt;h6&gt;</code> untuk memberikan struktur yang jelas pada halaman web.</p>
+
+    <p><strong>Catatan:</strong> Browser secara otomatis menambahkan beberapa ruang putih (margin) sebelum dan sesudah sebuah judul, untuk memberi tampilan yang lebih rapi dan terpisah antara konten.</p>
+
+    <h4>Pentingnya Judul</h4>
+    <p>Judul-judul ini tidak hanya membantu pengguna untuk memahami konten halaman dengan cepat, tetapi juga penting bagi mesin pencari. Mesin pencari seperti Google menggunakan judul untuk mengindeks halaman dan menentukan relevansi halaman dengan kata kunci pencarian.</p>
+    <p>Selain itu, judul-judul ini sangat membantu pengguna yang memindai halaman. Sebagai contoh, pengguna yang sedang mencari informasi tertentu akan lebih mudah menemukan bagian yang relevan jika judul-judul digunakan dengan tepat.</p>
+    <pre>
+&lt;h1&gt;Judul Utama&lt;/h1&gt;
+&lt;h2&gt;Subjudul Sekunder&lt;/h2&gt;
+&lt;h3&gt;Subbagian Terkait&lt;/h3&gt;
+    </pre>
+    <p>Gunakan <code>&lt;h1&gt;</code> untuk judul utama halaman, diikuti dengan <code>&lt;h2&gt;</code> untuk subjudul, dan <code>&lt;h3&gt;</code> hingga <code>&lt;h6&gt;</code> untuk subbagian yang lebih kecil. Menjaga hirarki ini akan sangat membantu dalam memudahkan navigasi pengguna dan meningkatkan SEO halaman Anda.</p>
+
+    <p><strong>Catatan:</strong> Jangan gunakan tag heading hanya untuk membuat teks lebih besar atau tebal. Tujuan utama tag <code>&lt;h1&gt;</code> hingga <code>&lt;h6&gt;</code> adalah untuk struktur dokumen, bukan untuk dekorasi teks.</p>
+
+    <h4>Menentukan Ukuran Judul</h4>
+    <p>Setiap judul HTML memiliki ukuran default sesuai dengan tingkatannya. Namun, jika Anda ingin mengubah ukuran judul secara manual, Anda dapat menggunakan atribut <code>style</code> dengan properti CSS <code>font-size</code>.</p>
+    <pre>
+&lt;h1 style="font-size:60px;"&gt;Heading 1&lt;/h1&gt;
+    </pre>
+    <p>Di sini, ukuran font judul <code>&lt;h1&gt;</code> telah diubah menjadi 60 piksel. Anda bisa mengubah ukuran judul dengan cara yang sama, menyesuaikan dengan desain halaman yang Anda inginkan.</p>
+
+    <h4>Referensi Tag HTML</h4>
+    <p>W3Schools menyediakan referensi lengkap tentang tag HTML dan atribut-atributnya. Berikut adalah beberapa tag dasar yang digunakan dalam HTML:</p>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;html&gt;</td>
+            <td>Menentukan akar dari dokumen HTML, yang mencakup seluruh konten halaman.</td>
+        </tr>
+        <tr>
+            <td>&lt;body&gt;</td>
+            <td>Menentukan bagian tubuh dari dokumen HTML yang berisi semua konten yang ditampilkan di browser.</td>
+        </tr>
+        <tr>
+            <td>&lt;h1&gt; hingga &lt;h6&gt;</td>
+            <td>Menentukan tingkat kepentingan dari judul dalam dokumen. <code>&lt;h1&gt;</code> adalah yang paling penting, dan <code>&lt;h6&gt;</code> yang paling tidak penting.</td>
+        </tr>
+    </table>
+<br>
+    <a href="#attributes" class="btn-prev">&larr; Previous</a>
+    <a href="#paragraph" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="paragraphs" class="content hidden">
+    <h1>Paragraf HTML</h1>
+    <p>Paragraf selalu dimulai pada baris baru, dan biasanya berupa blok teks.</p>
+
+    <h4>Paragraf HTML</h4>
+    <p>Elemen <code>&lt;p&gt;</code> dalam HTML digunakan untuk mendefinisikan sebuah paragraf.</p>
+    <p>Paragraf selalu dimulai pada baris baru, dan browser secara otomatis menambahkan beberapa ruang putih (margin) sebelum dan sesudah paragraf.</p>
+
+    <h4>Contoh:</h4>
+    <pre>
+&lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+&lt;p&gt;Ini adalah paragraf lain.&lt;/p&gt;
+    </pre>
+
+    <h4>Tampilan HTML</h4>
+    <p>Anda tidak dapat memastikan bagaimana HTML akan ditampilkan. Layar besar atau kecil, serta jendela yang diubah ukurannya akan menghasilkan tampilan yang berbeda.</p>
+    <p>Dengan HTML, Anda tidak dapat mengubah tampilan hanya dengan menambahkan ruang ekstra atau baris ekstra dalam kode HTML Anda.</p>
+    <p>Browser akan secara otomatis menghapus ruang dan baris ekstra ketika halaman ditampilkan:</p>
+    <pre>
+&lt;p&gt;
+Paragraf ini
+memiliki banyak baris
+dalam kode sumber,
+tetapi browser
+mengabaikannya.
+&lt;/p&gt;
+
+&lt;p&gt;
+Paragraf ini
+memiliki banyak ruang
+dalam kode sumber,
+tetapi browser
+mengabaikannya.
+&lt;/p&gt;
+    </pre>
+
+    <h4>Garis Horizontal HTML</h4>
+    <p>Tag <code>&lt;hr&gt;</code> mendefinisikan pemisah tematik dalam halaman HTML, dan sering kali ditampilkan sebagai garis horizontal.</p>
+    <p>Elemen <code>&lt;hr&gt;</code> digunakan untuk memisahkan konten (atau mendefinisikan perubahan) dalam halaman HTML:</p>
+    <pre>
+&lt;h1&gt;Ini adalah heading 1&lt;/h1&gt;
+&lt;p&gt;Ini adalah beberapa teks.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Ini adalah heading 2&lt;/h2&gt;
+&lt;p&gt;Ini adalah teks lain.&lt;/p&gt;
+&lt;hr&gt;
+    </pre>
+    <p>Tag <code>&lt;hr&gt;</code> adalah tag kosong, yang berarti bahwa ia tidak memiliki tag penutup.</p>
+
+    <h4>Garis Baru HTML</h4>
+    <p>Elemen <code>&lt;br&gt;</code> dalam HTML mendefinisikan pemecah baris.</p>
+    <p>Gunakan <code>&lt;br&gt;</code> jika Anda ingin membuat pemecah baris (baris baru) tanpa memulai paragraf baru:</p>
+    <pre>
+&lt;p&gt;Ini adalah&lt;br&gt;paragraf&lt;br&gt;dengan pemecah baris.&lt;/p&gt;
+    </pre>
+    <p>Tag <code>&lt;br&gt;</code> adalah tag kosong, yang berarti bahwa ia tidak memiliki tag penutup.</p>
+
+    <h4>Masalah Puisi</h4>
+    <p>Puisi ini akan ditampilkan dalam satu baris:</p>
+    <pre>
+&lt;p&gt;
+  My Bonnie lies over the ocean.
+  My Bonnie lies over the sea.
+  My Bonnie lies over the ocean.
+  Oh, bring back my Bonnie to me.
+&lt;/p&gt;
+    </pre>
+
+    <h4>Solusi - Elemen HTML <code>&lt;pre&gt;</code></h4>
+    <p>Elemen <code>&lt;pre&gt;</code> dalam HTML mendefinisikan teks yang diformat sebelumnya.</p>
+    <p>Teks di dalam elemen <code>&lt;pre&gt;</code> ditampilkan dengan font lebar tetap (biasanya Courier), dan mempertahankan baik spasi maupun pemecah baris:</p>
+    <pre>
+&lt;pre&gt;
+  My Bonnie lies over the ocean.
+  My Bonnie lies over the sea.
+  My Bonnie lies over the ocean.
+  Oh, bring back my Bonnie to me.
+&lt;/pre&gt;
+    </pre>
+
+    <h4>Latihan</h4>
+    <p>? Benar atau Salah. Paragraf HTML selalu dimulai pada baris baru.</p>
+    <p><strong>Jawaban:</strong> Benar</p>
+
+    <h4>Referensi Tag HTML</h4>
+    <p>Referensi tag W3Schools berisi informasi tambahan tentang elemen HTML dan atribut-atributnya:</p>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;p&gt;</td>
+            <td>Mendefinisikan sebuah paragraf</td>
+        </tr>
+        <tr>
+            <td>&lt;hr&gt;</td>
+            <td>Mendefinisikan perubahan tematik dalam konten</td>
+        </tr>
+        <tr>
+            <td>&lt;br&gt;</td>
+            <td>Menyisipkan pemecah baris tunggal</td>
+        </tr>
+        <tr>
+            <td>&lt;pre&gt;</td>
+            <td>Mendefinisikan teks yang diformat sebelumnya</td>
+        </tr>
+    </table>
+<br>
+    <a href="#headings" class="btn-prev">&larr; Previous</a>
+    <a href="#styles" class="btn-next">Next &rarr;</a>
+</section>
+
+
+<section id="styles" class="content hidden">
+    <h1>Gaya HTML</h1>
+    <p>Atribut gaya HTML digunakan untuk menambahkan gaya pada elemen, seperti warna, font, ukuran, dan lainnya.</p>
+
+    <h4>Contoh:</h4>
+    <pre>
+&lt;p style="color:red;"&gt;Saya Merah&lt;/p&gt;
+&lt;p style="color:blue;"&gt;Saya Biru&lt;/p&gt;
+&lt;p style="font-size:30px;"&gt;Saya Besar&lt;/p&gt;
+    </pre>
+
+    <h4>Atribut Gaya HTML</h4>
+    <p>Menentukan gaya pada elemen HTML dapat dilakukan dengan atribut <code>style</code>.</p>
+    <p>Atribut gaya HTML memiliki sintaksis berikut:</p>
+    <pre>
+&lt;tagname style="property:value;"&gt;
+    </pre>
+    <p>Properti adalah properti CSS, dan nilai adalah nilai CSS.</p>
+    <p>Anda akan mempelajari lebih lanjut tentang CSS di bagian tutorial selanjutnya.</p>
+
+    <h4>Warna Latar Belakang</h4>
+    <p>Properti <code>background-color</code> dalam CSS mendefinisikan warna latar belakang untuk elemen HTML.</p>
+    <p>Contoh: Mengatur warna latar belakang untuk halaman menjadi powderblue:</p>
+    <pre>
+&lt;body style="background-color:powderblue;"&gt;
+    &lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+&lt;/body&gt;
+    </pre>
+
+    <p>Contoh lain: Mengatur warna latar belakang untuk dua elemen berbeda:</p>
+    <pre>
+&lt;body&gt;
+    &lt;h1 style="background-color:powderblue;"&gt;Ini adalah heading&lt;/h1&gt;
+    &lt;p style="background-color:tomato;"&gt;Ini adalah paragraf.&lt;/p&gt;
+&lt;/body&gt;
+    </pre>
+
+    <h4>Warna Teks</h4>
+    <p>Properti <code>color</code> dalam CSS mendefinisikan warna teks untuk elemen HTML.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;h1 style="color:blue;"&gt;Ini adalah heading&lt;/h1&gt;
+&lt;p style="color:red;"&gt;Ini adalah paragraf.&lt;/p&gt;
+    </pre>
+
+    <h4>Font</h4>
+    <p>Properti <code>font-family</code> dalam CSS mendefinisikan font yang akan digunakan untuk elemen HTML.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;h1 style="font-family:verdana;"&gt;Ini adalah heading&lt;/h1&gt;
+&lt;p style="font-family:courier;"&gt;Ini adalah paragraf.&lt;/p&gt;
+    </pre>
+
+    <h4>Ukuran Teks</h4>
+    <p>Properti <code>font-size</code> dalam CSS mendefinisikan ukuran teks untuk elemen HTML.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;h1 style="font-size:300%;"&gt;Ini adalah heading&lt;/h1&gt;
+&lt;p style="font-size:160%;"&gt;Ini adalah paragraf.&lt;/p&gt;
+    </pre>
+
+    <h4>Perataan Teks</h4>
+    <p>Properti <code>text-align</code> dalam CSS mendefinisikan perataan horizontal teks untuk elemen HTML.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;h1 style="text-align:center;"&gt;Heading Terpusat&lt;/h1&gt;
+&lt;p style="text-align:center;"&gt;Paragraf Terpusat.&lt;/p&gt;
+    </pre>
+
+    <h4>Ringkasan Bab</h4>
+    <ul>
+        <li>Gunakan atribut <code>style</code> untuk memberikan gaya pada elemen HTML.</li>
+        <li>Gunakan <code>background-color</code> untuk warna latar belakang.</li>
+        <li>Gunakan <code>color</code> untuk warna teks.</li>
+        <li>Gunakan <code>font-family</code> untuk font teks.</li>
+        <li>Gunakan <code>font-size</code> untuk ukuran teks.</li>
+        <li>Gunakan <code>text-align</code> untuk perataan teks.</li>
+    </ul>
+    <br>
+    <a href="#paragraphs" class="btn-prev">&larr; Previous</a>
+    <a href="#formatting" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="formatting" class="content hidden">
+    <h1>Pemformatan Teks HTML</h1>
+    <p>HTML memiliki beberapa elemen untuk mendefinisikan teks dengan makna khusus.</p>
+
+    <h4>Contoh:</h4>
+    <p><b>Teks ini tebal</b></p>
+    <p><i>Teks ini miring</i></p>
+    <p><sub>Ini teks subskrip dan</sub><sup>ini teks superskrip</sup></p>
+
+    <h4>Elemen Pemformatan HTML</h4>
+    <p>Elemen pemformatan dirancang untuk menampilkan jenis teks khusus:</p>
+    <ul>
+        <li><code>&lt;b&gt;</code> - Teks tebal</li>
+        <li><code>&lt;strong&gt;</code> - Teks penting</li>
+        <li><code>&lt;i&gt;</code> - Teks miring</li>
+        <li><code>&lt;em&gt;</code> - Teks yang ditekankan</li>
+        <li><code>&lt;mark&gt;</code> - Teks yang diberi tanda atau disorot</li>
+        <li><code>&lt;small&gt;</code> - Teks yang lebih kecil</li>
+        <li><code>&lt;del&gt;</code> - Teks yang dihapus</li>
+        <li><code>&lt;ins&gt;</code> - Teks yang dimasukkan</li>
+        <li><code>&lt;sub&gt;</code> - Teks subskrip</li>
+        <li><code>&lt;sup&gt;</code> - Teks superskrip</li>
+    </ul>
+
+    <h4>Elemen <b> dan <strong></h4>
+    <p>Elemen <code>&lt;b&gt;</code> mendefinisikan teks yang tebal, tanpa memberikan makna tambahan.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;b&gt;Teks ini tebal&lt;/b&gt;
+    </pre>
+    <p>Elemen <code>&lt;strong&gt;</code> mendefinisikan teks yang sangat penting, dan konten di dalamnya biasanya ditampilkan dalam bentuk tebal.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;strong&gt;Teks ini penting!&lt;/strong&gt;
+    </pre>
+
+    <h4>Elemen <i> dan <em></h4>
+    <p>Elemen <code>&lt;i&gt;</code> mendefinisikan teks dalam suara atau mood alternatif. Teks di dalamnya biasanya ditampilkan dalam bentuk miring.</p>
+    <p>Tip: Tag <code>&lt;i&gt;</code> sering digunakan untuk menunjukkan istilah teknis, frasa dari bahasa lain, pemikiran, nama kapal, dan lainnya.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;i&gt;Teks ini miring&lt;/i&gt;
+    </pre>
+    <p>Elemen <code>&lt;em&gt;</code> mendefinisikan teks yang ditekankan. Teks di dalamnya biasanya ditampilkan dalam bentuk miring.</p>
+    <p>Tip: Pembaca layar akan mengucapkan kata-kata dalam <code>&lt;em&gt;</code> dengan penekanan, menggunakan tekanan verbal.</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;em&gt;Teks ini ditekankan&lt;/em&gt;
+    </pre>
+
+    <h4>Elemen <small></h4>
+    <p>Elemen <code>&lt;small&gt;</code> mendefinisikan teks yang lebih kecil:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;small&gt;Ini adalah teks yang lebih kecil.&lt;/small&gt;
+    </pre>
+
+    <h4>Elemen <mark></h4>
+    <p>Elemen <code>&lt;mark&gt;</code> mendefinisikan teks yang harus ditandai atau disorot:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;p&gt;Jangan lupa membeli &lt;mark&gt;susu&lt;/mark&gt; hari ini.&lt;/p&gt;
+    </pre>
+
+    <h4>Elemen <del></h4>
+    <p>Elemen <code>&lt;del&gt;</code> mendefinisikan teks yang telah dihapus dari dokumen. Browser biasanya akan menampilkan teks yang dihapus dengan garis tengah:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;p&gt;Warna favorit saya adalah &lt;del&gt;biru&lt;/del&gt; merah.&lt;/p&gt;
+    </pre>
+
+    <h4>Elemen <ins></h4>
+    <p>Elemen <code>&lt;ins&gt;</code> mendefinisikan teks yang telah dimasukkan ke dalam dokumen. Browser biasanya akan menampilkan teks yang dimasukkan dengan garis bawah:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;p&gt;Warna favorit saya adalah &lt;del&gt;biru&lt;/del&gt; &lt;ins&gt;merah&lt;/ins&gt;.&lt;/p&gt;
+    </pre>
+
+    <h4>Elemen <sub></h4>
+    <p>Elemen <code>&lt;sub&gt;</code> mendefinisikan teks subskrip. Teks subskrip muncul setengah karakter lebih rendah dari garis normal, dan kadang-kadang ditampilkan dengan font yang lebih kecil. Teks subskrip sering digunakan untuk rumus kimia, seperti H<sub>2</sub>O:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;p&gt;Ini adalah teks &lt;sub&gt;subskrip&lt;/sub&gt;.&lt;/p&gt;
+    </pre>
+
+    <h4>Elemen <sup></h4>
+    <p>Elemen <code>&lt;sup&gt;</code> mendefinisikan teks superskrip. Teks superskrip muncul setengah karakter lebih tinggi dari garis normal, dan kadang-kadang ditampilkan dengan font yang lebih kecil. Teks superskrip sering digunakan untuk catatan kaki, seperti WWW[1]:</p>
+    <p>Contoh:</p>
+    <pre>
+&lt;p&gt;Ini adalah teks &lt;sup&gt;superskrip&lt;/sup&gt;.&lt;/p&gt;
+    </pre>
+
+    <h4>Latihan</h4>
+    <p>Benar atau Salah: Dua elemen HTML berikut ini membuat teks menjadi tebal, yaitu?</p>
+    <ul>
+        <li><code>&lt;em&gt;</code> dan <code>&lt;b&gt;</code></li>
+        <li><code>&lt;strong&gt;</code> dan <code>&lt;b&gt;</code></li>
+        <li><code>&lt;big&gt;</code> dan <code>&lt;b&gt;</code></li>
+        <li><code>&lt;mark&gt;</code> dan <code>&lt;b&gt;</code></li>
+    </ul>
+
+    <h4>Referensi Elemen Pemformatan Teks HTML</h4>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;b&gt;</td>
+            <td>Menentukan teks tebal</td>
+        </tr>
+        <tr>
+            <td>&lt;em&gt;</td>
+            <td>Menentukan teks yang ditekankan</td>
+        </tr>
+        <tr>
+            <td>&lt;i&gt;</td>
+            <td>Menentukan bagian teks dalam suara atau mood alternatif</td>
+        </tr>
+        <tr>
+            <td>&lt;small&gt;</td>
+            <td>Menentukan teks yang lebih kecil</td>
+        </tr>
+        <tr>
+            <td>&lt;strong&gt;</td>
+            <td>Menentukan teks penting</td>
+        </tr>
+        <tr>
+            <td>&lt;sub&gt;</td>
+            <td>Menentukan teks subskrip</td>
+        </tr>
+        <tr>
+            <td>&lt;sup&gt;</td>
+            <td>Menentukan teks superskrip</td>
+        </tr>
+        <tr>
+            <td>&lt;ins&gt;</td>
+            <td>Menentukan teks yang dimasukkan</td>
+        </tr>
+        <tr>
+            <td>&lt;del&gt;</td>
+            <td>Menentukan teks yang dihapus</td>
+        </tr>
+        <tr>
+            <td>&lt;mark&gt;</td>
+            <td>Menentukan teks yang ditandai/disorot</td>
+        </tr>
+    </table>
+    <br>
+    <a href="#styles" class="btn-prev">&larr; Sebelumnya</a>
+    <a href="#quotations" class="btn-next">Selanjutnya &rarr;</a>
+</section>
+
+<section id="quotations" class="content hidden">
+    <h1>HTML Quotations</h1>
+    <p>Pada bab ini, kita akan membahas elemen-elemen HTML berikut: <code>&lt;blockquote&gt;</code>, <code>&lt;q&gt;</code>, <code>&lt;abbr&gt;</code>, <code>&lt;address&gt;</code>, <code>&lt;cite&gt;</code>, dan <code>&lt;bdo&gt;</code>.</p>
+
+    <h2>Contoh</h2>
+    <p>Berikut adalah kutipan dari situs web WWF:</p>
+    <blockquote cite="http://www.worldwildlife.org/who/index.html">
+        "Selama 60 tahun, WWF telah bekerja untuk membantu orang dan alam berkembang. Sebagai organisasi <br>konservasi terkemuka di dunia, WWF bekerja di hampir 100 negara. Di setiap tingkat, kami berkolaborasi dengan orang-orang di seluruh dunia untuk mengembangkan dan mengirimkan solusi inovatif yang melindungi komunitas, satwa liar, dan tempat-tempat mereka hidup."
+    </blockquote>
+
+    <h2>Elemen HTML <code>&lt;blockquote&gt;</code> untuk Kutipan</h2>
+    <p>Elemen HTML <code>&lt;blockquote&gt;</code> mendefinisikan bagian yang dikutip dari sumber lain. Biasanya, browser akan memberi indentasi pada elemen <code>&lt;blockquote&gt;</code>.</p>
+
+    
+
+    <h2>Elemen HTML <code>&lt;q&gt;</code> untuk Kutipan Pendek</h2>
+    <p>Elemen HTML <code>&lt;q&gt;</code> mendefinisikan kutipan pendek. Browser biasanya akan menambahkan tanda kutip di sekitar kutipan.</p>
+
+    <h3>Contoh:</h3>
+    <pre><code>
+&lt;p&gt;Tujuan WWF adalah: &lt;q&gt;Bangun masa depan di mana orang hidup harmonis dengan alam.&lt;/q&gt;&lt;/p&gt;
+    </code></pre>
+
+    <h2>Elemen HTML <code>&lt;abbr&gt;</code> untuk Singkatan</h2>
+    <p>Elemen HTML <code>&lt;abbr&gt;</code> mendefinisikan singkatan atau akronim, seperti "HTML", "CSS", "Mr.", "Dr.", "ASAP", "ATM". Menandai singkatan dapat memberikan informasi berguna bagi browser, sistem terjemahan, dan mesin pencari.</p>
+    <p><strong>Tips:</strong> Gunakan atribut global <code>title</code> untuk menunjukkan deskripsi singkatan/akronim saat mengarahkan kursor ke elemen tersebut.</p>
+
+    <h3>Contoh:</h3>
+    <pre><code>
+&lt;p&gt;&lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt; didirikan pada tahun 1948.&lt;/p&gt;
+    </code></pre>
+
+    <h2>Elemen HTML <code>&lt;address&gt;</code> untuk Informasi Kontak</h2>
+    <p>Elemen HTML <code>&lt;address&gt;</code> mendefinisikan informasi kontak untuk penulis/pemilik dokumen atau artikel. Informasi kontak dapat berupa alamat email, URL, alamat fisik, nomor telepon, akun media sosial, dll.</p>
+    <p>Teks dalam elemen <code>&lt;address&gt;</code> biasanya ditampilkan dalam huruf miring, dan browser akan selalu menambahkan jeda baris sebelum dan sesudah elemen <code>&lt;address&gt;</code>.</p>
+
+    <h3>Contoh:</h3>
+    <pre><code>
+&lt;address&gt;
+  Ditulis oleh John Doe.&lt;br&gt;
+  Kunjungi kami di:&lt;br&gt;
+  Example.com&lt;br&gt;
+  Box 564, Disneyland&lt;br&gt;
+  USA
+&lt;/address&gt;
+    </code></pre>
+
+    <h2>Elemen HTML <code>&lt;cite&gt;</code> untuk Judul Karya</h2>
+    <p>Elemen HTML <code>&lt;cite&gt;</code> mendefinisikan judul karya kreatif (misalnya buku, puisi, lagu, film, lukisan, patung, dll). Nama orang bukanlah judul karya. Teks dalam elemen <code>&lt;cite&gt;</code> biasanya ditampilkan dalam huruf miring.</p>
+
+    <h3>Contoh:</h3>
+    <pre><code>
+&lt;p&gt;&lt;cite&gt;The Scream&lt;/cite&gt; oleh Edvard Munch. Dicat pada tahun 1893.&lt;/p&gt;
+    </code></pre>
+
+    <h2>Elemen HTML <code>&lt;bdo&gt;</code> untuk Override Arah Teks</h2>
+    <p>Elemen HTML <code>&lt;bdo&gt;</code> digunakan untuk mengubah arah teks yang sedang ditampilkan. BDO berarti Bi-Directional Override.</p>
+
+    <h3>Contoh:</h3>
+    <pre><code>
+&lt;bdo dir="rtl"&gt;Teks ini akan ditulis dari kanan ke kiri&lt;/bdo&gt;
+    </code></pre>
+
+   <ul>
+        <li>&lt;q&gt;</li>
+        <li>&lt;quote&gt;</li>
+        <li>&lt;blockquote&gt;</li>
+    </ul>
+
+    <h2>Elemen HTML untuk Kutipan dan Sitasi</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&lt;abbr&gt;</td>
+                <td>Mendefinisikan singkatan atau akronim</td>
+            </tr>
+            <tr>
+                <td>&lt;address&gt;</td>
+                <td>Mendefinisikan informasi kontak untuk penulis/pemilik dokumen</td>
+            </tr>
+            <tr>
+                <td>&lt;bdo&gt;</td>
+                <td>Mendefinisikan arah teks</td>
+            </tr>
+            <tr>
+                <td>&lt;blockquote&gt;</td>
+                <td>Mendefinisikan bagian yang dikutip dari sumber lain</td>
+            </tr>
+            <tr>
+                <td>&lt;cite&gt;</td>
+                <td>Mendefinisikan judul sebuah karya</td>
+            </tr>
+            <tr>
+                <td>&lt;q&gt;</td>
+                <td>Mendefinisikan kutipan pendek secara inline</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="#formatting" class="btn-prev">&larr; Previous</a>
+    <a href="#comments" class="btn-next">Next &rarr;</a>
+</section>
+<section id="comments" class="content hidden">
+    <h1>Komentar HTML</h1>
+    <p>Komentar HTML tidak akan ditampilkan di browser, tetapi dapat membantu mendokumentasikan kode sumber HTML Anda.</p>
+
+    <h4>Tag Komentar HTML</h4>
+    <p>Anda dapat menambahkan komentar ke dalam kode HTML menggunakan sintaks berikut:</p>
+    <pre>
+    <!-- Ini adalah komentar -->
+    </pre>
+
+    <p>Perhatikan bahwa terdapat tanda seru (!) di awal tag komentar, namun tidak ada di tag penutupnya. Komentar ini tidak akan muncul di tampilan browser.</p>
+
+    <h4>Menambahkan Komentar</h4>
+    <p>Dengan komentar, Anda bisa menambahkan notifikasi dan pengingat dalam kode HTML Anda.</p>
+    <ul>
+        <li><code>&lt;!-- Ini adalah komentar --&gt;</code></li>
+        <li><code>&lt;!-- Ingat untuk memperbarui konten halaman ini --&gt;</code></li>
+    </ul>
+
+    <h4>Menyembunyikan Konten Menggunakan Komentar</h4>
+    <p>Dengan menggunakan komentar, Anda dapat menyembunyikan bagian konten. Ini berguna saat Anda ingin menonaktifkan sementara bagian tertentu dalam HTML.</p>
+
+    <p>Contoh menyembunyikan sebuah elemen:</p>
+    <pre>
+    <!-- <p>Ini adalah paragraf yang disembunyikan</p> -->
+    </pre>
+
+    <p>Semua yang ada di antara <code>&lt;!--</code> dan <code>--&gt;</code> akan disembunyikan dari browser.</p>
+
+    <h4>Menonaktifkan Kode Sementara</h4>
+    <p>Anda juga bisa menonaktifkan kode HTML sementara saat melakukan debugging atau percobaan dengan cara mengomentari kode tersebut.</p>
+    <pre>
+    <!-- <p>Konten ini sementara dinonaktifkan</p> -->
+    </pre>
+
+    <h4>Menambahkan Penjelasan Menggunakan Komentar</h4>
+    <p>Komentar sangat berguna untuk memberi penjelasan atau catatan kepada pengembang lain atau diri Anda di masa depan. Anda bisa menulis penjelasan yang menjelaskan kode Anda tanpa menambah beban tampilan di browser.</p>
+    <pre>
+    <!-- Penjelasan: Menambahkan gambar di bawah ini -->
+    <img src="gambar.jpg" alt="Deskripsi gambar">
+    </pre>
+
+    <h4>Contoh Praktis</h4>
+    <p>Untuk membuat sebuah komentar dalam HTML, Anda cukup menggunakan tag komentar seperti ini:</p>
+    <pre>
+    <!-- Ini adalah komentar yang menjelaskan bagian berikutnya -->
+    <h2>Ini adalah judul utama</h2>
+    <p>Ini adalah konten paragraf</p>
+    </pre>
+
+    <h4>Referensi Tag Komentar HTML</h4>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;!-- --&gt;</td>
+            <td>Menambahkan komentar dalam kode HTML</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#quotations" class="btn-prev">&larr; Sebelumnya</a>
+    <a href="#colors" class="btn-next">Selanjutnya &rarr;</a>
+</section>
+<section id="colors" class="content hidden">
+    <h1>WARNA HTML</h1>
+    <p>Warna HTML dapat ditentukan dengan nama warna yang sudah ada, atau menggunakan nilai RGB, HEX, HSL, RGBA, atau HSLA.</p>
+
+    <h4>Nama Warna</h4>
+    <ul>
+        <li>Tomato</li>
+        <li>Orange</li>
+        <li>DodgerBlue</li>
+        <li>MediumSeaGreen</li>
+        <li>Gray</li>
+        <li>SlateBlue</li>
+        <li>Violet</li>
+        <li>LightGray</li>
+    </ul>
+    <p>HTML mendukung 140 nama warna standar.</p>
+
+    <h4>Warna Latar Belakang</h4>
+    <p>Anda dapat mengatur warna latar belakang untuk elemen HTML:</p>
+    <pre>
+        &lt;h1 style="background-color:DodgerBlue;"&gt;Hello World&lt;/h1&gt;
+        &lt;p style="background-color:Tomato;"&gt;Lorem ipsum...&lt;/p&gt;
+    </pre>
+    <h4>Warna Teks</h4>
+    <p>Anda dapat mengatur warna teks:</p>
+    <pre>
+        &lt;h1 style="color:Tomato;"&gt;Hello World&lt;/h1&gt;
+        &lt;p style="color:DodgerBlue;"&gt;Lorem ipsum...&lt;/p&gt;
+        &lt;p style="color:MediumSeaGreen;"&gt;Ut wisi enim...&lt;/p&gt;
+    </pre>
+    <h4>Contoh Penggunaan Nama Warna</h4>
+    <p>Berikut adalah contoh cara menggunakan nama warna dalam HTML:</p>
+    <div style="background-color: Tomato; padding: 10px;">
+        <p style="color: white;">Ini adalah teks dengan latar belakang warna <strong>Tomato</strong>.</p>
+    </div>
+    <div style="background-color: DodgerBlue; padding: 10px;">
+        <p style="color: white;">Ini adalah teks dengan latar belakang warna <strong>DodgerBlue</strong>.</p>
+    </div>
+
+    <h4>RGB dan HEX</h4>
+    <p>Selain nama warna, Anda juga dapat menentukan warna dengan menggunakan nilai RGB atau HEX. Berikut contohnya:</p>
+    <div style="background-color: rgb(255, 99, 71); padding: 10px;">
+        <p style="color: white;">Ini adalah warna menggunakan format <strong>RGB</strong> (255, 99, 71) atau <strong>Tomato</strong>.</p>
+    </div>
+    <div style="background-color: #ff6347; padding: 10px;">
+        <p style="color: white;">Ini adalah warna menggunakan format <strong>HEX</strong> #ff6347 atau <strong>Tomato</strong>.</p>
+    </div>
+
+    <h4>HSL dan RGBA</h4>
+    <p>Anda juga bisa menggunakan HSL dan RGBA untuk mendefinisikan warna. Contoh penggunaan:</p>
+    <div style="background-color: hsl(9, 100%, 64%); padding: 10px;">
+        <p style="color: white;">Ini adalah warna menggunakan format <strong>HSL</strong> (9, 100%, 64%) atau <strong>Tomato</strong>.</p>
+    </div>
+    <div style="background-color: rgba(255, 99, 71, 0.5); padding: 10px;">
+        <p style="color: white;">Ini adalah warna menggunakan format <strong>RGBA</strong> (255, 99, 71, 0.5) dengan transparansi 50%.</p>
+    </div>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>HTML mendukung 140 nama warna standar.</li>
+        <li>Warna dapat didefinisikan menggunakan format RGB, HEX, HSL, RGBA, atau HSLA.</li>
+        <li>RGB menggunakan tiga angka untuk mendefinisikan merah, hijau, dan biru (contoh: rgb(255, 99, 71)).</li>
+        <li>HEX menggunakan kode hex enam digit untuk warna (contoh: #ff6347).</li>
+        <li>HSL menggunakan Hue (warna), Saturation (kekuatan warna), dan Lightness (kecerahan) (contoh: hsl(9, 100%, 64%)).</li>
+        <li>RGBA adalah RGB dengan tambahan Alpha (transparansi) (contoh: rgba(255, 99, 71, 0.5)).</li>
+    </ul>
+    <a href="#comments" class="btn-prev">&larr; Previous</a>
+    <a href="#css" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="css" class="content hidden">
+    <h2>Apa itu CSS?</h2>
+    <p><strong>Cascading Style Sheets (CSS)</strong> digunakan untuk memformat layout sebuah halaman web. Dengan CSS, Anda dapat mengontrol berbagai aspek seperti warna, font, ukuran teks, jarak antar elemen, posisi elemen, gambar latar belakang, dan banyak lagi.</p>
+    <p><strong>Tip:</strong> Kata "cascading" berarti bahwa gaya yang diterapkan pada elemen induk juga akan diterapkan ke semua elemen anak di dalam induk tersebut.</p>
+
+
+    <h2>Menggunakan CSS</h2>
+    <p>CSS dapat ditambahkan ke dokumen HTML dengan 3 cara:</p>
+    <ul>
+        <li><strong>Inline</strong> - dengan menggunakan atribut <code>style</code> di dalam elemen HTML.</li>
+        <li><strong>Internal</strong> - dengan menggunakan elemen <code>&lt;style&gt;</code> di dalam bagian <code>&lt;head&gt;</code>.</li>
+        <li><strong>External</strong> - dengan menggunakan elemen <code>&lt;link&gt;</code> untuk menghubungkan ke file CSS eksternal.</li>
+    </ul>
+
+    <h2>Inline CSS</h2>
+    <p>CSS inline digunakan untuk menerapkan gaya unik pada satu elemen HTML. Inline CSS menggunakan atribut <code>style</code> dari elemen HTML.</p>
+    <pre><code>&lt;h1 style="color:blue;"&gt;A Heading Berwarna Biru&lt;/h1&gt;</code></pre>
+    <pre><code>&lt;p style="color:red;"&gt;Sebuah paragraf merah.&lt;/p&gt;</code></pre>
+
+    <h2>Internal CSS</h2>
+    <p>CSS internal digunakan untuk mendefinisikan gaya untuk satu halaman HTML dan didefinisikan di dalam bagian <code>&lt;head&gt;</code> dari halaman HTML, di dalam elemen <code>&lt;style&gt;</code>.</p>
+    <pre><code>&lt;style&gt;
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+&lt;/style&gt;</code></pre>
+    <p>Contoh penggunaannya dapat dilihat di bawah ini:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+body {background-color: powderblue;}
+h1   {color: blue;}
+p    {color: red;}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+&lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>External CSS</h2>
+    <p>CSS eksternal digunakan untuk mendefinisikan gaya untuk banyak halaman HTML. Untuk menggunakan stylesheet eksternal, tambahkan sebuah link ke dalamnya di bagian <code>&lt;head&gt;</code> setiap halaman HTML.</p>
+    <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+    <p>Berikut adalah contoh isi dari file <code>styles.css</code>:</p>
+    <pre><code>body {
+background-color: powderblue;
+}
+h1 {
+color: blue;
+}
+p {
+color: red;
+}</code></pre>
+
+    <h2>Warna, Font, dan Ukuran</h2>
+    <p>Anda dapat menggunakan properti CSS berikut untuk mengontrol warna, font, dan ukuran teks:</p>
+    <ul>
+        <li><strong>color</strong> - untuk menentukan warna teks.</li>
+        <li><strong>font-family</strong> - untuk menentukan font teks.</li>
+        <li><strong>font-size</strong> - untuk menentukan ukuran teks.</li>
+    </ul>
+    <pre><code>&lt;style&gt;
+h1 {
+color: blue;
+font-family: verdana;
+font-size: 300%;
+}
+p {
+color: red;
+font-family: courier;
+font-size: 160%;
+}
+&lt;/style&gt;</code></pre>
+    <p>Contoh penggunaannya dapat dilihat di bawah ini:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+h1 {
+color: blue;
+font-family: verdana;
+font-size: 300%;
+}
+p {
+color: red;
+font-family: courier;
+font-size: 160%;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Ini adalah heading&lt;/h1&gt;
+&lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>Border, Padding, dan Margin</h2>
+    <p>Berikut adalah beberapa properti CSS yang digunakan untuk mengatur border, padding, dan margin elemen:</p>
+    <ul>
+        <li><strong>border</strong> - untuk mendefinisikan garis batas di sekitar elemen HTML.</li>
+        <li><strong>padding</strong> - untuk mendefinisikan ruang di dalam border.</li>
+        <li><strong>margin</strong> - untuk mendefinisikan ruang di luar border.</li>
+    </ul>
+    <pre><code>p {
+border: 2px solid powderblue;
+padding: 30px;
+margin: 50px;
+}</code></pre>
+<a href="#colors" class="btn-prev">&larr; Previous</a>
+<a href="#links" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="links" class="content hidden">
+    <h1>Tautan HTML</h1>
+    <p>Tautan ditemukan di hampir semua halaman web. Tautan memungkinkan pengguna untuk mengklik dan berpindah dari satu halaman ke halaman lainnya.</p>
+
+    <h2>Tautan HTML - Hyperlink</h2>
+    <p>Tautan HTML adalah hyperlink.
+
+        Anda dapat mengklik tautan dan berpindah ke dokumen lain.
+        
+        Saat Anda menggerakkan mouse di atas tautan, kursor mouse akan berubah menjadi tangan kecil.
+        
+        Catatan: Tautan tidak harus berupa teks. Tautan bisa berupa gambar atau elemen HTML lainnya!</p>
+    
+        <h2>Sintaks Tautan HTML</h2>
+    <p>Tag HTML <code>&lt;a&gt;</code> mendefinisikan sebuah hyperlink. Berikut adalah sintaksnya:</p>
+    <pre><code>&lt;a href="url"&gt;teks tautan&lt;/a&gt;</code></pre>
+    <p>Atribut yang paling penting dari elemen <a> adalah atribut href, yang menunjukkan tujuan tautan.
+
+        Teks tautan adalah bagian yang akan terlihat oleh pembaca.
+        
+        Saat mengklik teks tautan, pembaca akan diarahkan ke alamat URL yang ditentukan.</p>
+    <h3>Contoh</h3>
+    <p>Contoh ini menunjukkan cara membuat tautan ke W3Schools.com:</p>
+    <pre><code>&lt;a href="https://www.w3schools.com/"&gt;Kunjungi W3Schools.com!&lt;/a&gt;</code></pre>
+
+    <h2>Tautan HTML - Atribut target</h2>
+    <p>Secara default, halaman yang ditautkan akan ditampilkan di jendela browser yang sama. Untuk mengubahnya, Anda harus menentukan target lain untuk tautan.</p>
+    <p>Atribut <code>target</code> menentukan di mana dokumen yang ditautkan akan dibuka.</p>
+    <p>Atribut <code>target</code> dapat memiliki salah satu nilai berikut:</p>
+    <ul>
+        <li><code>_self</code> - Default. Membuka dokumen di jendela/tab yang sama dengan tempat tautan diklik</li>
+        <li><code>_blank</code> - Membuka dokumen di jendela atau tab baru</li>
+        <li><code>_parent</code> - Membuka dokumen di frame induk</li>
+        <li><code>_top</code> - Membuka dokumen di seluruh jendela browser</li>
+    </ul>
+
+    <h3>Contoh</h3>
+    <p>Gunakan <code>target="_blank"</code> untuk membuka dokumen yang ditautkan di jendela atau tab baru:</p>
+    <pre><code>&lt;a href="https://www.w3schools.com/" target="_blank"&gt;Kunjungi W3Schools!&lt;/a&gt;</code></pre>
+
+    <h2>URL Absolut vs. URL Relatif</h2>
+    <p>Kedua contoh di atas menggunakan URL absolut (alamat web lengkap) di atribut <code>href</code>.</p>
+    <p>Tautan lokal (tautan ke halaman di situs web yang sama) ditentukan dengan URL relatif (tanpa bagian "https://www"):</p>
+
+    <h3>Contoh</h3>
+    <h4>URL Absolut</h4>
+    <p><a href="https://www.w3.org/">W3C</a></p>
+    <p><a href="https://www.google.com/">Google</a></p>
+
+    <h4>URL Relatif</h4>
+    <p><a href="html_images.asp">Gambar HTML</a></p>
+    <p><a href="/css/default.asp">Tutorial CSS</a></p>
+
+    <h2>Tautan Gambar Sebagai Tautan</h2>
+    <p>Untuk menggunakan gambar sebagai tautan, cukup letakkan tag <code>&lt;img&gt;</code> di dalam tag <code>&lt;a&gt;</code>:</p>
+    <pre><code>&lt;a href="default.asp"&gt;
+    &lt;img src="smiley.gif" alt="Tutorial HTML" style="width:42px;height:42px;"&gt;
+&lt;/a&gt;</code></pre>
+
+    <h2>Tautan ke Alamat Email</h2>
+    <p>Gunakan <code>mailto:</code> di dalam atribut <code>href</code> untuk membuat tautan yang membuka program email pengguna (untuk mengirim email baru):</p>
+    <pre><code>&lt;a href="mailto:someone@example.com"&gt;Kirim email&lt;/a&gt;</code></pre>
+
+    <h2>Tombol sebagai Tautan</h2>
+    <p>Untuk menggunakan tombol HTML sebagai tautan, Anda harus menambahkan kode JavaScript.</p>
+    <pre><code>&lt;button onclick="document.location='default.asp'"&gt;Tutorial HTML&lt;/button&gt;</code></pre>
+    <p><strong>Tip</strong>: Pelajari lebih lanjut tentang JavaScript di Tutorial JavaScript kami.</p>
+
+    <h2>Judul Tautan</h2>
+    <p>Atribut <code>title</code> memberikan informasi tambahan tentang elemen. Informasi ini biasanya ditampilkan sebagai teks tooltip ketika mouse melayang di atas elemen.</p>
+    <pre><code>&lt;a href="https://www.w3schools.com/html/" title="Pergi ke bagian HTML W3Schools"&gt;Kunjungi Tutorial HTML kami&lt;/a&gt;</code></pre>
+
+    <h2>Lebih Lanjut tentang URL Absolut dan Relatif</h2>
+    <h3>Contoh</h3>
+    <p>Gunakan URL lengkap untuk menautkan ke halaman web:</p>
+    <pre><code>&lt;a href="https://www.w3schools.com/html/default.asp"&gt;Tutorial HTML&lt;/a&gt;</code></pre>
+
+    <p>Tautkan ke halaman yang terletak di folder html di situs web yang sama:</p>
+    <pre><code>&lt;a href="/html/default.asp"&gt;Tutorial HTML&lt;/a&gt;</code></pre>
+
+    <p>Tautkan ke halaman yang terletak di folder yang sama dengan halaman saat ini:</p>
+    <pre><code>&lt;a href="default.asp"&gt;Tutorial HTML&lt;/a&gt;</code></pre>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>Gunakan elemen <code>&lt;a&gt;</code> untuk mendefinisikan tautan</li>
+        <li>Gunakan atribut <code>href</code> untuk mendefinisikan alamat tautan</li>
+        <li>Gunakan atribut <code>target</code> untuk menentukan di mana dokumen yang ditautkan akan dibuka</li>
+        <li>Gunakan elemen <code>&lt;img&gt;</code> (di dalam <code>&lt;a&gt;</code>) untuk menggunakan gambar sebagai tautan</li>
+        <li>Gunakan skema <code>mailto:</code> di dalam atribut <code>href</code> untuk membuat tautan yang membuka program email pengguna</li>
+    </ul>
+
+    <h2>Tag Tautan HTML</h2>
+    <table border="1">
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td><code>&lt;a&gt;</code></td>
+            <td>Mendefinisikan sebuah hyperlink</td>
+        </tr>
+    </table>
+    <a href="#css" class="btn-prev">&larr; Previous</a>
+    <a href="#images" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="images" class="content hidden">
+<h1>Images HTML</h1>
+<p>Gambar dapat memperbaiki desain dan tampilan halaman web.</p>
+<h2>Contoh</h2>
+        <pre><code>&lt;img src="pic_trulli.jpg" alt="Trulli Italia"&gt;</code></pre>
+
+        <pre><code>&lt;img src="img_girl.jpg" alt="Gadis dengan jaket"&gt;</code></pre>
+
+        <pre><code>&lt;img src="img_chania.jpg" alt="Bunga di Chania"&gt;</code></pre>
+
+        <h2>Sintaks HTML Gambar</h2>
+        <p>Tag HTML <code>&lt;img&gt;</code> digunakan untuk menyematkan gambar dalam halaman web.</p>
+        <p>Gambar tidak benar-benar disisipkan ke dalam halaman web; gambar dihubungkan ke halaman web. Tag <code>&lt;img&gt;</code> membuat ruang penampung untuk gambar yang dirujuk.</p>
+        <p>Tag <code>&lt;img&gt;</code> adalah tag kosong, hanya berisi atribut, dan tidak memiliki tag penutup.</p>
+        <p>Tag <code>&lt;img&gt;</code> memiliki dua atribut yang wajib ada:</p>
+        <ul>
+            <li><strong>src</strong> - Menentukan path menuju gambar</li>
+            <li><strong>alt</strong> - Menentukan teks alternatif untuk gambar</li>
+        </ul>
+        
+        <h3>Sintaks</h3>
+        <pre><code>&lt;img src="url" alt="teksalternatif"&gt;</code></pre>
+
+        <h2>Atribut src</h2>
+        <p>Atribut <code>src</code> yang wajib digunakan, menentukan path (URL) menuju gambar.</p>
+        <p>Catatan: Saat halaman web dimuat, browser akan mengambil gambar dari server web dan menyisipkannya ke dalam halaman. Oleh karena itu, pastikan gambar tetap berada di tempat yang benar agar pengunjung tidak mendapatkan ikon link rusak. Ikon link rusak dan teks alt akan ditampilkan jika browser tidak dapat menemukan gambar.</p>
+
+        <pre><code>&lt;img src="img_chania.jpg" alt="Bunga di Chania"&gt;</code></pre>
+
+        <h2>Atribut alt</h2>
+        <p>Atribut <code>alt</code> yang wajib digunakan menyediakan teks alternatif untuk gambar, jika pengguna tidak dapat melihat gambar tersebut (karena koneksi yang lambat, kesalahan pada atribut <code>src</code>, atau jika pengguna menggunakan pembaca layar).</p>
+
+        <p>Nilai dari atribut <code>alt</code> sebaiknya menjelaskan gambar tersebut:</p>
+        <pre><code>&lt;img src="img_chania.jpg" alt="Bunga di Chania"&gt;</code></pre>
+
+        <p>Jika browser tidak dapat menemukan gambar, maka akan menampilkan nilai dari atribut <code>alt</code>:</p>
+        <pre><code>&lt;img src="wrongname.gif" alt="Bunga di Chania"&gt;</code></pre>
+
+        <p>Tip: Pembaca layar adalah program perangkat lunak yang membaca kode HTML dan memungkinkan pengguna "mendengarkan" konten. Pembaca layar berguna bagi orang yang memiliki keterbatasan penglihatan atau kesulitan belajar.</p>
+
+        <h2>Ukuran Gambar - Lebar dan Tinggi</h2>
+        <p>Anda dapat menggunakan atribut <code>style</code> untuk menentukan lebar dan tinggi gambar.</p>
+        <pre><code>&lt;img src="img_girl.jpg" alt="Gadis dengan jaket" style="width:500px;height:600px;"&gt;</code></pre>
+
+        <p>Alternatifnya, Anda dapat menggunakan atribut <code>width</code> dan <code>height</code>:</p>
+        <pre><code>&lt;img src="img_girl.jpg" alt="Gadis dengan jaket" width="500" height="600"&gt;</code></pre>
+
+        <p>Atribut <code>width</code> dan <code>height</code> selalu menentukan lebar dan tinggi gambar dalam piksel.</p>
+
+        <p>Catatan: Selalu tentukan lebar dan tinggi gambar. Jika lebar dan tinggi tidak ditentukan, halaman web mungkin berkedip saat gambar dimuat.</p>
+
+        <h2>Lebar dan Tinggi, atau Style?</h2>
+        <p>Atribut <code>width</code>, <code>height</code>, dan <code>style</code> semuanya valid dalam HTML.</p>
+        <p>Namun, kami menyarankan untuk menggunakan atribut <code>style</code>. Ini mencegah stylesheet mengubah ukuran gambar:</p>
+        <pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+        img { width: 100%; }
+        &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+
+        &lt;img src="html5.gif" alt="Ikon HTML5" width="128" height="128"&gt;
+
+        &lt;img src="html5.gif" alt="Ikon HTML5" style="width:128px;height:128px;"&gt;
+
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre>
+
+        <h2>Gambar dalam Folder Lain</h2>
+        <p>Jika gambar Anda berada dalam sub-folder, Anda harus menyertakan nama folder dalam atribut <code>src</code>:</p>
+        <pre><code>&lt;img src="/images/html5.gif" alt="Ikon HTML5" style="width:128px;height:128px;"&gt;</code></pre>
+
+        <h2>Gambar di Server/Situs Lain</h2>
+        <p>Beberapa situs web mengarah ke gambar di server lain.</p>
+
+        <p>Untuk mengarahkan ke gambar di server lain, Anda harus menentukan URL absolut (URL lengkap) dalam atribut <code>src</code>:</p>
+        <pre><code>&lt;img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com"&gt;</code></pre>
+
+        <p>Catatan tentang gambar eksternal: Gambar eksternal mungkin memiliki hak cipta. Jika Anda tidak mendapatkan izin untuk menggunakannya, Anda bisa melanggar hukum hak cipta. Selain itu, Anda tidak dapat mengontrol gambar eksternal tersebut; gambar tersebut bisa saja tiba-tiba dihapus atau diubah.</p>
+
+        <h2>Gambar Animasi</h2>
+        <p>HTML mendukung GIF animasi:</p>
+        <pre><code>&lt;img src="programming.gif" alt="Manusia Komputer" style="width:48px;height:48px;"&gt;</code></pre>
+
+        <h2>Gambar sebagai Link</h2>
+        <p>Untuk menggunakan gambar sebagai tautan, letakkan tag <code>&lt;img&gt;</code> di dalam tag <code>&lt;a&gt;</code>:</p>
+        <pre><code>
+        &lt;a href="default.asp"&gt;
+          &lt;img src="smiley.gif" alt="Tutorial HTML" style="width:42px;height:42px;"&gt;
+        &lt;/a&gt;
+        </code></pre>
+
+        <h2>Gambar Mengambang</h2>
+        <p>Gunakan properti CSS <code>float</code> untuk membuat gambar mengambang ke kanan atau kiri teks:</p>
+        <pre><code>
+        &lt;p&gt;&lt;img src="smiley.gif" alt="Wajah senyum" style="float:right;width:42px;height:42px;"&gt;
+        Gambar akan mengambang ke kanan teks.&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src="smiley.gif" alt="Wajah senyum" style="float:left;width:42px;height:42px;"&gt;
+        Gambar akan mengambang ke kiri teks.&lt;/p&gt;
+        </code></pre>
+
+        <h2>Format Gambar Umum</h2>
+        <p>Berikut adalah format file gambar yang paling umum, yang didukung di semua browser (Chrome, Edge, Firefox, Safari, Opera):</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Singkatan</th>
+                    <th>Format File</th>
+                    <th>Ekstensi File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>APNG</td>
+                    <td>Animated Portable Network Graphics</td>
+                    <td>.apng</td>
+                </tr>
+                <tr>
+                    <td>GIF</td>
+                    <td>Graphics Interchange Format</td>
+                    <td>.gif</td>
+                </tr>
+                <tr>
+                    <td>ICO</td>
+                    <td>Microsoft Icon</td>
+                    <td>.ico, .cur</td>
+                </tr>
+                <tr>
+                    <td>JPEG</td>
+                    <td>Joint Photographic Expert Group image</td>
+                    <td>.jpg, .jpeg, .jfif, .pjpeg, .pjp</td>
+                </tr>
+                <tr>
+                    <td>PNG</td>
+                    <td>Portable Network Graphics</td>
+                    <td>.png</td>
+                </tr>
+                <tr>
+                    <td>SVG</td>
+                    <td>Scalable Vector Graphics</td>
+                    <td>.svg</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Ringkasan Bab</h2>
+        <ul>
+            <li>Gunakan elemen HTML <code>&lt;img&gt;</code> untuk mendefinisikan gambar</li>
+            <li>Gunakan atribut <code>src</code> HTML untuk mendefinisikan URL gambar</li>
+            <li>Gunakan atribut <code>alt</code> HTML untuk mendefinisikan teks alternatif untuk gambar, jika gambar tidak dapat ditampilkan</li>
+            <li>Gunakan atribut <code>width</code> dan <code>height</code> HTML atau properti CSS <code>width</code> dan <code>height</code> untuk mendefinisikan ukuran gambar</li>
+            <li>Gunakan properti CSS <code>float</code> untuk membuat gambar mengambang ke kiri atau kanan</li>
+            <li>Catatan: Memuat gambar besar membutuhkan waktu, dan dapat memperlambat halaman web Anda. Gunakan gambar dengan hati-hati.</li>
+        </ul>
+
+        <h2>Latihan</h2>
+        <p>Apa elemen HTML yang benar untuk menambahkan gambar?</p>
+        <ul>
+            <li>Elemen <code>&lt;image&gt;</code></li>
+            <li>Elemen <code>&lt;img&gt;</code></li>
+            <li>Elemen <code>&lt;media&gt;</code></li>
+        </ul>
+
+        <h2>Tag HTML Gambar</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Tag</th>
+                    <th>Deskripsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;img&gt;</code></td>
+                    <td>Mendefinisikan sebuah gambar</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;map&gt;</code></td>
+                    <td>Mendefinisikan peta gambar</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;area&gt;</code></td>
+                    <td>Mendefinisikan area yang dapat diklik dalam peta gambar</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;picture&gt;</code></td>
+                    <td>Mendefinisikan wadah untuk beberapa sumber gambar</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="#links" class="btn-prev">&larr; Previous</a>
+<a href="#favicon" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="favicon" class="content hidden">
+    <h1>Favicon HTML</h1>
+
+    <p>Favicon adalah gambar kecil yang ditampilkan di sebelah judul halaman di tab browser.</p>
+
+    <h2>Cara Menambahkan Favicon di HTML</h2>
+    <p>Anda dapat menggunakan gambar apa saja sebagai favicon. Anda juga dapat membuat favicon Anda sendiri di situs seperti <a href="https://www.favicon.cc" target="_blank">https://www.favicon.cc</a>.</p>
+    <p><strong>Tip:</strong> Favicon adalah gambar kecil, jadi sebaiknya pilih gambar yang sederhana dengan kontras tinggi.</p>
+
+    <p>Favicon ditampilkan di sebelah kiri judul halaman di tab browser, seperti ini:</p>
+
+    <h3>Contoh favicon</h3>
+    <p>Untuk menambahkan favicon ke situs web Anda, simpan gambar favicon di direktori root server web Anda, atau buat folder di direktori root dengan nama <code>images</code>, lalu simpan gambar favicon di folder ini. Nama umum untuk gambar favicon adalah <code>favicon.ico</code>.</p>
+    <p>Selanjutnya, tambahkan elemen <code>&lt;link&gt;</code> ke dalam file "index.html" Anda, setelah elemen <code>&lt;title&gt;</code>, seperti ini:</p>
+    
+    <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Judul Halaman Saya&lt;/title&gt;
+      &lt;link rel="icon" type="image/x-icon" href="/images/favicon.ico"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;h1&gt;Ini adalah Judul&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+    
+    <p>Sekarang, simpan file "index.html" dan muat ulang di browser Anda. Tab browser Anda sekarang akan menampilkan gambar favicon di sebelah kiri judul halaman.</p>
+
+    <h2>Format File Favicon yang Didukung</h2>
+    <p>Tabel berikut menunjukkan format file yang didukung untuk gambar favicon:</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Browser</th>
+                <th>ICO</th>
+                <th>PNG</th>
+                <th>GIF</th>
+                <th>JPEG</th>
+                <th>SVG</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Edge</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+            </tr>
+            <tr>
+                <td>Chrome</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+            </tr>
+            <tr>
+                <td>Firefox</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+            </tr>
+            <tr>
+                <td>Opera</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+            </tr>
+            <tr>
+                <td>Safari</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+                <td>Ya</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Ringkasan Bab</h2>
+    <p>Gunakan elemen <code>&lt;link&gt;</code> HTML untuk menyisipkan favicon.</p>
+
+    <h2>Elemen Link HTML</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;link&gt;</code></td>
+                <td>Menentukan hubungan antara dokumen dan sumber daya eksternal</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="#images" class="btn-prev">&larr; Previous</a>
+    <a href="#page-title" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="page-title" class="content hidden">
+    <h1>Judul Halaman HTML</h1>
+
+    <p>Setiap halaman web harus memiliki judul halaman untuk menjelaskan makna dari halaman tersebut.</p>
+
+    <h2>Elemen Title</h2>
+    <p>Elemen <code>&lt;title&gt;</code> menambahkan judul pada halaman Anda.</p>
+
+    <h3>Contoh</h3>
+    <pre><code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Tutorial HTML&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    Konten dari dokumen......
+
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+
+    <p>Judul akan ditampilkan di bilah judul browser, seperti ini:</p>
+
+    <h2>Apa Itu Judul yang Baik?</h2>
+    <p>Judul halaman harus menggambarkan konten dan makna dari halaman tersebut.</p>
+
+    <p>Judul halaman sangat penting untuk optimasi mesin pencari (SEO). Teks ini digunakan oleh algoritma mesin pencari untuk menentukan urutan saat menampilkan halaman dalam hasil pencarian.</p>
+
+    <h3>Fungsi Elemen <code>&lt;title&gt;</code>:</h3>
+    <ul>
+        <li>Menentukan judul di bilah alat browser.</li>
+        <li>Memberikan judul untuk halaman saat ditambahkan ke favorit.</li>
+        <li>Menampilkan judul halaman dalam hasil pencarian mesin pencari.</li>
+    </ul>
+    <p>Jadi, pastikan untuk membuat judul yang seakurat dan bermakna mungkin!</p>
+
+    <h2>Tag Title HTML</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;title&gt;</code></td>
+                <td>Menentukan judul dari dokumen</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a href="#favicon" class="btn-prev">&larr; Previous</a>
+    <a href="#tables" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="tables" class="content hidden">
+    <h1>Tabel HTML</h1>
+
+    <p>Tabel HTML memungkinkan pengembang web untuk mengatur data ke dalam baris dan kolom.</p>
+
+    <h2>Contoh</h2>
+    <table border="1">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+    </table>
+
+    <h2>Mendefinisikan Tabel HTML</h2>
+    <p>Sebuah tabel di HTML terdiri dari sel tabel yang ada di dalam baris dan kolom.</p>
+
+    <h3>Contoh Tabel HTML Sederhana</h3>
+    <pre><code>
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Company&lt;/th&gt;
+        &lt;th&gt;Contact&lt;/th&gt;
+        &lt;th&gt;Country&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Alfreds Futterkiste&lt;/td&gt;
+        &lt;td&gt;Maria Anders&lt;/td&gt;
+        &lt;td&gt;Germany&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Centro comercial Moctezuma&lt;/td&gt;
+        &lt;td&gt;Francisco Chang&lt;/td&gt;
+        &lt;td&gt;Mexico&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    </code></pre>
+
+    <h2>Sel Tabel</h2>
+    <p>Setiap sel tabel didefinisikan dengan tag <code>&lt;td&gt;</code> dan <code>&lt;/td&gt;</code>.</p>
+    <p><code>td</code> adalah singkatan dari "table data" (data tabel).</p>
+    <p>Segala sesuatu antara <code>&lt;td&gt;</code> dan <code>&lt;/td&gt;</code> adalah konten dari sel tabel.</p>
+
+    <h3>Contoh</h3>
+    <pre><code>
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Emil&lt;/td&gt;
+        &lt;td&gt;Tobias&lt;/td&gt;
+        &lt;td&gt;Linus&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    </code></pre>
+
+    <p>Catatan: Sebuah sel tabel dapat berisi berbagai jenis elemen HTML, seperti teks, gambar, daftar, tautan, tabel lain, dll.</p>
+
+    <h2>Baris Tabel</h2>
+    <p>Setiap baris tabel dimulai dengan tag <code>&lt;tr&gt;</code> dan diakhiri dengan <code>&lt;/tr&gt;</code>.</p>
+    <p><code>tr</code> adalah singkatan dari "table row" (baris tabel).</p>
+
+    <h3>Contoh</h3>
+    <pre><code>
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;Emil&lt;/td&gt;
+        &lt;td&gt;Tobias&lt;/td&gt;
+        &lt;td&gt;Linus&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;16&lt;/td&gt;
+        &lt;td&gt;14&lt;/td&gt;
+        &lt;td&gt;10&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+    </code></pre>
+
+    <br>
+    <a href="#page-title" class="btn-prev">&larr; Previous</a>
+    <a href="#lists" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="lists" class="content hidden">
+    <h1>HTML Lists</h1>
+
+    <p>HTML lists memungkinkan pengembang web untuk mengelompokkan sekumpulan item terkait dalam daftar.</p>
+
+    <h2>Contoh Daftar HTML</h2>
+
+    <h3>Unordered List (Daftar Tidak Terurut)</h3>
+    <p>Daftar tidak terurut dimulai dengan tag <code>&lt;ul&gt;</code>. Setiap item daftar dimulai dengan tag <code>&lt;li&gt;</code>. Secara default, item daftar akan diberi tanda dengan peluru (lingkaran hitam kecil).</p>
+    
+    <h4>Contoh</h4>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+
+    <h3>Ordered List (Daftar Terurut)</h3>
+    <p>Daftar terurut dimulai dengan tag <code>&lt;ol&gt;</code>. Setiap item daftar dimulai dengan tag <code>&lt;li&gt;</code>. Secara default, item daftar akan diberi angka.</p>
+
+    <h4>Contoh</h4>
+    <ol>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+
+    <h3>HTML Description Lists (Daftar Deskripsi)</h3>
+    <p>HTML juga mendukung daftar deskripsi. Daftar deskripsi adalah daftar istilah, dengan deskripsi dari setiap istilah.</p>
+
+    <p>Tag <code>&lt;dl&gt;</code> mendefinisikan daftar deskripsi, tag <code>&lt;dt&gt;</code> mendefinisikan istilah (nama), dan tag <code>&lt;dd&gt;</code> mendeskripsikan setiap istilah.</p>
+
+    <h4>Contoh</h4>
+    <dl>
+        <dt>Coffee</dt>
+        <dd>- minuman panas berwarna hitam</dd>
+        <dt>Milk</dt>
+        <dd>- minuman dingin berwarna putih</dd>
+    </dl>
+
+    <h2>Exercise</h2>
+    <p>Apa nama tag yang benar untuk item daftar?</p>
+
+    <ul>
+        <li>&lt;item&gt;</li>
+        <li>&lt;list-item&gt;</li>
+        <li>&lt;li&gt;</li>
+    </ul>
+
+    <h3>HTML List Tags</h3>
+    <table border="1">
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;ul&gt;</td>
+            <td>Menentukan daftar tidak terurut</td>
+        </tr>
+        <tr>
+            <td>&lt;ol&gt;</td>
+            <td>Menentukan daftar terurut</td>
+        </tr>
+        <tr>
+            <td>&lt;li&gt;</td>
+            <td>Menentukan item dalam daftar</td>
+        </tr>
+        <tr>
+            <td>&lt;dl&gt;</td>
+            <td>Menentukan daftar deskripsi</td>
+        </tr>
+        <tr>
+            <td>&lt;dt&gt;</td>
+            <td>Menentukan istilah dalam daftar deskripsi</td>
+        </tr>
+        <tr>
+            <td>&lt;dd&gt;</td>
+            <td>Menjelaskan istilah dalam daftar deskripsi</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#tables" class="btn-prev">&larr; Previous</a>
+    <a href="#block-inline" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="block-inline" class="content hidden">
+    <h1>HTML Block and Inline Elements</h1>
+
+    <p>Setiap elemen HTML memiliki nilai tampilan default, tergantung pada jenis elemen tersebut. Dua nilai tampilan yang paling umum adalah block dan inline.</p>
+
+    <h2>Block-level Elements (Elemen Level Blok)</h2>
+    <p>Elemen level blok selalu dimulai pada baris baru, dan browser secara otomatis menambahkan ruang (margin) sebelum dan setelah elemen tersebut. Sebuah elemen blok selalu mengambil lebar penuh yang tersedia (memanjang ke kiri dan kanan sejauh yang bisa).</p>
+
+    <p>Dua elemen blok yang umum digunakan adalah: <code>&lt;p&gt;</code> dan <code>&lt;div&gt;</code>.</p>
+
+    <h3>Contoh</h3>
+    <p><code>&lt;p&gt;</code> adalah elemen level blok.</p>
+    <p><code>&lt;div&gt;</code> adalah elemen level blok.</p>
+
+    <h3>Contoh Kode</h3>
+    <p><code>&lt;p&gt;Hello World&lt;/p&gt;</code></p>
+    <div><code>&lt;div&gt;Hello World&lt;/div&gt;</code></div>
+
+    <h4>Berikut adalah elemen blok dalam HTML:</h4>
+    <ul>
+        <li>&lt;address&gt;</li>
+        <li>&lt;article&gt;</li>
+        <li>&lt;aside&gt;</li>
+        <li>&lt;blockquote&gt;</li>
+        <li>&lt;canvas&gt;</li>
+        <li>&lt;dd&gt;</li>
+        <li>&lt;div&gt;</li>
+        <li>&lt;dl&gt;</li>
+        <li>&lt;dt&gt;</li>
+        <li>&lt;fieldset&gt;</li>
+        <li>&lt;figcaption&gt;</li>
+        <li>&lt;figure&gt;</li>
+        <li>&lt;footer&gt;</li>
+        <li>&lt;form&gt;</li>
+        <li>&lt;h1&gt;-&lt;h6&gt;</li>
+        <li>&lt;header&gt;</li>
+        <li>&lt;hr&gt;</li>
+        <li>&lt;li&gt;</li>
+        <li>&lt;main&gt;</li>
+        <li>&lt;nav&gt;</li>
+        <li>&lt;noscript&gt;</li>
+        <li>&lt;ol&gt;</li>
+        <li>&lt;p&gt;</li>
+        <li>&lt;pre&gt;</li>
+        <li>&lt;section&gt;</li>
+        <li>&lt;table&gt;</li>
+        <li>&lt;tfoot&gt;</li>
+        <li>&lt;ul&gt;</li>
+        <li>&lt;video&gt;</li>
+    </ul>
+
+    <h2>Inline Elements (Elemen Inline)</h2>
+    <p>Elemen inline tidak dimulai pada baris baru. Elemen inline hanya mengambil lebar yang diperlukan saja.</p>
+
+    <h3>Contoh</h3>
+    <p>Ini adalah sebuah <span>elemen span</span> di dalam sebuah paragraf.</p>
+
+    <h4>Berikut adalah elemen inline dalam HTML:</h4>
+    <ul>
+        <li>&lt;a&gt;</li>
+        <li>&lt;abbr&gt;</li>
+        <li>&lt;acronym&gt;</li>
+        <li>&lt;b&gt;</li>
+        <li>&lt;bdo&gt;</li>
+        <li>&lt;big&gt;</li>
+        <li>&lt;br&gt;</li>
+        <li>&lt;button&gt;</li>
+        <li>&lt;cite&gt;</li>
+        <li>&lt;code&gt;</li>
+        <li>&lt;dfn&gt;</li>
+        <li>&lt;em&gt;</li>
+        <li>&lt;i&gt;</li>
+        <li>&lt;img&gt;</li>
+        <li>&lt;input&gt;</li>
+        <li>&lt;kbd&gt;</li>
+        <li>&lt;label&gt;</li>
+        <li>&lt;map&gt;</li>
+        <li>&lt;object&gt;</li>
+        <li>&lt;output&gt;</li>
+        <li>&lt;q&gt;</li>
+        <li>&lt;samp&gt;</li>
+        <li>&lt;script&gt;</li>
+        <li>&lt;select&gt;</li>
+        <li>&lt;small&gt;</li>
+        <li>&lt;span&gt;</li>
+        <li>&lt;strong&gt;</li>
+        <li>&lt;sub&gt;</li>
+        <li>&lt;sup&gt;</li>
+        <li>&lt;textarea&gt;</li>
+        <li>&lt;time&gt;</li>
+        <li>&lt;tt&gt;</li>
+        <li>&lt;var&gt;</li>
+    </ul>
+
+    <h3>Catatan</h3>
+    <p>Elemen inline tidak dapat berisi elemen blok!</p>
+
+    <h2>The <code>&lt;div&gt;</code> Element</h2>
+    <p>Elemen <code>&lt;div&gt;</code> sering digunakan sebagai wadah untuk elemen HTML lainnya. Elemen <code>&lt;div&gt;</code> tidak memiliki atribut wajib, tetapi atribut seperti style, class, dan id adalah atribut yang umum digunakan.</p>
+
+    <p>Ketika digunakan bersama dengan CSS, elemen <code>&lt;div&gt;</code> dapat digunakan untuk memberi gaya pada blok konten:</p>
+
+    <h4>Contoh</h4>
+    <div style="background-color:black;color:white;padding:20px;">
+        <h2>London</h2>
+        <p>London adalah ibu kota Inggris. Ini adalah kota dengan populasi terbesar di Inggris, dengan wilayah metropolitan yang memiliki lebih dari 13 juta penduduk.</p>
+    </div>
+
+    <p>Anda akan belajar lebih lanjut tentang elemen <code>&lt;div&gt;</code> di bab berikutnya.</p>
+
+    <h2>The <code>&lt;span&gt;</code> Element</h2>
+    <p>Elemen <code>&lt;span&gt;</code> adalah wadah inline yang digunakan untuk menandai sebagian teks, atau sebagian dokumen. Elemen <code>&lt;span&gt;</code> tidak memiliki atribut wajib, tetapi atribut seperti style, class, dan id adalah atribut yang umum digunakan.</p>
+
+    <p>Ketika digunakan bersama dengan CSS, elemen <code>&lt;span&gt;</code> dapat digunakan untuk memberi gaya pada bagian teks:</p>
+
+    <h4>Contoh</h4>
+    <p>Ibu saya memiliki mata <span style="color:blue;font-weight:bold;">biru</span> dan ayah saya memiliki mata <span style="color:darkolivegreen;font-weight:bold;">hijau tua</span>.</p>
+
+    <h2>Chapter Summary</h2>
+    <ul>
+        <li>Elemen level blok selalu dimulai pada baris baru dan mengambil lebar penuh yang tersedia.</li>
+        <li>Elemen inline tidak dimulai pada baris baru dan hanya mengambil lebar yang diperlukan.</li>
+        <li>Elemen <code>&lt;div&gt;</code> adalah elemen level blok dan sering digunakan sebagai wadah untuk elemen HTML lainnya.</li>
+        <li>Elemen <code>&lt;span&gt;</code> adalah wadah inline yang digunakan untuk menandai sebagian teks atau bagian dokumen.</li>
+    </ul>
+
+    <br>
+    <a href="#lists" class="btn-prev">&larr; Previous</a>
+    <a href="#div" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="div" class="content hidden">
+    <h1>HTML <code>&lt;div&gt;</code> Element</h1>
+
+    <p>The <code>&lt;div&gt;</code> element is used as a container for other HTML elements.</p>
+
+    <h2>The <code>&lt;div&gt;</code> Element</h2>
+    <p>The <code>&lt;div&gt;</code> element is, by default, a block-level element. This means that it takes up all available width and comes with line breaks before and after.</p>
+
+    <h3>Example</h3>
+    <p>A <code>&lt;div&gt;</code> element takes up all available width:</p>
+    <code>Lorem Ipsum <div>I am a div</div> dolor sit amet.</code>
+    <p><strong>Result:</strong></p>
+    <p>Lorem Ipsum</p>
+    <p>I am a div</p>
+    <p>dolor sit amet.</p>
+
+    <h2><code>&lt;div&gt;</code> as a Container</h2>
+    <p>The <code>&lt;div&gt;</code> element is often used to group sections of a web page together.</p>
+
+    <h3>Example: A <code>&lt;div&gt;</code> element with HTML elements</h3>
+    <div>
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+    </div>
+    <p><strong>Result:</strong></p>
+    <p>London</p>
+    <p>London is the capital city of England.</p>
+    <p>London has over 13 million inhabitants.</p>
+
+    <h2>Center Align a <code>&lt;div&gt;</code> Element</h2>
+    <p>If you have a <code>&lt;div&gt;</code> element that is not 100% wide and you want to center-align it, set the CSS <code>margin</code> property to <code>auto</code>.</p>
+
+    <h3>Example: Center Align</h3>
+    <style>
+        div {
+            width: 300px;
+            margin: auto;
+        }
+    </style>
+    <div>
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+    </div>
+
+    <h2>Multiple <code>&lt;div&gt;</code> Elements</h2>
+    <p>You can have many <code>&lt;div&gt;</code> containers on the same page.</p>
+
+    <h3>Example: Multiple Div Containers</h3>
+    <div>
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+    </div>
+
+    <div>
+        <h2>Oslo</h2>
+        <p>Oslo is the capital city of Norway.</p>
+        <p>Oslo has over 600,000 inhabitants.</p>
+    </div>
+
+    <div>
+        <h2>Rome</h2>
+        <p>Rome is the capital city of Italy.</p>
+        <p>Rome has almost 3 million inhabitants.</p>
+    </div>
+    <p><strong>Result:</strong></p>
+    <p>London</p>
+    <p>London is the capital city of England.</p>
+    <p>London has over 13 million inhabitants.</p>
+    <p>Oslo</p>
+    <p>Oslo is the capital city of Norway.</p>
+    <p>Oslo has over 600,000 inhabitants.</p>
+    <p>Rome</p>
+    <p>Rome is the capital city of Italy.</p>
+    <p>Rome has almost 3 million inhabitants.</p>
+
+    <h2>Aligning <code>&lt;div&gt;</code> Elements Side by Side</h2>
+    <p>When building web pages, you often want to have two or more <code>&lt;div&gt;</code> elements side by side. There are different methods for aligning elements side by side, all including some CSS styling. We will look at the most common methods:</p>
+
+    <h3>Float</h3>
+    <p>The CSS <code>float</code> property was not originally meant to align <code>&lt;div&gt;</code> elements side by side but has been used for this purpose for many years. The <code>float</code> property allows elements to float next to each other instead of on top of each other.</p>
+
+    <h4>Example: Using Float</h4>
+    <style>
+        .mycontainer {
+            width: 100%;
+            overflow: auto;
+        }
+        .mycontainer div {
+            width: 33%;
+            float: left;
+        }
+    </style>
+    <div class="mycontainer">
+        <div>
+            <h2>London</h2>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div>
+            <h2>Oslo</h2>
+            <p>Oslo is the capital city of Norway.</p>
+        </div>
+        <div>
+            <h2>Rome</h2>
+            <p>Rome is the capital city of Italy.</p>
+        </div>
+    </div>
+
+    <h3>Inline-block</h3>
+    <p>If you change the <code>&lt;div&gt;</code> element's display property from block to <code>inline-block</code>, the <code>&lt;div&gt;</code> elements will no longer add a line break before and after, and will be displayed side by side instead of on top of each other.</p>
+
+    <h4>Example: Using Inline-block</h4>
+    <style>
+        div {
+            width: 30%;
+            display: inline-block;
+        }
+    </style>
+    <div>
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+    </div>
+    <div>
+        <h2>Oslo</h2>
+        <p>Oslo is the capital city of Norway.</p>
+    </div>
+    <div>
+        <h2>Rome</h2>
+        <p>Rome is the capital city of Italy.</p>
+    </div>
+
+    <h3>Flex</h3>
+    <p>The CSS Flexbox Layout Module was introduced to make it easier to design flexible responsive layouts without using floats or positioning.</p>
+
+    <h4>Example: Using Flex</h4>
+    <style>
+        .mycontainer {
+            display: flex;
+        }
+        .mycontainer > div {
+            width: 33%;
+        }
+    </style>
+    <div class="mycontainer">
+        <div>
+            <h2>London</h2>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div>
+            <h2>Oslo</h2>
+            <p>Oslo is the capital city of Norway.</p>
+        </div>
+        <div>
+            <h2>Rome</h2>
+            <p>Rome is the capital city of Italy.</p>
+        </div>
+    </div>
+
+    <h3>Grid</h3>
+    <p>The CSS Grid Layout Module offers a grid-based layout system, with rows and columns, making it easier to design web pages without having to use floats and positioning.</p>
+
+    <h4>Example: Using Grid</h4>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+        }
+    </style>
+    <div class="grid-container">
+        <div>
+            <h2>London</h2>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div>
+            <h2>Oslo</h2>
+            <p>Oslo is the capital city of Norway.</p>
+        </div>
+        <div>
+            <h2>Rome</h2>
+            <p>Rome is the capital city of Italy.</p>
+        </div>
+    </div>
+    <br>
+    <a href="#block-inline" class="btn-prev">&larr; Previous</a>
+    <a href="#classes" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="classes" class="content hidden">
+    <h1>HTML <code>class</code> Attribute</h1>
+
+    <p>The HTML <code>class</code> attribute is used to specify a class for an HTML element. Multiple HTML elements can share the same class.</p>
+
+    <h2>Using The <code>class</code> Attribute</h2>
+    <p>The <code>class</code> attribute is commonly used to link HTML elements to a CSS class, which styles those elements. It can also be used by JavaScript to access and manipulate elements with the specified class name.</p>
+
+    <h3>Example: Multiple <code>&lt;div&gt;</code> Elements with a Shared Class</h3>
+    <p>In the following example, three <code>&lt;div&gt;</code> elements all have the class "city". They will be styled the same according to the CSS definition in the head section:</p>
+    
+    <code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;style&gt;
+    .city {
+        background-color: tomato;
+        color: white;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 20px;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;div class="city"&gt;
+        &lt;h2&gt;London&lt;/h2&gt;
+        &lt;p&gt;London is the capital of England.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="city"&gt;
+        &lt;h2&gt;Paris&lt;/h2&gt;
+        &lt;p&gt;Paris is the capital of France.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="city"&gt;
+        &lt;h2&gt;Tokyo&lt;/h2&gt;
+        &lt;p&gt;Tokyo is the capital of Japan.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code>
+
+    <h3>Example: Multiple <code>&lt;span&gt;</code> Elements with a Shared Class</h3>
+    <p>In this example, two <code>&lt;span&gt;</code> elements share the class "note", and will both be styled according to the CSS defined in the head section:</p>
+
+    <code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;style&gt;
+    .note {
+        font-size: 120%;
+        color: red;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;h1&gt;My &lt;span class="note"&gt;Important&lt;/span&gt; Heading&lt;/h1&gt;
+    &lt;p&gt;This is some &lt;span class="note"&gt;important&lt;/span&gt; text.&lt;/p&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code>
+
+    <p><strong>Tip:</strong> The <code>class</code> attribute can be used on any HTML element. Also, <code>class</code> names are case-sensitive!</p>
+
+    <h2>The Syntax for <code>class</code></h2>
+    <p>To create a class, write a period (<code>.</code>) followed by the class name. Then, define the CSS properties within curly braces <code>{}</code>:</p>
+
+    <h3>Example: Create a Class Named "city"</h3>
+    <code>
+    &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;style&gt;
+    .city {
+        background-color: tomato;
+        color: white;
+        padding: 10px;
+    }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;h2 class="city"&gt;London&lt;/h2&gt;
+    &lt;p&gt;London is the capital of England.&lt;/p&gt;
+    &lt;h2 class="city"&gt;Paris&lt;/h2&gt;
+    &lt;p&gt;Paris is the capital of France.&lt;/p&gt;
+    &lt;h2 class="city"&gt;Tokyo&lt;/h2&gt;
+    &lt;p&gt;Tokyo is the capital of Japan.&lt;/p&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code>
+
+    <h2>Multiple Classes</h2>
+    <p>HTML elements can belong to more than one class. To define multiple classes, separate the class names with a space. For example: <code>&lt;div class="city main"&gt;</code>. The element will be styled according to all the classes specified.</p>
+
+    <h3>Example: Multiple Classes on an Element</h3>
+    <code>
+    &lt;h2 class="city main"&gt;London&lt;/h2&gt;
+    &lt;h2 class="city"&gt;Paris&lt;/h2&gt;
+    &lt;h2 class="city"&gt;Tokyo&lt;/h2&gt;
+    </code>
+
+    <h2>Different Elements Can Share the Same Class</h2>
+    <p>Different HTML elements can use the same class name and share the same style. For example, both <code>&lt;h2&gt;</code> and <code>&lt;p&gt;</code> elements can use the "city" class and will share the same style:</p>
+
+    <h3>Example: Sharing the Same Class Between Different Elements</h3>
+    <code>
+    &lt;h2 class="city"&gt;Paris&lt;/h2&gt;
+    &lt;p class="city"&gt;Paris is the capital of France&lt;/p&gt;
+    </code>
+
+    <h2>Use of the <code>class</code> Attribute in JavaScript</h2>
+    <p>The class name can also be used by JavaScript to perform specific tasks for elements. JavaScript can access elements with a particular class name using the <code>getElementsByClassName()</code> method.</p>
+
+    <h3>Example: Hide All Elements with a Specific Class Using JavaScript</h3>
+    <code>
+    &lt;script&gt;
+    function myFunction() {
+        var x = document.getElementsByClassName("city");
+        for (var i = 0; i &lt; x.length; i++) {
+            x[i].style.display = "none";
+        }
+    }
+    &lt;/script&gt;
+    </code>
+
+    <h2>Chapter Summary</h2>
+    <ul>
+        <li>The <code>class</code> attribute specifies one or more class names for an element.</li>
+        <li>Classes are used by CSS and JavaScript to select and access specific elements.</li>
+        <li>The <code>class</code> attribute can be used on any HTML element.</li>
+        <li>The class name is case-sensitive.</li>
+        <li>Different HTML elements can share the same class name.</li>
+        <li>JavaScript can access elements with a specific class name using the <code>getElementsByClassName()</code> method.</li>
+    </ul>
+    <br>
+    <a href="#div" class="btn-prev">&larr; Previous</a>
+    <a href="#id" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="id" class="content hidden">
+    <h1>Atribut id dalam HTML</h1>
+
+    <p>Atribut <code>id</code> HTML digunakan untuk menentukan id yang unik untuk suatu elemen HTML.</p>
+    <p>Anda tidak dapat memiliki lebih dari satu elemen dengan id yang sama dalam suatu dokumen HTML.</p>
+
+    <h2>Menggunakan Atribut id</h2>
+    <p>Atribut <code>id</code> digunakan untuk menentukan id yang unik untuk elemen HTML. Nilai dari atribut <code>id</code> harus unik di dalam dokumen HTML.</p>
+    <p>Atribut <code>id</code> digunakan untuk merujuk ke deklarasi gaya tertentu dalam lembar gaya (CSS). Selain itu, atribut <code>id</code> juga digunakan oleh JavaScript untuk mengakses dan memanipulasi elemen dengan id tertentu.</p>
+
+    <p>Sintaks untuk <code>id</code> adalah: tuliskan karakter hash (#), diikuti dengan nama id. Kemudian, tentukan properti CSS di dalam tanda kurung kurawal <code>{}</code>.</p>
+
+    <p>Pada contoh berikut, elemen <code>&lt;h1&gt;</code> merujuk ke nama id "myHeader". Elemen <code>&lt;h1&gt;</code> ini akan diberi gaya sesuai dengan definisi gaya <code>#myHeader</code> yang ada di bagian head:</p>
+    <pre><code>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#myHeader {
+  background-color: lightblue;
+  color: black;
+  padding: 40px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h1 id="myHeader">My Header</h1>
+
+</body>
+</html>
+    </code></pre>
+    <p><strong>Catatan:</strong> Nama <code>id</code> bersifat sensitif terhadap huruf besar/kecil!</p>
+    <p><strong>Catatan:</strong> Nama <code>id</code> harus mengandung setidaknya satu karakter, tidak boleh diawali dengan angka, dan tidak boleh mengandung spasi (ruang, tab, dll).</p>
+
+    <h2>Perbedaan Antara Class dan ID</h2>
+    <p>Nama <code>class</code> dapat digunakan oleh banyak elemen HTML, sementara nama <code>id</code> hanya boleh digunakan oleh satu elemen HTML dalam satu halaman:</p>
+    <pre><code>
+<style>
+/* Gaya untuk elemen dengan id "myHeader" */
+#myHeader {
+  background-color: lightblue;
+  color: black;
+  padding: 40px;
+  text-align: center;
+}
+
+/* Gaya untuk semua elemen dengan nama class "city" */
+.city {
+  background-color: tomato;
+  color: white;
+  padding: 10px;
+}
+</style>
+
+<!-- Elemen dengan id unik -->
+<h1 id="myHeader">My Cities</h1>
+
+<!-- Banyak elemen dengan class yang sama -->
+<h2 class="city">London</h2>
+<p>London adalah ibukota Inggris.</p>
+
+<h2 class="city">Paris</h2>
+<p>Paris adalah ibukota Prancis.</p>
+
+<h2 class="city">Tokyo</h2>
+<p>Tokyo adalah ibukota Jepang.</p>
+    </code></pre>
+
+    <h2>Buku Mark HTML dengan ID dan Tautan</h2>
+    <p>Bookmark HTML digunakan untuk memungkinkan pembaca melompat ke bagian tertentu dari halaman web.</p>
+    <p>Bookmark dapat berguna jika halaman Anda sangat panjang.</p>
+    <p>Untuk menggunakan bookmark, Anda harus terlebih dahulu membuatnya, dan kemudian menambahkan tautan ke bookmark tersebut.</p>
+
+    <p>Pertama, buat bookmark dengan atribut <code>id</code>:</p>
+    <pre><code>
+<h2 id="C4">Bab 4</h2>
+    </code></pre>
+    <p>Kemudian, tambahkan tautan ke bookmark ("Lompat ke Bab 4"), dari dalam halaman yang sama:</p>
+    <pre><code>
+<a href="#C4">Lompat ke Bab 4</a>
+    </code></pre>
+    <p>Atau, tambahkan tautan ke bookmark ("Lompat ke Bab 4"), dari halaman lain:</p>
+    <pre><code>
+<a href="html_demo.html#C4">Lompat ke Bab 4</a>
+    </code></pre>
+
+    <h2>Menggunakan Atribut id dalam JavaScript</h2>
+    <p>Atribut <code>id</code> juga dapat digunakan oleh JavaScript untuk melakukan beberapa tugas pada elemen tertentu.</p>
+    <p>JavaScript dapat mengakses elemen dengan id tertentu menggunakan metode <code>getElementById()</code>:</p>
+    <pre><code>
+<script>
+function displayResult() {
+  document.getElementById("myHeader").innerHTML = "Semoga hari Anda menyenankan!";
+}
+</script>
+    </code></pre>
+    <p><strong>Tip:</strong> Pelajari lebih lanjut tentang JavaScript di bab HTML JavaScript, atau di Tutorial JavaScript kami.</p>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>Atribut <code>id</code> digunakan untuk menentukan id yang unik untuk elemen HTML.</li>
+        <li>Nilai atribut <code>id</code> harus unik di dalam dokumen HTML.</li>
+        <li>Atribut <code>id</code> digunakan oleh CSS dan JavaScript untuk memberi gaya/memilih elemen tertentu.</li>
+        <li>Nilai atribut <code>id</code> bersifat sensitif terhadap huruf besar/kecil.</li>
+        <li>Atribut <code>id</code> juga digunakan untuk membuat bookmark HTML.</li>
+        <li>JavaScript dapat mengakses elemen dengan id tertentu menggunakan metode <code>getElementById()</code>.</li>
+    </ul>
+
+    <p>Semoga penjelasan ini membantu Anda memahami cara menggunakan atribut <code>id</code> dalam HTML!</p>
+
+    <br>
+    <a href="#classes" class="btn-prev">&larr; Sebelumnya</a>
+    <a href="#iframes" class="btn-next">Selanjutnya &rarr;</a>
+</section>
+
+<section id="iframes" class="content hidden">
+    <h1>HTML Iframes</h1>
+
+    <p>Tag HTML <code>&lt;iframe&gt;</code> digunakan untuk menampilkan halaman web di dalam halaman web lainnya.</p>
+    
+    <h2>Sintaks HTML Iframe</h2>
+    <p>Tag HTML <code>&lt;iframe&gt;</code> menentukan sebuah inline frame.</p>
+    <p>Inline frame digunakan untuk menyematkan dokumen lain di dalam dokumen HTML yang sedang aktif.</p>
+    <p>Sintaks untuk <code>&lt;iframe&gt;</code> adalah:</p>
+    <pre><code>
+&lt;iframe src="url" title="deskripsi"&gt;&lt;/iframe&gt;
+    </code></pre>
+
+    <p><strong>Tips:</strong> Sebaiknya selalu menyertakan atribut <code>title</code> untuk <code>&lt;iframe&gt;</code>. Atribut ini digunakan oleh pembaca layar (screen reader) untuk membaca konten dari iframe tersebut.</p>
+
+    <h2>Iframe - Menentukan Tinggi dan Lebar</h2>
+    <p>Gunakan atribut <code>height</code> dan <code>width</code> untuk menentukan ukuran iframe.</p>
+    <p>Tinggi dan lebar iframe biasanya ditentukan dalam satuan piksel:</p>
+    <pre><code>
+&lt;iframe src="demo_iframe.htm" height="200" width="300" title="Contoh Iframe"&gt;&lt;/iframe&gt;
+    </code></pre>
+    <p>Atau, Anda bisa menambahkan atribut <code>style</code> dan menggunakan properti CSS <code>height</code> dan <code>width</code>:</p>
+    <pre><code>
+&lt;iframe src="demo_iframe.htm" style="height:200px;width:300px;" title="Contoh Iframe"&gt;&lt;/iframe&gt;
+    </code></pre>
+
+    <h2>Iframe - Menghapus Border</h2>
+    <p>Secara default, iframe memiliki border di sekelilingnya.</p>
+    <p>Untuk menghapus border, tambahkan atribut <code>style</code> dan gunakan properti CSS <code>border</code>:</p>
+    <pre><code>
+&lt;iframe src="demo_iframe.htm" style="border:none;" title="Contoh Iframe"&gt;&lt;/iframe&gt;
+    </code></pre>
+    <p>Dengan CSS, Anda juga bisa mengubah ukuran, gaya, dan warna border iframe:</p>
+    <pre><code>
+&lt;iframe src="demo_iframe.htm" style="border:2px solid red;" title="Contoh Iframe"&gt;&lt;/iframe&gt;
+    </code></pre>
+
+    <h2>Iframe - Target untuk Tautan</h2>
+    <p>Iframe dapat digunakan sebagai target frame untuk sebuah tautan.</p>
+    <p>Atribut <code>target</code> dari tautan harus merujuk pada atribut <code>name</code> dari iframe:</p>
+    <pre><code>
+&lt;iframe src="demo_iframe.htm" name="iframe_a" title="Contoh Iframe"&gt;&lt;/iframe&gt;
+    
+&lt;p&gt;&lt;a href="https://www.w3schools.com" target="iframe_a"&gt;W3Schools.com&lt;/a&gt;&lt;/p&gt;
+    </code></pre>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>Tag HTML <code>&lt;iframe&gt;</code> digunakan untuk mendefinisikan sebuah inline frame.</li>
+        <li>Atribut <code>src</code> menentukan URL halaman yang akan disematkan.</li>
+        <li>Selalu sertakan atribut <code>title</code> (untuk pembaca layar).</li>
+        <li>Atribut <code>height</code> dan <code>width</code> menentukan ukuran iframe.</li>
+        <li>Gunakan <code>border:none;</code> untuk menghapus border di sekitar iframe.</li>
+    </ul>
+
+    <h2>Tag HTML Iframe</h2>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td><code>&lt;iframe&gt;</code></td>
+            <td>Mendefinisikan inline frame</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#id" class="btn-prev">&larr; Previous</a>
+    <a href="#javascript" class="btn-next">Next &rarr;</a>        
+</section>
+
+<section id="javascript" class="content hidden">
+    <h1>HTML JavaScript</h1>
+
+    <p>JavaScript membuat halaman HTML lebih dinamis dan interaktif.</p>
+
+    <h2>Contoh</h2>
+    <p>Contoh berikut menunjukkan bagaimana JavaScript digunakan untuk menampilkan tanggal dan waktu:</p>
+    <pre><code>
+    <button onclick="displayDate()">Klik saya untuk menampilkan Tanggal dan Waktu</button>
+    <p id="demo"></p>
+    <script>
+    function displayDate() {
+        document.getElementById("demo").innerHTML = Date();
+    }
+    </script>
+    </code></pre>
+
+    <h2>Tag HTML <code>&lt;script&gt;</code></h2>
+    <p>Tag HTML <code>&lt;script&gt;</code> digunakan untuk mendefinisikan sebuah skrip sisi-klien (JavaScript).</p>
+    <p>Elemen <code>&lt;script&gt;</code> dapat berisi pernyataan skrip atau merujuk pada file skrip eksternal melalui atribut <code>src</code>.</p>
+    <p>Penggunaan umum JavaScript antara lain manipulasi gambar, validasi form, dan perubahan dinamis konten.</p>
+
+    <h2>Contoh JavaScript Menulis Konten ke Halaman</h2>
+    <p>Untuk memilih elemen HTML, JavaScript sering kali menggunakan metode <code>document.getElementById()</code>.</p>
+    <p>Contoh ini menulis "Hello JavaScript!" ke dalam elemen HTML dengan id="demo":</p>
+    <pre><code>
+    <script>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </script>
+    </code></pre>
+
+    <h2>Seberapa Berguna JavaScript?</h2>
+    <p>Berikut adalah beberapa contoh apa yang bisa dilakukan oleh JavaScript:</p>
+
+    <h3>JavaScript dapat mengubah konten:</h3>
+    <pre><code>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </code></pre>
+
+    <h3>JavaScript dapat mengubah gaya:</h3>
+    <pre><code>
+    document.getElementById("demo").style.fontSize = "25px";
+    document.getElementById("demo").style.color = "red";
+    document.getElementById("demo").style.backgroundColor = "yellow";
+    </code></pre>
+
+    <h3>JavaScript dapat mengubah atribut:</h3>
+    <pre><code>
+    document.getElementById("image").src = "picture.gif";
+    </code></pre>
+
+    <h2>Tag HTML <code>&lt;noscript&gt;</code></h2>
+    <p>Tag HTML <code>&lt;noscript&gt;</code> mendefinisikan konten alternatif yang akan ditampilkan kepada pengguna yang telah menonaktifkan skrip di browser mereka atau menggunakan browser yang tidak mendukung skrip:</p>
+    <pre><code>
+    <script>
+    document.getElementById("demo").innerHTML = "Hello JavaScript!";
+    </script>
+    <noscript>Maaf, browser Anda tidak mendukung JavaScript!</noscript>
+    </code></pre>
+
+    <h2>Tag HTML Skrip</h2>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td><code>&lt;script&gt;</code></td>
+            <td>Mendefinisikan skrip sisi-klien</td>
+        </tr>
+        <tr>
+            <td><code>&lt;noscript&gt;</code></td>
+            <td>Mendefinisikan konten alternatif untuk pengguna yang tidak mendukung skrip sisi-klien</td>
+        </tr>
+    </table>
+    <br>
+    <a href="#javascript" class="btn-prev">&larr; Previous</a>
+    <a href="#file-paths" class="btn-next">Next &rarr;</a>        
+</section>
+
+<section id="file-paths" class="content hidden">
+    <h1>HTML File Paths</h1>
+
+    <p>Jalur file menggambarkan lokasi sebuah file dalam struktur folder situs web.</p>
+
+    <h2>Contoh Jalur File</h2>
+    <table>
+        <tr>
+            <th>Jalur</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td><code>&lt;img src="picture.jpg"&gt;</code></td>
+            <td>File "picture.jpg" terletak di folder yang sama dengan halaman saat ini.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;img src="images/picture.jpg"&gt;</code></td>
+            <td>File "picture.jpg" terletak di folder "images" dalam folder saat ini.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;img src="/images/picture.jpg"&gt;</code></td>
+            <td>File "picture.jpg" terletak di folder "images" yang ada di root situs web saat ini.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;img src="../picture.jpg"&gt;</code></td>
+            <td>File "picture.jpg" terletak di folder satu tingkat di atas folder saat ini.</td>
+        </tr>
+    </table>
+
+    <h2>Jalur File HTML</h2>
+    <p>Jalur file digunakan saat membuat tautan ke file eksternal, seperti:</p>
+    <ul>
+        <li>Halaman web</li>
+        <li>Gambar</li>
+        <li>Stylesheet</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <h2>Jalur File Absolut</h2>
+    <p>Jalur file absolut adalah URL lengkap menuju sebuah file:</p>
+    <pre><code>&lt;img src="https://www.w3schools.com/images/picture.jpg" alt="Gunung"&gt;</code></pre>
+    <p>Pada contoh ini, file gambar terletak pada URL lengkap.</p>
+
+    <h2>Jalur File Relatif</h2>
+    <p>Jalur file relatif menunjuk ke sebuah file yang relatif terhadap halaman saat ini.</p>
+
+    <p>Contoh jalur file yang menunjuk ke file di folder "images" yang terletak di root situs web saat ini:</p>
+    <pre><code>&lt;img src="/images/picture.jpg" alt="Gunung"&gt;</code></pre>
+
+    <p>Contoh jalur file yang menunjuk ke file di folder "images" yang terletak di folder saat ini:</p>
+    <pre><code>&lt;img src="images/picture.jpg" alt="Gunung"&gt;</code></pre>
+
+    <p>Contoh jalur file yang menunjuk ke file di folder "images" yang terletak di folder satu tingkat di atas folder saat ini:</p>
+    <pre><code>&lt;img src="../images/picture.jpg" alt="Gunung"&gt;</code></pre>
+
+    <h2>Praktik Terbaik</h2>
+    <p>Praktik terbaik adalah menggunakan jalur file relatif (jika memungkinkan).</p>
+    <p>Dengan menggunakan jalur file relatif, halaman web Anda tidak akan terikat pada URL dasar saat ini. Semua tautan akan berfungsi baik di komputer Anda (localhost) maupun di domain publik saat ini serta di domain publik di masa depan.</p>
+
+    <br>
+    <a href="#javascript" class="btn-prev">&larr; Previous</a>
+    <a href="#head" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="layout" class="content hidden">
+    <h1>Elemen dan Teknik Layout HTML</h1>
+
+    <p>Situs web sering menampilkan konten dalam beberapa kolom (seperti majalah atau surat kabar).</p>
+
+    <h2>Contoh</h2>
+    <h3>Kota-kota</h3>
+    <ul>
+        <li>London</li>
+        <li>Paris</li>
+        <li>Tokyo</li>
+    </ul>
+
+    <h3>London</h3>
+    <p>London adalah ibu kota Inggris. Ini adalah kota dengan jumlah penduduk terbanyak di Inggris, dengan area metropolitan lebih dari 13 juta penduduk.</p>
+
+    <p>Berdiri di Sungai Thames, London telah menjadi pemukiman utama selama dua milenia, dengan sejarahnya dimulai sejak didirikan oleh orang Romawi, yang menamainya Londinium.</p>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+    <h2>Elemen Layout HTML</h2>
+    <p>HTML memiliki beberapa elemen semantik yang mendefinisikan bagian-bagian berbeda dari halaman web:</p>
+
+    <h3>Elemen Semantik HTML5</h3>
+    <ul>
+        <li>&lt;header&gt; - Mendefinisikan header untuk dokumen atau bagian</li>
+        <li>&lt;nav&gt; - Mendefinisikan sekumpulan tautan navigasi</li>
+        <li>&lt;section&gt; - Mendefinisikan sebuah bagian dalam dokumen</li>
+        <li>&lt;article&gt; - Mendefinisikan konten yang independen dan terpisah</li>
+        <li>&lt;aside&gt; - Mendefinisikan konten di samping konten utama (seperti sidebar)</li>
+        <li>&lt;footer&gt; - Mendefinisikan footer untuk dokumen atau bagian</li>
+        <li>&lt;details&gt; - Mendefinisikan detail tambahan yang dapat dibuka dan ditutup oleh pengguna</li>
+        <li>&lt;summary&gt; - Mendefinisikan judul untuk elemen &lt;details&gt;</li>
+    </ul>
+    <p>Anda dapat membaca lebih lanjut tentang elemen semantik dalam bab HTML Semantics.</p>
+
+    <h2>Teknik Layout HTML</h2>
+    <p>Ada empat teknik berbeda untuk membuat layout multi-kolom. Masing-masing teknik memiliki kelebihan dan kekurangan:</p>
+    <ul>
+        <li>Kerangka CSS</li>
+        <li>Properti CSS float</li>
+        <li>CSS flexbox</li>
+        <li>CSS grid</li>
+    </ul>
+
+    <h3>Kerangka CSS</h3>
+    <p>Jika Anda ingin membuat layout dengan cepat, Anda bisa menggunakan kerangka CSS, seperti W3.CSS atau Bootstrap.</p>
+    <p>Apakah Anda pernah mendengar tentang W3Schools Spaces? Di sini, Anda bisa membuat situs web dari awal atau menggunakan template, dan meng-hostingnya secara gratis.</p>
+    <p><strong>* Tidak diperlukan kartu kredit</strong></p>
+
+    <h3>Layout CSS Float</h3>
+    <p>Umumnya, layout web dilakukan menggunakan properti CSS float. Float itu mudah dipelajari - Anda hanya perlu mengingat bagaimana properti float dan clear bekerja. Kekurangannya: Elemen yang di-float terikat pada alur dokumen, yang dapat mengurangi fleksibilitas. Pelajari lebih lanjut tentang float dalam bab CSS Float and Clear.</p>
+
+    <h3>Contoh</h3>
+    <h4>Kota-kota</h4>
+    <ul>
+        <li>London</li>
+        <li>Paris</li>
+        <li>Tokyo</li>
+    </ul>
+
+    <h4>London</h4>
+    <p>London adalah ibu kota Inggris. Ini adalah kota dengan jumlah penduduk terbanyak di Inggris, dengan area metropolitan lebih dari 13 juta penduduk.</p>
+
+    <p>Berdiri di Sungai Thames, London telah menjadi pemukiman utama selama dua milenia, dengan sejarahnya dimulai sejak didirikan oleh orang Romawi, yang menamainya Londinium.</p>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+    <h3>Layout CSS Flexbox</h3>
+    <p>Penggunaan flexbox memastikan bahwa elemen berperilaku secara prediktif ketika tata letak halaman harus mengakomodasi ukuran layar dan perangkat tampilan yang berbeda.</p>
+    <p>Pelajari lebih lanjut tentang flexbox dalam bab CSS Flexbox.</p>
+
+    <h3>Contoh</h3>
+    <h4>Kota-kota</h4>
+    <ul>
+        <li>London</li>
+        <li>Paris</li>
+        <li>Tokyo</li>
+    </ul>
+
+    <h4>London</h4>
+    <p>London adalah ibu kota Inggris. Ini adalah kota dengan jumlah penduduk terbanyak di Inggris, dengan area metropolitan lebih dari 13 juta penduduk.</p>
+
+    <p>Berdiri di Sungai Thames, London telah menjadi pemukiman utama selama dua milenia, dengan sejarahnya dimulai sejak didirikan oleh orang Romawi, yang menamainya Londinium.</p>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+    <h3>Layout CSS Grid</h3>
+    <p>Modul Layout CSS Grid menawarkan sistem layout berbasis grid, dengan baris dan kolom, membuatnya lebih mudah untuk mendesain halaman web tanpa harus menggunakan float dan posisi.</p>
+    <p>Pelajari lebih lanjut tentang grid CSS dalam bab CSS Grid Intro.</p>
+
+    <h3>Contoh</h3>
+    <h4>Kota-kota</h4>
+    <ul>
+        <li>London</li>
+        <li>Paris</li>
+        <li>Tokyo</li>
+    </ul>
+
+    <h4>London</h4>
+    <p>London adalah ibu kota Inggris. Ini adalah kota dengan jumlah penduduk terbanyak di Inggris, dengan area metropolitan lebih dari 13 juta penduduk.</p>
+
+    <p>Berdiri di Sungai Thames, London telah menjadi pemukiman utama selama dua milenia, dengan sejarahnya dimulai sejak didirikan oleh orang Romawi, yang menamainya Londinium.</p>
+
+    <br>
+    <a href="#head" class="btn-prev">&larr; Previous</a>
+    <a href="#responsive" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="responsive" class="content hidden">
+    <h1>Desain Web Responsif</h1>
+
+    <p>Desain web responsif adalah tentang membuat halaman web yang terlihat bagus di semua perangkat!</p>
+    <p>Desain web responsif akan secara otomatis menyesuaikan untuk berbagai ukuran layar dan viewport.</p>
+
+    <h2>Apa itu Desain Web Responsif?</h2>
+    <p>Desain Web Responsif adalah penggunaan HTML dan CSS untuk secara otomatis mengubah ukuran, menyembunyikan, memperkecil, atau memperbesar sebuah situs web, agar terlihat bagus di semua perangkat (desktop, tablet, dan ponsel):</p>
+
+    <h2>Menyeting Viewport</h2>
+    <p>Untuk membuat situs web responsif, tambahkan tag <code>&lt;meta&gt;</code> berikut ke semua halaman web Anda:</p>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+    <p>Tag ini akan mengatur viewport halaman Anda, yang memberi petunjuk kepada browser tentang bagaimana mengontrol dimensi dan skala halaman.</p>
+
+    <h2>Gambar Responsif</h2>
+    <p>Gambar responsif adalah gambar yang dapat menyesuaikan dengan ukuran browser yang berbeda.</p>
+
+    <h3>Menggunakan Properti <code>width</code></h3>
+    <p>Jika properti CSS <code>width</code> diatur ke 100%, gambar akan responsif dan akan diskalakan naik atau turun:</p>
+    <pre><code>&lt;img src="img_girl.jpg" style="width:100%;"&gt;</code></pre>
+
+    <h3>Menggunakan Properti <code>max-width</code></h3>
+    <p>Jika properti <code>max-width</code> diatur ke 100%, gambar akan diskalakan ke bawah jika diperlukan, tetapi tidak akan diskalakan lebih besar dari ukuran aslinya:</p>
+    <pre><code>&lt;img src="img_girl.jpg" style="max-width:100%;height:auto;"&gt;</code></pre>
+
+    <h2>Menampilkan Gambar yang Berbeda Berdasarkan Lebar Browser</h2>
+    <p>Elemen HTML <code>&lt;picture&gt;</code> memungkinkan Anda untuk mendefinisikan gambar yang berbeda untuk berbagai ukuran jendela browser.</p>
+    <p>Ubah ukuran jendela browser untuk melihat bagaimana gambar di bawah ini berubah sesuai dengan lebar layar:</p>
+
+    <pre><code>&lt;picture&gt;
+      &lt;source srcset="img_smallflower.jpg" media="(max-width: 600px)"&gt;
+      &lt;source srcset="img_flowers.jpg" media="(max-width: 1500px)"&gt;
+      &lt;source srcset="flowers.jpg"&gt;
+      &lt;img src="img_smallflower.jpg" alt="Flowers"&gt;
+    &lt;/picture&gt;</code></pre>
+
+    <h2>Ukuran Teks Responsif</h2>
+    <p>Ukuran teks dapat diatur dengan satuan "vw", yang berarti "viewport width". Dengan cara ini, ukuran teks akan mengikuti ukuran jendela browser:</p>
+    <pre><code>&lt;h1 style="font-size:10vw"&gt;Hello World&lt;/h1&gt;</code></pre>
+
+    <h2>Media Queries</h2>
+    <p>Selain mengubah ukuran teks dan gambar, sering juga digunakan media queries pada halaman web responsif.</p>
+    <p>Dengan media queries, Anda bisa mendefinisikan gaya yang sepenuhnya berbeda untuk berbagai ukuran browser.</p>
+
+    <h3>Contoh:</h3>
+    <p>Ubah ukuran jendela browser untuk melihat bahwa tiga elemen div di bawah ini akan ditampilkan secara horizontal di layar besar dan ditumpuk secara vertikal di layar kecil:</p>
+
+    <pre><code>
+      .left, .right {
+        float: left;
+        width: 20%; /* Lebar adalah 20%, secara default */
+      }
+
+      .main {
+        float: left;
+        width: 60%; /* Lebar adalah 60%, secara default */
+      }
+
+      /* Gunakan media query untuk menambahkan breakpoint di 800px: */
+      @media screen and (max-width: 800px) {
+        .left, .main, .right {
+          width: 100%; /* Lebar adalah 100%, ketika viewport 800px atau lebih kecil */
+        }
+      }
+    </code></pre>
+
+    <h2>Halaman Web Responsif - Contoh Lengkap</h2>
+    <p>Halaman web responsif harus terlihat bagus di layar desktop besar dan ponsel kecil.</p>
+
+    <h2>Desain Web Responsif - Kerangka Kerja (Frameworks)</h2>
+    <p>Semua Kerangka CSS populer menawarkan desain responsif. Mereka gratis dan mudah digunakan.</p>
+
+    <h3>W3.CSS</h3>
+    <p>W3.CSS adalah kerangka CSS modern dengan dukungan desain untuk desktop, tablet, dan perangkat mobile secara default.</p>
+    <p>W3.CSS lebih kecil dan lebih cepat dibandingkan kerangka CSS serupa.</p>
+    <p>W3.CSS dirancang untuk independen dari jQuery atau pustaka JavaScript lainnya.</p>
+
+    <h3>Contoh W3.CSS:</h3>
+    <pre><code>
+      &lt;!DOCTYPE html&gt;
+      &lt;html&gt;
+      &lt;head&gt;
+      &lt;title&gt;W3.CSS&lt;/title&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+      &lt;link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div class="w3-container w3-green"&gt;
+          &lt;h1&gt;W3Schools Demo&lt;/h1&gt;
+          &lt;p&gt;Resize this responsive page!&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="w3-row-padding"&gt;
+          &lt;div class="w3-third"&gt;
+            &lt;h2&gt;London&lt;/h2&gt;
+            &lt;p&gt;London is the capital city of England.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="w3-third"&gt;
+            &lt;h2&gt;Paris&lt;/h2&gt;
+            &lt;p&gt;Paris is the capital of France.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class="w3-third"&gt;
+            &lt;h2&gt;Tokyo&lt;/h2&gt;
+            &lt;p&gt;Tokyo is the capital of Japan.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+    </code></pre>
+
+    <h3>Bootstrap</h3>
+    <p>Kerangka CSS populer lainnya adalah Bootstrap.</p>
+    <h3>Contoh Bootstrap:</h3>
+    <pre><code>
+      &lt;!DOCTYPE html&gt;
+      &lt;html lang="en"&gt;
+      &lt;head&gt;
+        &lt;title&gt;Bootstrap 5 Example&lt;/title&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+        &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+        &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div class="container-fluid p-5 bg-primary text-white text-center"&gt;
+          &lt;h1&gt;My First Bootstrap Page&lt;/h1&gt;
+          &lt;p&gt;Resize this responsive page to see the effect!&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="container mt-5"&gt;
+          &lt;div class="row"&gt;
+            &lt;div class="col-sm-4"&gt;
+              &lt;h3&gt;Column 1&lt;/h3&gt;
+              &lt;p&gt;Lorem ipsum...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="col-sm-4"&gt;
+              &lt;h3&gt;Column 2&lt;/h3&gt;
+              &lt;p&gt;Lorem ipsum...&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="col-sm-4"&gt;
+              &lt;h3&gt;Column 3&lt;/h3&gt;
+              &lt;p&gt;Lorem ipsum...&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/body&gt;
+      &lt;/html&gt;
+    </code></pre>
+
+    <br>
+    <a href="#layout" class="btn-prev">&larr; Previous</a>
+    <a href="#computercode" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="computercode" class="content hidden">
+    <h1>Elemen Kode Komputer HTML</h1>
+
+    <p>HTML memiliki beberapa elemen untuk mendefinisikan input pengguna dan kode komputer.</p>
+
+    <h2>Contoh</h2>
+    <pre><code>
+x = 5;
+y = 6;
+z = x + y;
+</code></pre>
+
+    <h2>HTML &lt;kbd&gt; Untuk Input Keyboard</h2>
+    <p>Elemen HTML &lt;kbd&gt; digunakan untuk mendefinisikan input dari keyboard. Konten di dalamnya akan ditampilkan dengan font monospace default dari browser.</p>
+
+    <h3>Contoh</h3>
+    <p>Menentukan teks sebagai input keyboard dalam sebuah dokumen:</p>
+    <pre><code>&lt;p&gt;Simpan dokumen dengan menekan &lt;kbd&gt;Ctrl + S&lt;/kbd&gt;&lt;/p&gt;</code></pre>
+    <p><strong>Hasil:</strong> Simpan dokumen dengan menekan Ctrl + S</p>
+
+    <h2>HTML &lt;samp&gt; Untuk Output Program</h2>
+    <p>Elemen HTML &lt;samp&gt; digunakan untuk mendefinisikan output sampel dari sebuah program komputer. Konten di dalamnya akan ditampilkan dengan font monospace default dari browser.</p>
+
+    <h3>Contoh</h3>
+    <p>Menentukan teks sebagai output sampel dari sebuah program komputer dalam sebuah dokumen:</p>
+    <pre><code>&lt;p&gt;Pesan dari komputer saya:&lt;/p&gt;
+&lt;p&gt;&lt;samp&gt;File tidak ditemukan.&lt;br&gt;Tekan F1 untuk melanjutkan&lt;/samp&gt;&lt;/p&gt;</code></pre>
+    <p><strong>Hasil:</strong> Pesan dari komputer saya: <br> File tidak ditemukan. Tekan F1 untuk melanjutkan</p>
+
+    <h2>HTML &lt;code&gt; Untuk Kode Komputer</h2>
+    <p>Elemen HTML &lt;code&gt; digunakan untuk mendefinisikan sebuah potongan kode komputer. Konten di dalamnya akan ditampilkan dengan font monospace default dari browser.</p>
+
+    <h3>Contoh</h3>
+    <p>Menentukan teks sebagai kode komputer dalam sebuah dokumen:</p>
+    <pre><code>
+x = 5;
+y = 6;
+z = x + y;
+</code></pre>
+    <p><strong>Hasil:</strong> x = 5; y = 6; z = x + y;</p>
+
+    <h3>Tidak Mempertahankan Pemisahan Baris</h3>
+    <p>Perhatikan bahwa elemen &lt;code&gt; tidak mempertahankan spasi ekstra dan pemisahan baris. Untuk memperbaikinya, Anda dapat meletakkan elemen &lt;code&gt; di dalam elemen &lt;pre&gt;.</p>
+
+    <h3>Contoh</h3>
+    <pre><code>
+&lt;pre&gt;
+&lt;code&gt;
+x = 5;
+y = 6;
+z = x + y;
+&lt;/code&gt;
+&lt;/pre&gt;</code></pre>
+    <p><strong>Hasil:</strong></p>
+    <pre>
+x = 5;
+y = 6;
+z = x + y;
+</pre>
+
+    <h2>HTML &lt;var&gt; Untuk Variabel</h2>
+    <p>Elemen HTML &lt;var&gt; digunakan untuk mendefinisikan variabel dalam pemrograman atau dalam ekspresi matematika. Konten di dalamnya biasanya ditampilkan dengan huruf miring.</p>
+
+    <h3>Contoh</h3>
+    <p>Menentukan teks sebagai variabel dalam sebuah dokumen:</p>
+    <pre><code>&lt;p&gt;Luas segitiga adalah: 1/2 x &lt;var&gt;b&lt;/var&gt; x &lt;var&gt;h&lt;/var&gt;, di mana &lt;var&gt;b&lt;/var&gt; adalah alas, dan &lt;var&gt;h&lt;/var&gt; adalah tinggi vertikal.&lt;/p&gt;</code></pre>
+    <p><strong>Hasil:</strong> Luas segitiga adalah: 1/2 x b x h, di mana b adalah alas, dan h adalah tinggi vertikal.</p>
+
+    <h2>Ringkasan Bab</h2>
+    <ul>
+        <li>Elemen &lt;kbd&gt; mendefinisikan input keyboard</li>
+        <li>Elemen &lt;samp&gt; mendefinisikan output sampel dari program komputer</li>
+        <li>Elemen &lt;code&gt; mendefinisikan sebuah potongan kode komputer</li>
+        <li>Elemen &lt;var&gt; mendefinisikan variabel dalam pemrograman atau ekspresi matematika</li>
+        <li>Elemen &lt;pre&gt; mendefinisikan teks yang diformat sebelumnya</li>
+    </ul>
+
+    <h2>Latihan</h2>
+    <p><strong>Pertanyaan:</strong><br>Manakah dari elemen-elemen berikut yang BUKAN merupakan elemen HTML?</p>
+    <ul>
+        <li>&lt;code&gt;</li>
+        <li>&lt;pre&gt;</li>
+        <li>&lt;kbd&gt;</li>
+        <li>&lt;xamp&gt;</li>
+    </ul>
+
+    <h2>Elemen Kode Komputer HTML</h2>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>&lt;code&gt;</td>
+            <td>Mendefinisikan kode pemrograman</td>
+        </tr>
+        <tr>
+            <td>&lt;kbd&gt;</td>
+            <td>Mendefinisikan input keyboard</td>
+        </tr>
+        <tr>
+            <td>&lt;samp&gt;</td>
+            <td>Mendefinisikan output komputer</td>
+        </tr>
+        <tr>
+            <td>&lt;var&gt;</td>
+            <td>Mendefinisikan variabel</td>
+        </tr>
+        <tr>
+            <td>&lt;pre&gt;</td>
+            <td>Mendefinisikan teks yang diformat</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#responsive" class="btn-prev">&larr; Previous</a>
+    <a href="#semantics" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="semantics" class="content hidden">
+    <h1>Elemen Semantik HTML</h1>
+
+    <p>Elemen semantik adalah elemen dengan arti yang jelas, baik untuk browser maupun pengembang.</p>
+
+    <h2>Apa itu Elemen Semantik?</h2>
+    <p>Elemen semantik adalah elemen yang dengan jelas menggambarkan artinya. Misalnya, elemen-elemen seperti <code>&lt;form&gt;</code>, <code>&lt;table&gt;</code>, dan <code>&lt;article&gt;</code> mendefinisikan konten mereka dengan jelas, sedangkan elemen seperti <code>&lt;div&gt;</code> dan <code>&lt;span&gt;</code> tidak memberikan informasi semantik yang spesifik tentang kontennya.</p>
+
+    <h2>Elemen Semantik dalam HTML</h2>
+    <p>Dalam HTML, ada banyak elemen semantik yang digunakan untuk mendefinisikan bagian-bagian yang berbeda dalam halaman web:</p>
+    <ul>
+        <li><code>&lt;article&gt;</code></li>
+        <li><code>&lt;aside&gt;</code></li>
+        <li><code>&lt;details&gt;</code></li>
+        <li><code>&lt;figcaption&gt;</code></li>
+        <li><code>&lt;figure&gt;</code></li>
+        <li><code>&lt;footer&gt;</code></li>
+        <li><code>&lt;header&gt;</code></li>
+        <li><code>&lt;main&gt;</code></li>
+        <li><code>&lt;mark&gt;</code></li>
+        <li><code>&lt;nav&gt;</code></li>
+        <li><code>&lt;section&gt;</code></li>
+        <li><code>&lt;summary&gt;</code></li>
+        <li><code>&lt;time&gt;</code></li>
+    </ul>
+
+    <h2>Contoh Penggunaan Elemen Semantik</h2>
+
+    <h3>Elemen <code>&lt;section&gt;</code></h3>
+    <p>Elemen <code>&lt;section&gt;</code> mendefinisikan sebuah bagian dalam dokumen, biasanya dengan sebuah judul. Berikut adalah contoh penggunaannya:</p>
+    <pre><code>&lt;section&gt;
+  &lt;h1&gt;WWF&lt;/h1&gt;
+  &lt;p&gt;World Wide Fund for Nature (WWF) adalah organisasi internasional yang bekerja pada isu-isu yang berkaitan dengan konservasi, penelitian, dan pemulihan lingkungan.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;article&gt;</code></h3>
+    <p>Elemen <code>&lt;article&gt;</code> mendefinisikan konten yang independen dan dapat berdiri sendiri. Sebagai contoh, postingan blog atau artikel surat kabar dapat didefinisikan dengan elemen ini:</p>
+    <pre><code>&lt;article&gt;
+  &lt;h2&gt;Google Chrome&lt;/h2&gt;
+  &lt;p&gt;Google Chrome adalah browser web yang dikembangkan oleh Google, dirilis pada tahun 2008.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;header&gt;</code></h3>
+    <p>Elemen <code>&lt;header&gt;</code> mewakili wadah untuk konten pengantar atau sekumpulan tautan navigasi. Berikut adalah contoh penggunaannya dalam elemen <code>&lt;article&gt;</code>:</p>
+    <pre><code>&lt;article&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Apa yang Dilakukan WWF?&lt;/h1&gt;
+    &lt;p&gt;Misi WWF:&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Misi WWF adalah untuk menghentikan kerusakan lingkungan alami planet kita.&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;footer&gt;</code></h3>
+    <p>Elemen <code>&lt;footer&gt;</code> mendefinisikan footer untuk sebuah dokumen atau bagian. Berikut adalah contoh footer untuk sebuah dokumen:</p>
+    <pre><code>&lt;footer&gt;
+  &lt;p&gt;Penulis: Hege Refsnes&lt;/p&gt;
+  &lt;p&gt;&lt;a href="mailto:hege@example.com"&gt;hege@example.com&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;nav&gt;</code></h3>
+    <p>Elemen <code>&lt;nav&gt;</code> mendefinisikan sekumpulan tautan navigasi. Berikut adalah contoh penggunaannya:</p>
+    <pre><code>&lt;nav&gt;
+  &lt;a href="/html/"&gt;HTML&lt;/a&gt; |
+  &lt;a href="/css/"&gt;CSS&lt;/a&gt; |
+  &lt;a href="/js/"&gt;JavaScript&lt;/a&gt; |
+  &lt;a href="/jquery/"&gt;jQuery&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;aside&gt;</code></h3>
+    <p>Elemen <code>&lt;aside&gt;</code> mendefinisikan konten yang terpisah dari konten utama, seperti sidebar:</p>
+    <pre><code>&lt;p&gt;Keluarga saya mengunjungi Epcot Center musim panas ini.&lt;/p&gt;
+&lt;aside&gt;
+  &lt;h4&gt;Epcot Center&lt;/h4&gt;
+  &lt;p&gt;Epcot adalah taman hiburan di Walt Disney World Resort.&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+
+    <h3>Elemen <code>&lt;figure&gt;</code> dan <code>&lt;figcaption&gt;</code></h3>
+    <p>Elemen <code>&lt;figure&gt;</code> digunakan untuk menentukan konten yang berdiri sendiri, seperti ilustrasi, foto, atau diagram. Elemen <code>&lt;figcaption&gt;</code> memberikan keterangan untuk elemen tersebut:</p>
+    <pre><code>&lt;figure&gt;
+  &lt;img src="pic_trulli.jpg" alt="Trulli"&gt;
+  &lt;figcaption&gt;Fig1. - Trulli, Puglia, Italia.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+    <h2>Daftar Elemen Semantik dalam HTML</h2>
+    <table>
+        <tr>
+            <th>Tag</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td><code>&lt;article&gt;</code></td>
+            <td>Mendefinisikan konten independen dan berdiri sendiri.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;aside&gt;</code></td>
+            <td>Mendefinisikan konten yang terpisah dari konten utama.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;details&gt;</code></td>
+            <td>Mendefinisikan detail tambahan yang dapat dilihat atau disembunyikan oleh pengguna.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;figcaption&gt;</code></td>
+            <td>Mendefinisikan keterangan untuk elemen <code>&lt;figure&gt;</code>.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;figure&gt;</code></td>
+            <td>Mendefinisikan konten yang berdiri sendiri, seperti gambar atau diagram.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;footer&gt;</code></td>
+            <td>Mendefinisikan footer untuk sebuah dokumen atau bagian.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;header&gt;</code></td>
+            <td>Mendefinisikan header untuk sebuah dokumen atau bagian.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;main&gt;</code></td>
+            <td>Mendefinisikan konten utama dari dokumen.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;mark&gt;</code></td>
+            <td>Mendefinisikan teks yang ditandai/ditandai.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;nav&gt;</code></td>
+            <td>Mendefinisikan tautan navigasi.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;section&gt;</code></td>
+            <td>Mendefinisikan bagian dalam dokumen.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;summary&gt;</code></td>
+            <td>Mendefinisikan judul yang terlihat untuk elemen <code>&lt;details&gt;</code>.</td>
+        </tr>
+        <tr>
+            <td><code>&lt;time&gt;</code></td>
+            <td>Mendefinisikan tanggal/waktu.</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#computercode" class="btn-prev">&larr; Previous</a>
+    <a href="#style-guide" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="style-guide" class="content hidden">
+    <h1>Panduan Gaya HTML</h1>
+
+    <p>Kode HTML yang konsisten, bersih, dan rapi memudahkan orang lain untuk membaca dan memahami kode Anda.</p>
+
+    <p>Berikut adalah beberapa pedoman dan tips untuk membuat kode HTML yang baik.</p>
+
+    <h2>Selalu Deklarasikan Jenis Dokumen</h2>
+    <p>Selalu deklarasikan jenis dokumen sebagai baris pertama di dokumen Anda. Jenis dokumen yang benar untuk HTML adalah:</p>
+    <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+
+    <h2>Gunakan Nama Elemen dengan Huruf Kecil</h2>
+    <p>HTML memungkinkan campuran huruf besar dan kecil dalam nama elemen. Namun, kami menyarankan untuk menggunakan nama elemen dengan huruf kecil karena:</p>
+    <ul>
+        <li>Campuran huruf besar dan kecil terlihat kurang rapi.</li>
+        <li>Pengembang biasanya menggunakan huruf kecil.</li>
+        <li>Huruf kecil lebih bersih dan mudah ditulis.</li>
+    </ul>
+    <p>Contoh yang baik:</p>
+    <pre><code>&lt;body&gt;
+  &lt;p&gt;Ini adalah sebuah paragraf.&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;BODY&gt;
+  &lt;P&gt;Ini adalah sebuah paragraf.&lt;/P&gt;
+&lt;/BODY&gt;</code></pre>
+
+    <h2>Tutup Semua Elemen HTML</h2>
+    <p>Kami sangat menyarankan untuk menutup semua elemen HTML:</p>
+    <pre><code>&lt;section&gt;
+  &lt;p&gt;Ini adalah sebuah paragraf.&lt;/p&gt;
+  &lt;p&gt;Ini adalah paragraf lain.&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;section&gt;
+  &lt;p&gt;Ini adalah sebuah paragraf.
+  &lt;p&gt;Ini adalah paragraf lain.
+&lt;/section&gt;</code></pre>
+
+    <h2>Gunakan Nama Atribut dengan Huruf Kecil</h2>
+    <p>Seperti halnya nama elemen, kami menyarankan untuk menggunakan nama atribut dengan huruf kecil.</p>
+    <pre><code>&lt;a href="https://www.w3schools.com/html/"&gt;Kunjungi tutorial HTML kami&lt;/a&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;a HREF="https://www.w3schools.com/html/"&gt;Kunjungi tutorial HTML kami&lt;/a&gt;</code></pre>
+
+    <h2>Selalu Berikan Nilai Atribut dalam Tanda Kutip</h2>
+    <p>Selalu beri tanda kutip pada nilai atribut. Ini membuat kode lebih mudah dibaca:</p>
+    <pre><code>&lt;table class="striped"&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;table class=striped&gt;</code></pre>
+
+    <h2>Selalu Tentukan alt, width, dan height untuk Gambar</h2>
+    <p>Selalu tentukan atribut alt untuk gambar serta lebar dan tinggi gambar untuk mengurangi kedipan saat gambar dimuat:</p>
+    <pre><code>&lt;img src="html5.gif" alt="HTML5" style="width:128px;height:128px"&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;img src="html5.gif"&gt;</code></pre>
+
+    <h2>Spasi dan Tanda Sama Dengan</h2>
+    <p>HTML memungkinkan spasi di sekitar tanda sama dengan, tetapi tanpa spasi lebih mudah dibaca:</p>
+    <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+    <p>Contoh yang buruk:</p>
+    <pre><code>&lt;link rel = "stylesheet" href = "styles.css"&gt;</code></pre>
+
+    <h2>Hindari Baris Kode Panjang</h2>
+    <p>Cobalah untuk menghindari baris kode yang terlalu panjang untuk kenyamanan pembacaan.</p>
+
+    <h2>Baris Kosong dan Indentasi</h2>
+    <p>Untuk keterbacaan, tambahkan dua spasi untuk indentasi dan baris kosong untuk memisahkan blok kode besar:</p>
+    <pre><code>&lt;body&gt;
+
+  &lt;h1&gt;Kota-Kota Terkenal&lt;/h1&gt;
+
+  &lt;h2&gt;Tokyo&lt;/h2&gt;
+  &lt;p&gt;Tokyo adalah ibu kota Jepang...&lt;/p&gt;
+
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London adalah ibu kota Inggris...&lt;/p&gt;
+
+  &lt;h2&gt;Paris&lt;/h2&gt;
+  &lt;p&gt;Paris adalah ibu kota Prancis...&lt;/p&gt;
+
+&lt;/body&gt;</code></pre>
+
+    <h2>Contoh Tabel yang Baik</h2>
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Nama&lt;/th&gt;
+    &lt;th&gt;Deskripsi&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;A&lt;/td&gt;
+    &lt;td&gt;Deskripsi A&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;B&lt;/td&gt;
+    &lt;td&gt;Deskripsi B&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+    <h2>Contoh Daftar yang Baik</h2>
+    <pre><code>&lt;ul&gt;
+  &lt;li&gt;London&lt;/li&gt;
+  &lt;li&gt;Paris&lt;/li&gt;
+  &lt;li&gt;Tokyo&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+    <h2>Jangan Pernah Melewatkan Elemen &lt;title&gt;</h2>
+    <p>Elemen &lt;title&gt; diperlukan dalam HTML dan penting untuk SEO:</p>
+    <pre><code>&lt;title&gt;Panduan Gaya HTML dan Konvensi Pengkodean&lt;/title&gt;</code></pre>
+
+    <h2>Menambahkan Atribut lang</h2>
+    <p>Selalu sertakan atribut lang dalam tag &lt;html&gt; untuk mendeklarasikan bahasa halaman Web:</p>
+    <pre><code>&lt;html lang="id"&gt;</code></pre>
+
+    <h2>Meta Data</h2>
+    <p>Untuk pengindeksan yang benar oleh mesin pencari, sertakan &lt;meta charset="UTF-8"&gt; di dalam &lt;head&gt;:</p>
+    <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+
+    <h2>Menyetel Viewport</h2>
+    <p>Gunakan elemen &lt;meta&gt; untuk mengontrol skala dan dimensi halaman pada perangkat yang berbeda:</p>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+    <h2>Komputer HTML</h2>
+    <p>Untuk menulis komentar dalam HTML:</p>
+    <pre><code>&lt;!-- Ini adalah komentar --&gt;</code></pre>
+
+    <br>
+    <a href="#semantics" class="btn-prev">&larr; Previous</a>
+    <a href="#entities" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="entities" class="content hidden">
+    <h1>HTML Entities</h1>
+
+    <p>Karakter-karakter yang sudah dipakai dalam HTML harus diganti dengan entitas:</p>
+    
+    <ul>
+        <li><code>&lt;</code> (kurang dari) = <code>&amp;lt;</code></li>
+        <li><code>&gt;</code> (lebih besar) = <code>&amp;gt;</code></li>
+    </ul>
+
+    <h2>Entitas Karakter HTML</h2>
+    <p>Beberapa karakter bersifat <em>reserved</em> di HTML. Jika Anda menggunakan tanda kurang dari (<) atau lebih besar (>) dalam teks HTML Anda, browser mungkin akan mencampurinya dengan tag HTML.</p>
+
+    <p>Entitas nama atau nomor entitas bisa digunakan untuk menampilkan karakter-karakter yang <em>reserved</em> dalam HTML.</p>
+    
+    <p>Entitas nama terlihat seperti ini:</p>
+    <pre><code>&amp;entity_name;</code></pre>
+
+    <p>Nomor entitas terlihat seperti ini:</p>
+    <pre><code>&amp;#entity_number;</code></pre>
+
+    <p>Untuk menampilkan tanda kurang dari (<), kita harus menulis: <code>&amp;lt;</code> atau <code>&amp;#60;</code></p>
+
+    <p>Nama entitas lebih mudah diingat daripada nomor entitas.</p>
+
+    <h2>Ruang Non-Pemutus</h2>
+    <p>Salah satu entitas HTML yang sering digunakan adalah ruang non-pemutus: <code>&amp;nbsp;</code>.</p>
+    <p>Ruang non-pemutus adalah ruang yang tidak akan terputus menjadi baris baru. Dua kata yang dipisahkan oleh ruang non-pemutus akan tetap berada di satu baris (tidak terputus ke baris berikutnya). Ini sangat berguna ketika memisahkan kata-kata bisa mengganggu.</p>
+
+    <p>Contoh:</p>
+    <ul>
+        <li>§ 10</li>
+        <li>10 km/h</li>
+        <li>10 PM</li>
+    </ul>
+
+    <p>Penggunaan umum lain dari ruang non-pemutus adalah untuk mencegah browser menghapus spasi di halaman HTML. Jika Anda menulis 10 spasi dalam teks, browser akan menghapus 9 di antaranya. Untuk menambahkan ruang yang sebenarnya dalam teks, Anda bisa menggunakan entitas karakter <code>&amp;nbsp;</code>.</p>
+
+    <h2>Tanda Hubung Non-Pemutus</h2>
+    <p>Tanda hubung non-pemutus (<code>&amp;#8209;</code>) digunakan untuk mendefinisikan karakter tanda hubung (‑) yang tidak terputus menjadi baris baru.</p>
+
+    <h2>Beberapa Entitas Karakter HTML yang Berguna</h2>
+    <table>
+        <tr>
+            <th>Hasil</th>
+            <th>Deskripsi</th>
+            <th>Nama</th>
+            <th>Nomor</th>
+        </tr>
+        <tr>
+            <td>non-breaking space</td>
+            <td>ruang non-pemutus</td>
+            <td><code>&amp;nbsp;</code></td>
+            <td><code>&amp;#160;</code></td>
+        </tr>
+        <tr>
+            <td>&lt;</td>
+            <td>kurang dari</td>
+            <td><code>&amp;lt;</code></td>
+            <td><code>&amp;#60;</code></td>
+        </tr>
+        <tr>
+            <td>&gt;</td>
+            <td>lebih besar dari</td>
+            <td><code>&amp;gt;</code></td>
+            <td><code>&amp;#62;</code></td>
+        </tr>
+        <tr>
+            <td>&amp;</td>
+            <td>ampersand</td>
+            <td><code>&amp;amp;</code></td>
+            <td><code>&amp;#38;</code></td>
+        </tr>
+        <tr>
+            <td>"</td>
+            <td>tanda kutip ganda</td>
+            <td><code>&amp;quot;</code></td>
+            <td><code>&amp;#34;</code></td>
+        </tr>
+        <tr>
+            <td>'</td>
+            <td>tanda kutip tunggal</td>
+            <td><code>&amp;apos;</code></td>
+            <td><code>&amp;#39;</code></td>
+        </tr>
+        <tr>
+            <td>¢</td>
+            <td>cent</td>
+            <td><code>&amp;cent;</code></td>
+            <td><code>&amp;#162;</code></td>
+        </tr>
+        <tr>
+            <td>£</td>
+            <td>pound</td>
+            <td><code>&amp;pound;</code></td>
+            <td><code>&amp;#163;</code></td>
+        </tr>
+        <tr>
+            <td>¥</td>
+            <td>yen</td>
+            <td><code>&amp;yen;</code></td>
+            <td><code>&amp;#165;</code></td>
+        </tr>
+        <tr>
+            <td>€</td>
+            <td>euro</td>
+            <td><code>&amp;euro;</code></td>
+            <td><code>&amp;#8364;</code></td>
+        </tr>
+        <tr>
+            <td>©</td>
+            <td>hak cipta</td>
+            <td><code>&amp;copy;</code></td>
+            <td><code>&amp;#169;</code></td>
+        </tr>
+        <tr>
+            <td>®</td>
+            <td>merek dagang</td>
+            <td><code>&amp;reg;</code></td>
+            <td><code>&amp;#174;</code></td>
+        </tr>
+    </table>
+
+    <p><strong>Catatan</strong>: Nama entitas bersifat case-sensitive (memperhatikan huruf besar/kecil).</p>
+
+    <h2>Tanda Diakritik</h2>
+    <p>Tanda diakritik adalah "grafem" yang ditambahkan pada huruf. Beberapa tanda diakritik, seperti grave ( ̀) dan acute ( ́) disebut aksen.</p>
+
+    <p>Tanda diakritik bisa digunakan dalam kombinasi dengan karakter alfanumerik untuk menghasilkan karakter yang tidak ada dalam set karakter (pengkodean) yang digunakan di halaman.</p>
+
+    <p>Berikut adalah beberapa contoh:</p>
+    <table>
+        <tr>
+            <th>Mark</th>
+            <th>Karakter</th>
+            <th>Konstruk</th>
+            <th>Hasil</th>
+        </tr>
+        <tr>
+            <td> ̀</td>
+            <td>a</td>
+            <td>a&#768;</td>
+            <td>à</td>
+        </tr>
+        <tr>
+            <td> ́</td>
+            <td>a</td>
+            <td>a&#769;</td>
+            <td>á</td>
+        </tr>
+        <tr>
+            <td>̂</td>
+            <td>a</td>
+            <td>a&#770;</td>
+            <td>â</td>
+        </tr>
+        <tr>
+            <td>̃</td>
+            <td>a</td>
+            <td>a&#771;</td>
+            <td>ã</td>
+        </tr>
+        <tr>
+            <td> ̀</td>
+            <td>O</td>
+            <td>O&#768;</td>
+            <td>Ò</td>
+        </tr>
+        <tr>
+            <td> ́</td>
+            <td>O</td>
+            <td>O&#769;</td>
+            <td>Ó</td>
+        </tr>
+        <tr>
+            <td>̂</td>
+            <td>O</td>
+            <td>O&#770;</td>
+            <td>Ô</td>
+        </tr>
+        <tr>
+            <td>̃</td>
+            <td>O</td>
+            <td>O&#771;</td>
+            <td>Õ</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#style-guide" class="btn-prev">&larr; Previous</a>
+    <a href="#symbols" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="symbols" class="content hidden">
+    <h1>HTML Symbols</h1>
+
+    <p>Simbol atau huruf yang tidak ada di keyboard Anda dapat ditambahkan ke dalam HTML menggunakan entitas.</p>
+
+    <h2>Entitas Simbol HTML</h2>
+    <p>Entitas HTML telah dijelaskan pada bab sebelumnya.</p>
+    <p>Banyak simbol matematika, teknis, dan mata uang yang tidak tersedia di keyboard biasa.</p>
+    <p>Untuk menambahkan simbol-simbol tersebut ke dalam halaman HTML, Anda dapat menggunakan nama entitas atau nomor entitas (referensi desimal atau hexadecimal) untuk simbol tersebut.</p>
+
+    <h3>Contoh</h3>
+    <p>Tampilkan simbol euro:</p>
+    <pre><code>&lt;p&gt;Saya akan menampilkan &amp;euro;&lt;/p&gt;</code></pre>
+    <pre><code>&lt;p&gt;Saya akan menampilkan &#8364;&lt;/p&gt;</code></pre>
+    <pre><code>&lt;p&gt;Saya akan menampilkan &#x20AC;&lt;/p&gt;</code></pre>
+    <p>Hasilnya akan menampilkan:</p>
+    <p>Saya akan menampilkan €</p>
+    <p>Saya akan menampilkan €</p>
+    <p>Saya akan menampilkan €</p>
+
+    <h2>Beberapa Simbol Matematika yang Didukung HTML</h2>
+    <table>
+        <tr>
+            <th>Karakter</th>
+            <th>Nomor</th>
+            <th>Entitas</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>∀</td>
+            <td>&#8704;</td>
+            <td>&amp;forall;</td>
+            <td>Untuk semua</td>
+        </tr>
+        <tr>
+            <td>∂</td>
+            <td>&#8706;</td>
+            <td>&amp;part;</td>
+            <td>Turunan parsial</td>
+        </tr>
+        <tr>
+            <td>∃</td>
+            <td>&#8707;</td>
+            <td>&amp;exist;</td>
+            <td>Ada</td>
+        </tr>
+        <tr>
+            <td>∅</td>
+            <td>&#8709;</td>
+            <td>&amp;empty;</td>
+            <td>Himpunan kosong</td>
+        </tr>
+        <tr>
+            <td>∇</td>
+            <td>&#8711;</td>
+            <td>&amp;nabla;</td>
+            <td>Operasi nabla</td>
+        </tr>
+        <tr>
+            <td>∈</td>
+            <td>&#8712;</td>
+            <td>&amp;isin;</td>
+            <td>Elemen dari</td>
+        </tr>
+        <tr>
+            <td>∉</td>
+            <td>&#8713;</td>
+            <td>&amp;notin;</td>
+            <td>Bukan elemen dari</td>
+        </tr>
+        <tr>
+            <td>∋</td>
+            <td>&#8715;</td>
+            <td>&amp;ni;</td>
+            <td>Termasuk sebagai anggota</td>
+        </tr>
+        <tr>
+            <td>∏</td>
+            <td>&#8719;</td>
+            <td>&amp;prod;</td>
+            <td>Produk N-ary</td>
+        </tr>
+        <tr>
+            <td>∑</td>
+            <td>&#8721;</td>
+            <td>&amp;sum;</td>
+            <td>Penjumlahan N-ary</td>
+        </tr>
+    </table>
+
+    <h2>Beberapa Huruf Yunani yang Didukung HTML</h2>
+    <table>
+        <tr>
+            <th>Karakter</th>
+            <th>Nomor</th>
+            <th>Entitas</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>Α</td>
+            <td>&#913;</td>
+            <td>&amp;Alpha;</td>
+            <td>ALFA YUNANI</td>
+        </tr>
+        <tr>
+            <td>Β</td>
+            <td>&#914;</td>
+            <td>&amp;Beta;</td>
+            <td>BERITA YUNANI</td>
+        </tr>
+        <tr>
+            <td>Γ</td>
+            <td>&#915;</td>
+            <td>&amp;Gamma;</td>
+            <td>GAMMA YUNANI</td>
+        </tr>
+        <tr>
+            <td>Δ</td>
+            <td>&#916;</td>
+            <td>&amp;Delta;</td>
+            <td>DELTA YUNANI</td>
+        </tr>
+        <tr>
+            <td>Ε</td>
+            <td>&#917;</td>
+            <td>&amp;Epsilon;</td>
+            <td>EPSILON YUNANI</td>
+        </tr>
+        <tr>
+            <td>Ζ</td>
+            <td>&#918;</td>
+            <td>&amp;Zeta;</td>
+            <td>ZETA YUNANI</td>
+        </tr>
+    </table>
+
+    <h2>Beberapa Entitas Lain yang Didukung HTML</h2>
+    <table>
+        <tr>
+            <th>Karakter</th>
+            <th>Nomor</th>
+            <th>Entitas</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>©</td>
+            <td>&#169;</td>
+            <td>&amp;copy;</td>
+            <td>HAK CIPTA</td>
+        </tr>
+        <tr>
+            <td>®</td>
+            <td>&#174;</td>
+            <td>&amp;reg;</td>
+            <td>TERDAFTAR</td>
+        </tr>
+        <tr>
+            <td>€</td>
+            <td>&#8364;</td>
+            <td>&amp;euro;</td>
+            <td>SIMBOL EURO</td>
+        </tr>
+        <tr>
+            <td>™</td>
+            <td>&#8482;</td>
+            <td>&amp;trade;</td>
+            <td>TRADEMARK</td>
+        </tr>
+        <tr>
+            <td>←</td>
+            <td>&#8592;</td>
+            <td>&amp;larr;</td>
+            <td>ARAH KIRI</td>
+        </tr>
+        <tr>
+            <td>↑</td>
+            <td>&#8593;</td>
+            <td>&amp;uarr;</td>
+            <td>ARAH ATAS</td>
+        </tr>
+        <tr>
+            <td>→</td>
+            <td>&#8594;</td>
+            <td>&amp;rarr;</td>
+            <td>ARAH KANAN</td>
+        </tr>
+        <tr>
+            <td>↓</td>
+            <td>&#8595;</td>
+            <td>&amp;darr;</td>
+            <td>ARAH BAWAH</td>
+        </tr>
+        <tr>
+            <td>♠</td>
+            <td>&#9824;</td>
+            <td>&amp;spades;</td>
+            <td>SPADE</td>
+        </tr>
+        <tr>
+            <td>♣</td>
+            <td>&#9827;</td>
+            <td>&amp;clubs;</td>
+            <td>CLUB</td>
+        </tr>
+        <tr>
+            <td>♥</td>
+            <td>&#9829;</td>
+            <td>&amp;hearts;</td>
+            <td>HATI</td>
+        </tr>
+        <tr>
+            <td>♦</td>
+            <td>&#9830;</td>
+            <td>&amp;diams;</td>
+            <td>DIAMOND</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#entities" class="btn-prev">&larr; Sebelumnya</a>
+    <a href="#emojis" class="btn-next">Berikutnya &rarr;</a>
+</section>
+
+<section id="emojis" class="content hidden">
+    <h1>Menggunakan Emoji dalam HTML</h1>
+
+    <p>Emojis adalah karakter dari set karakter UTF-8: 😄 😍 💗</p>
+
+    <h2>Emoji dalam HTML</h2>
+    <p>Berikut adalah beberapa emoji dengan nilai Unicode-nya:</p>
+    <table>
+        <tr>
+            <th>Emoji</th>
+            <th>Nilai</th>
+        </tr>
+        <tr>
+            <td>🗻</td>
+            <td>&#128507;</td>
+        </tr>
+        <tr>
+            <td>🗼</td>
+            <td>&#128508;</td>
+        </tr>
+        <tr>
+            <td>🗽</td>
+            <td>&#128509;</td>
+        </tr>
+        <tr>
+            <td>🗾</td>
+            <td>&#128510;</td>
+        </tr>
+        <tr>
+            <td>🗿</td>
+            <td>&#128511;</td>
+        </tr>
+        <tr>
+            <td>😀</td>
+            <td>&#128512;</td>
+        </tr>
+        <tr>
+            <td>😁</td>
+            <td>&#128513;</td>
+        </tr>
+        <tr>
+            <td>😂</td>
+            <td>&#128514;</td>
+        </tr>
+        <tr>
+            <td>😃</td>
+            <td>&#128515;</td>
+        </tr>
+        <tr>
+            <td>😄</td>
+            <td>&#128516;</td>
+        </tr>
+        <tr>
+            <td>😅</td>
+            <td>&#128517;</td>
+        </tr>
+    </table>
+
+    <h2>Contoh Emoji HTML</h2>
+    <p>Berikut adalah beberapa contoh emoji dalam HTML:</p>
+    <h3>Simbol Emoji Transportasi</h3>
+    <p>🚀🚁🚂🚃🚄</p>
+
+    <h3>Simbol Emoji Kantor</h3>
+    <p>💺💻💼💽💾</p>
+
+    <h3>Simbol Emoji Orang</h3>
+    <p>👮👯👰👱👲</p>
+
+    <h3>Simbol Emoji Hewan</h3>
+    <p>🐂🐃🐄🐅🐆</p>
+
+    <h2>Apa Itu Emoji?</h2>
+    <p>Emojis tampak seperti gambar atau ikon, tetapi mereka bukanlah gambar.</p>
+    <p>Mereka adalah huruf (karakter) dari set karakter UTF-8 (Unicode).</p>
+    <p>UTF-8 mencakup hampir semua karakter dan simbol di dunia.</p>
+
+    <h2>Attribut Charset HTML</h2>
+    <p>Untuk menampilkan halaman HTML dengan benar, browser web harus mengetahui set karakter yang digunakan dalam halaman tersebut.</p>
+    <p>Ini ditentukan dalam tag <code>&lt;meta&gt;</code>:</p>
+    <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+    <p>Jika tidak ditentukan, UTF-8 adalah set karakter default di HTML.</p>
+
+    <h2>Karakter UTF-8</h2>
+    <p>Banyak karakter UTF-8 yang tidak dapat diketik di keyboard, tetapi mereka selalu dapat ditampilkan menggunakan angka (yang disebut nomor entitas):</p>
+    <p>A adalah 65</p>
+    <p>B adalah 66</p>
+    <p>C adalah 67</p>
+
+    <h3>Contoh</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+
+&lt;p&gt;Saya akan menampilkan A B C&lt;/p&gt;
+&lt;p&gt;Saya akan menampilkan &#65; &#66; &#67;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h3>Penjelasan Contoh</h3>
+    <p>Elemen <code>&lt;meta charset="UTF-8"&gt;</code> mendefinisikan set karakter.</p>
+    <p>Karakter A, B, dan C, ditampilkan dengan angka 65, 66, dan 67.</p>
+    <p>Untuk memberi tahu browser bahwa Anda menampilkan karakter, Anda harus memulai nomor entitas dengan <code>&#</code> dan mengakhiri dengan <code>;</code> (titik koma).</p>
+
+    <h2>Karakter Emoji</h2>
+    <p>Emoji juga merupakan karakter dari alfabet UTF-8:</p>
+    <p>😄 adalah 128516</p>
+    <p>😍 adalah 128525</p>
+    <p>💗 adalah 128151</p>
+
+    <h3>Contoh</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Emoji Pertama Saya&lt;/h1&gt;
+
+&lt;p&gt;&#128512;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>Karena Emoji adalah karakter, mereka dapat disalin, ditampilkan, dan disesuaikan ukurannya seperti karakter lainnya di HTML.</h2>
+
+    <h3>Contoh Emoji dengan Ukuran Tertentu</h3>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;body&gt;
+
+&lt;h1&gt;Emoji dengan Ukuran&lt;/h1&gt;
+
+&lt;p style="font-size:48px"&gt;
+&#128512; &#128516; &#128525; &#128151;
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<br>
+<a href="#symbols" class="btn-prev">&larr; Sebelumnya</a>
+<a href="#charsets" class="btn-next">Berikutnya &rarr;</a>
+</section>
+
+<section id="charsets" class="content hidden">
+    <h1>HTML Encoding (Set Karakter)</h1>
+
+    <p>Untuk menampilkan halaman HTML dengan benar, browser web harus mengetahui set karakter yang digunakan.</p>
+
+    <h2>Atribut charset HTML</h2>
+    <p>Set karakter ditentukan dalam tag <code>&lt;meta&gt;</code>:</p>
+    <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+    <p>Spesifikasi HTML5 mendorong pengembang web untuk menggunakan set karakter UTF-8.</p>
+    <p>UTF-8 mencakup hampir semua karakter dan simbol di dunia!</p>
+
+    <h2>Unicode & Pertumbuhan Web</h2>
+    <p>Referensi lengkap UTF-8.</p>
+
+    <h2>Set Karakter ASCII</h2>
+    <p>ASCII adalah standar pengkodean karakter pertama untuk web. Ini mendefinisikan 128 karakter berbeda yang dapat digunakan di internet:</p>
+    <ul>
+        <li>Huruf-huruf Inggris (A-Z)</li>
+        <li>Angka (0-9)</li>
+        <li>Karakter khusus seperti <code>! $ + - ( ) @ &lt; &gt;</code>.</li>
+    </ul>
+
+    <h2>Set Karakter ANSI</h2>
+    <p>ANSI (Windows-1252) adalah set karakter asli Windows:</p>
+    <ul>
+        <li>Identik dengan ASCII untuk 127 karakter pertama</li>
+        <li>Karakter khusus dari 128 hingga 159</li>
+        <li>Identik dengan UTF-8 dari 160 hingga 255</li>
+    </ul>
+    <pre><code>&lt;meta charset="Windows-1252"&gt;</code></pre>
+
+    <h2>Set Karakter ISO-8859-1</h2>
+    <p>ISO-8859-1 adalah set karakter default untuk HTML 4. Set karakter ini mendukung 256 kode karakter yang berbeda. HTML 4 juga mendukung UTF-8.</p>
+    <ul>
+        <li>Identik dengan ASCII untuk 127 karakter pertama</li>
+        <li>Tidak menggunakan karakter dari 128 hingga 159</li>
+        <li>Identik dengan ANSI dan UTF-8 dari 160 hingga 255</li>
+    </ul>
+    <p><strong>Contoh HTML 4:</strong></p>
+    <pre><code>&lt;meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1"&gt;</code></pre>
+    <p><strong>Contoh HTML 5:</strong></p>
+    <pre><code>&lt;meta charset="ISO-8859-1"&gt;</code></pre>
+
+    <h2>Set Karakter UTF-8</h2>
+    <ul>
+        <li>Identik dengan ASCII untuk nilai dari 0 hingga 127</li>
+        <li>Tidak menggunakan karakter dari 128 hingga 159</li>
+        <li>Identik dengan ANSI dan 8859-1 dari 160 hingga 255</li>
+        <li>Lanjutan dari nilai 256 hingga 10.000 karakter</li>
+    </ul>
+    <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+
+    <h2>Perbedaan antara Set Karakter</h2>
+    <p>Tabel berikut menunjukkan perbedaan antara set karakter yang dijelaskan di atas:</p>
+    
+    <table>
+        <tr>
+            <th>Numb</th>
+            <th>ASCII</th>
+            <th>ANSI</th>
+            <th>8859</th>
+            <th>UTF‑8</th>
+            <th>Deskripsi</th>
+        </tr>
+        <tr>
+            <td>32</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>spasi</td>
+        </tr>
+        <tr>
+            <td>33</td>
+            <td>!</td>
+            <td>!</td>
+            <td>!</td>
+            <td>!</td>
+            <td>tanda seru</td>
+        </tr>
+        <tr>
+            <td>34</td>
+            <td>"</td>
+            <td>"</td>
+            <td>"</td>
+            <td>"</td>
+            <td>tanda kutip</td>
+        </tr>
+        <tr>
+            <td>35</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>#</td>
+            <td>tanda pagar</td>
+        </tr>
+        <tr>
+            <td>36</td>
+            <td>$</td>
+            <td>$</td>
+            <td>$</td>
+            <td>$</td>
+            <td>tanda dolar</td>
+        </tr>
+        <tr>
+            <td>37</td>
+            <td>%</td>
+            <td>%</td>
+            <td>%</td>
+            <td>%</td>
+            <td>tanda persen</td>
+        </tr>
+        <tr>
+            <td>38</td>
+            <td>&amp;</td>
+            <td>&amp;</td>
+            <td>&amp;</td>
+            <td>&amp;</td>
+            <td>dan (&amp;)</td>
+        </tr>
+        <tr>
+            <td>39</td>
+            <td>'</td>
+            <td>'</td>
+            <td>'</td>
+            <td>'</td>
+            <td>tanda petik</td>
+        </tr>
+        <tr>
+            <td>40</td>
+            <td>(</td>
+            <td>(</td>
+            <td>(</td>
+            <td>(</td>
+            <td>tanda kurung kiri</td>
+        </tr>
+        <tr>
+            <td>41</td>
+            <td>)</td>
+            <td>)</td>
+            <td>)</td>
+            <td>)</td>
+            <td>tanda kurung kanan</td>
+        </tr>
+        <tr>
+            <td>42</td>
+            <td>*</td>
+            <td>*</td>
+            <td>*</td>
+            <td>*</td>
+            <td>tanda bintang</td>
+        </tr>
+        <tr>
+            <td>43</td>
+            <td>+</td>
+            <td>+</td>
+            <td>+</td>
+            <td>+</td>
+            <td>tanda tambah</td>
+        </tr>
+        <tr>
+            <td>44</td>
+            <td>,</td>
+            <td>,</td>
+            <td>,</td>
+            <td>,</td>
+            <td>koma</td>
+        </tr>
+        <tr>
+            <td>45</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>tanda minus</td>
+        </tr>
+        <tr>
+            <td>46</td>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+            <td>.</td>
+            <td>titik</td>
+        </tr>
+        <tr>
+            <td>47</td>
+            <td>/</td>
+            <td>/</td>
+            <td>/</td>
+            <td>/</td>
+            <td>garis miring</td>
+        </tr>
+        <tr>
+            <td>48</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>angka nol</td>
+        </tr>
+    </table>
+
+    <p><strong>Catatan:</strong> Tabel ini hanya menunjukkan sebagian dari karakter yang ada dalam berbagai set karakter. Terdapat lebih banyak karakter di setiap set karakter.</p>
+
+    <br>
+    <a href="#emojis" class="btn-prev">&larr; Previous</a>
+    <a href="#url-encode" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="url-encode" class="content hidden">
+    <h1>HTML Uniform Resource Locators (URL)</h1>
+
+    <p>URL adalah istilah lain untuk alamat web.</p>
+
+    <p>URL dapat terdiri dari kata-kata (misalnya <code>w3schools.com</code>), atau alamat Protokol Internet (IP) (misalnya <code>192.68.20.50</code>).</p>
+
+    <p>Kebanyakan orang memasukkan nama saat menjelajah internet, karena nama lebih mudah diingat daripada angka.</p>
+
+    <h2>URL - Uniform Resource Locator</h2>
+    <p>Browser web meminta halaman dari server web dengan menggunakan URL.</p>
+    <p>Uniform Resource Locator (URL) digunakan untuk mengalamatkan sebuah dokumen (atau data lainnya) di web.</p>
+    
+    <h2>Struktur URL</h2>
+    <p>Alamat web seperti <code>https://www.w3schools.com/html/default.asp</code> mengikuti aturan sintaksis berikut:</p>
+    <pre><code>scheme://prefix.domain:port/path/filename</code></pre>
+
+    <h3>Penjelasan:</h3>
+    <ul>
+        <li><strong>scheme</strong> - mendefinisikan jenis layanan Internet (yang paling umum adalah <code>http</code> atau <code>https</code>)</li>
+        <li><strong>prefix</strong> - mendefinisikan awalan domain (default untuk <code>http</code> adalah <code>www</code>)</li>
+        <li><strong>domain</strong> - mendefinisikan nama domain Internet (misalnya <code>w3schools.com</code>)</li>
+        <li><strong>port</strong> - mendefinisikan nomor port di host (default untuk <code>http</code> adalah 80)</li>
+        <li><strong>path</strong> - mendefinisikan path di server (Jika tidak ada: direktori root situs)</li>
+        <li><strong>filename</strong> - mendefinisikan nama dokumen atau sumber daya</li>
+    </ul>
+
+    <h2>Skema URL Umum</h2>
+    <p>Tabel di bawah ini mencantumkan beberapa skema yang umum digunakan:</p>
+    
+    <table>
+        <tr>
+            <th>Skema</th>
+            <th>Singkatan dari</th>
+            <th>Digunakan untuk</th>
+        </tr>
+        <tr>
+            <td><code>http</code></td>
+            <td>HyperText Transfer Protocol</td>
+            <td>Halaman web umum. Tidak terenkripsi</td>
+        </tr>
+        <tr>
+            <td><code>https</code></td>
+            <td>Secure HyperText Transfer Protocol</td>
+            <td>Halaman web aman. Terenkripsi</td>
+        </tr>
+        <tr>
+            <td><code>ftp</code></td>
+            <td>File Transfer Protocol</td>
+            <td>Men-download atau meng-upload file</td>
+        </tr>
+        <tr>
+            <td><code>file</code></td>
+            <td>-</td>
+            <td>File di komputer Anda</td>
+        </tr>
+    </table>
+
+    <h2>Penyandian URL</h2>
+    <p>URL hanya dapat dikirimkan melalui Internet menggunakan set karakter ASCII. Jika URL mengandung karakter di luar set ASCII, URL harus diubah.</p>
+    <p>Penyandian URL mengubah karakter non-ASCII ke dalam format yang dapat dikirimkan melalui Internet.</p>
+    <p>Penyandian URL menggantikan karakter non-ASCII dengan simbol "%" diikuti dengan angka hexadecimal.</p>
+    <p>URL tidak dapat mengandung spasi. Penyandian URL biasanya menggantikan spasi dengan tanda plus (+), atau <code>%20</code>.</p>
+
+    <h3>Coba Sendiri</h3>
+    <p>Contoh: <strong>Hello Günter</strong></p>
+    <p>Jika Anda mengklik "Submit", browser akan menyandikan URL sebelum dikirim ke server.</p>
+    <p>Halaman di server akan menampilkan input yang diterima.</p>
+
+    <h2>Contoh Penyandian ASCII</h2>
+    <p>Browser Anda akan menyandikan input sesuai dengan set karakter yang digunakan di halaman Anda.</p>
+    <p>Set karakter default di HTML5 adalah UTF-8.</p>
+
+    <h3>Contoh Penyandian Karakter</h3>
+    <table>
+        <tr>
+            <th>Karakter</th>
+            <th>Dari Windows-1252</th>
+            <th>Dari UTF-8</th>
+        </tr>
+        <tr>
+            <td>€</td>
+            <td>%80</td>
+            <td>%E2%82%AC</td>
+        </tr>
+        <tr>
+            <td>£</td>
+            <td>%A3</td>
+            <td>%C2%A3</td>
+        </tr>
+        <tr>
+            <td>©</td>
+            <td>%A9</td>
+            <td>%C2%A9</td>
+        </tr>
+        <tr>
+            <td>®</td>
+            <td>%AE</td>
+            <td>%C2%AE</td>
+        </tr>
+        <tr>
+            <td>À</td>
+            <td>%C0</td>
+            <td>%C3%80</td>
+        </tr>
+        <tr>
+            <td>Á</td>
+            <td>%C1</td>
+            <td>%C3%81</td>
+        </tr>
+        <tr>
+            <td>Â</td>
+            <td>%C2</td>
+            <td>%C3%82</td>
+        </tr>
+        <tr>
+            <td>Ã</td>
+            <td>%C3</td>
+            <td>%C3%83</td>
+        </tr>
+        <tr>
+            <td>Ä</td>
+            <td>%C4</td>
+            <td>%C3%84</td>
+        </tr>
+        <tr>
+            <td>Å</td>
+            <td>%C5</td>
+            <td>%C3%85</td>
+        </tr>
+    </table>
+
+    <br>
+    <a href="#charsets" class="btn-prev">&larr; Previous</a>
+    <a href="#vs-xhtml" class="btn-next">Next &rarr;</a>
+</section>
+
+<section id="vs-xhtml" class="content hidden">
+    <h1>HTML vs XHTML</h1>
+
+    <p>XHTML adalah versi HTML yang lebih ketat dan berbasis XML.</p>
+
+    <h2>Apa itu XHTML?</h2>
+    <p>XHTML adalah singkatan dari EXtensible HyperText Markup Language.</p>
+    <p>XHTML adalah versi HTML yang lebih ketat dan berbasis XML.</p>
+    <p>XHTML adalah HTML yang didefinisikan sebagai aplikasi XML.</p>
+    <p>XHTML didukung oleh semua browser utama.</p>
+
+    <h2>Mengapa XHTML?</h2>
+    <p>XML adalah bahasa markup di mana semua dokumen harus ditandai dengan benar (harus "well-formed").</p>
+    <p>XHTML dikembangkan untuk membuat HTML lebih dapat diperluas dan fleksibel agar dapat bekerja dengan format data lainnya (seperti XML). Selain itu, browser mengabaikan kesalahan dalam halaman HTML dan berusaha menampilkan situs meskipun ada beberapa kesalahan dalam markup. Jadi, XHTML hadir dengan penanganan kesalahan yang lebih ketat.</p>
+    <p>Jika Anda ingin mempelajari XML, silakan baca <a href="https://www.w3schools.com/xml/" target="_blank">Tutorial XML kami</a>.</p>
+
+    <h2>Perbedaan Utama dari HTML</h2>
+    <ul>
+        <li><strong>&lt;!DOCTYPE&gt;</strong> adalah wajib</li>
+        <li>Attribut <code>xmlns</code> di dalam &lt;html&gt; adalah wajib</li>
+        <li>&lt;html&gt;, &lt;head&gt;, &lt;title&gt;, dan &lt;body&gt; adalah wajib</li>
+        <li>Elemen harus selalu bersarang dengan benar</li>
+        <li>Elemen harus selalu ditutup</li>
+        <li>Elemen harus selalu menggunakan huruf kecil</li>
+        <li>Nama atribut harus selalu menggunakan huruf kecil</li>
+        <li>Nilai atribut harus selalu diberi tanda kutip</li>
+        <li>Minimisasi atribut dilarang</li>
+    </ul>
+
+    <h2>XHTML - &lt;!DOCTYPE&gt; Itu Wajib</h2>
+    <p>Dokumen XHTML harus memiliki deklarasi &lt;!DOCTYPE&gt; XHTML.</p>
+    <p>Elemen-elemen <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;title&gt;</code>, dan <code>&lt;body&gt;</code> juga harus ada, dan atribut <code>xmlns</code> dalam <code>&lt;html&gt;</code> harus menentukan ruang nama XML untuk dokumen tersebut.</p>
+    
+    <h3>Contoh</h3>
+    <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;head&gt;
+      &lt;title&gt;Title of document&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+      some content here...
+
+    &lt;/body&gt;
+    &lt;/html&gt;
+    </code></pre>
+
+    <h2>Elemen XHTML Harus Disarangkan dengan Benar</h2>
+    <p>Di XHTML, elemen-elemen harus selalu disarangkan dengan benar satu sama lain, seperti ini:</p>
+    <p><strong>Benar:</strong> <code>&lt;b&gt;&lt;i&gt;Some text&lt;/i&gt;&lt;/b&gt;</code></p>
+    <p><strong>Wrong:</strong> <code>&lt;b&gt;&lt;i&gt;Some text&lt;/b&gt;&lt;/i&gt;</code></p>
+
+    <h2>Elemen XHTML Harus Selalu Ditutup</h2>
+    <p>Di XHTML, elemen-elemen harus selalu ditutup, seperti ini:</p>
+    <p><strong>Benar:</strong> <code>&lt;p&gt;This is a paragraph&lt;/p&gt;</code></p>
+    <p><strong>Wrong:</strong> <code>&lt;p&gt;This is a paragraph</code></p>
+
+    <h2>Elemen Kosong XHTML Harus Selalu Ditutup</h2>
+    <p>Di XHTML, elemen kosong harus selalu ditutup, seperti ini:</p>
+    <p><strong>Benar:</strong></p>
+    <ul>
+        <li>Break: <code>&lt;br /&gt;</code></li>
+        <li>Horizontal rule: <code>&lt;hr /&gt;</code></li>
+        <li>Image: <code>&lt;img src="happy.gif" alt="Happy face" /&gt;</code></li>
+    </ul>
+    <p><strong>Wrong:</strong></p>
+    <ul>
+        <li>Break: <code>&lt;br&gt;</code></li>
+        <li>Horizontal rule: <code>&lt;hr&gt;</code></li>
+        <li>Image: <code>&lt;img src="happy.gif" alt="Happy face"&gt;</code></li>
+    </ul>
+
+    <h2>Elemen XHTML Harus Menggunakan Huruf Kecil</h2>
+    <p>Di XHTML, nama elemen harus selalu menggunakan huruf kecil, seperti ini:</p>
+    <p><strong>Benar:</strong> <code>&lt;body&gt;</code></p>
+    <p><strong>Wrong:</strong> <code>&lt;BODY&gt;</code></p>
+
+    <h2>Nama Atribut XHTML Harus Menggunakan Huruf Kecil</h2>
+    <p>Di XHTML, nama atribut harus selalu menggunakan huruf kecil, seperti ini:</p>
+    <p><strong>Benar:</strong> <code>&lt;a href="https://www.w3schools.com/html/"&gt;Visit our HTML tutorial&lt;/a&gt;</code></p>
+    <p><strong>Wrong:</strong> <code>&lt;a HREF="https://www.w3schools.com/html/"&gt;Visit our HTML tutorial&lt;/a&gt;</code></p>
+
+    <h2>Nilai Atribut XHTML Harus Diberi Tanda Kutip</h2>
+    <p>Di XHTML, nilai atribut harus selalu diberi tanda kutip, seperti ini:</p>
+    <p><strong>Benar:</strong> <code>&lt;a href="https://www.w3schools.com/html/"&gt;Visit our HTML tutorial&lt;/a&gt;</code></p>
+    <p><strong>Wrong:</strong> <code>&lt;a href=https://www.w3schools.com/html/&gt;Visit our HTML tutorial&lt;/a&gt;</code></p>
+
+    <h2>Minimisasi Atribut Dilarang di XHTML</h2>
+    <p>Di XHTML, minimisasi atribut dilarang:</p>
+    <p><strong>Benar:</strong></p>
+    <ul>
+        <li><code>&lt;input type="checkbox" name="vehicle" value="car" checked="checked" /&gt;</code></li>
+        <li><code>&lt;input type="text" name="lastname" disabled="disabled" /&gt;</code></li>
+    </ul>
+    <p><strong>Wrong:</strong></p>
+    <ul>
+        <li><code>&lt;input type="checkbox" name="vehicle" value="car" checked /&gt;</code></li>
+        <li><code>&lt;input type="text" name="lastname" disabled /&gt;</code></li>
+    </ul>
+
+    <h2>Validasi HTML dengan W3C Validator</h2>
+    <p>Masukkan alamat web Anda di kotak di bawah ini:</p>
+    <p><a href="https://www.w3schools.com/html/html_validate.html" target="_blank">Klik di sini untuk validasi</a></p>
+    
+    <br>
+    <a href="#url-encode" class="btn-prev">&larr; Previous</a>
+</section>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    const prevButtons = document.querySelectorAll('.btn-prev');
+    const nextButtons = document.querySelectorAll('.btn-next');
+
+    function showSection(id) {
+        sections.forEach(section => {
+            if (section.id === id) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    }
+
+    function findSectionIndex(id) {
+        return Array.from(sections).findIndex(section => section.id === id);
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            showSection(targetId);
+
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    nextButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const currentSectionId = this.closest('section').id;
+            const currentIndex = findSectionIndex(currentSectionId);
+            if (currentIndex < sections.length - 1) {
+                const nextSectionId = sections[currentIndex + 1].id;
+                showSection(nextSectionId);
+                document.querySelector(`.nav-link[href="#${nextSectionId}"]`).classList.add('active');
+            }
+        });
+    });
+
+    prevButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const currentSectionId = this.closest('section').id;
+            const currentIndex = findSectionIndex(currentSectionId);
+            if (currentIndex > 0) {
+                const prevSectionId = sections[currentIndex - 1].id;
+                showSection(prevSectionId);
+                document.querySelector(`.nav-link[href="#${prevSectionId}"]`).classList.add('active');
+            }
+        });
+    });
+
+    showSection('home');
+
+     const menuIcon = document.getElementById('menu-icon');
+        const sidebar = document.querySelector('.sidebar');
+
+        menuIcon.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('open');
+            }
+        });
+</script>
+</body>
+</html>

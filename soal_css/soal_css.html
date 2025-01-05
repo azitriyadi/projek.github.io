@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Dashboard</title>
+  <link rel="stylesheet" href="../css/soal_html.css">
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <header>Main Menu</header>
+      <ul>
+        <li><a href="level_css.html">Dashboard</a></li>
+      </ul>
+      <div class="zapier-integration">
+        <button>Connect</button>
+      </div>
+    </aside>
+    <div class="main-content">
+      <header class="topbar">
+        <h1>Quiz Title</h1>
+        <input type="text" placeholder="Search">
+        <div class="user-info">Theresa Roemer</div>
+      </header>
+      <section class="quiz-layout">
+        <div class="questions-container" id="questions-container">
+          <h2>Questions</h2>
+        </div>
+        <div class="numbers-container-wrapper">
+          <h2>Question Numbers</h2>
+          <div class="numbers-container" id="numbers-container">
+            <ul class="question-numbers">
+            </ul>
+          </div>
+          <div class="navigation-buttons">
+            <button onclick="goToPreviousPage()">Previous</button>
+            <button onclick="goToNextPage()">Next</button>
+            <button onclick="finishQuiz()">Finish</button>
+          </div>
+        </div>
+      </section>
+      <section class="result-display" id="result-display" style="display:none;">
+        <h2>Quiz Results</h2>
+        <p id="result-message"></p>
+        <ul id="result-details"></ul>
+      </section>
+      <footer class="footer">
+        <p>&copy; 2024 Quiz Dashboard. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      { question: 'What is the capital of France?', options: ['A. London', 'B. Berlin', 'C. Paris'], correct: 'C' },
+      { question: 'Which planet is known as the Red Planet?', options: ['A. Earth', 'B. Mars', 'C. Jupiter'], correct: 'B' },
+    ];
+
+    let currentPage = 1;
+    const questionsPerPage = 5;
+
+    function renderQuestions() {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '<h2>Questions</h2>';
+      const start = (currentPage - 1) * questionsPerPage;
+      const end = start + questionsPerPage;
+      const currentQuestions = questions.slice(start, end);
+
+      currentQuestions.forEach((q, index) => {
+        const questionCard = document.createElement('div');
+        questionCard.className = 'question-card';
+        questionCard.innerHTML = `<h3>Question ${start + index + 1}</h3><p>${q.question}</p>`;
+        q.options.forEach(option => {
+          const label = document.createElement('label');
+          label.innerHTML = `<input type="radio" name="question${start + index + 1}" value="${option[0]}"> ${option}`;
+          questionCard.appendChild(label);
+        });
+        container.appendChild(questionCard);
+      });
+    }
+
+    function renderQuestionNumbers() {
+      const container = document.getElementById('numbers-container').querySelector('.question-numbers');
+      container.innerHTML = '';
+      const totalQuestions = questions.length;
+      const totalPages = Math.ceil(totalQuestions / questionsPerPage);
+      for (let i = 1; i <= totalQuestions; i++) {
+        const li = document.createElement('li');
+        li.className = 'question-number-box';
+        li.textContent = i;
+        container.appendChild(li);
+      }
+    }
+
+    function goToNextPage() {
+      const totalQuestions = questions.length;
+      const totalPages = Math.ceil(totalQuestions / questionsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderQuestions();
+      }
+    }
+
+    function goToPreviousPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderQuestions();
+      }
+    }
+
+    function finishQuiz() {
+      const userAnswers = [];
+      let allAnswered = true;
+
+      questions.forEach((q, index) => {
+        const selectedOption = document.querySelector(`input[name="question${index + 1}"]:checked`);
+        if (selectedOption) {
+          userAnswers.push({ question: q.question, selected: selectedOption.value, correct: q.correct });
+        } else {
+          userAnswers.push({ question: q.question, selected: null, correct: q.correct });
+          allAnswered = false;
+        }
+      });
+
+      if (!allAnswered) {
+        alert('Please answer all the questions before finishing the quiz.');
+        return;
+      }
+
+      displayResults(userAnswers);
+    }
+
+    function displayResults(userAnswers) {
+      const resultDisplay = document.getElementById('result-display');
+      const resultMessage = document.getElementById('result-message');
+      const resultDetails = document.getElementById('result-details');
+
+      let correctAnswers = 0;
+      userAnswers.forEach(answer => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>Question:</strong> ${answer.question} <br> <strong>Your Answer:</strong> ${answer.selected || 'No Answer'} <br> <strong>Correct Answer:</strong> ${answer.correct}`;
+        if (answer.selected === answer.correct) {
+          correctAnswers++;
+          li.style.color = 'green';
+        } else {
+          li.style.color = 'red';
+        }
+        resultDetails.appendChild(li);
+      });
+
+      const score = (correctAnswers / questions.length) * 100;
+      resultMessage.textContent = `You got ${correctAnswers} out of ${questions.length} questions correct. Your score is ${score.toFixed(2)}%.`;
+      resultDisplay.style.display = 'block';
+    }
+
+    renderQuestions();
+    renderQuestionNumbers();
+  </script>
+</body>
+
+</html>

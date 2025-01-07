@@ -3,207 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Tutorial</title>
+    <title>JavaScript Tutorial</title>
     <style>
-        body {
-            font-family: "Arial", sans-serif;
-            margin: 0;
-            display: flex;
-            background-color: #1e203d;
-            color: white;
-            height: 100vh;
-            overflow: hidden;
+             *{
+            font-family: "Arial", sans-serif; 
         }
+ body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    display: flex;
+    background-color: #1e203d;
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
 
-        .sidebar {
-            background-color: #151961;
-            height: 100vh;
-            width: 20%;
-            padding: 20px;
-            overflow-y: auto;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-            transition: width 0.3s ease-in-out;
-            position: fixed;
-            left: -100%;
-        }
+.sidebar {
+    background-color: #151961;
+    height: 100vh;
+    width: 20%;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease-in-out;
+    position: fixed;
+    left: -100%;
+}
 
-        .sidebar.open {
-            left: 0;
-        }
+.sidebar.open {
+    left: 0;
+}
 
-        .sidebar h1 {
-            font-size: 24px;
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.sidebar h1 {
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .sidebar ul {
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-        }
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
 
-        .container {
-            width: 80%;
-            padding-left: 20%;
-            display: flex;
-            flex-direction: column;
-        }
+.container {
+    width: 80%;
+    padding-left: 20%;
+    display: flex;
+    flex-direction: column;
+}
 
-        .nav-link {
-            display: block;
-            color: white;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-color: #696fec;
-            font-weight: 500;
-            transition: background-color 0.3s ease, padding-left 0.2s;
-        }
+.nav-link {
+    display: block;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #696fec;
+    font-weight: 500;
+    transition: background-color 0.3s ease, padding-left 0.2s;
+}
 
-        .nav-link.active {
-            background-color: #1e203d;
-            font-weight: bold;
-        }
+.nav-link.active {
+    background-color: #1e203d;
+    font-weight: bold;
+}
 
-        .nav-link:hover {
-            background-color: #1e203d;
-            padding-left: 20px;
-        }
+.nav-link:hover {
+    background-color: #1e203d;
+    padding-left: 20px;
+}
 
-        .content {
-            padding: 40px;
-            width: 100%;
-            background-color: #f9f9f9;
-            color: #1e203d;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-            max-height: calc(100vh - 80px);
-            padding-left: 5%;
-        }
+.content {
+    padding: 40px;
+    width: 100%;
+    background-color: #f9f9f9;
+    color: #1e203d;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: calc(100vh - 80px);
+    padding-left: 5%;
+}
 
-        .btn-prev, .btn-next {
-            background-color: #696fec;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.btn-prev, .btn-next, .beranda{
+    background-color: #696fec;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .btn-prev:hover, .btn-next:hover {
-            background-color: #1e203d;
-        }
+.btn-prev:hover, .btn-next:hover, .beranda:hover {
+    background-color: #1e203d;
+}
 
-        h1, h3 {
-            margin-top: 0;
-            font-size: 2rem;
-        }
+h1, h3 {
+    margin-top: 0;
+    font-size: 2rem;
+}
 
-        h2, h4, h5 {
-            font-size: 1.5rem;
-        }
+h2, h4, h5 {
+    font-size: 1.5rem;
+}
 
-        pre code {
-            display: block;
-            background-color: #1e203d;
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
+pre code {
+    display: block;
+    background-color: #1e203d;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
 
-        .hidden {
-            display: none;
-        }
+.hidden {
+    display: none;
+}
 
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-                overflow-x: hidden;
-            }
-            .content {
-                padding-left: 0;
-                width: 100%;
-                order: 2;
-                padding: 20px;
-            }
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+    .content {
+        padding-left: 0;
+        width: 100%;
+        order: 2;
+        padding: 20px;
+    }
 
-            .sidebar {
-                width: 70%;
-                height: 100vh;
-                position: fixed;
-                top: 0;
-                left: -100%;
-                z-index: 1000;
-                overflow-y: auto;
-                transition: left 0.3s ease-in-out;
-            }
+    .sidebar {
+        width: 70%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 1000;
+        overflow-y: auto;
+        transition: left 0.3s ease-in-out;
+    }
 
-            .sidebar.open {
-                left: 0;
-            }
+    .sidebar.open {
+        left: 0;
+    }
 
-            .menu-icon {
-                display: block;
-                cursor: pointer;
-                font-size: 30px;
-                padding: 10px;
-                background: none;
-                border: none;
-                color: white;
-                z-index: 1001;
-            }
-        }
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        padding: 10px;
+        background: none;
+        border: none;
+        color: white;
+        z-index: 1001;
+    }
+}
 
-        @media (min-width: 769px) {
-            .menu-icon {
-                display: none;
-            }
+@media (min-width: 769px) {
+    .menu-icon {
+        display: none;
+    }
 
-            .sidebar {
-                position: fixed;
-                left: 0;
-                top: 0;
-                height: 100vh;
-                overflow-y: auto;
-            }
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
 
-            .content {
-                width: 80%;
-                margin-left: 20%;
-            }
-        }
+    .content {
+        width: 80%;
+        margin-left: 20%;
+    }
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #1e203d;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e203d;
+}
 
-        th {
-            background-color: #151961;
-            color: white;
-            padding: 10px;
-            text-align: left;
-        }
+th {
+    background-color: #151961;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
 
-        td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-            background-color: white;
-        }
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    background-color: white;
+}
 
-        td, th {
-            word-wrap: break-word;
-        }
-    </style>
+td, th {
+    word-wrap: break-word;
+}
+</style>
 
     
 </head>
@@ -248,98 +251,83 @@
             <li><a class="nav-link" href="#array-iteration">JS Array Iteration</a></li>
             <li><a class="nav-link" href="#array-const">JS Array Const</a></li>
             <li><a class="nav-link" href="#dates">JS Dates</a></li>
-            <li><a class="nav-link" href="#date-formats">JS Date Formats</a></li>
-            <li><a class="nav-link" href="#date-get-methods">JS Date Get Methods</a></li>
-            <li><a class="nav-link" href="#date-set-methods">JS Date Set Methods</a></li>
-            <li><a class="nav-link" href="#math">JS Math</a></li>
-            <li><a class="nav-link" href="#random">JS Random</a></li>
-            <li><a class="nav-link" href="#booleans">JS Booleans</a></li>
-            <li><a class="nav-link" href="#comparisons">JS Comparisons</a></li>
-            <li><a class="nav-link" href="#if-else">JS If Else</a></li>
-            <li><a class="nav-link" href="#switch">JS Switch</a></li>
-            <li><a class="nav-link" href="#loop-for">JS Loop For</a></li>
-            <li><a class="nav-link" href="#loop-for-in">JS Loop For In</a></li>
-            <li><a class="nav-link" href="#loop-for-of">JS Loop For Of</a></li>
-            <li><a class="nav-link" href="#loop-while">JS Loop While</a></li>
-            <li><a class="nav-link" href="#break">JS Break</a></li>
-            <li><a class="nav-link" href="#iterables">JS Iterables</a></li>
-            <li><a class="nav-link" href="#sets">JS Sets</a></li>
-            <li><a class="nav-link" href="#set-methods">JS Set Methods</a></li>
-            <li><a class="nav-link" href="#maps">JS Maps</a></li>
-            <li><a class="nav-link" href="#map-methods">JS Map Methods</a></li>
-            <li><a class="nav-link" href="#typeof">JS Typeof</a></li>
-            <li><a class="nav-link" href="#type-conversion">JS Type Conversion</a></li>
-            <li><a class="nav-link" href="#destructuring">JS Destructuring</a></li>
-            <li><a class="nav-link" href="#bitwise">JS Bitwise</a></li>
-            <li><a class="nav-link" href="#regexp">JS RegExp</a></li>
-            <li><a class="nav-link" href="#precedence">JS Precedence</a></li>
-            <li><a class="nav-link" href="#scope">JS Scope</a></li>
-            <li><a class="nav-link" href="#hoisting">JS Hoisting</a></li>
-            <li><a class="nav-link" href="#strict-mode">JS Strict Mode</a></li>
-            <li><a class="nav-link" href="#this-keyword">JS this Keyword</a></li>
-            <li><a class="nav-link" href="#arrow-function">JS Arrow Function</a></li>
-            <li><a class="nav-link" href="#classes">JS Classes</a></li>
-            <li><a class="nav-link" href="#modules">JS Modules</a></li>
-            <li><a class="nav-link" href="#json">JS JSON</a></li>
-            <li><a class="nav-link" href="#debugging">JS Debugging</a></li>
-            <li><a class="nav-link" href="#style-guide">JS Style Guide</a></li>
-            <li><a class="nav-link" href="#best-practices">JS Best Practices</a></li>
-            <li><a class="nav-link" href="#mistakes">JS Mistakes</a></li>
-            <li><a class="nav-link" href="#performance">JS Performance</a></li>
-            <li><a class="nav-link" href="#reserved-words">JS Reserved Words</a></li>
         </ul>
     </div>
     
       
-
-    
-
     <section id="home" class="content hidden">
         <header>
             <h1>Tutorial JavaScript</h1>
             <p>Pelajari JavaScript dengan mudah dan cepat!</p>
         </header>
+    
         <h1>Kenapa Belajar JavaScript?</h1>
-        <p>JavaScript adalah salah satu dari tiga bahasa utama yang wajib dikuasai oleh semua pengembang web:</p>
+        <p>JavaScript adalah bahasa pemrograman yang sangat penting untuk dipelajari, terutama jika Anda tertarik untuk mengembangkan aplikasi web interaktif. Berikut adalah beberapa alasan mengapa belajar JavaScript sangat bermanfaat:</p>
         <ul>
-            <li><strong>HTML</strong> - Untuk mendefinisikan konten halaman web.</li>
-            <li><strong>CSS</strong> - Untuk menentukan tata letak halaman web.</li>
-            <li><strong>JavaScript</strong> - Untuk memprogram perilaku halaman web, seperti animasi, validasi form, dan perubahan konten dinamis.</li>
+            <li><strong>Interaktivitas</strong>: JavaScript memungkinkan Anda untuk menambahkan interaksi dinamis pada halaman web. Anda dapat membuat elemen halaman berubah atau merespons pengguna tanpa perlu memuat ulang halaman.</li>
+            <li><strong>Penggunaan yang luas</strong>: JavaScript digunakan oleh banyak pengembang di seluruh dunia untuk membuat situs web dinamis dan aplikasi berbasis web, seperti aplikasi media sosial, toko online, dan banyak lagi.</li>
+            <li><strong>Kompatibilitas Browser</strong>: JavaScript berjalan di hampir semua browser modern, seperti Chrome, Firefox, Safari, dan Edge, sehingga kode Anda akan bekerja di berbagai platform.</li>
+            <li><strong>Pemrograman Front-end dan Back-end</strong>: Dengan JavaScript, Anda dapat bekerja pada sisi klien (front-end) maupun sisi server (back-end). Dengan bantuan Node.js, JavaScript dapat digunakan untuk membangun server web dan aplikasi back-end.</li>
         </ul>
-
-        <h2>Apa yang Akan Anda Pelajari dalam Tutorial Ini?</h2>
-        <p>Dalam tutorial ini, Anda akan mempelajari dasar-dasar hingga topik lanjutan JavaScript. Anda akan menemukan banyak contoh yang dapat dicoba langsung di browser.</p>
-
-        <h2>Fitur Utama Tutorial Ini:</h2>
-        <ul>
-            <li><strong>Belajar dengan Contoh:</strong> Setiap bab dilengkapi dengan contoh kode yang bisa Anda edit dan coba langsung.</li>
-            <li><strong>Struktur Tutorial Teratur:</strong> Mulai dari dasar, berlanjut ke topik yang lebih rumit.</li>
-            <li><strong>Praktik Langsung:</strong> Berlatih menulis kode dengan langsung mengedit dan menjalankan contoh yang ada.</li>
-        </ul>
-
-        <h2>Sejarah JavaScript</h2>
-        <p>JavaScript telah mengalami beberapa versi penting sejak diluncurkan, antara lain:</p>
-        <ul>
-            <li><strong>ES1, ES2, dan ES3</strong> (1997-1999) - Versi pertama JavaScript.</li>
-            <li><strong>ES5</strong> (2009) - Revisi besar yang memperkenalkan banyak fitur baru.</li>
-            <li><strong>ES6</strong> (2015) - Menambahkan fitur seperti let, const, dan class.</li>
-            <li><strong>Pembaruan Tahunan</strong> (2016-2022) - Pembaruan dengan penambahan fitur baru setiap tahun.</li>
-        </ul>
-
-        <h2>Cara Belajar JavaScript</h2>
-        <p>Kecepatan belajar dalam tutorial ini tergantung pada Anda. Anda bisa memilih untuk belajar sesuai waktu dan kecepatan Anda sendiri. Hal terpenting adalah terus berlatih dan mencoba berbagai contoh untuk memperdalam pemahaman Anda.</p>
-
-        <h2>JavaScript di Browser Anda</h2>
-        <p>JavaScript sudah tersedia di browser Anda, baik di komputer, tablet, atau smartphone. Anda tidak perlu mengunduhnya karena sudah disertakan dalam browser modern.</p>
-
-        <h2>Referensi JavaScript</h2>
-        <p>W3Schools menyediakan referensi lengkap untuk JavaScript, termasuk objek HTML dan browser. Referensi ini terus diperbarui sesuai standar web terbaru.</p>
-
+    
+        <h2>Dasar-Dasar JavaScript</h2>
+        <p>Untuk mulai bekerja dengan JavaScript, Anda perlu memahami beberapa konsep dasar. Berikut adalah beberapa elemen penting yang sering digunakan dalam JavaScript:</p>
+    
+        <h3>1. Variabel</h3>
+        <p>Variabel digunakan untuk menyimpan data. Anda dapat menggunakan kata kunci <code>let</code>, <code>const</code>, atau <code>var</code> untuk mendeklarasikan variabel. Berikut adalah contoh penggunaan variabel:</p>
+        <pre>
+            let name = "John";
+            const age = 25;
+            var city = "Jakarta";
+        </pre>
+        <p>Di sini, kita mendeklarasikan tiga variabel dengan nilai yang berbeda. <code>let</code> digunakan untuk variabel yang nilainya bisa diubah, <code>const</code> untuk variabel yang nilainya tetap, dan <code>var</code> digunakan untuk deklarasi yang lebih lama.</p>
+    
+        <h3>2. Fungsi</h3>
+        <p>Fungsi digunakan untuk mengelompokkan kode yang dapat dipanggil berulang kali. Anda bisa mendeklarasikan fungsi menggunakan kata kunci <code>function</code>. Berikut adalah contoh fungsi dalam JavaScript:</p>
+        <pre><code>
+            function greet(name) {
+                return "Hello, " + name + "!";
+            }
+            let greeting = greet("John");
+            console.log(greeting);  // Output: Hello, John!
+        </code></pre>
+        <p>Fungsi <code>greet</code> menerima parameter <code>name</code> dan mengembalikan string yang berisi sapaan. Kemudian, kita memanggil fungsi tersebut dengan argumen "John".</p>
+    
+        <h3>3. Kondisional (if-else)</h3>
+        <p>Dengan struktur kondisional, Anda dapat membuat keputusan berdasarkan kondisi tertentu. Berikut adalah contoh penggunaan <code>if-else</code> dalam JavaScript:</p>
+        <pre><code>
+            let age = 18;
+            if (age >= 18) {
+                console.log("Anda sudah dewasa.");
+            } else {
+                console.log("Anda masih di bawah umur.");
+            }
+        </code></pre>
+        <p>Di sini, JavaScript memeriksa apakah nilai <code>age</code> lebih besar atau sama dengan 18. Jika ya, maka akan menampilkan pesan "Anda sudah dewasa"; jika tidak, maka akan menampilkan pesan "Anda masih di bawah umur".</p>
+    
+        <h3>4. Looping (for, while)</h3>
+        <p>Looping digunakan untuk menjalankan blok kode berulang kali. Anda bisa menggunakan <code>for</code> atau <code>while</code> loop untuk melakukannya. Berikut adalah contoh loop <code>for</code>:</p>
+        <pre><code>
+            for (let i = 1; i <= 5; i++) {
+                console.log(i);  // Output: 1, 2, 3, 4, 5
+            }
+        </code></pre>
+        <p>Di sini, <code>for</code> loop akan menampilkan angka 1 hingga 5.</p>
+    
+        <h2>Contoh Kode Interaktif JavaScript</h2>
+        <p>Berikut adalah contoh kode JavaScript yang dapat Anda coba langsung di browser Anda. Kode ini akan menampilkan alert saat halaman dimuat:</p>
+        <pre><code>
+            &lt;script&gt;
+                alert("Selamat datang di tutorial JavaScript!");
+            &lt;/script&gt;
+        </code></pre>
+        <p>Untuk mencoba kode ini, Anda dapat menyalin dan menempelkan kode tersebut dalam file HTML Anda, lalu membuka halaman tersebut di browser. Saat halaman dimuat, sebuah pop-up akan muncul.</p>
+    
         <h2>Kesimpulan</h2>
-        <p>Dengan mengikuti tutorial ini, Anda akan dapat mempelajari JavaScript secara mendalam dan menerapkannya dalam pembuatan aplikasi web yang interaktif dan dinamis. Jangan lupa untuk terus berlatih dengan contoh-contoh yang ada agar kemampuan Anda semakin meningkat!</p>
-<br>
-<a href="#basic" class="btn-prev">&larr; Previous</a>
-        <a href="#attributes" class="btn-next">Next &rarr;</a>
+        <p>JavaScript adalah bahasa yang sangat penting dalam pengembangan web. Dengan belajar JavaScript, Anda dapat membuat halaman web yang interaktif dan dinamis, serta mengembangkan aplikasi berbasis web yang lebih kompleks. Teruslah berlatih dengan mencoba kode JavaScript yang lebih rumit untuk meningkatkan keterampilan Anda!</p>
+    <br>
+    <a href="Beranda.html" class="beranda">&larr;Dashboard</a>
+        <a href="#intro" class="btn-next">Next &rarr;</a>
     </section>
 
     <section id="intro" class="content hidden">
@@ -382,7 +370,7 @@
     <p>Dengan penjelasan ini, Anda dapat lebih memahami bagaimana JavaScript digunakan untuk mengubah elemen-elemen HTML, mulai dari konten, atribut, gaya, hingga menyembunyikan dan menampilkan elemen-elemen tersebut.</p>
 
         <br>
-        <a href="Beranda.html" class="btn-prev">&larr; Previous</a>
+        <a href="#home" class="btn-prev">&larr; Previous</a>
         <a href="#where-to" class="btn-next">Next &rarr;</a>        
     </section>
 

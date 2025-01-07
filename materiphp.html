@@ -5,128 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Tutorial</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            background-color: #1e203d; /* Background dark */
-            color: white;
-        }
+        *{
+       font-family: "Arial", sans-serif; 
+   }
+body {
+font-family: "Arial", sans-serif;
+margin: 0;
+display: flex;
+background-color: #1e203d;
+color: white;
+height: 100vh;
+overflow: hidden;
+}
 
-        .sidebar {
-            background-color: #151961; /* Dark purple */
-            height: 100vh;
-            padding: 20px;
-            overflow-y: auto;
-            width: 20%;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-            transition: width 0.3s ease-in-out;
-        }
+.sidebar {
+background-color: #151961;
+height: 100vh;
+width: 20%;
+padding: 20px;
+overflow-y: auto;
+box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+transition: width 0.3s ease-in-out;
+position: fixed;
+left: -100%;
+}
 
-        .sidebar:hover {
-            width: 25%;
-        }
+.sidebar.open {
+left: 0;
+}
 
-        .sidebar h1 {
-            font-size: 24px;
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.sidebar h1 {
+font-size: 24px;
+color: white;
+text-align: center;
+margin-bottom: 20px;
+}
 
-        .sidebar ul {
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-        }
+.sidebar ul {
+padding: 0;
+margin: 0;
+list-style-type: none;
+}
 
-        .nav-link {
-            display: block;
-            color: white;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-color: #696fec;
-            font-weight: 500;
-            transition: background-color 0.3s ease, padding-left 0.2s;
-        }
+.container {
+width: 80%;
+padding-left: 20%;
+display: flex;
+flex-direction: column;
+}
 
-        .nav-link.active {
-            background-color: #1e203d;
-            font-weight: bold;
-        }
+.nav-link {
+display: block;
+color: white;
+padding: 12px;
+text-decoration: none;
+border-radius: 5px;
+margin-bottom: 10px;
+background-color: #696fec;
+font-weight: 500;
+transition: background-color 0.3s ease, padding-left 0.2s;
+}
 
-        .nav-link:hover {
-            background-color: #1e203d;
-            padding-left: 20px;
-        }
+.nav-link.active {
+background-color: #1e203d;
+font-weight: bold;
+}
 
-        .content {
-            padding: 40px;
-            width: 80%;
-            background-color: #f9f9f9;
-            color: #1e203d;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+.nav-link:hover {
+background-color: #1e203d;
+padding-left: 20px;
+}
 
-        .btn-prev, .btn-next {
-            background-color: #696fec;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.content {
+padding: 40px;
+width: 100%;
+background-color: #f9f9f9;
+color: #1e203d;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+overflow-y: auto;
+max-height: calc(100vh - 80px);
+padding-left: 5%;
+}
 
-        .btn-prev:hover, .btn-next:hover {
-            background-color: #1e203d;
-        }
+.btn-prev, .btn-next, .beranda {
+background-color: #696fec;
+color: white;
+padding: 12px 20px;
+text-decoration: none;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
 
-        h1, h3 {
-            margin-top: 0;
-            font-size: 2rem;
-        }
+.btn-prev:hover, .btn-next:hover, .beranda:hover {
+background-color: #1e203d;
+}
 
-        h2, h4, h5 {
-            font-size: 1.5rem;
-        }
+h1, h3 {
+margin-top: 0;
+font-size: 2rem;
+}
 
-        pre code {
-            display: block;
-            background-color: #1e203d;
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-        }
+h2, h4, h5 {
+font-size: 1.5rem;
+}
 
-        .hidden {
-            display: none;
-        }
+pre code {
+display: block;
+background-color: #1e203d;
+color: #ffffff;
+padding: 15px;
+border-radius: 5px;
+overflow-x: auto;
+}
 
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
+.hidden {
+display: none;
+}
 
-            .sidebar {
-                width: 100%;
-                height: auto;
-                order: 1;
-            }
+@media (max-width: 768px) {
+body {
+   flex-direction: column;
+   overflow-x: hidden;
+}
+.content {
+   padding-left: 0;
+   width: 100%;
+   order: 2;
+   padding: 20px;
+}
 
-            .content {
-                width: 100%;
-                order: 2;
-                padding: 20px;
-            }
-        }
-    </style>
+.sidebar {
+   width: 70%;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   left: -100%;
+   z-index: 1000;
+   overflow-y: auto;
+   transition: left 0.3s ease-in-out;
+}
+
+.sidebar.open {
+   left: 0;
+}
+
+.menu-icon {
+   display: block;
+   cursor: pointer;
+   font-size: 30px;
+   padding: 10px;
+   background: none;
+   border: none;
+   color: white;
+   z-index: 1001;
+}
+}
+
+@media (min-width: 769px) {
+.menu-icon {
+   display: none;
+}
+
+.sidebar {
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100vh;
+   overflow-y: auto;
+}
+
+.content {
+   width: 80%;
+   margin-left: 20%;
+}
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+background-color: #1e203d;
+}
+
+th {
+background-color: #151961;
+color: white;
+padding: 10px;
+text-align: left;
+}
+
+td {
+padding: 10px;
+border: 1px solid #ddd;
+text-align: left;
+background-color: white;
+}
+
+td, th {
+word-wrap: break-word;
+}
+</style>
+
 </head>
 <body>
     <div class="sidebar">
@@ -238,7 +319,7 @@
         <li>$_COOKIE</li>
         <li>$_SESSION</li>
     </ul>
-        <a href="Beranda.html" class="btn-prev">&larr; Beranda</a>
+    <a href="Beranda.html" class="beranda">&larr;Dashboard</a>
         <a href="#intro" class="btn-next">Next &rarr;</a>
     </section>
 
@@ -1647,14 +1728,13 @@
 </body>
     <a href="#home" class="btn-prev">&larr; Previous</a>
     </section>
+    
     <script>
-        // Ambil semua elemen nav-link, konten, dan tombol navigasi
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section');
         const prevButtons = document.querySelectorAll('.btn-prev');
         const nextButtons = document.querySelectorAll('.btn-next');
 
-        // Fungsi untuk menampilkan konten sesuai ID
         function showSection(id) {
             sections.forEach(section => {
                 if (section.id === id) {
@@ -1665,12 +1745,10 @@
             });
         }
 
-        // Fungsi untuk menemukan index dari section berdasarkan ID
         function findSectionIndex(id) {
             return Array.from(sections).findIndex(section => section.id === id);
         }
 
-        // Event listener untuk navigasi menu
         navLinks.forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1682,7 +1760,6 @@
             });
         });
 
-        // Event listener untuk tombol "Next"
         nextButtons.forEach(button => {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1696,7 +1773,6 @@
             });
         });
 
-        // Event listener untuk tombol "Previous"
         prevButtons.forEach(button => {
             button.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1710,8 +1786,20 @@
             });
         });
 
-        // Tampilkan konten pertama kali (misalnya 'home')
         showSection('home');
+
+         const menuIcon = document.getElementById('menu-icon');
+            const sidebar = document.querySelector('.sidebar');
+    
+            menuIcon.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+    
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
     </script>
 </body>
 </html>

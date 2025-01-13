@@ -1,195 +1,221 @@
 /* General Styles */
 body {
-    margin: 0;
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-  }
-  
-  .dashboard-container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-  }
-  
-  /* Sidebar Styles */
-  .sidebar {
-    width: 250px;
-    background-color: #696fec;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    transition: width 0.3s;
-  }
-  
-  .sidebar header {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin: 1rem 0;
-  }
-  
-  .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem;
-    display: block;
-    border-radius: 4px;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  
-  .sidebar ul li a:hover {
-    background-color: #1e203d;
-    color: #ecf0f1;
-  }
-  
-  .zapier-integration {
-    margin-top: auto;
-    text-align: center;
-  }
-  
-  .zapier-integration button {
-    padding: 0.5rem 1rem;
-    background-color: #2c3e50;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .zapier-integration button:hover {
-    background-color: #1a242f;
-  }
-  
-  /* Main Content Styles */
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 2rem;
-    box-sizing: border-box;
-    overflow: auto;
-  }
-  
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-  }
-  
-  .topbar h1 {
-    font-size: 1.5rem;
-    color: #34495e;
-  }
-  
-  .topbar input {
-    width: 40%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .user-info {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #34495e;
-  }  
-  
-  /* Materi Section */
-  .materi {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .materi h2 {
-    margin-bottom: 1.5rem;
-  }
-  
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem; /* Reduce gap for better spacing */
-  }
-  
-  .card {
-    background-color: white;
-    padding: 1rem; /* Adjust padding for better spacing */
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    height: 130px; /* Adjust height for a balanced look */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card i {
-    font-size: 2rem;
-    color: #696fec;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card span {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card p {
-    color: #666;
-    margin: 0;
-  }
-  
-  .card .button {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.3rem 0.8rem; /* Make buttons smaller */
-    background-color: #696fec;
-    color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    font-size: 0.9rem; /* Reduce font size */
-  }
-  
-  .card .button:hover {
-    background-color: #575ed8;
-  }
-  
-  .footer {
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .footer p {
-    margin: 0;
-    color: #7f8c8d;
-  }
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #696fec;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: width 0.3s;
+}
+
+.sidebar header {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: block;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #1e203d;
+  color: #ecf0f1;
+}
+
+.zapier-integration {
+  margin-top: auto;
+  text-align: center;
+}
+
+.zapier-integration button {
+  padding: 0.5rem 1rem;
+  background-color: #2c3e50;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.zapier-integration button:hover {
+  background-color: #1a242f;
+}
+
+/* Main Content Styles */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.topbar h1 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.topbar input {
+  width: 40%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.user-info {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #34495e;
+}
+
+/* Materi Section */
+.materi {
+  width: 100%;
+  text-align: center;
+}
+
+.materi h2 {
+  margin-bottom: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  /* Reduce gap for better spacing */
+}
+
+.card {
+  background-color: white;
+  padding: 1rem;
+  /* Adjust padding for better spacing */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 130px;
+  /* Adjust height for a balanced look */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card i {
+  font-size: 2rem;
+  color: #696fec;
+  margin-bottom: 0.5rem;
+}
+
+.card span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #666;
+  margin: 0;
+}
+
+.card .button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  /* Make buttons smaller */
+  background-color: #696fec;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-size: 0.9rem;
+  /* Reduce font size */
+}
+
+.card .button:hover {
+  background-color: #575ed8;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer p {
+  margin: 0;
+  color: #7f8c8d;
+}
+
+.profile-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background-color: #ddd;
+  overflow: hidden;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.logout-link {
+  color: white;
+  text-decoration: none;
+}

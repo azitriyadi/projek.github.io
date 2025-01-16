@@ -24,7 +24,7 @@
         }
 
         .image-container {
-            max-width: 60%; /* Ukuran gambar lebih kecil */
+            max-width: 60%;
             display: flex;
             justify-content: center;
             margin-bottom: 15px;
@@ -37,16 +37,16 @@
 
         .wrapper {
             position: relative;
-            max-width: 300px; /* Lebar form lebih kecil */
+            max-width: 450px; /* Lebar form lebih besar */
             width: 100%;
             background: #151961;
-            padding: 15px; /* Mengurangi padding lebih jauh */
+            padding: 20px; /* Padding lebih besar */
             border-radius: 6px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
         .wrapper h2 {
-            font-size: 18px; /* Ukuran judul lebih kecil */
+            font-size: 20px; /* Ukuran judul lebih besar */
             font-weight: 600;
             color: white;
             text-align: center;
@@ -60,7 +60,7 @@
             transform: translateX(-50%);
             bottom: -5px;
             height: 3px;
-            width: 30px; /* Lebar garis bawah judul lebih kecil */
+            width: 30px;
             border-radius: 12px;
             background: white;
         }
@@ -70,8 +70,8 @@
         }
 
         .wrapper .input-box {
-            height: 40px;
-            margin: 8px 0; /* Mengurangi margin antar input */
+            height: 45px; /* Tinggi input lebih tinggi */
+            margin: 10px 0; /* Margin antar input lebih lebar */
             position: relative;
             display: flex;
             align-items: center;
@@ -81,8 +81,8 @@
             height: 100%;
             width: 100%;
             outline: none;
-            padding: 0 15px 0 40px; /* Space untuk ikon di kiri */
-            font-size: 13px;
+            padding: 0 15px 0 40px;
+            font-size: 14px; /* Ukuran font lebih besar */
             color: black;
             border: 1.5px solid white;
             border-bottom-width: 2.5px;
@@ -119,13 +119,13 @@
 
         form h3 {
             color: white;
-            font-size: 12px;
+            font-size: 14px; /* Ukuran font lebih besar */
             font-weight: 500;
             margin-left: 10px;
         }
 
         span {
-            color: black;
+            color: #696fec;
         }
 
         .input-box.button input {
@@ -135,8 +135,8 @@
             background: #1e203d;
             cursor: pointer;
             transition: background 0.3s;
-            padding: 6px 0;
-            font-size: 13px;
+            padding: 8px 0;
+            font-size: 14px;
         }
 
         .input-box.button input:hover {
@@ -155,15 +155,15 @@
         /* Media query untuk perangkat dengan lebar max 480px (mobile) */
         @media (max-width: 480px) {
             .wrapper {
-                padding: 12px; /* Mengurangi padding pada form di mobile */
+                padding: 15px;
             }
 
             .wrapper h2 {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .wrapper .input-box {
-                height: 38px;
+                height: 40px;
             }
 
             .wrapper .input-box input {
@@ -172,7 +172,7 @@
             }
 
             form h3 {
-                font-size: 10px;
+                font-size: 12px;
             }
 
             .input-box.button input {
@@ -188,15 +188,15 @@
         /* Media query untuk perangkat dengan lebar max 768px (tablet) */
         @media (max-width: 768px) {
             .wrapper {
-                padding: 15px;
+                padding: 20px;
             }
 
             .wrapper h2 {
-                font-size: 18px;
+                font-size: 20px;
             }
 
             .wrapper .input-box {
-                height: 40px;
+                height: 45px;
             }
 
             .wrapper .input-box input {
@@ -205,7 +205,7 @@
             }
 
             form h3 {
-                font-size: 12px;
+                font-size: 14px;
             }
 
             .input-box.button input {
@@ -252,7 +252,7 @@
                 <input type="submit" value="Register Now">
             </div>
             <div class="text">
-                <h3>Already have an account? <a href="login.html"><span>Login Now</span></a></h3>
+                <h3>Already have an account? <a href="login.html" style="text-decoration: none;"><span>Login Now</span></a></h3>
             </div>
         </form>
     </div>

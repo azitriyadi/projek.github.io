@@ -60,7 +60,7 @@ body {
 
 .zapier-integration button {
   padding: 0.5rem 1rem;
-  background-color: #696fec;
+  background-color: #1e203d;
   border: none;
   color: white;
   border-radius: 4px;
@@ -69,7 +69,7 @@ body {
 }
 
 .zapier-integration button:hover {
-  background-color: #1e203d;
+  background-color: #696fec;
 }
 
 /* Main Content Styles */

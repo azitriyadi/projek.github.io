@@ -4,9 +4,325 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Level Dashboard</title>
-  <link rel="stylesheet" href="../css/html.css">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .dashboard-container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      background-color: #1e203d;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: width 0.3s;
+    }
+
+    .sidebar header {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 1rem 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+      display: block;
+      border-radius: 4px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #696fec;
+      color: #ecf0f1;
+    }
+
+    .zapier-integration {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .zapier-integration button {
+      padding: 0.5rem 1rem;
+      background-color: #1e203d;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .zapier-integration button:hover {
+      background-color: #696fec;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 2rem;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .topbar h1 {
+      font-size: 1.5rem;
+      color: #34495e;
+    }
+
+    .topbar input {
+      width: 40%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .user-info {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #34495e;
+    }
+
+    /* Quiz Levels */
+    .quiz-levels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .level-box {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      width: 30%;
+    }
+
+    .level-box h2 {
+      font-size: 1.5rem;
+      color: #34495e;
+      margin-bottom: 0.5rem;
+    }
+
+    .level-box p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #7f8c8d;
+    }
+
+    .level-box .button {
+      padding: 0.5rem 1rem;
+      background-color: #696fec;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .level-box .button:hover {
+      background-color: #696fec;
+    }
+
+    /* Footer Styles */
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #7f8c8d;
+    }
+
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background-color: #ddd;
+      overflow: hidden;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logout-link {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Menu Toggle Button */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background-color: transparent;
+      border: none;
+      color: #34495e;
+      cursor: pointer;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .topbar h1 {
+        font-size: 1.3rem;
+      }
+
+      .topbar input {
+        width: 50%;
+      }
+
+      .sidebar {
+        width: 200px;
+      }
+
+      .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background-color: #ddd;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .level-box, .button {
+    grid-template-columns: 1fr;
+  }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 0;
+        display: none;
+      }
+
+      .topbar .menu-toggle {
+        display: block;
+      }
+
+      .topbar input {
+        width: 60%;
+      }
+
+      .quiz-card {
+        padding: 0.8rem;
+      }
+
+      .button {
+        padding: 0.4rem 0.8rem;
+      }
+
+      .user-info {
+        margin-left: auto;
+      }
+      .level-box, .button {
+    grid-template-columns: 1fr;
+  }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar input {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .button {
+        width: 60%;
+        text-align: center;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+      }
+
+      /* Display sidebar when menu button is clicked */
+      .sidebar.open {
+        display: block;
+        width: 250px;
+      }
+      .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background-color: #ddd;
+      overflow: hidden;
+      margin-left: 10px;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .level-box, .button {
+    grid-template-columns: 1fr;
+  }
+
+    }
+  </style>
 </head>
 <body>
+  
   <div class="dashboard-container">
     <aside class="sidebar">
       <header>TechPath</header>
@@ -14,18 +330,19 @@
         <li><a href="/dasboard_soal.html">Kembali</a></li>
       </ul>
       <div class="zapier-integration">
-        <div class="zapier-integration">
-          <button><a href="index.html" class="logout-link">Logout</a></button>
-        </div>
+        <button><a href="index.html" class="logout-link">Logout</a></button>
+      </div>
     </aside>
 
-    <div class="main-content">
-      <header class="topbar">
-        <h1>Quiz title</h1>
-        <input type="text" placeholder="Search">
-        <div class="user-info"><div class="profile-image">
-          <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
-        </div></div>
+
+      <div class="main-content">
+        <header class="topbar">
+          <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+          <h1>Level Quiz</h1>
+          <input type="text" placeholder="Search">
+          <div class="user-info">   <div class="profile-image">
+            <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
+          </div></div>
       </header>
 
       <section class="quiz-levels">
@@ -63,12 +380,9 @@
   </div>
 
   <script>
-    function goToPreviousPage() {
-      // Add your navigation logic here
-    }
-
-    function goToNextPage() {
-      // Add your navigation logic here
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
     }
   </script>
 </body>

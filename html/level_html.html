@@ -20,6 +20,7 @@
 
     <div class="main-content">
       <header class="topbar">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
         <h1>Hypertext markup language</h1>
         <div class="user-info"><div class="profile-image">
           <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
@@ -67,6 +68,11 @@
 
     function goToNextPage() {
       // Add your navigation logic here
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
     }
   </script>
 </body>

@@ -5,7 +5,451 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz</title>
-  <link rel="stylesheet" href="../css/soal_html.css">
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .dashboard-container {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      transition: margin-left 0.3s;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      background-color: #1e203d;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: width 0.3s ease-in-out;
+    }
+
+    .sidebar.closed {
+      width: 0;
+      display: none;
+    }
+
+    .sidebar header {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 1rem 0;
+    }
+
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+      display: block;
+      border-radius: 4px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #696fec;
+      color: #ecf0f1;
+    }
+
+    .zapier-integration {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .zapier-integration button {
+      padding: 0.5rem 1rem;
+      background-color: #1e203d;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .zapier-integration button:hover {
+      background-color: #696fec;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 2rem;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .topbar h1 {
+      font-size: 1.5rem;
+      color: #34495e;
+      flex-grow: 1;
+      margin: 0;
+    }
+
+    .topbar input {
+      width: 40%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .user-info {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #34495e;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Profile Image */
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      background-color: #ddd;
+      overflow: hidden;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Quiz Layout */
+    .quiz-layout {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    /* Questions Container */
+    .questions-container {
+      width: 70%;
+    }
+
+    .questions-container h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      color: #34495e;
+    }
+
+    .question-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .question-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      color: #34495e;
+    }
+
+    .question-card p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #7f8c8d;
+    }
+
+    .question-card label {
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    /* Numbers Container Wrapper */
+    .numbers-container-wrapper {
+      width: 25%;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+    }
+
+    .numbers-container-wrapper h2 {
+      font-size: 1.5rem;
+      color: #34495e;
+      text-align: center;
+    }
+
+    /* Numbers Container */
+    .numbers-container {
+      padding: 1rem;
+    }
+
+    .question-numbers {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .question-number-box {
+      background-color: #f0f2f5;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      font-size: 1rem;
+      color: #34495e;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Navigation Buttons */
+    .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Added gap to create spacing between the buttons */
+  margin-top: 1rem;
+}
+
+.navigation-buttons button {
+  padding: 0.3rem 0.8rem; /* Reduced padding to make buttons smaller */
+  background-color: #696fec;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.navigation-buttons button:hover {
+  background-color: #696fec;
+}
+
+
+
+    /* Footer Styles */
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer p {
+      margin: 0;
+      color: #7f8c8d;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background-color: transparent;
+      border: none;
+      color: #34495e;
+      cursor: pointer;
+    }
+
+    .logout-link {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1024px) {
+      .topbar h1 {
+        font-size: 1.3rem;
+      }
+
+      .topbar input {
+        width: 50%;
+      }
+
+      .sidebar {
+        width: 200px;
+      }
+
+      .profile-image {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+      }
+      .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Added gap to create spacing between the buttons */
+  margin-top: 1rem;
+}
+
+.navigation-buttons button {
+  padding: 0.3rem 0.8rem; /* Reduced padding to make buttons smaller */
+  background-color: #696fec;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.navigation-buttons button:hover {
+  background-color: #696fec;
+}
+
+
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 0;
+        display: none;
+      }
+
+      .topbar .menu-toggle {
+        display: block;
+      }
+
+      .topbar input {
+        width: 60%;
+      }
+
+      .quiz-layout {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .questions-container {
+        width: 100%;
+      }
+
+      .numbers-container-wrapper {
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Added gap to create spacing between the buttons */
+  margin-top: 1rem;
+}
+
+.navigation-buttons button {
+  padding: 0.3rem 0.8rem; /* Reduced padding to make buttons smaller */
+  background-color: #696fec;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.navigation-buttons button:hover {
+  background-color: #696fec;
+}
+
+
+
+      .footer p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar input {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+
+      .quiz-list h2 {
+        font-size: 1.5rem;
+      }
+
+      .quiz-card h3 {
+        font-size: 1.3rem;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+      }
+
+      .sidebar.open {
+        display: block;
+        width: 250px;
+      }
+      .navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem; /* Added gap to create spacing between the buttons */
+  margin-top: 1rem;
+}
+
+.navigation-buttons button {
+  padding: 0.3rem 0.8rem; /* Reduced padding to make buttons smaller */
+  background-color: #696fec;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem; /* Reduced font size */
+}
+
+.navigation-buttons button:hover {
+  background-color: #696fec;
+}
+
+    }
+  </style>
 </head>
 
 <body>
@@ -13,20 +457,22 @@
     <aside class="sidebar">
       <header>TechPath</header>
       <ul>
-        <li><a href="level_css.html">Dashboard</a></li>
+        <li><a href="level_css.html">Kembali</a></li>
       </ul>
       <div class="zapier-integration">
-        <div class="zapier-integration">
-          <button><a href="index.html" class="logout-link">Logout</a></button>
-        </div>
+        <button><a href="index.html" class="logout-link">Logout</a></button>
+      </div>
     </aside>
     <div class="main-content">
       <header class="topbar">
-        <h1>Quiz title</h1>
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <h1>Quiz Title</h1>
         <input type="text" placeholder="Search">
-        <div class="user-info"><div class="profile-image">
-          <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
-        </div></div>
+        <div class="user-info">
+          <div class="profile-image">
+            <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
+          </div>
+        </div>
       </header>
       <section class="quiz-layout">
         <div class="questions-container" id="questions-container">
@@ -35,8 +481,7 @@
         <div class="numbers-container-wrapper">
           <h2>Question Numbers</h2>
           <div class="numbers-container" id="numbers-container">
-            <ul class="question-numbers">
-            </ul>
+            <ul class="question-numbers"></ul>
           </div>
           <div class="navigation-buttons">
             <button onclick="goToPreviousPage()">Previous</button>
@@ -104,6 +549,7 @@
       if (currentPage < totalPages) {
         currentPage++;
         renderQuestions();
+        renderQuestionNumbers();
       }
     }
 
@@ -111,54 +557,25 @@
       if (currentPage > 1) {
         currentPage--;
         renderQuestions();
+        renderQuestionNumbers();
       }
     }
 
     function finishQuiz() {
-      const userAnswers = [];
-      let allAnswered = true;
-
-      questions.forEach((q, index) => {
-        const selectedOption = document.querySelector(`input[name="question${index + 1}"]:checked`);
-        if (selectedOption) {
-          userAnswers.push({ question: q.question, selected: selectedOption.value, correct: q.correct });
-        } else {
-          userAnswers.push({ question: q.question, selected: null, correct: q.correct });
-          allAnswered = false;
-        }
-      });
-
-      if (!allAnswered) {
-        alert('Please answer all the questions before finishing the quiz.');
-        return;
-      }
-
-      displayResults(userAnswers);
-    }
-
-    function displayResults(userAnswers) {
       const resultDisplay = document.getElementById('result-display');
       const resultMessage = document.getElementById('result-message');
       const resultDetails = document.getElementById('result-details');
-
-      let correctAnswers = 0;
-      userAnswers.forEach(answer => {
-        const li = document.createElement('li');
-        li.innerHTML = `<strong>Question:</strong> ${answer.question} <br> <strong>Your Answer:</strong> ${answer.selected || 'No Answer'} <br> <strong>Correct Answer:</strong> ${answer.correct}`;
-        if (answer.selected === answer.correct) {
-          correctAnswers++;
-          li.style.color = 'green';
-        } else {
-          li.style.color = 'red';
-        }
-        resultDetails.appendChild(li);
-      });
-
-      const score = (correctAnswers / questions.length) * 100;
-      resultMessage.textContent = `You got ${correctAnswers} out of ${questions.length} questions correct. Your score is ${score.toFixed(2)}%.`;
       resultDisplay.style.display = 'block';
+      resultMessage.textContent = 'Quiz Finished! Here are your results:';
+      resultDetails.innerHTML = '<li>Your answers...</li>';
     }
 
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Initial rendering
     renderQuestions();
     renderQuestionNumbers();
   </script>

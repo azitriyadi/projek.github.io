@@ -13,7 +13,7 @@
     <aside class="sidebar">
       <header>Main Menu</header>
       <ul>
-        <li><a href="level_html.html">Dashboard</a></li>
+        <li><a href="level_html.html">Kembali</a></li>
       </ul>
       <div class="zapier-integration">
         <button><a href="/index.html" class="logout-link">Logout</a></button>
@@ -22,6 +22,7 @@
 
     <div class="main-content">
       <header class="topbar">
+        <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
         <h1>Quiz Title</h1>
         <div class="user-info"><div class="profile-image">
           <a href="/profil.html"><img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture"></a>
@@ -162,6 +163,11 @@
 
     renderQuestions();
     renderQuestionNumbers();
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
+    }
   </script>
 </body>
 

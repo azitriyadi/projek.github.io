@@ -1,299 +1,121 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background: #1e203d;
-            padding: 20px;
-        }
-
-        .image-container {
-            max-width: 60%;
             display: flex;
             justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .image-container img {
-            max-width: 80%;
-            height: auto;
+            align-items: center;
+            height: 100vh;
         }
 
         .wrapper {
-            position: relative;
-            max-width: 450px; /* Lebar form lebih besar */
+            background-color: #151961;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             width: 100%;
-            background: #151961;
-            padding: 20px; /* Padding lebih besar */
-            border-radius: 6px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
         }
 
         .wrapper h2 {
-            font-size: 20px; /* Ukuran judul lebih besar */
-            font-weight: 600;
             color: white;
+            font-size: 24px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        .wrapper h2::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -5px;
-            height: 3px;
-            width: 30px;
-            border-radius: 12px;
-            background: white;
-        }
-
-        .wrapper form {
-            margin-top: 15px;
-        }
-
-        .wrapper .input-box {
-            height: 45px; /* Tinggi input lebih tinggi */
-            margin: 10px 0; /* Margin antar input lebih lebar */
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .wrapper .input-box input {
-            height: 100%;
-            width: 100%;
-            outline: none;
-            padding: 0 15px 0 40px;
-            font-size: 14px; /* Ukuran font lebih besar */
-            color: black;
-            border: 1.5px solid white;
-            border-bottom-width: 2.5px;
+        .wrapper .form-control {
+            height: 45px;
+            font-size: 14px;
             border-radius: 6px;
-            transition: all 0.3s ease;
         }
 
-        .input-box input:focus,
-        .input-box input:valid {
-            border-color: #1e203d;
-        }
-
-        .password-toggle {
-            position: absolute;
-            top: 50%;
-            right: 15px;
-            transform: translateY(-50%);
-            cursor: pointer;
+        .wrapper .btn {
+            background-color: #1e203d;
             color: white;
-            font-size: 18px;
-        }
-
-        .input-box i {
-            position: absolute;
-            left: 10px;
-            font-size: 18px;
-            color: white;
-        }
-
-        form .policy {
-            display: flex;
-            align-items: center;
-        }
-
-        form h3 {
-            color: white;
-            font-size: 14px; /* Ukuran font lebih besar */
-            font-weight: 500;
-            margin-left: 10px;
-        }
-
-        span {
-            color: #696fec;
-        }
-
-        .input-box.button input {
-            color: white;
+            font-size: 16px;
+            padding: 10px;
             letter-spacing: 1px;
-            border: none;
-            background: #1e203d;
-            cursor: pointer;
-            transition: background 0.3s;
-            padding: 8px 0;
+            transition: background 0.3s ease;
+        }
+
+        .wrapper .btn:hover {
+            background-color: #696fec;
+        }
+
+        .wrapper .form-check-label {
+            color: white;
             font-size: 14px;
         }
 
-        .input-box.button input:hover {
-            background: #696fec;
-        }
-
-        form .text h3 a {
+        .wrapper .text-center a {
             color: white;
             text-decoration: none;
         }
 
-        form .text h3 a:hover {
+        .wrapper .text-center a:hover {
             text-decoration: underline;
         }
 
-        /* Media query untuk perangkat dengan lebar max 480px (mobile) */
-        @media (max-width: 480px) {
-            .wrapper {
-                padding: 15px;
-            }
-
-            .wrapper h2 {
-                font-size: 18px;
-            }
-
-            .wrapper .input-box {
-                height: 40px;
-            }
-
-            .wrapper .input-box input {
-                font-size: 13px;
-                padding: 0 10px 0 30px;
-            }
-
-            form h3 {
-                font-size: 12px;
-            }
-
-            .input-box.button input {
-                font-size: 13px;
-            }
-
-            /* Hiding the image on smaller screens (mobile) */
-            .image-container {
-                display: none;
-            }
-        }
-
-        /* Media query untuk perangkat dengan lebar max 768px (tablet) */
+        /* Hide image on mobile */
         @media (max-width: 768px) {
-            .wrapper {
-                padding: 20px;
-            }
-
-            .wrapper h2 {
-                font-size: 20px;
-            }
-
-            .wrapper .input-box {
-                height: 45px;
-            }
-
-            .wrapper .input-box input {
-                font-size: 14px;
-                padding: 0 12px 0 35px;
-            }
-
-            form h3 {
-                font-size: 14px;
-            }
-
-            .input-box.button input {
-                font-size: 14px;
-            }
-
-            /* Hiding the image on smaller screens (tablet) */
             .image-container {
                 display: none;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="image-container">
-        <img src="img/logopath.png" alt="Logo" />
+        <img src="img/logopath.png" alt="Logo" class="img-fluid" />
     </div>
+
     <div class="wrapper">
-        <h2>Registration</h2>
+        <h2>REGISTRASI</h2>
         <form action="#">
-            <div class="input-box">
-                <i class="fa fa-user"></i> <!-- Ikon untuk nama -->
-                <input type="text" id="name" placeholder="Enter your name" required>
+            <div class="mb-1">
+                <label for="name" class="form-label text-white">Full Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
             </div>
-            <div class="input-box">
-                <i class="fa fa-envelope"></i> <!-- Ikon untuk email -->
-                <input type="email" id="email" placeholder="Enter your email" required>
+            <div class="mb-1">
+                <label for="email" class="form-label text-white">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
             </div>
-            <div class="input-box">
-                <i class="fa fa-lock"></i> <!-- Ikon untuk password -->
-                <input type="password" id="password" placeholder="Create Password" required>
-                <span class="password-toggle" id="toggle-password"><img src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" alt="eye-icon" width="20" height="20"></span>
+            <div class="mb-1">
+                <label for="password" class="form-label text-white">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
             </div>
-            <div class="input-box">
-                <i class="fa fa-lock"></i> <!-- Ikon untuk confirm password -->
-                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-                <span class="password-toggle" id="toggle-confirm-password"><img src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" alt="eye-icon" width="20" height="20"></span>
+            <div class="mb-1">
+                <label for="confirm-password" class="form-label text-white">Confirm Password</label>
+                <input type="password" id="confirm-password" class="form-control" placeholder="Confirm your password" required>
             </div>
-            <div class="policy">
-                <input type="checkbox" id="terms">
-                <h3>I accept terms & conditions</h3>
+            <div class="form-check mb-1">
+                <input type="checkbox" id="terms" class="form-check-input">
+                <label for="terms" class="form-check-label">I accept terms & conditions</label>
             </div>
-            <div class="input-box button">
-                <input type="submit" value="Register Now" onclick="window.location.href='login.html';">
+            <div class="mb-1">
+                <button type="submit" class="btn w-100" onclick="window.location.href='Login.html';">Register Now</button>
             </div>
-            <div class="text">
-                <h3>Already have an account? <a href="login.html" style="text-decoration: none;"><span>Login Now</span></a></h3>
+            <div class="text-center">
+                <p class="text-white text-decoration-none">Already have an account? <a href="login.html"><span style="color: #696fec;">Login Now</span></a></p>
             </div>
         </form>
     </div>
 
-    <script>
-        // Script untuk toggle password visibility
-        const togglePassword = document.getElementById("toggle-password");
-        const passwordInput = document.getElementById("password");
 
-        togglePassword.addEventListener("click", function() {
-            const type = passwordInput.type === "password" ? "text" : "password";
-            passwordInput.type = type;
-            togglePassword.innerHTML = type === "password" 
-                ? '<img src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" alt="eye-icon" width="20" height="20">' 
-                : '<img src="https://img.icons8.com/ios-filled/50/ffffff/invisible.png" alt="eye-icon" width="20" height="20">';
-        });
+    <!-- Add Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-        const toggleConfirmPassword = document.getElementById("toggle-confirm-password");
-        const confirmPasswordInput = document.getElementById("confirm-password");
-
-        toggleConfirmPassword.addEventListener("click", function() {
-            const type = confirmPasswordInput.type === "password" ? "text" : "password";
-            confirmPasswordInput.type = type;
-            toggleConfirmPassword.innerHTML = type === "password" 
-                ? '<img src="https://img.icons8.com/ios-filled/50/ffffff/visible.png" alt="eye-icon" width="20" height="20">'
-                : '<img src="https://img.icons8.com/ios-filled/50/ffffff/invisible.png" alt="eye-icon" width="20" height="20">';
-        });
-
-        // Script untuk validasi password dan confirm password
-        const form = document.querySelector("form");
-
-        form.addEventListener("submit", function(event) {
-            const password = passwordInput.value;
-            const confirmPassword = confirmPasswordInput.value;
-
-            // Cek apakah password dan confirm password sama
-            if (password !== confirmPassword) {
-                event.preventDefault();  // Mencegah form submit
-                alert("Password and Confirm Password do not match! Please try again.");
-            }
-        });
-    </script>
 </body>
 </html>

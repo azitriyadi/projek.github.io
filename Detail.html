@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +56,7 @@
       object-fit: cover;
     }
 
-    .footer, .header {
+    .footer {
       text-align: center;
       margin-top: 2rem;
       padding: 1rem;
@@ -63,24 +64,19 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
   <div class="d-flex">
+    <!-- Sidebar -->
     <nav class="sidebar flex-shrink-0">
       <header class="text-center mb-4">
-        <h3>Profile</h3>
+        <h3>Detail Materi</h3>
       </header>
       <ul class="list-unstyled">
+        <li><a href="Materi.html">Materi</a></li>
         <li><a href="Beranda.html">Dashboard</a></li>
       </ul>
       <div class="mt-auto text-center">
@@ -88,39 +84,52 @@
       </div>
     </nav>
 
+    <!-- Main Content -->
     <div class="container-fluid p-4">
-      <header class="header mb-4 text-md-start">
+      <header class="d-flex justify-content-between align-items-center mb-4">
         <button class="btn btn-outline-secondary d-md-none" onclick="toggleSidebar()">☰</button>
-        <h3>Profile</h3>
+        <h1>Detail Materi</h1>
       </header>
 
-      <section class="overview">
-        <div class="row">
-          <div class="col-md-15">
-            <div class="card p-3">
-              <div class="d-flex align-items-center mb-3">
-                <div class="profile-image">
-                  <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Profile Picture">
-                </div>
-                <div class="ms-3">
-                  <h4>John Doe</h4>
-                  <span class="badge" style="background-color: #28a745;">Online</span>
-                </div>
-              </div>
-              <div class="mt-3">
-                <h5 class="mb-3">Personal Information</h5>
-                <ul class="list-unstyled">
-                  <li><strong>Email:</strong> john.doe@example.com</li>
-                  <li><strong>Phone:</strong> (123) 456-7890</li>
-                  <li><strong>Location:</strong> New York, USA</li>
-                  <li><strong>Joined:</strong> January 2020</li>
-                </ul>
-              </div>
+      <!-- Card for Book Details -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="img/buku.jpg" class="card-img-top" alt="Book Image">
+            <div class="card-body">
+              <h5 class="card-title">Book Title</h5>
+              <p class="card-text">A brief description of the book goes here. It summarizes the content and what the reader can expect from the book.</p>
+              <ul class="list-unstyled">
+                <li><strong>Author:</strong> John Doe</li>
+                <li><strong>Publisher:</strong> Example Publisher</li>
+                <li><strong>Year:</strong> 2024</li>
+                <li><strong>Pages:</strong> 350</li>
+                <li><strong>ISBN:</strong> 123-456-789</li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-      
+
+        <!-- You can repeat the card above for more books -->
+        <div class="col-md-4">
+          <div class="card">
+            <img src="img/buku.jpg" class="card-img-top" alt="Book Image">
+            <div class="card-body">
+              <h5 class="card-title">Another Book Title</h5>
+              <p class="card-text">This is another book description. It can be similar or different from the first book, showcasing variety.</p>
+              <ul class="list-unstyled">
+                <li><strong>Author:</strong> Jane Smith</li>
+                <li><strong>Publisher:</strong> Another Publisher</li>
+                <li><strong>Year:</strong> 2023</li>
+                <li><strong>Pages:</strong> 275</li>
+                <li><strong>ISBN:</strong> 987-654-321</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
       <footer class="footer mt-5">
         <p>&copy; 2025 Dashboard. All rights reserved.</p>
       </footer>
